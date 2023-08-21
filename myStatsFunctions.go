@@ -31,6 +31,7 @@ func logHitsRomaji(RightOrOops, romaji string) {
 //
 // Used in NakedKata exorcise
 func logKataGottenWrong(kataChar string) {
+	// save into a file, or some combination of file and cyclic array, so as to drill more on missed
 	cyclicArrayOfTheJcharsGottenWrong.InsertCharsWrong(kataChar)
 }
 

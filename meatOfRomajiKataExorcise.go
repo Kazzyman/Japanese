@@ -421,7 +421,7 @@ func meatOfRomajiKataExorcise(in, value string) {
 	} else if value == "わ" { // wa ワ, compare to wo ヲ
 		fmt.Printf(", hint: R-ring>^^ to the '0' char, so now it's a water fall for wa? ")
 	} else if value == "を" { // wo ヲ, compare to wa ワ
-		fmt.Printf(", hint: R-ring>^^ shifted '0' char, NOW, it looks like wa. Now! For fucks sake, Now? ")
+		fmt.Printf(", hint: R-ring>^^ shifted '0' char, NOW, it looks like wa. Now! For fuck's sake, Now? ")
 	} else if value == "ん" { // nh ン, compare to so ソ
 		fmt.Printf(", hint: 'Y' char, pointing at the one last remaining bent stroke of the hiragana char ")
 	} else {

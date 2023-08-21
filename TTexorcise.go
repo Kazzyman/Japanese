@@ -3,31 +3,19 @@ package main
 // **do-this**
 import (
 	"fmt"
-	"math/rand"
 	"os"
-	"time"
 )
 
 func TouchTypingExorcise(selectedExorcise string) {
 	// Accepts the following for ^ ^ ^ ^ :  RomajiNakedPrompt -- RomajiKataPrompt -- KataNakedPrompt
-	rand.Seed(time.Now().UnixNano())
+	//
+	// rand.Seed(seed) is now done in main.go, at the top of main()
+	// was: // rand.Seed(time.Now().UnixNano())
+	// example of seed Use: fmt.Println(rand.Int())
+
 	var usersGuessOrOptionDirective string
 	for {
 		// Next, pick and assigns a random card to aCard and key globals
-
-		/*
-			// this switch is dumb
-			switch selectedExorcise {
-			case "RomajiNakedPrompt":
-				pickARandomCardAndAssign() // ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
-			case "RomajiKataPrompt":
-				pickARandomCardAndAssign() // ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
-			case "KataNakedPrompt":
-				pickARandomCardAndAssign() // ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
-			case "RespondWithRomajiToNakedKata":
-				pickARandomCardAndAssign()
-			}
-		*/
 		pickARandomCardAndAssign()
 		// Next, prompt with the new random card and accept guess
 

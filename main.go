@@ -1,5 +1,7 @@
 package main
 
+import "math/rand"
+
 // **do-this** : is the tag I have used to denote sections that I have yet to complete
 
 var colorReset = "\033[0m"
@@ -8,8 +10,10 @@ var colorGreen = "\033[32m"
 var colorCyan = "\033[36m"
 var colorPurple = "\033[35m"
 
+//goland:noinspection ALL
 func main() {
 	for {
+		rand.Seed(seed)
 		mainMenuPromptScanSelectAndBeginSelectedExorcise()
 	}
 }

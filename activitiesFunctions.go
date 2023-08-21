@@ -61,8 +61,13 @@ func PromptWithOptionsAndScanForNakedRomajiPrompt(prompt string) (usersGuessOrOp
 }
 
 func pickARandomCardAndAssign() {
-	randIndex := rand.Intn(len(fileOfCards)) // generate random int in the range of length of our struct of chars
-	aCard = fileOfCards[randIndex]           // randomly pick a 'card' from the 'deck' and store it in a global var
+	/*
+	  // Use the seed (example by Claude)
+	  rand.Seed(seed)
+	  fmt.Println(rand.Int())
+	*/
+	randIndex := rand.Intn(len(fileOfCards))
+	aCard = fileOfCards[randIndex] // randomly pick a 'card' from the 'deck' and store it in a global var
 }
 
 // directives :

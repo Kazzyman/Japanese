@@ -2,13 +2,20 @@ package main
 
 // **do-this**
 import (
+	"crypto/rand"
+	"encoding/binary"
 	"fmt"
+	"os"
+	//"math/rand"
 )
 
 /*
-1. develop a method for deploying hints for naked romaji
-4. finish hints lines in main char struct (one line must be reserved for naked romaji hints)
-5. ? eventually delete unused files hint4kata.go(noUsages); and singleQuestionMarksHints.go after salvaging hints etc.
+add a cyclic array to the logging of misses, and use it every few times to practice error-prone ones
+and, another to store frequently gotten, and gotten right; then skip those more often
+add a variety of fonts ??
+develop a method for deploying hints for naked romaji using just one of the four card lines
+... finish hints lines in main char struct (one line must be reserved for naked romaji hints)
+? eventually, delete unused files hint4kata.go(noUsages); and singleQuestionMarksHints.go after salvaging hints etc.
 */
 
 // then, **do-this** these:
@@ -23,6 +30,7 @@ import (
 
 func mainMenuPromptScanSelectAndBeginSelectedExorcise() {
 	var mainMenuSelection int
+	seedFileMaker()
 	for {
 		fmt.Printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 		fmt.Printf("  Main Menu: \n\n")
@@ -52,14 +60,87 @@ func mainMenuPromptScanSelectAndBeginSelectedExorcise() {
 	}
 }
 
+const seedFile = "randomSeed.dat"
+
+var seed int64
+
+func seedFileMaker() {
+	// Try to read existing seed
+	if data, err := os.ReadFile(seedFile); err == nil {
+		seed = int64(binary.LittleEndian.Uint64(data))
+	} else {
+		// No existing seed, create a new one
+		err := binary.Read(rand.Reader, binary.LittleEndian, &seed)
+		if err != nil {
+			return
+		}
+		f, _ := os.Create(seedFile)
+		defer func(f *os.File) {
+			err := f.Close()
+			if err != nil {
+			}
+		}(f)
+		err2 := binary.Write(f, binary.LittleEndian, seed)
+		if err2 != nil {
+			return
+		}
+	}
+}
+
 // Possible other things to do after an activity and before beginning another activity
 func betweenMainMenuSelectionsTTE(selectedExorcise string) {
 	if selectedExorcise == "RomajiNakedPrompt" {
-		println("between 1 and another exorcise")
+		//println("between 1 and another exorcise")
+		// Save seed before exiting
+		f, _ := os.Create(seedFile)
+		defer func(f *os.File) {
+			err := f.Close()
+			if err != nil {
+			}
+		}(f)
+		err := binary.Write(f, binary.LittleEndian, seed)
+		if err != nil {
+			return
+		}
 	} else if selectedExorcise == "RomajiKataPrompt" {
-		println("between 2 and another exorcise")
+		//println("between 2 and another exorcise")
+		// Save seed before exiting
+		f, _ := os.Create(seedFile)
+		defer func(f *os.File) {
+			err := f.Close()
+			if err != nil {
+			}
+		}(f)
+		err := binary.Write(f, binary.LittleEndian, seed)
+		if err != nil {
+			return
+		}
 	} else if selectedExorcise == "KataNakedPrompt" {
-		println("between 3 and another exorcise")
+		//println("between 3 and another exorcise")
+		// Save seed before exiting
+		f, _ := os.Create(seedFile)
+		defer func(f *os.File) {
+			err := f.Close()
+			if err != nil {
+			}
+		}(f)
+		err := binary.Write(f, binary.LittleEndian, seed)
+		if err != nil {
+			return
+		}
+	} else if selectedExorcise == "RespondWithRomajiToNakedKata" {
+		//println("between 4 and another exorcise")
+		// Save seed before exiting
+		f, _ := os.Create(seedFile)
+		defer func(f *os.File) {
+			err := f.Close()
+			if err != nil {
+			}
+		}(f)
+		err := binary.Write(f, binary.LittleEndian, seed)
+		if err != nil {
+			return
+		}
 	}
 }
 
@@ -74,8 +155,11 @@ func displayCommonOptions() {
 	fmt.Println("        Enter 'stat' to view what you have done so far in the current session")
 	fmt.Println("        Enter 'reset' to reset the hits logs")
 	fmt.Println("        Enter 'exit' or 'quit' to terminate the app")
+	//goland:noinspection ALL
 	fmt.Println("\n")
 }
+
+//goland:noinspection ALL
 func displayNakedKataOptionsAndBeginExorcise(selectedExorcise string) {
 	fmt.Println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 	fmt.Println("Practicing recognizing naked Katakana chars, using touch-typed (TT) Hiragana chars:\n")
@@ -84,6 +168,8 @@ func displayNakedKataOptionsAndBeginExorcise(selectedExorcise string) {
 	fmt.Println("Using Hiragana-input-mode, Type the Hiragana that corresponds to the Katakana prompt: \n")
 	TouchTypingExorcise(selectedExorcise)
 }
+
+//goland:noinspection ALL
 func displayNakedKataOptionsAndBeginRomajiExorcise(selectedExorcise string) {
 	fmt.Println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 	fmt.Println("Practicing recognizing naked Katakana chars, using touch-typed (TT) Romaji:\n")
