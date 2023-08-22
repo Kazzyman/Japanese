@@ -7,7 +7,16 @@ import (
 )
 
 // LOGGERS:
-// 3 'Right' or 'Oops' loggers
+//
+// 2 Reinforce or Skip loggers|Inserters:
+func logSkipThisPrompt(promptToskip string) {
+	cyclicArrayUserIsFineOn.InsertMatchedPrompt(promptToskip)
+}
+func logReinforceThisPrompt(promptToReinforce string) {
+	cyclicArrayUserNeedsWorkOn.InsertMissedPrompt(promptToReinforce)
+}
+
+// 3 'Right' or 'Oops' loggers:
 //
 // Used in RomajiKata Exorcise
 func logHitsRomajiKata(RightOrOops string) {
@@ -27,11 +36,11 @@ func logHitsRomaji(RightOrOops, romaji string) {
 	cyclicArrayHits.InsertChar(romaji)
 }
 
-// 3 GottenWrong loggers
+// 3 GottenWrong loggers:
 //
 // Used in NakedKata exorcise
 func logKataGottenWrong(kataChar string) {
-	// save into a file, or some combination of file and cyclic array, so as to drill more on missed
+	// ***am-doing*** save into a file, or some combination of file and cyclic array, so as to drill more on missed
 	cyclicArrayOfTheJcharsGottenWrong.InsertCharsWrong(kataChar)
 }
 
@@ -46,9 +55,9 @@ func logRomajiGottenWrong(romajiChars string) {
 
 // directives:
 func hits() {
-	// Create a map to store the frequency of each string (as was done above in the stats directive)
+	// Create a map to store the frequency of each string
 	frequencyMapRightOrOops := make(map[string]int)
-	frequencyMapChar := make(map[string]int) // These, apparently, creates a map to associate a unique string with an int
+	frequencyMapChar := make(map[string]int) // These, apparently, create a map to associate a unique string with an int
 	frequencyMapWrongs := make(map[string]int)
 
 	//
@@ -60,19 +69,19 @@ func hits() {
 		//
 		// Apparently this loads a string into; and increments the frequency of, that particular string, in the map
 		//frequencyMapChar[str]++ // ... this, apparently, increments the int mapped to a particular 'str' in said map
-		frequencyMapRightOrOops[str]++
+		frequencyMapRightOrOops[str]++ // Specifically, the '++' must increment the int value associated with str
 	}
 	// char map
 	for i := 0; i < len(cyclicArrayHits.jchar); i++ {
 		str := cyclicArrayHits.jchar[i]
 		//
 		// Apparently this loads a string into; and increments the frequency of, that particular string, in the map
-		frequencyMapChar[str]++
+		frequencyMapChar[str]++ // Specifically, the '++' must increment the int value associated with str
 	}
 	// load wrongs map
 	for i := 0; i < len(cyclicArrayOfTheJcharsGottenWrong.jchar); i++ {
-		str := cyclicArrayOfTheJcharsGottenWrong.jchar[i]
-		frequencyMapWrongs[str]++
+		str := cyclicArrayOfTheJcharsGottenWrong.jchar[i] // As was done above ...
+		frequencyMapWrongs[str]++                         // Specifically, the '++' must increment the int value associated with str
 	}
 
 	// -- PRINT -- the 'Right' and 'Oops' and their frequencies (Right or Oops) (top of printout)

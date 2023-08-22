@@ -6,11 +6,8 @@ import (
 	"regexp"
 )
 
-// Both variants seem to be working perfectly as of 08-19-2023
-// Two variants of this activity are created ::
-// when called as menu option 3 aCard.Value is passed as both key and value -- does not yet have the fancy "gotten wrong"
-// when called as menu option 4 aCard.KeyR is passed as key, and aCard.Value is passed as value -- does not yet have the fancy "gotten wrong"
-func meatOfNakedKataExorcise(in, key, value string) {
+func meatOfNakedKataExorcise(in string) {
+	// Used for processing either a Romaji or a Hiragana guess
 	//
 	// if 'in' is alpha
 	var isAlphanumeric bool
@@ -22,8 +19,8 @@ func meatOfNakedKataExorcise(in, key, value string) {
 		isAlphanumeric = false
 	}
 
-	// User has typed a Romaji
-	if isAlphanumeric == true && in == key { // if user has typed an alpha, and it is the correct Romaji
+	// User has typed a Romaji -- aCard.KeyR would match the correct Romaji
+	if isAlphanumeric == true && in == aCard.KeyR { // if user has typed an alpha, and it IS the correct Romaji
 		fmt.Printf("%s", colorGreen)
 		fmt.Printf("      　^^Right! ")
 		fmt.Printf("%s", colorReset)
@@ -31,7 +28,7 @@ func meatOfNakedKataExorcise(in, key, value string) {
 		logHitsKata("Right", aCard.KeyK)
 		//
 		fmt.Println()
-	} else if isAlphanumeric == true && in != key {
+	} else if isAlphanumeric == true && in != aCard.KeyR { // if user typed an alpha, but NOT the correct Romaji
 		fmt.Printf("%s", colorRed)
 		fmt.Printf("      　^^Oops! ")
 		//
@@ -43,12 +40,12 @@ func meatOfNakedKataExorcise(in, key, value string) {
 		fmt.Printf("%s", colorCyan)
 		fmt.Printf("%s", aCard.KeyR)
 		fmt.Printf("%s", colorReset)
-		checkForHints(value) // we only give hints for non-composites **do-this**
+		// check for hints ... the old way, via hira (so sad!, so fix this, by using the NEW way)
+		checkForHints(aCard.KeyH) // we only give hints for non-composites **do-this**
 		// In this FIRST case: hint card should be found via KeyK and only the KeyH field should be shown, and maybe some other info sans Romaji
 	}
 
-	// User has typed a Hiragana -- it is a little broken, does not handle or log most Oops
-	if isAlphanumeric == false && in == value { // if user has typed the correct Hiragana corresponding to the Katakana (value :: aCard.Value)
+	if isAlphanumeric == false && in == aCard.KeyH { // if user HAS typed the CORRECT Hiragana corresponding to the Kata prompt
 		fmt.Printf("%s", colorGreen)
 		fmt.Printf("      　^^Right! ")
 		fmt.Printf("%s", colorReset)
@@ -56,7 +53,7 @@ func meatOfNakedKataExorcise(in, key, value string) {
 		logHitsKata("Right", aCard.KeyK)
 		//
 		fmt.Println()
-	} else if isAlphanumeric == false && in != value {
+	} else if isAlphanumeric == false && in != aCard.KeyH { // user has typed the INCORRECT Hiragana corresponding to the Kata prompt
 		fmt.Printf("%s", colorRed)
 		fmt.Printf("      　^^Oops! ")
 		//
@@ -66,10 +63,11 @@ func meatOfNakedKataExorcise(in, key, value string) {
 		fmt.Printf("%s", colorReset)
 		fmt.Printf(" It was: ")
 		fmt.Printf("%s", colorCyan)
-		fmt.Printf("%s", value)
+		fmt.Printf("%s", aCard.KeyH)
 		fmt.Printf("%s", colorReset)
-		checkForHints(value) // we only give hints for non-composites **do-this**
-		// In this SECOND case: of needing to type a Hiragana, all four lines of hints can be displayed from the card
+		checkForHints(aCard.KeyH) // we only give hints for non-composites **do-this**
+		// In this SECOND case: of having typed a Hiragana, all four lines of hints can be displayed from the card
+		// ... though, not in the first case: of having typed a Romaji (then only the last line can be shown ??)
 	}
 }
 
@@ -170,5 +168,4 @@ func checkForHints(value string) {
 	} else {
 		fmt.Printf("\n")
 	}
-	//fmt.Println()
 }

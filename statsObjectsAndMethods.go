@@ -1,6 +1,32 @@
 package main
 
 // **do-this**
+var cyclicArrayUserIsFineOn CyclicArrayUserIsFineOn
+
+type CyclicArrayUserIsFineOn struct {
+	skipThisChar [80]string
+	index        int
+}
+
+func (ca *CyclicArrayUserIsFineOn) InsertMatchedPrompt(SkipThisChar string) {
+	ca.skipThisChar[ca.index] = SkipThisChar
+	ca.index = (ca.index + 1) % len(ca.skipThisChar)
+}
+
+/*
+.
+*/
+var cyclicArrayUserNeedsWorkOn CyclicArrayUserNeedsWorkOn
+
+type CyclicArrayUserNeedsWorkOn struct {
+	useThisChar [80]string
+	index       int
+}
+
+func (ca *CyclicArrayUserNeedsWorkOn) InsertMissedPrompt(UseThisChar string) {
+	ca.useThisChar[ca.index] = UseThisChar
+	ca.index = (ca.index + 1) % len(ca.useThisChar)
+}
 
 /*
 

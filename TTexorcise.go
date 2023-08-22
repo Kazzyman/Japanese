@@ -11,25 +11,37 @@ func TouchTypingExorcise(selectedExorcise string) {
 	//
 	// rand.Seed(seed) is now done in main.go, at the top of main()
 	// was: // rand.Seed(time.Now().UnixNano())
-	// example of seed Use: fmt.Println(rand.Int())
+	// Example of seed Use per Claude: fmt.Println(rand.Int())
 
 	var usersGuessOrOptionDirective string
 	for {
-		// Next, pick and assigns a random card to aCard and key globals
-		pickARandomCardAndAssign()
-		// Next, prompt with the new random card and accept guess
-
+		pickARandomCardAndAssign() // Assigns a random card to aCard, so there is no need to pass any aCard fields below
+		// Next, prompt with the appropriate field from the new random card and accept user's guess
+		/*
+			case:  1 = "RomajiNakedPrompt"
+			case:  2 = "RomajiKataPrompt"
+			case:  3 = "KataNakedPrompt"
+			case:  4 = "RespondWithRomajiToNakedKata"
+		*/
+		// Prompt with the appropriet field from the new random card and accept user's guess:
 		switch selectedExorcise {
+		// case 1
 		case "RomajiNakedPrompt":
-			usersGuessOrOptionDirective = PromptWithOptionsAndScanForNakedRomajiPrompt(aCard.KeyR)
+			usersGuessOrOptionDirective = PromptWithOptionsAndScan(aCard.KeyR) // universal prompt, passing R
 		// ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
+		// case 2
 		case "RomajiKataPrompt":
-			usersGuessOrOptionDirective = PromptWithOptionsAndScanForRKprompt(aCard.KeyRK)
+			// PromptWithOptionsAndScan(aCard.KeyRK)
+			usersGuessOrOptionDirective = PromptWithOptionsAndScan(aCard.KeyRK) // universal prompt, passing RK
 		// ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
+		//
+		// These next two should be re-evaluated for justifyability
+		// case 3
 		case "KataNakedPrompt":
-			usersGuessOrOptionDirective = PromptWithOptionsAndScanForNakedKataPrompt(aCard.KeyK)
+			usersGuessOrOptionDirective = PromptWithOptionsAndScan(aCard.KeyK) // universal prompt, passing K
 		// ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
-		case "RespondWithRomajiToNakedKata":
+		// case 4
+		case "RespondWithRomajiToNakedKata": // special prompt (needed??), passing K, as does the other kata prompt, above
 			usersGuessOrOptionDirective = PromptWithOptionsAndScanForRespondWithRomajiToNakedKataPrompt(aCard.KeyK)
 		}
 
@@ -44,18 +56,26 @@ func TouchTypingExorcise(selectedExorcise string) {
 				branchOnUserSelectedDirectiveIfGiven(usersGuessOrOptionDirective, selectedExorcise) // <-- handle the directive
 				// v v v v v   re-prompt   v v v v v v
 				// -- re-prompt following the execution of a directive -------------------------------------------------------- v v v v
-				switch selectedExorcise {
+				/*
+					case:  1 = "RomajiNakedPrompt"
+					case:  2 = "RomajiKataPrompt"
+					case:  3 = "KataNakedPrompt"
+					case:  4 = "RespondWithRomajiToNakedKata"
+				*/
+				// ****************************************************************************************************
+				switch selectedExorcise { // Identical to the above switch for prompt selection ***********************
 				case "RomajiNakedPrompt":
-					usersGuessOrOptionDirective = PromptWithOptionsAndScanForRKprompt(aCard.KeyR)
+					usersGuessOrOptionDirective = PromptWithOptionsAndScan(aCard.KeyR)
 					// ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
 				case "RomajiKataPrompt":
-					usersGuessOrOptionDirective = PromptWithOptionsAndScanForRKprompt(aCard.KeyRK)
+					usersGuessOrOptionDirective = PromptWithOptionsAndScan(aCard.KeyRK)
 					// ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
 				case "KataNakedPrompt":
-					usersGuessOrOptionDirective = PromptWithOptionsAndScanForRKprompt(aCard.KeyK)
+					usersGuessOrOptionDirective = PromptWithOptionsAndScan(aCard.KeyK)
 					// ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
 				case "RespondWithRomajiToNakedKata":
 					usersGuessOrOptionDirective = PromptWithOptionsAndScanForRespondWithRomajiToNakedKataPrompt(aCard.KeyK)
+					// ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
 				}
 				// v v v v v   do not process directives from the re-prompting   v v v v v
 				if usersGuessOrOptionDirective != "set" &&
@@ -71,16 +91,23 @@ func TouchTypingExorcise(selectedExorcise string) {
 					//  v ^ v ^ at this point we know that the usersGuessOrOptionDirective is probably a valid guess,
 					// ... AND, we need to leave the loop after processing it
 
+					/*
+						case:  1 = "RomajiNakedPrompt"
+						case:  2 = "RomajiKataPrompt"
+						case:  3 = "KataNakedPrompt"
+						case:  4 = "RespondWithRomajiToNakedKata"
+					*/
+					// Only need to be passing the user's guess, as both the prompt and the other aCard fields can now be acessed directly fr within each
 					switch selectedExorcise {
 					case "RomajiNakedPrompt":
-						meatOfRomajiNakedExorcise(usersGuessOrOptionDirective, aCard.KeyR, aCard.Value) // <-- may or may not be a guess, so check it
+						meatOfRomajiNakedExorcise(usersGuessOrOptionDirective) // <-- may or may not be a guess, so check it
 					case "RomajiKataPrompt":
-						meatOfRomajiKataExorcise(usersGuessOrOptionDirective, aCard.Value) // <-- may or may not be a guess, so check it
+						meatOfRomajiKataExorcise(usersGuessOrOptionDirective) // <-- may or may not be a guess, so check it
+					// The next two call the same func???
 					case "KataNakedPrompt":
-						meatOfNakedKataExorcise(usersGuessOrOptionDirective, aCard.KeyH, aCard.Value) // <-- may or may not be a guess, so check it
+						meatOfNakedKataExorcise(usersGuessOrOptionDirective) // <-- may or may not be a guess, so check it
 					case "RespondWithRomajiToNakedKata":
-						meatOfNakedKataExorcise(usersGuessOrOptionDirective, aCard.KeyR, aCard.Value) // Value is always same as KeyH : the hiragana
-						// .Value is used as 'value' to look-up hints in the meat file
+						meatOfNakedKataExorcise(usersGuessOrOptionDirective)
 					}
 
 					break outOfForLoop
@@ -90,13 +117,13 @@ func TouchTypingExorcise(selectedExorcise string) {
 			} else {
 				switch selectedExorcise {
 				case "RomajiNakedPrompt":
-					meatOfRomajiNakedExorcise(usersGuessOrOptionDirective, aCard.KeyH, aCard.Value) // <-- may or may not be a guess, so check it
+					meatOfRomajiNakedExorcise(usersGuessOrOptionDirective) // <-- may or may not be a guess, so check it
 				case "RomajiKataPrompt":
-					meatOfRomajiKataExorcise(usersGuessOrOptionDirective, aCard.Value) // <-- may or may not be a guess, so check it
+					meatOfRomajiKataExorcise(usersGuessOrOptionDirective) // <-- may or may not be a guess, so check it
 				case "KataNakedPrompt":
-					meatOfNakedKataExorcise(usersGuessOrOptionDirective, aCard.Value, aCard.Value) // <-- may or may not be a guess, so check it
+					meatOfNakedKataExorcise(usersGuessOrOptionDirective) // <-- may or may not be a guess, so check it
 				case "RespondWithRomajiToNakedKata":
-					meatOfNakedKataExorcise(usersGuessOrOptionDirective, aCard.KeyR, aCard.Value) // Value is always same as KeyH : the hiragana
+					meatOfNakedKataExorcise(usersGuessOrOptionDirective) // Value is always same as KeyH : the hiragana
 					// .Value is used as 'value' to look-up hints in the meat file
 				}
 				// It is probably a valid guess, AND we need to leave the loop after processing it

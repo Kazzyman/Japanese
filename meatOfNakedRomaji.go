@@ -1,13 +1,13 @@
 package main
 
-// **do-this**
+// **do-this** 'these'
 import (
 	"fmt"
 )
 
-// regardless, this func and activity seems to be perfect as of 08-19-2023
-// **do-this** this func employs else-if's instead of a series of simple if's as is done in meatOfRomajiKata
-func meatOfRomajiNakedExorcise(in, key, value string) {
+func meatOfRomajiNakedExorcise(in string) { // NOTE: we have already been prompted with KeyR
+	// ..^ ^ ^ called as|with: (usersGuessOrOptionDirective, aCard.KeyH) that KeyH being the particular Hira in question
+	// so, in=the-users-guess, keyH=aCard.KeyH
 	/*  **do-this**
 	??? Retain the first sections with the "^^Right!" & "^^Oops!" messages and actions, and maybe copy the rest to G-A-H-H ???
 		This func provides some special "^^Right!" or "^^Oops!" messages and actions in a "'fall'-through" manner ...
@@ -17,293 +17,216 @@ func meatOfRomajiNakedExorcise(in, key, value string) {
 	*/
 	var thisCaseOfAnInHasAlreadyBeenProcessedAbove bool
 	thisCaseOfAnInHasAlreadyBeenProcessedAbove = false
-	// ****************************************************************************
-	// handel special prompt cases prior to doing the normal "if in == " processing
-	// ****************************************************************************
-	// Proper use of the ji sound from the "ta" group : ta->da,ji,zu , another special 'key' handler
+	// *******************************************************************************************
+	// Handel special prompt cases prior to doing the normal "if in == " processing
+	// 'gi' and 'ji' are done first; followed by Properly-Constructed forms of 'ji' used as: ja, ju, jo
+	// And, finally: one 'very'-special key handler to emphasize the sameness of two variants of the zu sound
+	// *******************************************************************************************
+	// Proper use of the ji sound from the "ta" group : ta->da,ji,zu , a special 'key' handler
 	// た　ち   つ　て　と
 	// ta chi tsu te to
 	// da ji  zu  de do゛
-	// key is the second parameter passed to this func, and is now KeyR
-	if key == "ji" { // there is no other Romaji (or sound) for じ or ぢ
-		// じ or ... not really ぢ
-		if in == "じ" { // nearly-always it is じ
+	// key is the second parameter passed to this func, and is loaded from aCard.KeyR
+	if aCard.KeyR == "ji" { // there is no other Romaji (or sound) for じ, or for the seldom-seen: ぢ
+		// じ or ... not really: ぢ
+		if in == "じ" { // nearly-always it is じ instad of the seldom-seen: ぢ
 			thisCaseOfAnInHasAlreadyBeenProcessedAbove = true
 			fmt.Printf("%s", colorGreen)
-			fmt.Printf("     　　^^Right! ")
-			//
-			logHitsRomaji("Right", aCard.KeyR)
-			//
+			fmt.Printf("     　^^Right! ") // Missing an: '/n' because it is followed by a comment with its own
 			fmt.Printf("%s", colorReset)
-			fmt.Printf("ji:じ　while ヂ:ぢ is only-SOMETIMES from chi ち ,both are the sound ji, NEVER gi (that being ぎ:gi ギ)\n")
+			fmt.Printf("ji:じジ　RARELY: ぢ:chi:ヂ ,both are the sound ji, but NEVER gi (that being ぎ:gi:ギ)\n")
+			// log the hit:
+			logSkipThisPrompt(aCard.KeyR)
+			logHitsRomaji("Right", aCard.KeyR)
 		} else {
 			thisCaseOfAnInHasAlreadyBeenProcessedAbove = true
 			fmt.Printf("%s", colorRed)
 			fmt.Printf("     　　^^Oops! ")
-			//
-			logHitsRomaji("Oops", aCard.KeyR)
-			logRomajiGottenWrong(key + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
-			//
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It was: ")
 			fmt.Printf("%s", colorCyan)
-			fmt.Printf("%s ", value) // shows the Hiragana じ
+			fmt.Printf("%s ", aCard.KeyH) // shows the Hiragana じ
 			fmt.Printf("%s", colorReset)
-			fmt.Printf("ta->da,ji,zu, the ji sound じヂ is usually from shi:し, Rarely chi:ち")
+			fmt.Printf("ta->da,ji,zu, the ji sound じジ is usually from shi:し, Very-Rarely as chi:ぢヂ\n")
+			// log the miss:
+			logReinforceThisPrompt(aCard.KeyR)
+			logHitsRomaji("Oops", aCard.KeyR)
+			logRomajiGottenWrong(aCard.KeyR + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
 		}
 
 		// Proper use of the "gi" sound from the ka group : ka->ga , another special 'key' handler
 		// か　き　く　け　こ
 		// ka ki ku ke ko
 		// ga gi gu ge go゛
-	} else if key == "gi" {
+	}
+	if aCard.KeyR == "gi" {
 		if in == "ぎ" {
 			thisCaseOfAnInHasAlreadyBeenProcessedAbove = true
 			fmt.Printf("%s", colorGreen)
-			fmt.Printf("     ^^Right! \n")
-			//
-			logHitsRomaji("Right", aCard.KeyR)
-			//
+			fmt.Printf("      ^^Right! ")
 			fmt.Printf("%s", colorReset)
-			fmt.Printf("It is always from ki き and NEVER from shi し ,it is the sound gi, NEVER ji (that being じジ)\n")
+			fmt.Printf("It is always from ki:き and NEVER from shi:し ,it is the sound gi, NEVER ji (that being じジ)\n")
+			// log the hit:
+			logSkipThisPrompt(aCard.KeyR)
+			logHitsRomaji("Right", aCard.KeyR)
 		} else {
 			fmt.Printf("%s", colorRed)
 			fmt.Printf("     ^^Oops! ")
-			//
-			logHitsRomaji("Oops", aCard.KeyR)
-			logRomajiGottenWrong(key + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
-			//
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It was: ")
 			fmt.Printf("%s", colorCyan)
-			fmt.Printf("%s ", value) // displays ぎ
+			fmt.Printf("%s ", aCard.KeyH) // displays ぎ
 			fmt.Printf("%s", colorReset)
-			fmt.Printf("ka->ga, so the sound gi is always from ki き ,and NEVER from shi し or chi ち\n")
+			fmt.Printf("ka->ga, so the sound gi is always from ki:き , and NEVER from shi:し or as chi:ぢヂ\n")
+			// log the miss:
+			logReinforceThisPrompt(aCard.KeyR)
+			logHitsRomaji("Oops", aCard.KeyR)
+			logRomajiGottenWrong(aCard.KeyR + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
 		}
-	} else
+	}
 
 	// Properly-constructed forms of ji used as ja, ju, jo which are nearly always from shi し and really never from chi ち
 	// , three more special 'key' handlers
-	if key == "ja" { // 1 of 3
+	if aCard.KeyR == "ja" { // 1 of 3
 		thisCaseOfAnInHasAlreadyBeenProcessedAbove = true
 		if in == "じゃ" {
 			fmt.Printf("%s", colorGreen)
-			fmt.Printf("     ^^Right! ")
-			//
-			logHitsRomaji("Right", aCard.KeyR)
-			//
+			fmt.Printf("      ^^Right! ")
 			fmt.Printf("%s", colorReset)
-			fmt.Printf("It is nearly-always from shi し and very-rarely from chi ち\n")
+			fmt.Printf("It is nearly-always from shi:し , and NEVER from shi:し or as chi:ぢヂ\n")
+			// log the hit:
+			logSkipThisPrompt(aCard.KeyR)
+			logHitsRomaji("Right", aCard.KeyR)
 		} else if in != "?" {
 			fmt.Printf("%s", colorRed)
 			fmt.Printf("     ^^Oops! ")
-			//
-			logHitsRomaji("Oops", aCard.KeyR)
-			logRomajiGottenWrong(key + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
-			//
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It was: ")
 			fmt.Printf("%s", colorCyan)
-			fmt.Printf("%s ", value)
+			fmt.Printf("%s ", aCard.KeyH)
 			fmt.Printf("%s", colorReset)
-			fmt.Printf("ta->da,ji,zu: it is nearly-never from chi ち but is nearly-always from shi し\n")
+			fmt.Printf("ta->da,ji,zu: it is nearly-never from chi:ち but is nearly-always from shi:し\n")
+			// log the miss:
+			logReinforceThisPrompt(aCard.KeyR)
+			logHitsRomaji("Oops", aCard.KeyR)
+			logRomajiGottenWrong(aCard.KeyR + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
 		} // 1 of 3
 
-	} else if key == "ju" { // 2 of 3
+	}
+	if aCard.KeyR == "ju" { // 2 of 3
 		thisCaseOfAnInHasAlreadyBeenProcessedAbove = true
 		if in == "じゅ" {
 			fmt.Printf("%s", colorGreen)
-			fmt.Printf("     ^^Right! \n")
-			//
-			logHitsRomaji("Right", aCard.KeyR)
-			//
+			fmt.Printf("      ^^Right! ")
 			fmt.Printf("%s", colorReset)
-			fmt.Printf("It is nearly always from shi し and rarely from chi ち ")
+			fmt.Printf("It is nearly-always from shi:し -- rarely-if-ever from chi:ち\n")
+			// log the hit:
+			logSkipThisPrompt(aCard.KeyR)
+			logHitsRomaji("Right", aCard.KeyR)
 		} else if in != "?" {
 			fmt.Printf("%s", colorRed)
 			fmt.Printf("     ^^Oops! ")
-			//
-			logHitsRomaji("Oops", aCard.KeyR)
-			logRomajiGottenWrong(key + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
-			//
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It was: ")
 			fmt.Printf("%s", colorCyan)
-			fmt.Printf("%s ", value)
+			fmt.Printf("%s ", aCard.KeyH)
 			fmt.Printf("%s", colorReset)
-			fmt.Printf("ta->da,ji,zu: it is nearly-never from chi ち but is nearly-always from shi し ")
+			fmt.Printf("ta->da,ji,zu: it is nearly-never from chi:ち and is nearly-always from shi:し\n")
+			// log the miss:
+			logReinforceThisPrompt(aCard.KeyR)
+			logHitsRomaji("Oops", aCard.KeyR)
+			logRomajiGottenWrong(aCard.KeyR + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
 		} // 2 of 3
-	} else if key == "jo" { // 3 of 3
+	}
+	if aCard.KeyR == "jo" { // 3 of 3
 		thisCaseOfAnInHasAlreadyBeenProcessedAbove = true
 		if in == "じょ" {
 			fmt.Printf("%s", colorGreen)
-			fmt.Printf("     ^^Right! \n")
-			//
-			logHitsRomaji("Right", aCard.KeyR)
-			//
+			fmt.Printf("      ^^Right! ")
 			fmt.Printf("%s", colorReset)
-			fmt.Printf("It is nearly always from shi し and rarely from chi ち ")
+			fmt.Printf("It is nearly-always from shi:し and very-rarely from chi:ち\n")
+			// log the hit:
+			logSkipThisPrompt(aCard.KeyR)
+			logHitsRomaji("Right", aCard.KeyR)
 		} else if in != "?" {
 			fmt.Printf("%s", colorRed)
 			fmt.Printf("     ^^Oops! ")
-			//
-			logHitsRomaji("Oops", aCard.KeyR)
-			logRomajiGottenWrong(key + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
-			//
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It was: ")
 			fmt.Printf("%s", colorCyan)
-			fmt.Printf("%s ", value)
+			fmt.Printf("%s ", aCard.KeyH)
 			fmt.Printf("%s", colorReset)
-			fmt.Printf("ta->da,ji,zu: it is nearly-never from chi:ち but is nearly-always from shi:し ")
+			fmt.Printf("ta->da,ji,zu: it is nearly-never from chi:ち and is nearly-always from shi:し\n")
+			// log the miss:
+			logReinforceThisPrompt(aCard.KeyR)
+			logHitsRomaji("Oops", aCard.KeyR)
+			logRomajiGottenWrong(aCard.KeyR + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
 		}
-	} else // end 3 of 3
+	} // end 3 of 3
 
-	// 3 /- obsolete -/ forms of ja, ju and jo , special 'key' handlers for obsolete rarely-used forms
-	if key == "ja obs" { // 1 of 3
-		thisCaseOfAnInHasAlreadyBeenProcessedAbove = true
-		if in == "ぢゃ" { // asked for the wrong (obs) way, and user has given it
-			fmt.Printf("%s", colorGreen)
-			fmt.Printf("     ^^Right! (as in: \"you gave the wrong way:-)\" ")
-			//
-			logHitsRomaji("Right", aCard.KeyR)
-			//
-			fmt.Printf("%s", colorReset)
-			fmt.Printf("The ji sound is nearly-always from shi:し and really never from chi:ち\n")
-		} else if in != "?" {
-			fmt.Printf("%s", colorRed)
-			fmt.Printf("     ^^Oops! ")
-			//
-			logHitsRomaji("Oops", aCard.KeyR)
-			logRomajiGottenWrong(key + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
-			//
-			fmt.Printf("%s", colorReset)
-			fmt.Printf("It was: ")
-			fmt.Printf("%s", colorCyan)
-			fmt.Printf("%s ", value)
-			fmt.Printf("%s", colorReset)
-			fmt.Printf("ta->da,ji,zu: ji is nearly-never from chi:ち but is nearly-always from shi:し ")
-		} // 1 of 3
-	} else if key == "ju obs" { // 2 of 3
-		thisCaseOfAnInHasAlreadyBeenProcessedAbove = true
-		if in == "ぢゅ" {
-			fmt.Printf("%s", colorGreen)
-			fmt.Printf("     ^^Right! (as in: \"you gave the wrong way:-)\" ")
-			//
-			logHitsRomaji("Right", aCard.KeyR)
-			//
-			fmt.Printf("%s", colorReset)
-			fmt.Printf("The ji sound is nearly-always from shi し and really never from chi ち ")
-		} else if in != "?" {
-			fmt.Printf("%s", colorRed)
-			fmt.Printf("     ^^Oops! ")
-			//
-			logHitsRomaji("Oops", aCard.KeyR)
-			logRomajiGottenWrong(key + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
-			//
-			fmt.Printf("%s", colorReset)
-			fmt.Printf("It was: ")
-			fmt.Printf("%s", colorCyan)
-			fmt.Printf("%s ", value)
-			fmt.Printf("%s", colorReset)
-			fmt.Printf("ta->da,ji,zu: ji is nearly-never from chi:ち but is nearly-always from shi:し ")
-		} // 2 of 3
-	} else if key == "jo obs" { // 3 of 3
-		thisCaseOfAnInHasAlreadyBeenProcessedAbove = true
-		if in == "ぢょ" {
-			fmt.Printf("%s", colorGreen)
-			fmt.Printf("     ^^Right! (as in: \"you gave the wrong way:-)\" ")
-			//
-			logHitsRomaji("Right", aCard.KeyR)
-			//
-			fmt.Printf("%s", colorReset)
-			fmt.Printf("It is nearly always from shi し and really never from chi ち  ")
-		} else {
-			fmt.Printf("%s", colorRed)
-			fmt.Printf("     ^^Oops! ")
-			//
-			logHitsRomaji("Oops", aCard.KeyR)
-			logRomajiGottenWrong(key + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
-			//
-			fmt.Printf("%s", colorReset)
-			fmt.Printf("It was: ")
-			fmt.Printf("%s", colorCyan)
-			fmt.Printf("%s ", value)
-			fmt.Printf("%s", colorReset)
-			fmt.Printf("ta->da,ji,zu: ji is nearly-never from chi:ち but is nearly-always from shi:し ")
-		}
-	} else // end 3 of 3  ---  'obsolete' :: ya, yu, yo forms of ja, ju, jo "obsolete"
-	// */  -- 'fall' through --- "fall-through" --- >>>
-
-	// Next, we check for some additional 'very-special' prompt(key)/value events or conditions ...
-	// ... one 'very'-special key handler to emphasize the sameness of the two variants of zu sound
-	if key == "zu" { // || key == "zu: from つ or す" // does not seem to work ????????? **do-this**
-		//     ^^     ^^      ^^   ^^^^^^^^^ are both in main!!!!
-		// zu has two KeyR values **** when prompting with naked Romaji ****** "zu", and "zu: from つ or す"
+	// Next, we check for some additional 'very-special' prompt events or conditions ...
+	// and, one 'very'-special handler to emphasize the sameness of the two variants of the zu sound
+	if aCard.KeyR == "zu" {
 		thisCaseOfAnInHasAlreadyBeenProcessedAbove = true
 		if in == "づ" {
 			fmt.Printf("%s", colorGreen)
-			fmt.Printf("     ^^Right! ")
-			logHitsRomaji("Right", aCard.KeyR)
+			fmt.Printf("      ^^Right! ")
 			fmt.Printf("%s", colorReset)
-			fmt.Printf("It could have been either ず or づ as they are the same sound ")
+			fmt.Printf("It could have been either ず or づ as they are the same sound: zu\n")
+			// log the hit:
+			logSkipThisPrompt(aCard.KeyR)
+			logHitsRomaji("Right", aCard.KeyR)
 		} else if in == "ず" {
 			fmt.Printf("%s", colorGreen)
-			fmt.Printf("     ^^Right! ")
-			//
-			logHitsRomaji("Right", aCard.KeyR)
-			//
+			fmt.Printf("      ^^Right! ")
 			fmt.Printf("%s", colorReset)
-			fmt.Printf("It could have been either ず or づ as they are the same sound ")
+			fmt.Printf("It could have been either ず or づ as they are the same sound: zu\n")
+			// log the hit:
+			logSkipThisPrompt(aCard.KeyR)
+			logHitsRomaji("Right", aCard.KeyR)
 		} else {
 			fmt.Printf("%s", colorRed)
 			fmt.Printf("     ^^Oops! ")
-			//
-			logHitsRomaji("Oops", aCard.KeyR)
-			logRomajiGottenWrong(key + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
-			//
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It was: ")
 			fmt.Printf("%s", colorCyan)
-			fmt.Printf("%s \n", value)   // v v v v v right up here v v v v v v
-			fmt.Printf("%s", colorReset) // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
-		} // That last Printf directly-above needs that \n as in: ("It was: %s \n", value)
-		// ... but maybe it don't need no '        //wasDoneAbove = true' as all the others above ???
-	} // last else if, below should be the final else
-	// else {
-	// This 'else' (immediately above) will cover a lot of if's, else if's: Dozens of them!
+			fmt.Printf("%s \n", aCard.KeyH) // needs the '\n'
+			fmt.Printf("%s", colorReset)
+			// log the miss:
+			logReinforceThisPrompt(aCard.KeyR)
+			logHitsRomaji("Oops", aCard.KeyR)
+			logRomajiGottenWrong(aCard.KeyR + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
+		}
+	}
+
+	// the next two conditions are for all remaining normal (not special) prompt:as:KeyR events or conditions
 	// ...
-	// the next two conditions are for all remaining normal (not special) prompt(key)/value events or conditions
-	// ...
-	//} else {
 
 	if thisCaseOfAnInHasAlreadyBeenProcessedAbove != true {
 		// ********************************************************
-		// 'else', no special cases were found, so we process normal cases of "if in == value"
+		// 'else', no special cases were found, so we process normal cases of "if in == aCard.KeyR"
 		// ********************************************************
-		if in == value { // value is the Hiragana
-			// v v v v v v v v v v v v v v : unspecified '^^Right!' v v v
+		if in == aCard.KeyH { // if in is the appropriet hira to match the Romaji prompt
 			fmt.Printf("%s", colorGreen)
-			fmt.Printf("      　^^Right! \n")
+			fmt.Printf("     　^^Right! \n") // intentional '\n'
 			fmt.Printf("%s", colorReset)
-			//
+			// log the hit:
+			logSkipThisPrompt(aCard.KeyR)
 			logHitsRomaji("Right", aCard.KeyR)
-			//
-		} else { // wasDoneAbove == false && dontSayOops == false && // if  in != "?" && in != "set-key"
-			// v v v v v v v v v v v v v v : unspecified '^^Oops!' v v v
+		} else {
 			fmt.Printf("%s", colorRed)
 			fmt.Printf("      　^^Oops! ")
-			//
-			logHitsRomaji("Oops", aCard.KeyR)
-			logRomajiGottenWrong(key + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
-			//
 			fmt.Printf("%s", colorReset)
 			fmt.Printf(" It was: ")
 			fmt.Printf("%s", colorCyan)
-			fmt.Printf("%s", value)
+			fmt.Printf("%s", aCard.KeyH)
 			fmt.Printf("%s", colorReset)
-			// added new func here v v v  **do-this**
-			checkForHints(value) // this new func is found in meatOfNakedKata.go : we only give hints for non-composites **do-this**
+			// log the miss:
+			logReinforceThisPrompt(aCard.KeyR)
+			logHitsRomaji("Oops", aCard.KeyR)
+			logRomajiGottenWrong(aCard.KeyR + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
+			// v v v v v added new func **do-this**
+			checkForHints(aCard.KeyH) // this new func is found in meatOfNakedKata.go : we only give hints for non-composites **do-this**
 		}
 	}
 }

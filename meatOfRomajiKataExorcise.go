@@ -4,9 +4,7 @@ package main
 
 import "fmt"
 
-// regardless, this func and activity seems to be perfect as of 08-19-2023
-// **do-this** this func employs a series of simple if's instead of a series of else-if's as is done in meatOfNakedRomaji
-func meatOfRomajiKataExorcise(in, value string) {
+func meatOfRomajiKataExorcise(in string) {
 	var thisCaseOfAnInHasAlreadyBeenProcessedAbove bool
 	thisCaseOfAnInHasAlreadyBeenProcessedAbove = false
 	/*  **do-this**
@@ -41,7 +39,7 @@ func meatOfRomajiKataExorcise(in, value string) {
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It was: ")
 			fmt.Printf("%s", colorCyan)
-			fmt.Printf("%s ", value)
+			fmt.Printf("%s ", aCard.KeyH)
 			fmt.Printf("%s", colorReset)
 			fmt.Printf(": ジ is the sound ji always from shi し ,and NEVER from the other ji: chi\n")
 		}
@@ -70,7 +68,7 @@ func meatOfRomajiKataExorcise(in, value string) {
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It was: ")
 			fmt.Printf("%s", colorCyan)
-			fmt.Printf("%s ", value)
+			fmt.Printf("%s ", aCard.KeyH)
 			fmt.Printf("%s", colorReset)
 			fmt.Printf(": the ヂ sound ji is always from either chi ち or shi し\n")
 		}
@@ -100,7 +98,7 @@ func meatOfRomajiKataExorcise(in, value string) {
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It was: ")
 			fmt.Printf("%s", colorCyan)
-			fmt.Printf("%s ", value)
+			fmt.Printf("%s ", aCard.KeyH)
 			fmt.Printf("%s", colorReset)
 			fmt.Printf(":the sound gi is always from ki き ,and NEVER from shi し or chi ち\n")
 		}
@@ -128,7 +126,7 @@ func meatOfRomajiKataExorcise(in, value string) {
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It was: ")
 			fmt.Printf("%s", colorCyan)
-			fmt.Printf("%s ", value)
+			fmt.Printf("%s ", aCard.KeyH)
 			fmt.Printf("%s", colorReset)
 			fmt.Printf(": it is nearly-never from chi ち but is nearly-always from shi し\n")
 		} // 1 of 3
@@ -153,7 +151,7 @@ func meatOfRomajiKataExorcise(in, value string) {
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It was: ")
 			fmt.Printf("%s", colorCyan)
-			fmt.Printf("%s ", value)
+			fmt.Printf("%s ", aCard.KeyH)
 			fmt.Printf("%s", colorReset)
 			fmt.Printf(": it is nearly-never from chi ち but is nearly-always from shi し\n")
 		} // 2 of 3
@@ -178,7 +176,7 @@ func meatOfRomajiKataExorcise(in, value string) {
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It was: ")
 			fmt.Printf("%s", colorCyan)
-			fmt.Printf("%s ", value)
+			fmt.Printf("%s ", aCard.KeyH)
 			fmt.Printf("%s", colorReset)
 			fmt.Printf(": it is nearly-never from chi:ち but is nearly-always from shi:し\n")
 		}
@@ -205,7 +203,7 @@ func meatOfRomajiKataExorcise(in, value string) {
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It was: ")
 			fmt.Printf("%s", colorCyan)
-			fmt.Printf("%s ", value)
+			fmt.Printf("%s ", aCard.KeyH)
 			fmt.Printf("%s", colorReset)
 			fmt.Printf(": it is nearly-never from chi:ち but is nearly-always from shi:し\n")
 		} // 1 of 3
@@ -230,7 +228,7 @@ func meatOfRomajiKataExorcise(in, value string) {
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It was: ")
 			fmt.Printf("%s", colorCyan)
-			fmt.Printf("%s ", value)
+			fmt.Printf("%s ", aCard.KeyH)
 			fmt.Printf("%s", colorReset)
 			fmt.Printf(" And remember that it is nearly-never from chi ち but is nearly-always from shi し\n")
 		} // 2 of 3
@@ -255,7 +253,7 @@ func meatOfRomajiKataExorcise(in, value string) {
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It was: ")
 			fmt.Printf("%s", colorCyan)
-			fmt.Printf("%s ", value)
+			fmt.Printf("%s ", aCard.KeyH)
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("　And remember that it is nearly-never from chi ち but is nearly-always from shi し\n")
 		}
@@ -287,8 +285,8 @@ func meatOfRomajiKataExorcise(in, value string) {
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It was: ")
 			fmt.Printf("%s", colorCyan)
-			fmt.Printf("%s ", value)     // v v v v v right up here v v v v v v
-			fmt.Printf("%s", colorReset) // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
+			fmt.Printf("%s ", aCard.KeyH) // v v v v v right up here v v v v v v
+			fmt.Printf("%s", colorReset)  // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
 			fmt.Printf("It could have been either ず or づ as they are the same sound\n")
 		}
 	} else {
@@ -299,9 +297,9 @@ func meatOfRomajiKataExorcise(in, value string) {
 
 		if thisCaseOfAnInHasAlreadyBeenProcessedAbove != true {
 			// ********************************************************
-			// 'else', no special cases were found, so we process normal cases of "if in == value"
+			// 'else', no special cases were found, so we process normal cases of "if in == aCard.KeyH"
 			// ********************************************************
-			if in == value {
+			if in == aCard.KeyH {
 				fmt.Printf("%s", colorGreen)
 				fmt.Printf("        ^^Right! \n")
 				fmt.Printf("%s", colorReset)
@@ -318,10 +316,10 @@ func meatOfRomajiKataExorcise(in, value string) {
 				fmt.Printf("%s", colorReset)
 				fmt.Printf(" It was: ")
 				fmt.Printf("%s", colorCyan)
-				fmt.Printf("%s", value)
+				fmt.Printf("%s", aCard.KeyH)
 				fmt.Printf("%s", colorReset)
 				// added new func here v v v  **do-this**
-				checkForHints(value) // this new func is found in meatOfNakedKata.go : we only give hints for non-composites **do-this**
+				checkForHints(aCard.KeyH) // this new func is found in meatOfNakedKata.go : we only give hints for non-composites **do-this**
 			}
 		}
 	}

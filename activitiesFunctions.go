@@ -11,7 +11,9 @@ import (
 )
 
 // The content of "prompt" (e.g. aCard.KeyRK or aCard.KeyK or aCard.KeyR) is set by the calling activity
-func PromptWithOptionsAndScanForRKprompt(prompt string) (usersGuessOrOptionDirective string) {
+// ... maybe??
+// these first two ask for Hiragana, and are identical
+func PromptWithOptionsAndScan(prompt string) (usersGuessOrOptionDirective string) {
 	// the return signature (above) creates a local var usersGuessOrOptionDirective below :
 	fmt.Printf("%s", prompt)    // prompt the user in a pretty blue. Options: '?' | '??'
 	fmt.Printf("%s", colorCyan) //
@@ -23,6 +25,7 @@ func PromptWithOptionsAndScanForRKprompt(prompt string) (usersGuessOrOptionDirec
 	return usersGuessOrOptionDirective
 }
 
+// identical to the above ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
 // **do-this** review these naked Katakana prompts
 func PromptWithOptionsAndScanForNakedKataPrompt(prompt string) (usersGuessOrOptionDirective string) {
 	// the return signature (above) creates a local var usersGuessOrOptionDirective below :
@@ -35,6 +38,8 @@ func PromptWithOptionsAndScanForNakedKataPrompt(prompt string) (usersGuessOrOpti
 	_, _ = fmt.Scan(&usersGuessOrOptionDirective)
 	return usersGuessOrOptionDirective
 }
+
+// asks for Romaji:
 func PromptWithOptionsAndScanForRespondWithRomajiToNakedKataPrompt(prompt string) (usersGuessOrOptionDirective string) {
 	// the return signature (above) creates a local var usersGuessOrOptionDirective below :
 	fmt.Printf("%s", prompt)    // prompt the user in a pretty blue. Options: '?' | '??'
@@ -47,7 +52,7 @@ func PromptWithOptionsAndScanForRespondWithRomajiToNakedKataPrompt(prompt string
 	return usersGuessOrOptionDirective
 }
 
-// naked romaji
+// naked romaji :: identical to two above which are identical (making 3 identical)
 func PromptWithOptionsAndScanForNakedRomajiPrompt(prompt string) (usersGuessOrOptionDirective string) {
 	// the return signature (above) creates a local var usersGuessOrOptionDirective below :
 	fmt.Printf("%s", prompt)    // prompt the user in a pretty blue. Options: '?' | '??'
