@@ -15,34 +15,26 @@ func TouchTypingExorcise(selectedExorcise string) {
 
 	var usersGuessOrOptionDirective string
 	for {
-		pickARandomCardAndAssign() // Assigns a random card to aCard, so there is no need to pass any aCard fields below
+		pick_RandomCard_Assign_aCard() // Assigns a random card to aCard, so there is no need to pass any aCard fields below
 		// Next, prompt with the appropriate field from the new random card and accept user's guess
-		/*
-			case:  1 = "RomajiNakedPrompt"
-			case:  2 = "RomajiKataPrompt"
-			case:  3 = "KataNakedPrompt"
-			case:  4 = "RespondWithRomajiToNakedKata"
-		*/
-		// Prompt with the appropriet field from the new random card and accept user's guess:
+
+		// Prompt with the appropriate field from the new random card and accept user's guess:
 		switch selectedExorcise {
 		// case 1
-		case "RomajiNakedPrompt":
-			usersGuessOrOptionDirective = PromptWithOptionsAndScan(aCard.KeyR) // universal prompt, passing R
+		case "Romaji_Prompt":
+			usersGuessOrOptionDirective = semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(aCard.KeyR) // universal prompt, passing R
 		// ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
 		// case 2
-		case "RomajiKataPrompt":
-			// PromptWithOptionsAndScan(aCard.KeyRK)
-			usersGuessOrOptionDirective = PromptWithOptionsAndScan(aCard.KeyRK) // universal prompt, passing RK
+		case "Romaji+Kata_Prompt":
+			// semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(aCard.KeyRK)
+			usersGuessOrOptionDirective = semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(aCard.KeyRK) // universal prompt, passing RK
 		// ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
 		//
-		// These next two should be re-evaluated for justifyability
-		// case 3
-		case "KataNakedPrompt":
-			usersGuessOrOptionDirective = PromptWithOptionsAndScan(aCard.KeyK) // universal prompt, passing K
-		// ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
-		// case 4
-		case "RespondWithRomajiToNakedKata": // special prompt (needed??), passing K, as does the other kata prompt, above
-			usersGuessOrOptionDirective = PromptWithOptionsAndScanForRespondWithRomajiToNakedKataPrompt(aCard.KeyK)
+		// These next two should be re-evaluated for justifiability
+		// case 3 and 4
+		case "Kata_Prompt-Respond-w-Hira|Romaji":
+			usersGuessOrOptionDirective = Kata_Prompt_Scan_4_Romaji_or_HiraResponse(aCard.KeyK)
+			// ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
 		}
 
 	outOfForLoop: // this loop is only needed because we want to handel the case of successive directives (tricky)
@@ -56,25 +48,16 @@ func TouchTypingExorcise(selectedExorcise string) {
 				branchOnUserSelectedDirectiveIfGiven(usersGuessOrOptionDirective, selectedExorcise) // <-- handle the directive
 				// v v v v v   re-prompt   v v v v v v
 				// -- re-prompt following the execution of a directive -------------------------------------------------------- v v v v
-				/*
-					case:  1 = "RomajiNakedPrompt"
-					case:  2 = "RomajiKataPrompt"
-					case:  3 = "KataNakedPrompt"
-					case:  4 = "RespondWithRomajiToNakedKata"
-				*/
 				// ****************************************************************************************************
 				switch selectedExorcise { // Identical to the above switch for prompt selection ***********************
-				case "RomajiNakedPrompt":
-					usersGuessOrOptionDirective = PromptWithOptionsAndScan(aCard.KeyR)
+				case "Romaji_Prompt": // 1
+					usersGuessOrOptionDirective = semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(aCard.KeyR)
 					// ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
-				case "RomajiKataPrompt":
-					usersGuessOrOptionDirective = PromptWithOptionsAndScan(aCard.KeyRK)
+				case "Romaji+Kata_Prompt": // 2
+					usersGuessOrOptionDirective = semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(aCard.KeyRK)
 					// ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
-				case "KataNakedPrompt":
-					usersGuessOrOptionDirective = PromptWithOptionsAndScan(aCard.KeyK)
-					// ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
-				case "RespondWithRomajiToNakedKata":
-					usersGuessOrOptionDirective = PromptWithOptionsAndScanForRespondWithRomajiToNakedKataPrompt(aCard.KeyK)
+				case "Kata_Prompt-Respond-w-Hira|Romaji": // 3 or 4
+					usersGuessOrOptionDirective = Kata_Prompt_Scan_4_Romaji_or_HiraResponse(aCard.KeyK)
 					// ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
 				}
 				// v v v v v   do not process directives from the re-prompting   v v v v v
@@ -90,41 +73,26 @@ func TouchTypingExorcise(selectedExorcise string) {
 					usersGuessOrOptionDirective != "dir" {
 					//  v ^ v ^ at this point we know that the usersGuessOrOptionDirective is probably a valid guess,
 					// ... AND, we need to leave the loop after processing it
-
-					/*
-						case:  1 = "RomajiNakedPrompt"
-						case:  2 = "RomajiKataPrompt"
-						case:  3 = "KataNakedPrompt"
-						case:  4 = "RespondWithRomajiToNakedKata"
-					*/
-					// Only need to be passing the user's guess, as both the prompt and the other aCard fields can now be acessed directly fr within each
 					switch selectedExorcise {
-					case "RomajiNakedPrompt":
+					case "Romaji_Prompt": // 1
 						meatOfRomajiNakedExorcise(usersGuessOrOptionDirective) // <-- may or may not be a guess, so check it
-					case "RomajiKataPrompt":
+					case "Romaji+Kata_Prompt": // 2
 						meatOfRomajiKataExorcise(usersGuessOrOptionDirective) // <-- may or may not be a guess, so check it
-					// The next two call the same func???
-					case "KataNakedPrompt":
+					case "Kata_Prompt-Respond-w-Hira|Romaji": // 3 and 4
 						meatOfNakedKataExorcise(usersGuessOrOptionDirective) // <-- may or may not be a guess, so check it
-					case "RespondWithRomajiToNakedKata":
-						meatOfNakedKataExorcise(usersGuessOrOptionDirective)
 					}
-
 					break outOfForLoop
 				} else { // It must be a successive directive, so we continue to process it from the top of the loop
 					continue outOfForLoop // <-- Immediately reiterate using a labeled loop; CHECK THE RE-PROMPT FOR A SUCCESSIVE DIRECTIVE
 				}
 			} else {
 				switch selectedExorcise {
-				case "RomajiNakedPrompt":
+				case "Romaji_Prompt":
 					meatOfRomajiNakedExorcise(usersGuessOrOptionDirective) // <-- may or may not be a guess, so check it
-				case "RomajiKataPrompt":
+				case "Romaji+Kata_Prompt":
 					meatOfRomajiKataExorcise(usersGuessOrOptionDirective) // <-- may or may not be a guess, so check it
-				case "KataNakedPrompt":
+				case "Kata_Prompt-Respond-w-Hira|Romaji":
 					meatOfNakedKataExorcise(usersGuessOrOptionDirective) // <-- may or may not be a guess, so check it
-				case "RespondWithRomajiToNakedKata":
-					meatOfNakedKataExorcise(usersGuessOrOptionDirective) // Value is always same as KeyH : the hiragana
-					// .Value is used as 'value' to look-up hints in the meat file
 				}
 				// It is probably a valid guess, AND we need to leave the loop after processing it
 				break outOfForLoop
@@ -150,30 +118,33 @@ func branchOnUserSelectedDirectiveIfGiven(usersGuessOrOptionDirective, selectedE
 		os.Exit(1)
 	case "exit":
 		os.Exit(1)
-	case "??":
-		doubleQuestMark()
+	case "??": // Directives follow:
+		handle_doubleQuestMark_directive()
 	case "?":
-		singleQuestMark()
+		handle_singleQuestMark_contextSensitive_directive()
 	case "set":
-		setKey()
+		reSet_aCard_andThereBy_reSet_thePromptString()
 	case "stat":
 		hits()
 	case "notes":
+		//goland:noinspection ALL  **do-this**
 		fmt.Println("\nIn the traditional Hepburn romanization system, the sound じ in hiragana is romanized as \"ji\" \n" +
 			"and the katakana ジ is also romanized as \"ji\" \n\n" +
 			"However, in some other romanization systems like the Nihon-shiki and Kunrei-shiki, the sound じ is romanized as\n" +
 			" \"zi\" instead of \"ji\"\n\n" +
 			"The sound gi:ぎ in hiragana is romanized as \"gi\" and the katakana ギ is also romanized as \"gi\"\n")
+		//goland:noinspection ALL  **do-this**
 		fmt.Println("゜is called \"handakuten\" 半濁点 translates to \"half-voicing mark\" or \"semi-voiced mark\"\n" +
 			"゛is called \"dakuten\" 濁点 meaning 'voiced mark' or 'voicing mark'")
 	case "dir":
+		// reDisplay the DIRECTORY OF DIRECTIVES (and instructions):
 		switch selectedExorcise {
-		case "RomajiNakedPrompt":
-			reDisplayNakedRomajiOptions()
-		case "RomajiKataPrompt":
-			reDisplayRomajiKataOptions()
-		case "KataNakedPrompt":
-			reDisplayNakedKataOptions()
+		case "Romaji_Prompt": // 1
+			reDisplay_Romaji_instructions()
+		case "Romaji+Kata_Prompt": // 2
+			reDisplay_Romaji_plus_Kata_instructions()
+		case "Kata_Prompt-Respond-w-Hira|Romaji": // 3 & 4
+			re_display_KataExorciseInstructions()
 		}
 	}
 }

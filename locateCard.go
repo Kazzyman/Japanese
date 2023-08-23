@@ -10,7 +10,7 @@ import (
 // Convenience global, used in two functions here, and in the calling func
 var foundElement *charSetStruct
 
-// Used only in doubleQuestMark()  '(a directive)'
+// Used only in handle_doubleQuestMark_directive()  '(a directive)'
 func locateCardAndDisplayHelpFieldsContainedInIt(targetString string) {
 	var isAlphanumeric bool
 	findAlphasIn := regexp.MustCompile(`[a-zA-Z]`)
@@ -83,7 +83,7 @@ func silentlyLocateCard(setKeyRequest string) {
 		for _, card := range fileOfCards {
 			if card.Value == setKeyRequest { // card.Value is the field that contains the Hiragana
 				// v v v if we find a 'card' in the range of 'fileOfCards',
-				// ... we set the foundElement global var, which is used in setKey()
+				// ... we set the foundElement global var, which is used in reSet_aCard_andThereBy_reSet_thePromptString()
 				foundElement = &card // foundElement is a global var and contains all the fields of a card or element
 				break
 			}

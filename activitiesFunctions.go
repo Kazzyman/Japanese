@@ -10,28 +10,32 @@ import (
 	"strings"
 )
 
-// The content of "prompt" (e.g. aCard.KeyRK or aCard.KeyK or aCard.KeyR) is set by the calling activity
-// ... maybe??
-// these first two ask for Hiragana, and are identical
-func PromptWithOptionsAndScan(prompt string) (usersGuessOrOptionDirective string) {
-	// the return signature (above) creates a local var usersGuessOrOptionDirective below :
-	fmt.Printf("%s", prompt)    // prompt the user in a pretty blue. Options: '?' | '??'
+// The content of "prompt" (i.e., aCard.KeyR | aCard.KeyRK | aCard.KeyK) is set by the calling activity
+//	                                     ^ 1           ^ 2         ^ 3,4
+
+// Ask the user for a Hiragana response (universal for both of the Romaji-containing prompts):
+//
+//goland:noinspection ALL  **do-this**
+func semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(prompt string) (usersGuessOrOptionDirective string) {
+	// The return signature (above) creates a local var usersGuessOrOptionDirective, used below in the Scan():
+	fmt.Printf("%s", prompt)    // Prompt the user, in a pretty blue color: Options: '?' | '??'
 	fmt.Printf("%s", colorCyan) //
 	fmt.Printf(" Type the corresponding Hiragana, or '?' for help with: %s \n", prompt)
-	fmt.Printf(" or, type '??' for help on a particular Hiragana char ... \n") //
+	fmt.Printf(" or, type '??' for help on a particular Hiragana char ... \n")
 	fmt.Printf(" Here:> ")
 	fmt.Printf("%s", colorReset)
 	_, _ = fmt.Scan(&usersGuessOrOptionDirective)
 	return usersGuessOrOptionDirective
 }
 
-// identical to the above ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
-// **do-this** review these naked Katakana prompts
-func PromptWithOptionsAndScanForNakedKataPrompt(prompt string) (usersGuessOrOptionDirective string) {
-	// the return signature (above) creates a local var usersGuessOrOptionDirective below :
-	fmt.Printf("%s", prompt)    // prompt the user in a pretty blue. Options: '?' | '??'
+// Ask the user for a Romaji|Hira response to the one (unique-and-naked) Katakana prompt:
+//
+//goland:noinspection ALL  **do-this**
+func Kata_Prompt_Scan_4_Romaji_or_HiraResponse(prompt string) (usersGuessOrOptionDirective string) {
+	// The return signature (above) creates a local var usersGuessOrOptionDirective, used below in the Scan():
+	fmt.Printf("%s", prompt)    // Prompt the user, in a pretty blue color: Options: '?' | '??'
 	fmt.Printf("%s", colorCyan) //
-	fmt.Printf(" Type the corresponding Hiragana, or '?' for help with: %s \n", prompt)
+	fmt.Printf(" Type the corresponding Romaji|Hira, or '?' for help with: %s \n", prompt)
 	fmt.Printf(" or, type '??' for help on a particular Hiragana char ... \n") //
 	fmt.Printf(" Here:> ")
 	fmt.Printf("%s", colorReset)
@@ -39,33 +43,8 @@ func PromptWithOptionsAndScanForNakedKataPrompt(prompt string) (usersGuessOrOpti
 	return usersGuessOrOptionDirective
 }
 
-// asks for Romaji:
-func PromptWithOptionsAndScanForRespondWithRomajiToNakedKataPrompt(prompt string) (usersGuessOrOptionDirective string) {
-	// the return signature (above) creates a local var usersGuessOrOptionDirective below :
-	fmt.Printf("%s", prompt)    // prompt the user in a pretty blue. Options: '?' | '??'
-	fmt.Printf("%s", colorCyan) //
-	fmt.Printf(" Type the corresponding Romaji, or '?' for help with: %s \n", prompt)
-	fmt.Printf(" or, type '??' for help on a particular Hiragana char ... \n") //
-	fmt.Printf(" Here:> ")
-	fmt.Printf("%s", colorReset)
-	_, _ = fmt.Scan(&usersGuessOrOptionDirective)
-	return usersGuessOrOptionDirective
-}
-
-// naked romaji :: identical to two above which are identical (making 3 identical)
-func PromptWithOptionsAndScanForNakedRomajiPrompt(prompt string) (usersGuessOrOptionDirective string) {
-	// the return signature (above) creates a local var usersGuessOrOptionDirective below :
-	fmt.Printf("%s", prompt)    // prompt the user in a pretty blue. Options: '?' | '??'
-	fmt.Printf("%s", colorCyan) //
-	fmt.Printf(" Type the corresponding Hiragana, or '?' for help with: %s \n", prompt)
-	fmt.Printf(" or, type '??' for help on a particular Hiragana char ... \n") //
-	fmt.Printf(" Here:> ")
-	fmt.Printf("%s", colorReset)
-	_, _ = fmt.Scan(&usersGuessOrOptionDirective)
-	return usersGuessOrOptionDirective
-}
-
-func pickARandomCardAndAssign() {
+//goland:noinspection ALL  **do-this**
+func pick_RandomCard_Assign_aCard() {
 	/*
 	  // Use the seed (example by Claude)
 	  rand.Seed(seed)
@@ -75,8 +54,9 @@ func pickARandomCardAndAssign() {
 	aCard = fileOfCards[randIndex] // randomly pick a 'card' from the 'deck' and store it in a global var
 }
 
-// directives :
-func doubleQuestMark() {
+// DIRECTIVES : --------------------------------------------------------------------------------------------
+//goland:noinspection ALL  **do-this**
+func handle_doubleQuestMark_directive() {
 	var hiraganaCharOrRomajiAssociatedWithStructElementToDisplayHelpFieldsFrom string // the value to find in locateCard.go
 	//
 	fmt.Printf("\n  -- Type either the Hiragana char or the Romaji that you need help with:> ")
@@ -85,21 +65,24 @@ func doubleQuestMark() {
 	locateCardAndDisplayHelpFieldsContainedInIt(hiraganaCharOrRomajiAssociatedWithStructElementToDisplayHelpFieldsFrom)
 	fmt.Println("")
 }
-func singleQuestMark() {
-	giveHintInResponseToSingleQuestionMarksDir(aCard.KeyH, aCard.Value, aCard.Hint1k, aCard.Hint2k, aCard.Hint1h, aCard.Hint2h) // dole-out a hint
+
+//goland:noinspection ALL  **do-this**
+func handle_singleQuestMark_contextSensitive_directive() {
+	giveHintInResponseToSingleQuestionMarkDir(aCard.KeyH, aCard.Value, aCard.Hint1k, aCard.Hint2k, aCard.Hint1h, aCard.Hint2h) // dole-out a hint
 }
 
-func setKey() {
+//goland:noinspection ALL  **do-this**
+func reSet_aCard_andThereBy_reSet_thePromptString() {
 	var theHiraganaOfCardToSilentlyLocate string
 	var isAlphanumeric bool
 
 	fmt.Printf("\nEnter a Hiragana to")
 	fmt.Printf("%s", colorCyan) //
-	fmt.Printf(" reset the prompt and \"key\" :> ")
+	fmt.Printf(" reSet the prompt & \"aCard\\.fields\" :> ")
 	fmt.Printf("%s", colorReset) //
-
 	_, _ = fmt.Scan(&theHiraganaOfCardToSilentlyLocate)
 
+	// Determine if the user has entered a valid Hiragana char (instead of, accidentally, an alpha char or string)
 	findAlphasIn := regexp.MustCompile(`[a-zA-Z]`)
 	switch true {
 	case findAlphasIn.MatchString(theHiraganaOfCardToSilentlyLocate):
@@ -107,9 +90,8 @@ func setKey() {
 	default:
 		isAlphanumeric = false
 	}
-
+	// Tentatively, prepare to Scan for user's input and attempt locating a matching 'aCard'
 	if isAlphanumeric == true {
-		// tentatively prepare to Scan for user's input and attempt locating matching card
 		fmt.Println("Are you in alphanumeric input mode?")
 		fmt.Printf("... if so, change it to Hiragana (or I mignt die)\n")
 		fmt.Printf("%s", colorRed) //
@@ -117,22 +99,22 @@ func setKey() {
 		fmt.Printf("%s", colorCyan)
 		fmt.Printf("re-enter your selection, in Hiragana mode :> ")
 		fmt.Printf("%s", colorReset)
-
-		//
 		_, _ = fmt.Scan(&theHiraganaOfCardToSilentlyLocate)
-		// may yet send an Alpha string to the next func, which will itself deal with it elegantly
-
-		silentlyLocateCard(theHiraganaOfCardToSilentlyLocate) // sets foundElement
-		aCard = *foundElement                                 // set the global var-object 'aCard'
+		// May yet send an Alpha string to the next func, which will itself deal with it elegantly
+		silentlyLocateCard(theHiraganaOfCardToSilentlyLocate) // Set the Convenience-global: foundElement
+		aCard = *foundElement                                 // Set the global var-object 'aCard'
 		fmt.Println("")
 	} else {
-		// Confidently go looking for user's input: locate matching card
-		silentlyLocateCard(theHiraganaOfCardToSilentlyLocate) // sets the global: foundElement
-		aCard = *foundElement                                 // sets the global var-object 'aCard'
+		// Confidently, go-looking for user's input: locate matching 'aCard'
+		silentlyLocateCard(theHiraganaOfCardToSilentlyLocate) // Set the Convenience-global: foundElement
+		aCard = *foundElement                                 // Set the global var-object 'aCard'
 		fmt.Println("")
 	}
 }
 
+// end of DIRECTIVES -----------------------------------------------------------------------------------
+
+// Activity #5
 func drillLines() {
 	var firstSlice []string
 	var secondSlice []string
@@ -185,6 +167,7 @@ func drillLines() {
 	fmt.Println(pause)
 }
 
+// Used 5 times, above in: func drillLines()
 func obtainAndDealWithUserInput(refSlice []string) {
 	// Get user input
 	reader := bufio.NewReader(os.Stdin)
