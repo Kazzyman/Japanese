@@ -35,15 +35,6 @@ we are providing values for each field of the charSetStruct struct: i.e.,
 each set of values enclosed in curly braces { ... } represents an instance of the struct.
 */
 var fileOfCards = []charSetStruct{
-	// **do-this** finish composing hint content (one specific line of each card should contain no Romaji)
-
-	// We will probably never want to be prompted with Hiragana chars, ever! Because, that would just be too easy??? ...
-	// ... It is more useful to only see a Katakana or Romaji prompt, so we would only ever want a Hiragana hint.
-
-	// But when being prompted to enter Romaji from a Katakana prompt we would like a hint sans the KeyR ...
-	// ... which is to say: just a naked aCard.KeyH or aCard.Value is what we want (ONLY a Hiragana char as hint)
-	// ... that, and|or maybe just one dedicated line from the hints
-
 	// vowels: (a-i-u-e-o) ==========================================================================================
 	//
 	{" ア", "あ", "a", "aア", "あ",

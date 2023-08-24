@@ -26,16 +26,15 @@ func meatOfRomajiNakedExorcise(in string) { // NOTE: we have already been prompt
 	// た　ち   つ　て　と
 	// ta chi tsu te to
 	// da ji  zu  de do゛
-	// key is the second parameter passed to this func, and is loaded from aCard.KeyR
-	if aCard.KeyR == "ji" { // there is no other Romaji (or sound) for じ, or for the seldom-seen: ぢ
+	if aCard.KeyR == "ji" { // There is no other Romaji (or sound) for じ, or for the seldom-seen: ぢ
 		// じ or ... not really: ぢ
-		if in == "じ" { // nearly-always it is じ instad of the seldom-seen: ぢ
+		if in == "じ" { // Nearly-always it is じ instad of the seldom-seen: ぢ
 			thisCaseOfAnInHasAlreadyBeenProcessedAbove = true
 			fmt.Printf("%s", colorGreen)
 			fmt.Printf("     　^^Right! ") // Missing an: '/n' because it is followed by a comment with its own
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("ji:じジ　RARELY: ぢ:chi:ヂ ,both are the sound ji, but NEVER gi (that being ぎ:gi:ギ)\n")
-			// log the hit:
+			// Log the hit:
 			logSkipThisPrompt(aCard.KeyR)
 			logHitsRomaji("Right", aCard.KeyR)
 		} else {
