@@ -2,17 +2,14 @@ package main
 
 import "fmt"
 
-// no usages
-func giveAhintKata(value string) {
-
-	// fix all these hints so that they only refer to the value one needs to type that corresponds to the katakana prompt (to the key)
-
+// Note: we only give hints for non-composites below **do-this**
+func checkForHints(value string) {
 	if value == "あ" { // a ア, maybe a grotesque A
 		fmt.Printf(", hint: middle<- to the 3 char, looks nothing-like the hiragana a, but a lot like a te ア, あ, fuck mae! \n")
 	} else if value == "い" { // i イ, shift the two lines of the hiragana
 		fmt.Printf(", hint: middle < to the E char, イ looks more like a hiragana te, but at least it is still two mostly-vertical lines イ　\n")
 	} else if value == "う" { // u ウ, um-kay
-		fmt.Printf(", hint: middle> to the 4 char, u う ウ　is ok, having had to look for angles \n")
+		fmt.Printf(", hint: middle> to the 4 char, u ウ　is ok, having had to look for angles \n")
 	} else if value == "え" { // e エ, eye see it as a ... an, eye
 		fmt.Printf(", hint: index > to the 5 char, it エ　does have a vague, angular resemblance  \n")
 	} else if value == "お" { // o オ, on-the-go maybe

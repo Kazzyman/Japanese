@@ -226,7 +226,7 @@ func meatOfRomajiNakedExorcise(in string) { // NOTE: we have already been prompt
 			logHitsRomaji("Oops", aCard.KeyR)
 			logRomajiGottenWrong(aCard.KeyR + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
 			// v v v v v added new func **do-this**
-			checkForHints(aCard.KeyH) // this new func is found in meatOfNakedKata.go : we only give hints for non-composites **do-this**
+			checkForHints(aCard.KeyH) // : we only give hints for non-composites **do-this**
 		}
 	}
 }

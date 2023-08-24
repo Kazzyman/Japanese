@@ -4,7 +4,7 @@ package main
 
 import "fmt"
 
-// this func calls no other functions and sets no variables
+// this func calls no other functions and sets no variables (no usages)
 func giveAhintHira(key, value, Hint1k, Hint2k, Hint1h, Hint2h string) {
 	// **do-this** decided that only this func is allowed to provide hints, except MAYBE in special cases such as in ?? H-M-B
 	// 'in' is always '?' when this func is called

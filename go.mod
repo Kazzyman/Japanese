@@ -1,3 +1,3 @@
-module combinedNewStruct
+module MacJap
 
 go 1.17

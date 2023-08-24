@@ -10,6 +10,7 @@ import (
 // Convenience global, used in two functions here, and in the calling func
 var foundElement *charSetStruct
 
+// This func works with Hiragana or Romaji in all activities
 // Used only in handle_doubleQuestMark_directive()  '(a directive)'
 func locateCardAndDisplayHelpFieldsContainedInIt(targetString string) {
 	var isAlphanumeric bool
@@ -66,7 +67,7 @@ func locateCardAndDisplayHelpFieldsContainedInIt(targetString string) {
 	}
 }
 
-// used ONLY in the set-key directive
+// used ONLY in the 'set' directive to reSet the prompt & "aCard." fields
 func silentlyLocateCard(setKeyRequest string) {
 
 	var isAlphanumeric bool

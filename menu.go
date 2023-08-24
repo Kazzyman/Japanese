@@ -9,20 +9,21 @@ import (
 	//"math/rand"
 )
 
-/*
-ToDo:
-Develop a method for deploying hints for romaji prompts using just-one of the four aCard hint fields
-... Finish hints fields in main char struct (one line must be reserved for romaji hints)
-? Eventually, delete unused files hint4kata.go(noUsages); and singleQuestionMarksHints.go, after salvaging hints etc.
-
-Try refining drill lines in fifth activity, Kata, Hira, and Romaji (respond to each with Hiragana)
-Start adding actual Japanese words (with Kanji) to the menus etc.
-Create a struct, a file-of-cards, with kanji chars, both words and phrases, to implement an activity similar to 1-4
-
-Chars from the blue card: 46+15+25+21=107 : if we include all the suffixed combination "chars".
-... 46*2=92 would be the total for the complete simple hiragana+katakana set; of base chars.
- ... doubling it all (the 107 from above) for katakana gives a grand total of 214 Japanese chars excluding the various punctuation characters.
-*/
+//goland:noinspection ALL
+func display_ListingOf_OptionsThese_AllHave_inCommon() {
+	fmt.Println("    (using US or Alpha-Numeric input mode):")
+	fmt.Println("        Enter 'menu' to return to the the main menu ")
+	fmt.Println("        Enter 'dir' to redisplay this menu of available directives")
+	fmt.Println("        Enter 'notes' for some background on Romaji conventions")
+	fmt.Println("        Enter '?' for context-sensitive help ")
+	fmt.Println("        Enter '??' for help on a particular Hiragana char")
+	fmt.Println("        Enter 'set' to reset the prompt & \"key\" ")
+	fmt.Println("        Enter 'stat' to view what you have done so far in the current session")
+	fmt.Println("        Enter 'reset' to reset the hits logs")
+	fmt.Println("        Enter 'exit' or 'quit' to terminate the app")
+	//goland:noinspection ALL
+	fmt.Println("\n")
+}
 
 func mainMenuPromptScanSelectAndBeginSelectedExorcise() {
 	var mainMenuSelection int
@@ -64,7 +65,7 @@ func body_of_Romaji_instructions() {
 	fmt.Println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 	fmt.Println("Practicing touch-typing (TT) Hiragana in response to Romaji prompts:\n")
 	fmt.Println("Using Hiragana-input-mode on your sys, Type the Hiragana corresponding to the Romaji prompt\n")
-	display_Common_Options() // The func is located at the end of this file
+	display_ListingOf_OptionsThese_AllHave_inCommon() // The func is located at the end of this file
 	fmt.Println("Using Hiragana-input-mode, Type the Hiragana corresponding to the Romaji prompt: \n")
 }
 
@@ -86,7 +87,7 @@ func body_of_Romaji_plus_Kata_instructions() {
 	fmt.Println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 	fmt.Println("Practicing touch-typing (TT) Hiragana in response to Romaji-Katakana prompts:\n")
 	fmt.Println("Using Hiragana-input-mode on your sys, Type the Hiragana corresponding to the Romaji-Katakana prompt\n")
-	display_Common_Options() // The func is located at the end of this file
+	display_ListingOf_OptionsThese_AllHave_inCommon() // The func is located at the end of this file
 	fmt.Println("Using Hiragana-input-mode, Type the Hiragana corresponding to the Romaji-Katakana prompt: \n")
 }
 
@@ -109,7 +110,7 @@ func body_of_KataExorciseInstructions() {
 	fmt.Println("Practicing recognizing Katakana chars: Using Hiragana-input-mode on your system ...")
 	fmt.Println("... enter the Hiragana chars that correspond to the Katakana.\n")
 	fmt.Println("Or, alternatively, type the Romaji that corresponds to the Katakana\n")
-	display_Common_Options() // The func is located at the end of this file
+	display_ListingOf_OptionsThese_AllHave_inCommon() // The func is located at the end of this file
 	fmt.Println("Type either the Hiragana or Romaji that corresponds to the Katakana prompt: \n")
 }
 
@@ -127,6 +128,7 @@ const seedFile = "randomSeed.dat"
 
 var seed int64
 
+//goland:noinspection ALL
 func seedFile_Maker() {
 	// Try to read existing seed
 	if data, err := os.ReadFile(seedFile); err == nil {
@@ -171,7 +173,7 @@ func betweenMainMenuSelectionsTTE(selectedExorcise string) {
 	}
 }
 
-func createAndWrite_seedFile(){
+func createAndWrite_seedFile() {
 	f, _ := os.Create(seedFile)
 	defer func(f *os.File) {
 		err := f.Close()
@@ -182,24 +184,4 @@ func createAndWrite_seedFile(){
 	if err != nil {
 		return
 	}
-}
-
-/*
-.
-.
-*/
-//goland:noinspection ALL
-func display_Common_Options() {
-	fmt.Println("    (using US or Alpha-Numeric input mode):")
-	fmt.Println("        Enter 'menu' to return to the the main menu ")
-	fmt.Println("        Enter 'dir' to redisplay this menu of available directives")
-	fmt.Println("        Enter 'notes' for some background on Romaji conventions")
-	fmt.Println("        Enter '?' for context-sensitive help ")
-	fmt.Println("        Enter '??' for help on a particular Hiragana char")
-	fmt.Println("        Enter 'set' to reset the prompt & \"key\" ")
-	fmt.Println("        Enter 'stat' to view what you have done so far in the current session")
-	fmt.Println("        Enter 'reset' to reset the hits logs")
-	fmt.Println("        Enter 'exit' or 'quit' to terminate the app")
-	//goland:noinspection ALL
-	fmt.Println("\n")
 }

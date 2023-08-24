@@ -104,7 +104,7 @@ func TouchTypingExorcise(selectedExorcise string) {
 func branchOnUserSelectedDirectiveIfGiven(usersGuessOrOptionDirective, selectedExorcise string) {
 	switch usersGuessOrOptionDirective {
 	case "menu":
-		// flush the old stats and hits arrays
+		// Flush the old stats and hits arrays
 		cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
 		cyclicArrayHits = CyclicArrayHits{}
 		usersGuessOrOptionDirective = "null"

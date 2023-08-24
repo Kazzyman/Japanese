@@ -28,8 +28,8 @@ func semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(prompt string) (
 	return usersGuessOrOptionDirective
 }
 
+//goland:noinspection ALL  **do-this**
 // Ask the user for a Romaji|Hira response to the one (unique-and-naked) Katakana prompt:
-//
 //goland:noinspection ALL  **do-this**
 func Kata_Prompt_Scan_4_Romaji_or_HiraResponse(prompt string) (usersGuessOrOptionDirective string) {
 	// The return signature (above) creates a local var usersGuessOrOptionDirective, used below in the Scan():
@@ -55,7 +55,7 @@ func pick_RandomCard_Assign_aCard() {
 }
 
 // DIRECTIVES : --------------------------------------------------------------------------------------------
-//goland:noinspection ALL  **do-this**
+//goland:noinspection ALL  **do-this** Works with Hiragana or Romaji in all activities
 func handle_doubleQuestMark_directive() {
 	var hiraganaCharOrRomajiAssociatedWithStructElementToDisplayHelpFieldsFrom string // the value to find in locateCard.go
 	//
@@ -68,7 +68,7 @@ func handle_doubleQuestMark_directive() {
 
 //goland:noinspection ALL  **do-this**
 func handle_singleQuestMark_contextSensitive_directive() {
-	giveHintInResponseToSingleQuestionMarkDir(aCard.KeyH, aCard.Value, aCard.Hint1k, aCard.Hint2k, aCard.Hint1h, aCard.Hint2h) // dole-out a hint
+	giveHintInResponseToSingleQuestionMarkContextSensitiveDir(aCard.KeyH, aCard.Value, aCard.Hint1k, aCard.Hint2k, aCard.Hint1h, aCard.Hint2h) // dole-out a hint
 }
 
 //goland:noinspection ALL  **do-this**

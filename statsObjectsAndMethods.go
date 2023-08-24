@@ -1,6 +1,7 @@
 package main
 
 // **do-this**
+
 var cyclicArrayUserIsFineOn CyclicArrayUserIsFineOn
 
 type CyclicArrayUserIsFineOn struct {
@@ -14,6 +15,8 @@ func (ca *CyclicArrayUserIsFineOn) InsertMatchedPrompt(SkipThisChar string) {
 }
 
 /*
+.
+.
 .
 */
 var cyclicArrayUserNeedsWorkOn CyclicArrayUserNeedsWorkOn
@@ -45,6 +48,11 @@ cyclicArrayHits without yet initializing cyclicArrayHits as an actual instance, 
 
 ... equivalent to:
 cyclicArrayHits := CyclicArrayHits{}
+.
+*/
+/*
+.
+.
 .
 */
 // Universal hits array

@@ -1,0 +1,22 @@
+Develop a method for deploying hints for romaji prompts using just-one of the four aCard hint fields
+... Finish hints fields in main char struct (one line must be reserved for romaji hints)
+
+? Eventually, delete unused files hint4kata.go(noUsages); and singleQuestionMarksHints.go, after salvaging hints etc.
+
+Try refining drill lines in fifth activity, Kata, Hira, and Romaji (respond to each with Hiragana)
+
+Start adding actual Japanese words (with Kanji) to the menus etc.
+
+Create a struct, a file-of-cards, with kanji chars, both words and phrases, to implement an activity similar to 1-4
+
+/*
+Romaji_Prompt
+Romaji+Kata_Prompt
+Kata_Prompt-Respond-w-Hira|Romaji
+*/
+
+/*
+Chars from the blue card: 46+15+25+21=107 : if we include all the suffixed combination "chars".
+... 46*2=92 would be the total for the complete simple hiragana+katakana set; of base chars.
+ ... doubling it all (the 107 from above) for katakana gives a grand total of 214 Japanese chars excluding the various punctuation characters.
+*/
