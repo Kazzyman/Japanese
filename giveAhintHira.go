@@ -10,7 +10,7 @@ func giveAhintHira(key, value, Hint1k, Hint2k, Hint1h, Hint2h string) {
 	// 'in' is always '?' when this func is called
 	//
 	// proper use of the ji sound from the sa group (sometimes spelled zi) : sa->za,ji , special key handlers
-	fmt.Printf("%s", colorReset) // hope this will apply to all that follow ????
+	fmt.Printf("%s", colorReset) // Hoping this will apply to all that follow ??? **do-this**
 	if key == "jiジ" {
 		fmt.Printf("%s\n%s\n%s\n%s", Hint1k, Hint2k, Hint1h, Hint2h)
 		// さ　し　 す　せ　そ

@@ -1,6 +1,6 @@
 package main
 
-// **do-this**
+// **do-this** menu
 import (
 	"crypto/rand"
 	"encoding/binary"
@@ -45,12 +45,6 @@ func mainMenuPromptScanSelectAndBeginSelectedExorcise() {
 		} else if mainMenuSelection == 3 || mainMenuSelection == 4 {
 			selectedExorcise := "Kata_Prompt-Respond-w-Hira|Romaji"          // 3 or 4
 			display_KataExorciseInstructions_BeginExorcise(selectedExorcise) //3 or 4
-			/*
-				else if mainMenuSelection == 4 {
-						selectedExorcise := "Kata_Prompt-Respond-w-Romaji"                 // 4
-						display_KataExorciseInstructions_BeginExorcise(selectedExorcise) // 4
-					}
-			*/
 		} else if mainMenuSelection == 5 {
 			drillLines() // 5
 		}
@@ -127,8 +121,6 @@ func re_display_KataExorciseInstructions() {
 /*
 .
 .
-.
-.
 */
 
 const seedFile = "randomSeed.dat"
@@ -163,61 +155,36 @@ func betweenMainMenuSelectionsTTE(selectedExorcise string) {
 	if selectedExorcise == "Romaji_Prompt" {
 		//println("between 1 and another exorcise")
 		// Save seed before exiting
-		f, _ := os.Create(seedFile)
-		defer func(f *os.File) {
-			err := f.Close()
-			if err != nil {
-			}
-		}(f)
-		err := binary.Write(f, binary.LittleEndian, seed)
-		if err != nil {
-			return
-		}
+		createAndWrite_seedFile()
 	} else if selectedExorcise == "Romaji+Kata_Prompt" {
 		//println("between 2 and another exorcise")
 		// Save seed before exiting
-		f, _ := os.Create(seedFile)
-		defer func(f *os.File) {
-			err := f.Close()
-			if err != nil {
-			}
-		}(f)
-		err := binary.Write(f, binary.LittleEndian, seed)
-		if err != nil {
-			return
-		}
+		createAndWrite_seedFile()
 	} else if selectedExorcise == "Kata_Prompt-Respond-w-Hira" {
 		//println("between 3 and another exorcise")
 		// Save seed before exiting
-		f, _ := os.Create(seedFile)
-		defer func(f *os.File) {
-			err := f.Close()
-			if err != nil {
-			}
-		}(f)
-		err := binary.Write(f, binary.LittleEndian, seed)
-		if err != nil {
-			return
-		}
+		createAndWrite_seedFile()
 	} else if selectedExorcise == "Kata_Prompt-Respond-w-Romaji" {
 		//println("between 4 and another exorcise")
 		// Save seed before exiting
-		f, _ := os.Create(seedFile)
-		defer func(f *os.File) {
-			err := f.Close()
-			if err != nil {
-			}
-		}(f)
-		err := binary.Write(f, binary.LittleEndian, seed)
+		createAndWrite_seedFile()
+	}
+}
+
+func createAndWrite_seedFile(){
+	f, _ := os.Create(seedFile)
+	defer func(f *os.File) {
+		err := f.Close()
 		if err != nil {
-			return
 		}
+	}(f)
+	err := binary.Write(f, binary.LittleEndian, seed)
+	if err != nil {
+		return
 	}
 }
 
 /*
-.
-.
 .
 .
 */
