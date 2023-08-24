@@ -19,10 +19,10 @@ type charSetStruct struct {
 
 	Value string
 
-	Hint1k string
-	Hint2k string
-	Hint1h string
-	Hint2h string
+	Hint1     string
+	Hint2     string
+	Hint3     string
+	HintSansR string
 }
 
 // Instantiate a series of struct objects as a slice of instances of the charSetStruct type
@@ -42,7 +42,7 @@ var fileOfCards = []charSetStruct{
 		" a:あ:ア ...maybe? a grotesque 'A':ア ?? , compare: me:め  to  a:あ  to  nu:ぬ    あ Fuck mae!",
 		" ... , compare:  nu:ぬ  ne:ね  me:め , to a:あ",
 		" The Kata a:ア looks nothing-like the hiragana 'a':あ, more like a hiragana te:て,  あ Fuck mae! ",
-		" TT: middle<- to the '3' char for あ,  a:あ:ア  ?is maybe a grotesque A:ア ?? "},
+		" TT: middle<- to the '3' char for あ:ア  ?is maybe a grotesque A:ア ?? "},
 	//
 	//
 	{" イ", "い", "i", "iイ", "い",
@@ -50,7 +50,7 @@ var fileOfCards = []charSetStruct{
 		" i:い  the Kata イ looks more like a hiragana te:て, but still two mostly-vertical lines: イ",
 		" i:い:イ  for the Kata ... maybe shift the two lines of the hiragana い to forms an 'I'  i:イ",
 		" TT: middle< to the E char  い:イ ",
-		" i: ... at least it is still two mostly-vertical lines: イ "},
+		" ... at least it is still two mostly-vertical lines: イ "},
 	//
 	//
 	{" ウ", "う", "u", "uウ", "う",
@@ -58,7 +58,7 @@ var fileOfCards = []charSetStruct{
 		" u:う:ウ , they just added angles for the Kata -- looks like the wa:ワ albeit with a mohawk ' ",
 		" u:ウ more-angular and with a tick for its top line ",
 		" TT: middle> to the '4' char  う : Kata looks like the wa:ワ albeit with a mohawk ' ",
-		" u:ウ ,  compare: to wa:ワ the cascading wa-ter fall,　um-'ca'y "},
+		" う:ウ ,  compare: to wa:ワ the cascading wa-ter fall,　um-'ca'y "},
 	//
 	//
 	{" エ", "え", "e", "eエ", "え",
@@ -66,7 +66,7 @@ var fileOfCards = []charSetStruct{
 		" e:え:'エ' does have a vague, angular resemblance: eye see it as an, eye; may-bey, may-b-eh e ",
 		" e:え ... see 'エ' as a ... an ... eye eh; may-bey, m'ay'-b-eh e   e:え:エ ",
 		" TT: index> to the 5 char   e:え:エ ",
-		" e e エ, eye see it as a ... an, eye ??  e:え:エ"},
+		" エ, eye see it as a ... an, eye ??  eh?:え:エ"},
 	//
 	//
 	{" オ", "お", "o", "oオ", "お",
@@ -74,7 +74,7 @@ var fileOfCards = []charSetStruct{
 		" o:お:オ , and オ does have a vague resemblance, albeit with less curves: お オ",
 		" o:お , for the Kata オ ... think: someone is 'on-the-go' ... see the fl'o'w ",
 		" TT: index--> to the '6' char     o:お:オ ",
-		" o:お:オ, on-the-go, cloak trailing behind ... maybe? "},
+		" お:オ, on-the-go, cloak trailing behind ... maybe? "},
 	//
 	// ka group: (ka-ga) ============================================================================================
 	//
@@ -83,7 +83,7 @@ var fileOfCards = []charSetStruct{
 		" ka:か:カ ... is an easy one!  It simply looks like a 'K' ",
 		" ... Kata is the same カ , albeit more-angular and with one-less line to draw than か ",
 		" TT: index--> to the T char   か ",
-		""},
+		" か:カ ... is an easy one!  It simply looks like a 'K'"},
 	//
 	//
 	{" キ", "き", "ki", "kiキ", "き",
@@ -91,7 +91,7 @@ var fileOfCards = []charSetStruct{
 		" ki:き:キ ... is an easy one!   キ has the same top as ki:き ... and they look like 'keys' ",
 		" ki:き ... they both have the same top:  き キ",
 		" TT: L-index> to the 'G' char,  Think: ki-of-G  き ,  compare to: sa:さ--ki:き  さき ... saki ",
-		""},
+		"き:キ ... is an easy one!   キ has the same top as き ... and they look like 'keys' "},
 	//
 	//
 	{" ク", "く", "ku", "kuク", "く",
@@ -99,7 +99,7 @@ var fileOfCards = []charSetStruct{
 		" ku:く:ク ,  Kata: starting with one angle, they settled for this??  く:ク ",
 		" ku:く:ク ,  compare:  ta:タ  ke:ケ  ku:ク  ,  it's kuku, kookoo I tell you! ",
 		" TT: R-index<- to the 'H' char  く:ク ",
-		""},
+		"く:ク ,  compare:  ta:タ  ke:ケ  ?:ク  ,  it's kookoo I tell you!"},
 	//
 	//
 	{" ケ", "け", "ke", "keケ", "け",
@@ -107,7 +107,7 @@ var fileOfCards = []charSetStruct{
 		" ke:け:ケ  bits of it are there, just as many curves though ,  Compare to:  ku:ク  ta:タ ",
 		" ke:け  ... looks enough like a Keg ...  Foam-ment THAT image in your brain ",
 		" TT: pinky-> one-over to the :* chars   け:ケ ",
-		""},
+		"け:ケ  bits of it are there, just as many curves though ,  Compare to:  ku:ク  ta:タ"},
 	//
 	//
 	{" コ", "こ", "ko", "koコ", "こ",
@@ -115,7 +115,7 @@ var fileOfCards = []charSetStruct{
 		" ko:こ:コ ... it makes sense, 'cause angles:  ko:コ ,  compare:  ni:に:ニ ",
 		" ... see the two Koy fish?   'ko'oy fish? ",
 		" TT: index <--- to the 'B' char,  ko way-down below  こ ",
-		""},
+		" こ:コ ... it makes sense, 'cause angles,  compare:  ni:に:ニ"},
 	//
 	// ka becomes ga group: -----------------------------------------------------------------------------------------
 	//
@@ -124,7 +124,7 @@ var fileOfCards = []charSetStruct{
 		" ga:が same ガ albeit more angular with one-less line to draw than が",
 		" ga:が is an easy one",
 		" ga index --> to the T char    が ",
-		" ga"},
+		" が same ガ albeit more angular with one-less line to draw than が"},
 	//
 	//
 	{" ギ", "ぎ", "gi", "giギ", "ぎ",
@@ -132,7 +132,7 @@ var fileOfCards = []charSetStruct{
 		" gi:ぎ:ギ is an easy Kata, ギ has the same top as ki:き, and is NEVER from shi:し ,",
 		" ぎ:ギ is always the sound gi, and is Seldom ji ( that usually being じ:ji:ジ )",
 		" gi: is on the G char, ぎ:ギ, compare to za:ざ from sa:さ",
-		" gi: the sound gi is always from ki:き ,and NEVER from shi:し or from chi:ち"},
+		" Its sound is always from き ,and NEVER from shi:し or from chi:ち"},
 	//
 	//
 	{" グ", "ぐ", "gu", "guグ", "ぐ",
@@ -140,7 +140,7 @@ var fileOfCards = []charSetStruct{
 		" gu:ぐ:グ Starting with one angle, they settled for this? Compare to ta:za:ダ, and ke:ge:ゲ",
 		" gu:ぐ:グ Compare za ダ, ge ゲ",
 		" H char    ぐ:グ ",
-		" gu"},
+		" ぐ:グ Compare za:ダ, ge:ゲ"},
 	//
 	//
 	{" ゲ", "げ", "ge", "geゲ", "げ",
@@ -148,7 +148,7 @@ var fileOfCards = []charSetStruct{
 		" ge:げ bits of it are there, just as many curves though. Compare to ku:gu:グ, and ta:za:ダ",
 		" ge:げ Compare to ku:gu:グ, and ta:za:ダ",
 		" :* chars    げ",
-		" ge"},
+		" げ Compare to ku:gu:グ, and ta:za:ダ"},
 	//
 	//
 	{" ゴ", "ご", "go", "goゴ", "ご",
@@ -156,7 +156,7 @@ var fileOfCards = []charSetStruct{
 		" go:ご it makes sense, 'cause angles' ",
 		" go:",
 		" index <--- to the B char    ご",
-		" go:"},
+		" ご it makes sense, 'cause angles' "},
 	//
 	// ya, yu, yo's of ki:き ---------------------------------------------------------------------------
 	//
@@ -165,7 +165,7 @@ var fileOfCards = []charSetStruct{
 		" kya:きゃ is an easy one, キャ has the same top and the ya is similar",
 		" kya:きゃ キャ has the same top and the ya is similar",
 		" G char,    きゃ, compare to sa:さ ",
-		" kya:"},
+		" きゃ is an easy one, キャ has the same top and the ya is similar"},
 	//
 	//
 	{" キュ", "きゅ", "kyu", "kyuキュ", "きゅ",
@@ -173,7 +173,7 @@ var fileOfCards = []charSetStruct{
 		" kyu",
 		" kyu",
 		" kyu",
-		" kyu"},
+		" "},
 	//
 	//
 	{" キョ", "きょ", "kyo", "kyoキョ", "きょ",
@@ -181,7 +181,7 @@ var fileOfCards = []charSetStruct{
 		" kyo",
 		" kyo",
 		" kyo",
-		" kyo"},
+		" "},
 	//
 	// ya, yu, yo's of gi:ぎ ---------------------------------------------------------------------------
 	//
@@ -190,7 +190,7 @@ var fileOfCards = []charSetStruct{
 		" gya",
 		" gya",
 		" gya",
-		" gya"},
+		" "},
 	//
 	//
 	{" ギュ", "ぎゅ", "gyu", "gyuギュ", "ぎゅ",
@@ -198,7 +198,7 @@ var fileOfCards = []charSetStruct{
 		" gyu",
 		" gyu",
 		" gyu",
-		" gyu"},
+		" "},
 	//
 	//
 	{" ギョ", "ぎょ", "gyo", "gyoギョ", "ぎょ",
@@ -206,24 +206,24 @@ var fileOfCards = []charSetStruct{
 		" gyo",
 		" gyo",
 		" gyo",
-		" gyo"},
+		" "},
 	//
 	// sa group: (sa-za,ji,zu,za,zo) ================================================================================
 	//
 	{" サ", "さ", "sa", "saサ", "さ",
 
 		" sa:さ:サ  sa:サ ??, if you 'se':せ そ sa ,  compare:  Hira se:せ  to  Kata sa:サ",
-		"",
+		" ... , but it looks an awful-lot like Hira se:せ, I'd say   ... just 'Hir'-say ?? ",
 		" TT: ring>v to the 'X' char  --  at least Kata 'sa' still goes to the left ... ",
-		" ... , but it looks an awful-lot like Hira se:せ, I'd say   ... just 'Hir'-say ?? "},
+		" さ:サ ,  compare:  Hira:se:せ  to  Kata:?:サ"},
 	//
-	//
+	//  ... what? ... two nasal blasts ... obviously! Yes while reclining, obviously
 	{" シ", "し", "shi", "shiシ", "し",
 
 		" shi:し:シ  'she' sleeps & snores゛,  compare: Kata:  tsu:ツ   so:ソ　to the more-laid-back shi:シ ",
 		" shi:し:シ  し looks like a sheep hook. Is there even such a thing?? ,  compare:  ツシ  tsu-shi ",
-		" TT: middle on the 'D' char, シ 'she' is sleeping/snoring here, but has no excuse to'2' ゛look like this (no angles here, less curve though)",
-		" ... what? ... two nasal blasts ... obviously! Yes while reclining, obviously "},
+		" TT: middle on the 'D' char, シ 'she' is sleeping/snoring, ゛look like this (no angles here, less curve though)",
+		" compare: Kata:tsu:ツ  and  so:ソ　to the more-laid-back ?:シ  (no angles here, less curve though)"},
 	//
 	//
 	{" ス", "す", "su", "suス", "す",
@@ -231,7 +231,7 @@ var fileOfCards = []charSetStruct{
 		" su",
 		" su",
 		" su",
-		" su"},
+		" "},
 	//
 	//
 	{" セ", "せ", "se", "seセ", "せ",
@@ -239,15 +239,15 @@ var fileOfCards = []charSetStruct{
 		" se:せ:セ  ... セ is just a bit more angular, as is the way with most Katakana ",
 		" se:せ looks like a face saying something ... 'se'ing something ",
 		" TT: pinky to the 'P' char",
-		""},
+		" せ:セ  ... セ is just a bit more angular, as is the way with most Katakana"},
 	//
-	//
+	// Seriously?  so:ソ vs nh:ン  ... I guess nh got nh-ocked-down by an upper-cut to the chin
 	{" ソ", "そ", "so", "soソ", "そ",
 
 		" so:そ:ソ  starting with all angles -- I guess they `had to `backtrack? ",
 		" so:そ:ソ ,  compare:  n:ん:ン which lays-down more, and has a more-laid-down back-tick ",
 		" TT: index<-- to the 'C' char,  so:ソ Looks like:  し:シ  or  no:ノ, but, MOSTLY, it looks like n:ん:ン ",
-		" Seriously?  so:ソ vs nh:ン  ... I guess nh got nh-ocked-down by an upper-cut to the chin "},
+		" そ:ソ ,  compare:  n:ん:ン which lays-down more, and has a more-laid-down back-tick "},
 	//
 	// sa becomes za, ji, zu, ze, zo --------------------------------------------------------------------------------
 	//
@@ -256,7 +256,7 @@ var fileOfCards = []charSetStruct{
 		" za",
 		" za",
 		" za",
-		" za"},
+		" "},
 	//
 	//
 	{" ジ", "じ", "ji", "jiジ", "じ",
