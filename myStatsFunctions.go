@@ -8,15 +8,15 @@ import (
 
 // LOGGERS:
 //
-// 2 Reinforce or Skip loggers|Inserters:
-func logSkipThisPrompt(promptToskip string) {
-	cyclicArrayUserIsFineOn.InsertMatchedPrompt(promptToskip)
+// 2 'Reinforce-or-Skip' loggers|Inserters:
+func logSkipThisPrompt(promptToSkip string) {
+	cyclicArrayUserIsFineOn.InsertMatchedPrompt(promptToSkip)
 }
 func logReinforceThisPrompt(promptToReinforce string) {
 	cyclicArrayUserNeedsWorkOn.InsertMissedPrompt(promptToReinforce)
 }
 
-// 3 'Right' or 'Oops' loggers:
+// 3 'Right' or 'Oops' loggers|Inserters:
 //
 // Used in RomajiKata Exorcise
 func logHitsRomajiKata(RightOrOops string) {
@@ -36,7 +36,7 @@ func logHitsRomaji(RightOrOops, romaji string) {
 	cyclicArrayHits.InsertChar(romaji)
 }
 
-// 3 GottenWrong loggers:
+// 3 GottenWrong loggers|Inserters:
 //
 // Used in NakedKata exorcise
 func logKataGottenWrong(kataChar string) {
@@ -44,6 +44,7 @@ func logKataGottenWrong(kataChar string) {
 	cyclicArrayOfTheJcharsGottenWrong.InsertCharsWrong(kataChar)
 }
 
+// Used in RomajiKata exorcise
 func logRomajiKataGottenWrong(hiraChar string) {
 	cyclicArrayOfTheJcharsGottenWrong.InsertCharsWrong(hiraChar)
 }
@@ -61,9 +62,9 @@ func hits() {
 	frequencyMapWrongs := make(map[string]int)
 
 	//
-	// Parse the relevant cyclic array to extract the strings and put them into the relevant map
+	// Parse the relevant cyclic array to extract the strings and put them into the relevant map:
 	//
-	// RightOrOops map
+	// load RightOrOops map
 	for i := 0; i < len(cyclicArrayHits.RightOrOops); i++ {
 		str := cyclicArrayHits.RightOrOops[i]
 		//
@@ -71,7 +72,7 @@ func hits() {
 		//frequencyMapChar[str]++ // ... this, apparently, increments the int mapped to a particular 'str' in said map
 		frequencyMapRightOrOops[str]++ // Specifically, the '++' must increment the int value associated with str
 	}
-	// char map
+	// load char map
 	for i := 0; i < len(cyclicArrayHits.jchar); i++ {
 		str := cyclicArrayHits.jchar[i]
 		//
@@ -130,25 +131,24 @@ func hits() {
 		if str == "" {
 			// it is an 'empty' position in the map due to empty uninitialized positions in the cyclic array
 		} else {
-			fmt.Printf("Gotten Wrong:")
+			// Print "Gotten Wrong:" + 'str' as multicolored (below)
+			fmt.Printf("Gotten Wrong:")            // (in color White)
+			fieldsOfStr := strings.Split(str, ":") // Print 'str' as multicolored (below)
+			//                              // Gotten Wrong: (in color White)
 			fmt.Printf(colorRed)
-
-			fieldsOfStr := strings.Split(str, ":")
-
-			fmt.Printf("%s", fieldsOfStr[0]) // Kata
+			fmt.Printf("%s", fieldsOfStr[0]) // KataOrWhatEver (in color Red)
 			fmt.Printf(colorReset)
-			fmt.Printf(" %s: ", fieldsOfStr[1]) // it was
+			fmt.Printf(" %s: ", fieldsOfStr[1]) // it was (in color White)
 			fmt.Printf(colorRed)
-			fmt.Printf("%s", fieldsOfStr[2]) // Romaji
+			fmt.Printf("%s", fieldsOfStr[2]) // RomajiOrWhatEver (in color Red)
 			fmt.Printf(colorReset)
-			fmt.Printf(" %s: ", fieldsOfStr[3]) // but you had guessed
+			fmt.Printf(" %s: ", fieldsOfStr[3]) // but you had guessed:_ (in color White) _ is a space char
 			fmt.Printf(colorRed)
-			fmt.Printf("%s ", fieldsOfStr[4]) // the bad guess
-
+			fmt.Printf("%s ", fieldsOfStr[4]) // the bad guess_ (in color Red) _ is a space char
 			fmt.Printf(colorCyan)
-			fmt.Printf("Frequency:")
+			fmt.Printf("Frequency:") // Frequency: (in color Cyan)
 			fmt.Printf(colorReset)
-			fmt.Printf(" %d \n", freq)
+			fmt.Printf(" %d \n", freq) // 'a number' (in color White)
 		}
 	}
 	fmt.Println("")

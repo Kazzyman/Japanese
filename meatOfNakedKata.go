@@ -26,6 +26,7 @@ func meatOfNakedKataExorcise(in string) {
 		fmt.Printf("%s", colorReset)
 		//
 		logHitsKata("Right", aCard.KeyK)
+		logSkipThisPrompt(aCard.KeyR)
 		//
 		fmt.Println()
 	} else if isAlphanumeric == true && in != aCard.KeyR { // if user typed an alpha, but NOT the correct Romaji
@@ -51,6 +52,7 @@ func meatOfNakedKataExorcise(in string) {
 		fmt.Printf("%s", colorReset)
 		//
 		logHitsKata("Right", aCard.KeyK)
+		logSkipThisPrompt(aCard.KeyK)
 		//
 		fmt.Println()
 	} else if isAlphanumeric == false && in != aCard.KeyH { // user has typed the INCORRECT Hiragana corresponding to the Kata prompt

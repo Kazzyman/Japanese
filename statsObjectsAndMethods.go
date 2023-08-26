@@ -17,7 +17,6 @@ func (ca *CyclicArrayUserIsFineOn) InsertMatchedPrompt(SkipThisChar string) {
 /*
 .
 .
-.
 */
 var cyclicArrayUserNeedsWorkOn CyclicArrayUserNeedsWorkOn
 

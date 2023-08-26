@@ -36,16 +36,20 @@ func locateCardAndDisplayHelpFieldsContainedInIt(targetString string) {
 			fmt.Printf("%s", colorRed)
 			fmt.Println("Romaji Help on:", foundElement.KeyR)
 			fmt.Printf("%s", colorReset)
-
-			fmt.Println(foundElement.Hint1k)
-			fmt.Println(foundElement.Hint2k)
+			/*
+				Hint1h
+				Hint2k
+				Hint3TT
+				HintSansR
+			*/
 			fmt.Println(foundElement.Hint1h)
-			fmt.Println(foundElement.Hint2h)
+			fmt.Println(foundElement.Hint2k)
+			fmt.Println(foundElement.Hint3TT)
 		}
 	} else { // else we have a Hiragana char to find help on
 		// Iterate through the array to find the element with the desired Hiragana 'value' in card.Value
 		for _, card := range fileOfCards {
-			if card.Value == targetString { // card.Value is the Hiragana character
+			if card.Keyh == targetString { // card.Value is the Hiragana character
 				foundElement = &card
 				break
 			}
@@ -54,13 +58,18 @@ func locateCardAndDisplayHelpFieldsContainedInIt(targetString string) {
 			// **do-this** : ? remove the "Value:" line ?
 
 			fmt.Printf("%s", colorRed)
-			fmt.Println("Hiragana Help on:", foundElement.Value)
+			fmt.Println("Hiragana Help on:", foundElement.Keyh)
 			fmt.Printf("%s", colorReset)
-
-			fmt.Println(foundElement.Hint1k)
-			fmt.Println(foundElement.Hint2k)
+			/*
+				Hint1h
+				Hint2k
+				Hint3TT
+				HintSansR
+			*/
 			fmt.Println(foundElement.Hint1h)
-			fmt.Println(foundElement.Hint2h)
+			fmt.Println(foundElement.Hint2k)
+			fmt.Println(foundElement.Hint3TT)
+			//fmt.Println(foundElement.Hint2h)
 		} else {
 			fmt.Println("Element not found in: locateCardAndDisplayHelpFieldsContainedInIt(targetString string)")
 		}
@@ -82,7 +91,7 @@ func silentlyLocateCard(setKeyRequest string) {
 
 	if isAlphanumeric == false { // ... then we should be safe to proceed with what will be a Hiragana char
 		for _, card := range fileOfCards {
-			if card.Value == setKeyRequest { // card.Value is the field that contains the Hiragana
+			if card.Keyh == setKeyRequest { // card.Value is the field that contains the Hiragana
 				// v v v if we find a 'card' in the range of 'fileOfCards',
 				// ... we set the foundElement global var, which is used in reSet_aCard_andThereBy_reSet_thePromptString()
 				foundElement = &card // foundElement is a global var and contains all the fields of a card or element

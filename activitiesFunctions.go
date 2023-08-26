@@ -68,7 +68,7 @@ func handle_doubleQuestMark_directive() {
 
 //goland:noinspection ALL  **do-this**
 func handle_singleQuestMark_contextSensitive_directive() {
-	giveHintInResponseToSingleQuestionMarkContextSensitiveDir(aCard.KeyH, aCard.Value, aCard.Hint1k, aCard.Hint2k, aCard.Hint1h, aCard.Hint2h) // dole-out a hint
+	giveHintInResponseToSingleQuestionMarkContextSensitiveDir(aCard.KeyH, aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT) // dole-out a hint
 }
 
 //goland:noinspection ALL  **do-this**

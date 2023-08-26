@@ -28,7 +28,7 @@ func meatOfRomajiNakedExorcise(in string) { // NOTE: we have already been prompt
 	// da ji  zu  de do゛
 	if aCard.KeyR == "ji" { // There is no other Romaji (or sound) for じ, or for the seldom-seen: ぢ
 		// じ or ... not really: ぢ
-		if in == "じ" { // Nearly-always it is じ instad of the seldom-seen: ぢ
+		if in == "じ" { // Nearly-always it is じ instead of the seldom-seen: ぢ
 			thisCaseOfAnInHasAlreadyBeenProcessedAbove = true
 			fmt.Printf("%s", colorGreen)
 			fmt.Printf("     　^^Right! ") // Missing an: '/n' because it is followed by a comment with its own
@@ -205,7 +205,7 @@ func meatOfRomajiNakedExorcise(in string) { // NOTE: we have already been prompt
 		// ********************************************************
 		// 'else', no special cases were found, so we process normal cases of "if in == aCard.KeyR"
 		// ********************************************************
-		if in == aCard.KeyH { // if in is the appropriet hira to match the Romaji prompt
+		if in == aCard.KeyH { // if in is the appropriate hira to match the Romaji prompt
 			fmt.Printf("%s", colorGreen)
 			fmt.Printf("     　^^Right! \n") // intentional '\n'
 			fmt.Printf("%s", colorReset)
