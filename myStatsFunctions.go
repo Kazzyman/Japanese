@@ -10,10 +10,10 @@ import (
 //
 // 2 'Reinforce-or-Skip' loggers|Inserters:
 func logSkipThisPrompt(promptToSkip string) {
-	cyclicArrayUserIsFineOn.InsertMatchedPrompt(promptToSkip)
+	frequencyMapOf_IsFineOnChars[promptToSkip]++
 }
-func logReinforceThisPrompt(promptToReinforce string) {
-	cyclicArrayUserNeedsWorkOn.InsertMissedPrompt(promptToReinforce)
+func logReinforceThisPrompt(promptToWorkMoreOn string) {
+	frequencyMapOf_need_workOn[promptToWorkMoreOn]++
 }
 
 // 3 'Right' or 'Oops' loggers|Inserters:

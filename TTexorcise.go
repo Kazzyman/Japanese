@@ -3,102 +3,36 @@ package main
 // **do-this**
 import (
 	"fmt"
+	"math/rand"
 	"os"
+	"time"
 )
 
-var caOfOldFriends CaOfOldFriends // the final resting place of our oldest friends
-
-type CaOfOldFriends struct {
-	jcharFriend [30]string
-	index       int
-}
-
-func (ca *CaOfOldFriends) InsertOldFriend(JcharFriend string) {
-	ca.jcharFriend[ca.index] = JcharFriend
-	ca.index = (ca.index + 1) % len(ca.jcharFriend)
-}
-func loadFrequencyMapOf_IsFineOnChars_from_cyclicArrayUserIsFineOn(m map[string]int) map[string]int {
-	// Parse the global cyclic array to extract the strings and put them into the map that was passed as m:
-	for i := 0; i < len(cyclicArrayUserIsFineOn.skipThisChar); i++ {
-		str := cyclicArrayUserIsFineOn.skipThisChar[i] // As was done above ...
-		//fmt.Printf("\n loaded map at pos:%d with str:%s \n", i, str)
-		//
-		// Apparently this loads a string into; and increments the frequency of, that particular string, in the map
-		//m[str]++ // ... this, apparently, increments the int mapped to a particular 'str' in said map
-		if str == "" {
-			// do nada
-		} else {
-			m[str]++ // Specifically, the '++' must increment the int value associated with str
-		}
-	}
-	return m
-}
-func build_caOf3orMoreHitsPerChar(m map[string]int) {
-	// build a ca_slice of elements from that map with frequencies of 3 or more
-	// read through the map m
-	for str, freq := range m {
-		if freq >= 3 {
-			fmt.Printf("\nfound a str with freq >= 3 , str:%s, freq:%d \n", str, freq)
-			// put the str into the ca_slice
-			caOfOldFriends.InsertOldFriend(str) // caOfOldFriends is global
-		} else if str == "" {
-			fmt.Println(" -- str was MT ---")
-			// else, it is an 'empty' position in the map due to empty uninitialized positions in the ca from which the map was made
-		}
-	}
-}
-
-/*
-.
-.
-*/
-
+// TouchTypingExorcise
+// The content of "prompt" (i.e., aCard.KeyR | aCard.KeyRK | aCard.KeyK) is set by the calling activity
+//
 func TouchTypingExorcise(selectedExorcise string) {
 	// Accepts the following for ^ ^ ^ ^ :  RomajiNakedPrompt -- RomajiKataPrompt -- KataNakedPrompt
 	//
-	// rand.Seed(seed) is now done in main.go, at the top of main()
-	// was: // rand.Seed(time.Now().UnixNano())
+	// rand.Seed(seed) is|was|use2be done in main.go, at the top of main()
+	// was: // see: seedFile_Maker() , bottom of menu.go file
+	//
+	rand.Seed(time.Now().UnixNano()) // old way, works with rand.Seed(seed) top of main() ???
 	// Example of seed Use per Claude: fmt.Println(rand.Int())
 
 	var usersGuessOrOptionDirective string
-	frequencyMapOf_IsFineOnChars := make(map[string]int) // create a map to associate a unique string with an int
+	//
+	isThis_a_cardWeNeedMoreWorkOn := 0 // now and then we will consider working on a char the user has had trouble with
 	for {
-	outHere:
-		for { // pick a card loop
-			pick_RandomCard_Assign_aCard() // Assigns a random card to aCard, so there is no need to pass any aCard fields below
-			//	/*
+		pick_RandomCard_Assign_aCard()         // Assigns a random card to the global aCard
+		if isThis_a_cardWeNeedMoreWorkOn > 3 { // if we have gone without augmenting the randoms with ones we have prev missed ...
+			isThis_a_cardWeNeedMoreWorkOn = 0 // ... for a while now, then let's go get a problem card, instead of that random one
+			check_it_for_needing_more_practice()
+		}
+		// in any case:
+		check_it_for_fine_on()
+		isThis_a_cardWeNeedMoreWorkOn++
 
-			// load the map from cyclicArrayUserIsFineOn [which, is a global] // done v v v  *****************
-			m := loadFrequencyMapOf_IsFineOnChars_from_cyclicArrayUserIsFineOn(frequencyMapOf_IsFineOnChars) // func created above ***********
-			//for {
-			// v v v read and assess the stats from that map m:
-			// build a global ca_slice of elements from that map m with frequencies of 3 or more // done *************
-			build_caOf3orMoreHitsPerChar(m) // builds (inserts into) caOfOldFriends
-			// that  ^ ^ ^ is a global, by ^ ^ ^ ^ ^
-			//
-			// ...then, range over that CA (as a slice?) to see if the latest-randomly-picked card is in that slice
-			for i := 0; i < len(caOfOldFriends.jcharFriend); i++ {
-				str := caOfOldFriends.jcharFriend[i] // pull a char (an old friend) from the slice
-				if str == aCard.KeyH {               // if the latest-randomly-picked card IS an old friend ...
-					fmt.Printf("\n %s was an old friend\n", str)
-					pick_RandomCard_Assign_aCard()
-					// we then continue the loop back at the 'if', to see if the user is competent on the latest-randomly-picked card
-				} else { // the latest-randomly-picked card is NOT in that slice, and we need look no more
-					fmt.Printf("\n %s was not in caOfOldFriends as a jcharFriend ---- break ------\n", str)
-					break outHere // else Exit the loop with the latest-randomly-picked card, which seems to be a good one to try as the next card
-				} //end of if-else
-				// since the else clause was not met, no 'break' has occurred, so we re-iterate the loop
-			} // end of loop
-			//} // end of loop
-		} // end of loop
-		// As we exit the loop, we now have a card which is not known to be an old friend
-		fmt.Println("caOfOldFriends is:")
-		fmt.Println(caOfOldFriends)
-		fmt.Println("cyclicArrayUserIsFineOn is:")
-		fmt.Println(cyclicArrayUserIsFineOn)
-		//
-		//		*/
-		//
 		// Prompt with the appropriate field from the new random card and accept user's guess:
 		switch selectedExorcise {
 		//
@@ -124,7 +58,8 @@ func TouchTypingExorcise(selectedExorcise string) {
 			if usersGuessOrOptionDirective == "set" || usersGuessOrOptionDirective == "?" || // <-- if it IS a directive
 				usersGuessOrOptionDirective == "??" || usersGuessOrOptionDirective == "menu" || usersGuessOrOptionDirective == "reset" ||
 				usersGuessOrOptionDirective == "stat" || usersGuessOrOptionDirective == "dir" || usersGuessOrOptionDirective == "notes" ||
-				usersGuessOrOptionDirective == "quit" || usersGuessOrOptionDirective == "exit" || usersGuessOrOptionDirective == "stats" {
+				usersGuessOrOptionDirective == "quit" || usersGuessOrOptionDirective == "exit" || usersGuessOrOptionDirective == "stats" ||
+				usersGuessOrOptionDirective == "rm" || usersGuessOrOptionDirective == "stack" {
 				// v v v v v   HANDEL A DIRECTIVE  v v v v v v v v
 				branchOnUserSelectedDirectiveIfGiven(usersGuessOrOptionDirective, selectedExorcise) // <-- handle the directive
 				// v v v v v   re-prompt   v v v v v v
@@ -151,6 +86,8 @@ func TouchTypingExorcise(selectedExorcise string) {
 					usersGuessOrOptionDirective != "stats" &&
 					usersGuessOrOptionDirective != "quit" &&
 					usersGuessOrOptionDirective != "notes" &&
+					usersGuessOrOptionDirective != "rm" &&
+					usersGuessOrOptionDirective != "stack" &&
 					usersGuessOrOptionDirective != "exit" &&
 					usersGuessOrOptionDirective != "dir" {
 					//  v ^ v ^ at this point we know that the usersGuessOrOptionDirective is probably a valid guess,
@@ -158,6 +95,7 @@ func TouchTypingExorcise(selectedExorcise string) {
 					switch selectedExorcise {
 					case "Romaji_Prompt": // 1
 						meatOfRomajiNakedExorcise(usersGuessOrOptionDirective) // <-- may or may not be a guess, so check it
+						//check_for_match()
 					case "Romaji+Kata_Prompt": // 2
 						meatOfRomajiKataExorcise(usersGuessOrOptionDirective) // <-- may or may not be a guess, so check it
 					case "Kata_Prompt-Respond-w-Hira|Romaji": // 3 and 4
@@ -171,6 +109,7 @@ func TouchTypingExorcise(selectedExorcise string) {
 				switch selectedExorcise {
 				case "Romaji_Prompt":
 					meatOfRomajiNakedExorcise(usersGuessOrOptionDirective) // <-- may or may not be a guess, so check it
+					//check_for_match()
 				case "Romaji+Kata_Prompt":
 					meatOfRomajiKataExorcise(usersGuessOrOptionDirective) // <-- may or may not be a guess, so check it
 				case "Kata_Prompt-Respond-w-Hira|Romaji":
@@ -180,7 +119,7 @@ func TouchTypingExorcise(selectedExorcise string) {
 				break outOfForLoop
 			}
 		} // end of loop used to handel successive directives without double processing of guesses
-	} // end of primary loop
+	}
 }
 
 func branchOnUserSelectedDirectiveIfGiven(usersGuessOrOptionDirective, selectedExorcise string) {
@@ -229,5 +168,9 @@ func branchOnUserSelectedDirectiveIfGiven(usersGuessOrOptionDirective, selectedE
 		case "Kata_Prompt-Respond-w-Hira|Romaji": // 3 & 4
 			re_display_KataExorciseInstructions()
 		}
+	case "rm":
+		rm()
+	case "stack":
+		stack_the_map()
 	}
 }

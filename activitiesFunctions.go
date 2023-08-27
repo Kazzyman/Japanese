@@ -189,3 +189,88 @@ func obtainAndDealWithUserInput(refSlice []string) {
 		fmt.Printf("\nGood job! The slices match: %t \n\n", match)
 	}
 }
+
+/*
+.
+.
+.
+*/
+// Globals:
+// .
+// A map v v v v v v v is used to store correct guesses, and is only written to after a correct guess
+var frequencyMapOf_IsFineOnChars = make(map[string]int) // create the map, dir 'rm' reads it
+var frequencyMapOf_need_workOn = make(map[string]int)
+
+/*
+.
+*/
+// Parse the map to see if the new random card matches any members of the map
+// Each time we get a new random card we check the map to see if it has been done correctly 3 or more times ...
+// ... if it has, then we pick another card, and check it
+// else we break
+func check_it_for_fine_on() {
+	for s, f := range frequencyMapOf_IsFineOnChars {
+		if s == aCard.KeyR { // if it is in the map we need to check the freq
+			if f >= 3 { // if the freq is 3+ we need another card
+				//rm() // we show the map
+				fmt.Printf("\n The Random card: %s was used 3 times or more \n", aCard.KeyR)
+				pick_RandomCard_Assign_aCard() // we get that new card ...
+				fmt.Printf("\n so we have a new one: %s \n", aCard.KeyR)
+				check_it_for_fine_on() // ... and we check THAT new card with a recursive call
+			} else { // else the card had a freq less than 3, so ...
+				break //  ... we exit the loop and the func -- we will use this card
+			}
+		} else { // else the latest card which was randomly selected was not found YET in the map ...
+			continue // ... so we continue the loop to finish reading the map
+		}
+	}
+}
+
+func check_it_for_needing_more_practice() {
+	var skip_this_step bool
+	skip_this_step = false
+	for s, f := range frequencyMapOf_need_workOn {
+		if s == aCard.KeyR { // Check if the latest random is in the map, and check the freq ...
+			if f >= 2 { // ... if the freq is 2+ we definitely need more work on this particular card, so we keep it
+				//rm() // we show the map
+				fmt.Printf("\n The Random card: %s was missed 2 times or more \n", aCard.KeyR)
+				fmt.Println("... so we will keep it")
+				skip_this_step = true
+				break //  ... we exit the loop and the func -- we will keep and use this random card, and skip the next loop
+				//check_it_for_fine_on() // ... and we check THAT new card with a recursive call
+			} else { // else the card had a freq less than 2, so ...
+				continue // keep looking through the map for another instance that may in there, with a significant freq
+			}
+		}
+	}
+	if skip_this_step == false {
+		// The latest random was not in the map, but it is time to serve-up something difficult ... so:
+		for s, f := range frequencyMapOf_need_workOn {
+			if s == aCard.KeyR { // Check if the latest random is in the map, and check the freq ...
+				if f >= 1 { // ... if the freq is 1+ we definitely need more work on this particular card, so we set it as aCard
+					//rm() // we show the map
+					fmt.Println("\n This Random card was missed 1 or more times ")
+					fmt.Println("... so we will test you on it, since it has been a while")
+					practice_this_card(aCard.KeyR) // locate and assign aCard // set it as new aCard
+					break                          //  ... we exit the loop and the func -- we will keep and use this random card
+					//check_it_for_fine_on() // ... and we check THAT new card with a recursive call
+				} else { // else the card had a freq less than 2, so ...
+					continue // keep looking through the map for another instance that may in there, with a significant freq
+				}
+			}
+		}
+	}
+}
+
+func rm() {
+	for s, f := range frequencyMapOf_IsFineOnChars {
+		fmt.Printf("\n --- From MapOf_IsFineOn: string is:%s, freq is:%d ---\n", s, f)
+	}
+}
+
+func stack_the_map() {
+	promptToSkip := "shi"
+	for i := 0; i < 6; i++ {
+		frequencyMapOf_IsFineOnChars[promptToSkip]++
+	}
+}

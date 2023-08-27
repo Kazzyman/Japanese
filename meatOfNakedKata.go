@@ -35,6 +35,7 @@ func meatOfNakedKataExorcise(in string) {
 		//
 		logHitsKata("Oops", aCard.KeyK)
 		logKataGottenWrong(aCard.KeyK + ":it was:" + aCard.KeyR + ":but you had guessed:" + in)
+		logReinforceThisPrompt(aCard.KeyR)
 		//
 		fmt.Printf("%s", colorReset)
 		fmt.Printf(" It was: ")
@@ -52,7 +53,7 @@ func meatOfNakedKataExorcise(in string) {
 		fmt.Printf("%s", colorReset)
 		//
 		logHitsKata("Right", aCard.KeyK)
-		logSkipThisPrompt(aCard.KeyK)
+		logSkipThisPrompt(aCard.KeyR)
 		//
 		fmt.Println()
 	} else if isAlphanumeric == false && in != aCard.KeyH { // user has typed the INCORRECT Hiragana corresponding to the Kata prompt
@@ -61,6 +62,7 @@ func meatOfNakedKataExorcise(in string) {
 		//
 		logHitsKata("Oops", aCard.KeyK)
 		logKataGottenWrong(aCard.KeyK + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
+		logReinforceThisPrompt(aCard.KeyR)
 		//
 		fmt.Printf("%s", colorReset)
 		fmt.Printf(" It was: ")

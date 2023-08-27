@@ -26,7 +26,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("        ^^Right! ")
 			//
 			logHitsRomajiKata("Right")
-			logSkipThisPrompt(aCard.KeyRK)
+			logSkipThisPrompt(aCard.KeyR)
 			//
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("ji:ジ is always from shi し and NEVER from chi ち ,it is the sound ji, NEVER gi ( that being ぎ:gi ギ )\n")
@@ -35,6 +35,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("        ^^Oops! ")
 			//
 			logHitsRomajiKata("Oops")
+			logReinforceThisPrompt(aCard.KeyR)
 			logRomajiKataGottenWrong(aCard.KeyRK + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
 			//
 			fmt.Printf("%s", colorReset)
@@ -56,7 +57,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("        ^^Right! ")
 			//
 			logHitsRomajiKata("Right")
-			logSkipThisPrompt(aCard.KeyRK)
+			logSkipThisPrompt(aCard.KeyR)
 			//
 			fmt.Printf("%s", colorReset)
 			fmt.Printf(" ji:ヂ is always from chi ち ,it is the sound ji, NEVER gi ( that being ぎ:gi ギ )\n")
@@ -65,6 +66,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("        ^^Oops! ")
 			//
 			logHitsRomajiKata("Oops")
+			logReinforceThisPrompt(aCard.KeyR)
 			logRomajiKataGottenWrong(aCard.KeyRK + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
 			//
 			fmt.Printf("%s", colorReset)
@@ -87,7 +89,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("        ^^Right! ")
 			//
 			logHitsRomajiKata("Right")
-			logSkipThisPrompt(aCard.KeyRK)
+			logSkipThisPrompt(aCard.KeyR)
 			//
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It is always from ki き and NEVER from shi し ,and it is the sound gi, NEVER ji ( that being じ:ji ジ )\n")
@@ -96,6 +98,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("        ^^Oops! ")
 			//
 			logHitsRomajiKata("Oops")
+			logReinforceThisPrompt(aCard.KeyR)
 			logRomajiKataGottenWrong(aCard.KeyRK + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
 			//
 			fmt.Printf("%s", colorReset)
@@ -116,7 +119,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("        ^^Right! ")
 			//
 			logHitsRomajiKata("Right")
-			logSkipThisPrompt(aCard.KeyRK)
+			logSkipThisPrompt(aCard.KeyR)
 			//
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It is nearly always from shi し and really never from chi ち\n")
@@ -125,6 +128,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("        ^^Oops! ")
 			//
 			logHitsRomajiKata("Oops")
+			logReinforceThisPrompt(aCard.KeyR)
 			logRomajiKataGottenWrong(aCard.KeyRK + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
 			//
 			fmt.Printf("%s", colorReset)
@@ -142,7 +146,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("        ^^Right! ")
 			//
 			logHitsRomajiKata("Right")
-			logSkipThisPrompt(aCard.KeyRK)
+			logSkipThisPrompt(aCard.KeyR)
 			//
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It is nearly always from shi し and really never from chi ち\n")
@@ -151,6 +155,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("        ^^Oops! ")
 			//
 			logHitsRomajiKata("Oops")
+			logReinforceThisPrompt(aCard.KeyR)
 			logRomajiKataGottenWrong(aCard.KeyRK + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
 			//
 			fmt.Printf("%s", colorReset)
@@ -168,7 +173,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("        ^^Right! ")
 			//
 			logHitsRomajiKata("Right")
-			logSkipThisPrompt(aCard.KeyRK)
+			logSkipThisPrompt(aCard.KeyR)
 			//
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It is nearly always from shi し and really never from chi ち\n")
@@ -177,6 +182,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("        ^^Oops! ")
 			//
 			logHitsRomajiKata("Oops")
+			logReinforceThisPrompt(aCard.KeyR)
 			logRomajiKataGottenWrong(aCard.KeyRK + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
 			//
 			fmt.Printf("%s", colorReset)
@@ -196,7 +202,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("        ^^Right! ")
 			//
 			logHitsRomajiKata("Right")
-			logSkipThisPrompt(aCard.KeyRK)
+			logSkipThisPrompt(aCard.KeyR)
 			//
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("The ji sound is nearly-always from shi:し and really never from chi:ち\n")
@@ -205,6 +211,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("        ^^Oops! ")
 			//
 			logHitsRomajiKata("Oops")
+			logReinforceThisPrompt(aCard.KeyR)
 			logRomajiKataGottenWrong(aCard.KeyRK + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
 			//
 			fmt.Printf("%s", colorReset)
@@ -222,7 +229,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("        ^^Right! ")
 			//
 			logHitsRomajiKata("Right")
-			logSkipThisPrompt(aCard.KeyRK)
+			logSkipThisPrompt(aCard.KeyR)
 			//
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("The ji sound is nearly-always from shi し and really never from chi ち\n")
@@ -231,6 +238,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("        ^^Oops! ")
 			//
 			logHitsRomajiKata("Oops")
+			logReinforceThisPrompt(aCard.KeyR)
 			logRomajiKataGottenWrong(aCard.KeyRK + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
 			//
 			fmt.Printf("%s", colorReset)
@@ -248,7 +256,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("        ^^Right! ")
 			//
 			logHitsRomajiKata("Right")
-			logSkipThisPrompt(aCard.KeyRK)
+			logSkipThisPrompt(aCard.KeyR)
 			//
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It is nearly always from shi し and really never from chi ち\n")
@@ -257,6 +265,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("        ^^Oops! ")
 			//
 			logHitsRomajiKata("Oops")
+			logReinforceThisPrompt(aCard.KeyR)
 			logRomajiKataGottenWrong(aCard.KeyRK + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
 			//
 			fmt.Printf("%s", colorReset)
@@ -281,7 +290,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("        ^^Right! ")
 			//
 			logHitsRomajiKata("Right")
-			logSkipThisPrompt(aCard.KeyRK)
+			logSkipThisPrompt(aCard.KeyR)
 			//
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It could have been either ず or づ as they are the same sound\n")
@@ -290,6 +299,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("        ^^Oops! ")
 			//
 			logHitsRomajiKata("Oops")
+			logReinforceThisPrompt(aCard.KeyR)
 			logRomajiKataGottenWrong(aCard.KeyRK + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
 			//
 			fmt.Printf("%s", colorReset)
@@ -315,13 +325,14 @@ func meatOfRomajiKataExorcise(in string) {
 				fmt.Printf("%s", colorReset)
 				//
 				logHitsRomajiKata("Right")
-				logSkipThisPrompt(aCard.KeyRK)
+				logSkipThisPrompt(aCard.KeyR)
 				//
 			} else {
 				fmt.Printf("%s", colorRed)
 				fmt.Printf("      　 ^^Oops! ")
 				//
 				logHitsRomajiKata("Oops")
+				logReinforceThisPrompt(aCard.KeyR)
 				logRomajiKataGottenWrong(aCard.KeyRK + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
 				//
 				fmt.Printf("%s", colorReset)
