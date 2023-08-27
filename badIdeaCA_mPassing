@@ -1,48 +1,4 @@
-func check_for_match() {
-	for {
-	outHere:
-		for {
-			pick_RandomCard_Assign_aCard() // Assigns a random card to aCard, so there is no need to pass any aCard fields below
-			for i := 0; i <= len(aOfOldFriends); i++ {
-				str := aOfOldFriends[i] // pull a char (an old friend) from the slice
-				if str == aCard.KeyR {  // if the latest-randomly-picked card IS an old friend ...
-					fmt.Printf("\n %s was an old friend\n", str)
-					pick_RandomCard_Assign_aCard()
-					fmt.Printf("\n %s WAS in caOfOldFriends as a jcharFriend ---- break ------\n", str)
-					//break outHere
-					// we then continue the loop back at the 'if', to see if the user is competent on the latest-randomly-picked card
-				} else { // the latest-randomly-picked card is NOT in that slice, and we need look no more
-					fmt.Printf("\n %s was not in caOfOldFriends as a jcharFriend ---- break ------\n", str)
-					break outHere // else Exit the loop with the latest-randomly-picked card, which seems to be a good one to try as the next card
-				}
-			}
-		}
-		fmt.Println("caOfOldFriends is:")
-		fmt.Println(aOfOldFriends)
-		fmt.Println("ArrayUserIsFineOn is:")
-		fmt.Println(sliceUserIsFineOn)
-	}
-}
-.
-.
-.
-.
-var caOfOldFriends CaOfOldFriends // the final resting place of our oldest friends
-.
-type CaOfOldFriends struct {
-	jcharFriend [30]string
-	index       int
-}
-.
-func (ca *CaOfOldFriends) InsertOldFriend(JcharFriend string) {
-	ca.jcharFriend[ca.index] = JcharFriend
-	ca.index = (ca.index + 1) % len(ca.jcharFriend)
-}
-.
-.
-.
-.
-.
+
 var frequencyMapOf_IsFineOnChars = make(map[string]int) // create a map to associate a unique string with an int
 
 func loadFrequencyMapOf_IsFineOnChars_from_cyclicArrayUserIsFineOn(m map[string]int) map[string]int {
@@ -77,7 +33,7 @@ func build_caOf3orMoreHitsPerChar(m map[string]int) {
 		if freq >= 3 {
 			// put the str into the ca_slice
 			caOfOldFriends.InsertOldFriend(str) // caOfOldFriends is global
-			fmt.Printf("\nfound a str with freq >= 3 , str:%s, freq:%d \n", str, freq)
+			fmt.Printf("\n found a str with freq >= 3 , str:%s, freq:%d \n", str, freq)
 		} else if str == "" {
 			fmt.Println(" -- str was MT ---")
 			// else, it is an 'empty' position in the map due to empty uninitialized positions in the ca from which the map was made

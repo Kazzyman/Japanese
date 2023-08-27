@@ -10,8 +10,8 @@ import (
 // Convenience global, used in two functions here, and in the calling func
 var foundElement *charSetStruct
 
-// This func works with Hiragana or Romaji in all activities
-// Used only in handle_doubleQuestMark_directive()  '(a directive)'
+// This func works intelligently with Hiragana or Romaji in all activities, but only via the '??' Directive ...
+// ... Used only in handle_doubleQuestMark_directive()  '(a Directive)'
 func locateCardAndDisplayHelpFieldsContainedInIt(targetString string) {
 	var isAlphanumeric bool
 	findAlphasIn := regexp.MustCompile(`[a-zA-Z]`)
@@ -42,21 +42,20 @@ func locateCardAndDisplayHelpFieldsContainedInIt(targetString string) {
 				Hint3TT
 				HintSansR
 			*/
+			// We probably have a Romaji string to locate help on, so skip HintSansR
 			fmt.Println(foundElement.Hint1h)
 			fmt.Println(foundElement.Hint2k)
 			fmt.Println(foundElement.Hint3TT)
 		}
 	} else { // else we have a Hiragana char to find help on
-		// Iterate through the array to find the element with the desired Hiragana 'value' in card.Value
+		// Iterate through the array to find the element with the desired Hiragana 'value' in card.Keyh
 		for _, card := range fileOfCards {
-			if card.Keyh == targetString { // card.Value is the Hiragana character
+			if card.Keyh == targetString { // card.Keyh is the Hiragana character
 				foundElement = &card
 				break
 			}
 		}
-		if foundElement != nil { // providing that we found something ...
-			// **do-this** : ? remove the "Value:" line ?
-
+		if foundElement != nil { // Providing that we found something ...
 			fmt.Printf("%s", colorRed)
 			fmt.Println("Hiragana Help on:", foundElement.Keyh)
 			fmt.Printf("%s", colorReset)
@@ -66,10 +65,10 @@ func locateCardAndDisplayHelpFieldsContainedInIt(targetString string) {
 				Hint3TT
 				HintSansR
 			*/
+			// We have a Hiragana char to find help on, so skip Hint2k
 			fmt.Println(foundElement.Hint1h)
-			fmt.Println(foundElement.Hint2k)
 			fmt.Println(foundElement.Hint3TT)
-			//fmt.Println(foundElement.Hint2h)
+			fmt.Println(foundElement.HintSansR)
 		} else {
 			fmt.Println("Element not found in: locateCardAndDisplayHelpFieldsContainedInIt(targetString string)")
 		}

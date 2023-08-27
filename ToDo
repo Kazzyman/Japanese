@@ -1,27 +1,25 @@
-Finish composing hint content (one specific line of each card should contain no Romaji)
+Second chance on Oops! , then give a hint for a third try, but then skip logging as a fineOn
 
-We will probably never want to be prompted with Hiragana chars, ever! Because, that would just be too easy??? ...
-... It is more useful to only see a Katakana or Romaji prompt, so we would only ever want a Hiragana hint.
-//
-But, when being prompted to enter Romaji from a Katakana prompt we would like a hint sans the KeyR ...
-... which is to say: just a naked aCard.KeyH or aCard.Value is what we want (ONLY a Hiragana char as hint)
-... that, and|or maybe just one dedicated line from the hints lines, i.e., aCard.Hint-x
-
-Develop a method for deploying hints for romaji prompts using just-one of the four aCard hint fields
-... Finish hints fields in main char struct (one line must be reserved for romaji hints)
-
-? Eventually, delete unused files hint4kata.go(noUsages); and singleQuestionMarksHints.go, after salvaging hints etc.
-
-Try refining drill lines in fifth activity, Kata, Hira, and Romaji (respond to each with Hiragana)
-
-Start adding actual Japanese words (with Kanji) to the menus etc. Then ...
+Add Japanese words (with Kanji) to the menus etc. Then ...
 ... Create a struct, a file-of-cards, with kanji chars, both words and phrases, to implement an activity similar to 1-4
 
-/*
-Romaji_Prompt
-Romaji+Kata_Prompt
-Kata_Prompt-Respond-w-Hira|Romaji
-*/
+
+
+try making the meat func polymorphic
+
+polymorphic hint functionality ??? or simply finish/use giveAhint_from_aCard.go
+
+Finish composing hint content in data.go:
+... note:
+... we will probably never want to be prompted with Hiragana chars, ever! Because, that would just be too easy ...
+... it is more useful to only see a Katakana or Romaji prompt, so we would only ever want a 'Hiragana hint'.
+//
+
+Enact the method for deploying the hint for romaji prompts using that last hint line only ???
+
+
+
+Try refining drill lines in fifth activity, Kata, Hira, and Romaji (respond to each with Hiragana)
 
 /*
 Chars from the blue card: 46+15+25+21=107 : if we include all the suffixed combination "chars".

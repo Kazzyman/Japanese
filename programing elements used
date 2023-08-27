@@ -1,0 +1,20 @@
+Pointers
+Pass by reference
+functions with return values
+Multi-dimensional structures
+Objects and methods
+rand.Seed(time.Now().UnixNano())
+exterior data files
+cyclic arrays
+maps make(map[string]int)
+labeled loops: break, continue
+switch
+recursive functions
+Regular expression matching
+buffered reader
+polymorphic functions
+constants
+string concatenation
+string splitting
+range operator
+colors

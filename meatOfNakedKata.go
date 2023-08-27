@@ -43,7 +43,7 @@ func meatOfNakedKataExorcise(in string) {
 		fmt.Printf("%s", aCard.KeyR)
 		fmt.Printf("%s", colorReset)
 		// check for hints ... the old way, via hira (so sad!, so fix this, by using the NEW way)
-		checkForHints(aCard.KeyH) // we only give hints for non-composites **do-this**
+		checkForHints(aCard.KeyH) // Note: we only give hints for non-conjunctive-composites
 		// In this FIRST case: hint card should be found via KeyK and only the KeyH field should be shown, and maybe some other info sans Romaji
 	}
 
@@ -69,7 +69,7 @@ func meatOfNakedKataExorcise(in string) {
 		fmt.Printf("%s", colorCyan)
 		fmt.Printf("%s", aCard.KeyH)
 		fmt.Printf("%s", colorReset)
-		checkForHints(aCard.KeyH) // we only give hints for non-composites **do-this**
+		checkForHints(aCard.KeyH) // Note: we only give hints for non-conjunctive-composites
 		// In this SECOND case: of having typed a Hiragana, all four lines of hints can be displayed from the card
 		// ... though, not in the first case: of having typed a Romaji (then only the last line can be shown ??)
 	}

@@ -7,7 +7,8 @@ import "fmt"
 // Used only in handle_singleQuestMark_contextSensitive_directive()
 // This func calls no other functions and sets no variables
 func giveHintInResponseToSingleQuestionMarkContextSensitiveDir(key, Hint1, Hint2, Hint3 string) {
-	// **do-this** decided that only this func is allowed to provide hints, except MAYBE in special cases such as in ?? H-M-B
+	// As: giveHintInResponse...^^^...ContextSensitiveDir(aCard.KeyH, aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT) // dole-out a hint
+	// **do-this** decided that only this func is allowed to provide hints
 	// 'in' is always '?' when this func is called
 	//
 	// proper use of the ji sound from the sa group (sometimes spelled zi) : sa->za,ji , special key handlers

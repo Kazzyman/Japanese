@@ -44,6 +44,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("%s ", aCard.KeyH)
 			fmt.Printf("%s", colorReset)
 			fmt.Printf(": ジ is the sound ji always from shi し ,and NEVER from the other ji: chi\n")
+			checkForHints(aCard.KeyH) // Note: we only give hints for non-conjunctive-composites
 		}
 	}
 	// Proper use of the ji sound from the "ta" group : ta->da,ji , another special 'key' handler
@@ -75,6 +76,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("%s ", aCard.KeyH)
 			fmt.Printf("%s", colorReset)
 			fmt.Printf(": the ヂ sound ji is always from either chi ち or shi し\n")
+			checkForHints(aCard.KeyH) // Note: we only give hints for non-conjunctive-composites
 		}
 	}
 
@@ -107,6 +109,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("%s ", aCard.KeyH)
 			fmt.Printf("%s", colorReset)
 			fmt.Printf(":the sound gi is always from ki き ,and NEVER from shi し or chi ち\n")
+			checkForHints(aCard.KeyH) // Note: we only give hints for non-conjunctive-composites
 		}
 	}
 
@@ -220,6 +223,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("%s ", aCard.KeyH)
 			fmt.Printf("%s", colorReset)
 			fmt.Printf(": it is nearly-never from chi:ち but is nearly-always from shi:し\n")
+			//checkForHints(aCard.KeyH) // Note: we only give hints for non-conjunctive-composites
 		} // 1 of 3
 	}
 	if aCard.KeyRK == "ju obsヂュ" { // 2 of 3
@@ -247,6 +251,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("%s ", aCard.KeyH)
 			fmt.Printf("%s", colorReset)
 			fmt.Printf(" And remember that it is nearly-never from chi ち but is nearly-always from shi し\n")
+			//checkForHints(aCard.KeyH) // Note: we only give hints for non-conjunctive-composites
 		} // 2 of 3
 	}
 	if aCard.KeyRK == "jo obsヂョ" { // 3 of 3
@@ -274,6 +279,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("%s ", aCard.KeyH)
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("　And remember that it is nearly-never from chi ち but is nearly-always from shi し\n")
+			//checkForHints(aCard.KeyH) // Note: we only give hints for non-conjunctive-composites
 		}
 	} // end 3 of 3  ---  'obsolete' :: ya, yu, yo forms of ja, ju, jo "obsolete"
 	// */  -- 'fall' through --- "fall-through" --- >>>
@@ -308,6 +314,7 @@ func meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("%s ", aCard.KeyH) // v v v v v right up here v v v v v v
 			fmt.Printf("%s", colorReset)  // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
 			fmt.Printf("It could have been either ず or づ as they are the same sound\n")
+			checkForHints(aCard.KeyH) // Note: we only give hints for non-conjunctive-composites
 		}
 	} else {
 		// This 'else' (immediately above) covers a lot of if, else ifs: Dozens of them!
@@ -341,7 +348,7 @@ func meatOfRomajiKataExorcise(in string) {
 				fmt.Printf("%s", aCard.KeyH)
 				fmt.Printf("%s", colorReset)
 				// added new func here v v v  **do-this**
-				checkForHints(aCard.KeyH) // this new func is found in meatOfNakedKata.go : we only give hints for non-composites **do-this**
+				checkForHints(aCard.KeyH) // Note: we only give hints for non-conjunctive-composites
 			}
 		}
 	}

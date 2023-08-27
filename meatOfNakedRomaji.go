@@ -51,6 +51,7 @@ func meatOfRomajiNakedExorcise(in string) { // NOTE: we have already been prompt
 			logReinforceThisPrompt(aCard.KeyR)
 			logHitsRomaji("Oops", aCard.KeyR)
 			logRomajiGottenWrong(aCard.KeyR + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
+			checkForHints(aCard.KeyH) // Note: we only give hints for non-conjunctive-composites
 		}
 
 		// Proper use of the "gi" sound from the ka group : ka->ga , another special 'key' handler
@@ -81,6 +82,7 @@ func meatOfRomajiNakedExorcise(in string) { // NOTE: we have already been prompt
 			logReinforceThisPrompt(aCard.KeyR)
 			logHitsRomaji("Oops", aCard.KeyR)
 			logRomajiGottenWrong(aCard.KeyR + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
+			checkForHints(aCard.KeyH) // Note: we only give hints for non-conjunctive-composites
 		}
 	}
 
@@ -109,6 +111,7 @@ func meatOfRomajiNakedExorcise(in string) { // NOTE: we have already been prompt
 			logReinforceThisPrompt(aCard.KeyR)
 			logHitsRomaji("Oops", aCard.KeyR)
 			logRomajiGottenWrong(aCard.KeyR + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
+			checkForHints(aCard.KeyH) // Note: we only give hints for non-conjunctive-composites
 		} // 1 of 3
 
 	}
@@ -135,6 +138,7 @@ func meatOfRomajiNakedExorcise(in string) { // NOTE: we have already been prompt
 			logReinforceThisPrompt(aCard.KeyR)
 			logHitsRomaji("Oops", aCard.KeyR)
 			logRomajiGottenWrong(aCard.KeyR + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
+			checkForHints(aCard.KeyH) // Note: we only give hints for non-conjunctive-composites
 		} // 2 of 3
 	}
 	if aCard.KeyR == "jo" { // 3 of 3
@@ -160,6 +164,7 @@ func meatOfRomajiNakedExorcise(in string) { // NOTE: we have already been prompt
 			logReinforceThisPrompt(aCard.KeyR)
 			logHitsRomaji("Oops", aCard.KeyR)
 			logRomajiGottenWrong(aCard.KeyR + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
+			checkForHints(aCard.KeyH) // Note: we only give hints for non-conjunctive-composites
 		}
 	} // end 3 of 3
 
@@ -195,6 +200,7 @@ func meatOfRomajiNakedExorcise(in string) { // NOTE: we have already been prompt
 			logReinforceThisPrompt(aCard.KeyR)
 			logHitsRomaji("Oops", aCard.KeyR)
 			logRomajiGottenWrong(aCard.KeyR + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
+			checkForHints(aCard.KeyH) // Note: we only give hints for non-conjunctive-composites
 		}
 	}
 
@@ -224,8 +230,7 @@ func meatOfRomajiNakedExorcise(in string) { // NOTE: we have already been prompt
 			logReinforceThisPrompt(aCard.KeyR)
 			logHitsRomaji("Oops", aCard.KeyR)
 			logRomajiGottenWrong(aCard.KeyR + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
-			// v v v v v added new func **do-this**
-			checkForHints(aCard.KeyH) // : we only give hints for non-composites **do-this**
+			checkForHints(aCard.KeyH) // Note: we only give hints for non-conjunctive-composites
 		}
 	}
 }

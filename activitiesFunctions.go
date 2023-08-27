@@ -1,6 +1,6 @@
 package main
 
-// **do-this**
+// **do-this** has 8 or so, but they are all: //goland:noinspection ALL  **do-this**
 import (
 	"bufio"
 	"fmt"
@@ -264,8 +264,17 @@ func check_it_for_needing_more_practice() {
 
 func rm() {
 	for s, f := range frequencyMapOf_IsFineOnChars {
-		fmt.Printf("\n --- From MapOf_IsFineOn: string is:%s, freq is:%d ---\n", s, f)
+		fmt.Printf(" --- From MapOf_IsFineOn: string is:")
+		fmt.Printf(colorCyan)
+		fmt.Printf("%s", s)
+		fmt.Printf(colorReset)
+		fmt.Printf(", freq is:")
+		fmt.Printf(colorRed)
+		fmt.Printf("%d", f)
+		fmt.Printf(colorReset)
+		fmt.Printf(" ---\n")
 	}
+	fmt.Println("")
 }
 
 func stack_the_map() {
