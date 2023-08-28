@@ -1,3 +1,14 @@
+switch CurrenActivity {
+	case "Romaji_Prompt":
+		//check_for_match()
+	case "Romaji+Kata_Prompt":
+
+	case "Kata_Prompt-Respond-w-Hira|Romaji":
+	}
+	giveHintInResponseToSingleQuestionMarkContextSensitiveDir(aCard.KeyH, aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT) // dole-out a hint
+
+Finish/Proof-read singleQuestionMarksHints.go
+
 Second chance on Oops! , then give a hint for a third try, but then skip logging as a fineOn
 
 Add Japanese words (with Kanji) to the menus etc. Then ...

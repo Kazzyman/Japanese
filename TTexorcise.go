@@ -25,8 +25,8 @@ func TouchTypingExorcise(selectedExorcise string) {
 	isThis_a_cardWeNeedMoreWorkOn := 0 // now and then we will consider working on a char the user has had trouble with
 	for {
 		pick_RandomCard_Assign_aCard()         // Assigns a random card to the global aCard
-		if isThis_a_cardWeNeedMoreWorkOn > 3 { // if we have gone without augmenting the randoms with ones we have prev missed ...
-			isThis_a_cardWeNeedMoreWorkOn = 0 // ... for a while now, then let's go get a problem card, instead of that random one
+		if isThis_a_cardWeNeedMoreWorkOn > 2 { // if we have gone without augmenting the random picks with cards we have prev missed ...
+			isThis_a_cardWeNeedMoreWorkOn = 0 // ... for a while now, then let's go get a card we've missed before, instead of that random one
 			check_it_for_needing_more_practice()
 		}
 		// in any case:
@@ -142,7 +142,9 @@ func branchOnUserSelectedDirectiveIfGiven(usersGuessOrOptionDirective, selectedE
 	case "??": // Directives follow:
 		handle_doubleQuestMark_directive()
 	case "?":
-		handle_singleQuestMark_contextSensitive_directive()
+		handle_singleQuestMark_contextSensitive_directive(selectedExorcise)
+		// The above ^^^ func must handle the case of being called from a naked kata (Romaji Prompt) activity w v v v
+		//giveHintInResponseToSingleQuestionMarkContextSensitiveDir_sansRomaji(key, sansRomaji_hint string)
 	case "set":
 		reSet_aCard_andThereBy_reSet_thePromptString()
 	case "stat":

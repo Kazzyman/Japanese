@@ -1,36 +1,7 @@
 package main
 
-// Presumably, aCard will always be used to refer to a single card from fileOfCards
-// e.g. aCard.KeyR where KeyR is a field in a card from fileOfCards
-var aCard = charSetStruct{}
-
-// The structure of a single 'card' (aCard.) from fileOfCards
-type charSetStruct struct {
-	KeyK  string
-	KeyH  string
-	KeyR  string
-	KeyRK string
-
-	Keyh string // New name for the old name (below): aCard.'Value'
-	//Value string
-
-	Hint1h    string
-	Hint2k    string
-	Hint3TT   string
-	HintSansR string
-}
-
-// Instantiate a series of struct objects as a slice of instances of the charSetStruct type
-// fileOfCards being that (slice) of structures of type charSetStruct
-/*
-We are creating a slice named fileOfCards that holds instances of the charSetStruct type.
-
-Each element in the slice is initialized using the composite literal syntax whereby
-we are providing values for each field of the charSetStruct struct: i.e.,
-each set of values enclosed in curly braces { ... } represents an instance of the struct.
-*/
 var fileOfCards = []charSetStruct{
-	// done to here <-- find that
+
 	// vowels: (a-i-u-e-o) ==========================================================================================
 	//
 	{"ア", "あ", "a", "aア", "あ",
@@ -66,7 +37,7 @@ var fileOfCards = []charSetStruct{
 	{"ウ", "う", "u", "uウ", "う",
 
 		" u:う:ウ , they just added angles for the Kata -- looks like the wa:ワ albeit with a mohawk ' ",
-		" u:ウ more-angular and with a tick for its top line ",
+		" u:ウ more-angular and with a tick for its top line   Compare:  hu:フ u:ウ  ラ:ら:ra:la",
 		" TT: middle> to the '4' char  う : Kata looks like the wa:ワ albeit with a mohawk ' ",
 		" う:ウ ,  compare:  wa:ワ cascading wa-ter fall,　um-'ca'y "},
 	// 2 times for u:う:ウ
@@ -338,7 +309,7 @@ var fileOfCards = []charSetStruct{
 		" ji:ジ is from shi:し & Seldom is it fr chi:ち ,it's the sound ji, NEVER gi (that being ぎ:gi:ギ)",
 		" ji, the sound, VERY RARELY is from chi:ち:ヂ ,but is NEVER the sound gi (that being ぎ:gi:ギ)",
 		" TT: 'D' char, remember, the sound:ji is nearly-always from shi:し with a dakuten 濁点 じ:ジ",
-		"ジ:じ the sound, VERY Seldom from ち, it's sound:gee:jeep, NEVER gi:geek(that being ぎ:gi:ギ)"},
+		" ジ:じ the sound, VERY Seldom from ち, it's sound:gee:jeep, NEVER gi:geek(that being ぎ:gi:ギ)"},
 	//
 	// zu has 2 KeyR values **** when prompting with naked Romaji **** 1:"zu", and 2::づ
 	{"ズ", "ず", "zu", "zuズ", "ず",
@@ -360,16 +331,16 @@ var fileOfCards = []charSetStruct{
 	{"ゾ", "ぞ", "zo", "zoゾ", "ぞ",
 
 		" zo:ぞ:ゾ  Compare: n:ん:ン which lays-down more",
-		" zo:ぞ:ゾ    Compare:  し:シ  or  no:ノ,  or n:ん:ン   starting with all angles - `had to `backtrack?",
+		" zo:ぞ:ゾ    Compare:  し:シ  or  no:ノ,  or  n:ん:ン  ",
 		" TT: index <-- to the C char     zo:ぞ:ゾ",
-		" ?:ぞ:ゾ   in any case it is not no:ノ n:ん:ン which lays-down more  "},
+		" ?:ぞ:ゾ   in any case it is not no:ノ  or  n:ん:ン  which lays-down more  "},
 	//
 	{"ゾ", "ぞ", "zo", "zoゾ", "ぞ",
 
 		" zo:ぞ:ゾ  Compare: n:ん:ン which lays-down more",
-		" zo:ぞ:ゾ    Compare:  し:シ  or  no:ノ,  or n:ん:ン   starting with all angles - `had to `backtrack?",
+		" zo:ぞ:ゾ    Compare:  し:シ  or  no:ノ,  or  n:ん:ン  ",
 		" TT: index <-- to the C char     zo:ぞ:ゾ",
-		" ?:ぞ:ゾ   in any case it is not no:ノ n:ん:ン which lays-down more  "},
+		" ?:ぞ:ゾ   in any case it is not no:ノ  or  n:ん:ン  which lays-down more  "},
 	//
 	// ya, yu, yo's of shi:し:シ ------------------------------------------------------------------------
 	//
@@ -428,20 +399,20 @@ var fileOfCards = []charSetStruct{
 		" ta:た:タタタタ  ta-da!... it's a ku:くクタ with a drool ... and that's くool I guess ",
 		" ta:た:タ ,  compare:  ku:ク  &  ke:ケ ",
 		" TT: pinky< to the 'Q' char ",
-		" top of ta:タ looks like た, more at least than ku:ク looks like く , or than he:ケ looks like へ "},
+		" top of ta:タ looks like た,   more than ku:ク looks like く  "},
 	//
 	//
 	{"チ", "ち", "chi", "chiチ", "ち",
 
-		" chi:ち:チ , try to see the Kata as having its middle line as the top of the backwards 'c' of ち チ ",
-		" ... I know it is hard.  chi:ち:チ ,  &-compare: the Kata chi:チ  to the  Kata te:テ ",
+		" chi:ち:チ ,   ち チ ",
+		" ...  chi:ち:チ ,  Compare:  chi:チ  te:テ ",
 		" TT: pinky on the 'A' char ",
-		" Kata bares 'some' resemblance if we see its middle line as the top of the backwards 'c' of ち "},
+		" Kata bares 'some' resemblance to ち "},
 	//
 	//
 	{"ツ", "つ", "tsu", "tsuツ", "つ",
 
-		" tsu:つ:ツ ",
+		" tsu:つ:ツ  see water crashing on the she shore",
 		" tsu",
 		" TT: tsu",
 		" ?:つ:ツ "},
@@ -459,8 +430,8 @@ var fileOfCards = []charSetStruct{
 
 		" to:と:ト   Kata 'toe' is flipped-out. Kicked in the balls. on its head: と -> ト ",
 		" Katakana to:と is flipped-out. Kicked in the balls, On its head ",
-		" TT: ring on the 'S' char, Kata toe is flipped-out. Kicked in the balls. on its head: と -> ト ",
-		" Kata ? is flipped-out. Kicked in the balls. On its head: と -> ト "},
+		" TT: ring on the 'S' char, Kata toe is flipped-out. Kicked on its head: と -> ト ",
+		" Kata ? is flipped-out. Kicked in the balls. On its head: と --> ト "},
 	//
 	// ta becomes da, ji, zu, de, do --------------------------------------------------------------------------------
 	//
@@ -533,23 +504,23 @@ var fileOfCards = []charSetStruct{
 	//
 	{"ナ", "な", "na", "naナ", "な",
 
-		" na:な:ナ  the Kata ナ is just like the left side of the Hira な  --  more-so even: な:ナ ",
-		" na:な:ナ  , compare Kata:na:ナ  to  me:メ  &  nu:ヌ  ( those last two are still similar: め ぬ )",
-		" TT: index< to the 'U' char,   ナ is simple, very simple ... na-t complex at-all as Kata ",
+		" na:な:ナ  Kata ナ is just like the left side of the Hira な  --  more-so even: な:ナ ",
+		" na:な:ナ , Compare:  na:ナ  me:メ  nu:ヌ  (those last two are still similar: め ぬ )",
+		" TT: index< to the 'U' char,  ナ is very simple ... na-t complex at-all :: な ",
 		" Hiragana t-ies a knot, sorta like there are two chars thar "},
 	//
 	{"ナ", "な", "na", "naナ", "な",
 
-		" na:な:ナ  the Kata ナ is just like the left side of the Hira な  --  more-so even: な:ナ ",
-		" na:な:ナ  , compare Kata:na:ナ  to  me:メ  &  nu:ヌ  ( those last two are still similar: め ぬ )",
-		" TT: index< to the 'U' char,   ナ is simple, very simple ... na-t complex at-all as Kata ",
+		" na:な:ナ  Kata ナ is just like the left side of the Hira な  --  more-so even: な:ナ ",
+		" na:な:ナ , Compare:  na:ナ  me:メ  nu:ヌ  (those last two are still similar: め ぬ )",
+		" TT: index< to the 'U' char,  ナ is very simple ... na-t complex at-all :: な ",
 		" Hiragana t-ies a knot, sorta like there are two chars thar "},
 	//
 	{"ナ", "な", "na", "naナ", "な",
 
-		" na:な:ナ  the Kata ナ is just like the left side of the Hira な  --  more-so even: な:ナ ",
-		" na:な:ナ  , compare Kata:na:ナ  to  me:メ  &  nu:ヌ  ( those last two are still similar: め ぬ )",
-		" TT: index< to the 'U' char,   ナ is simple, very simple ... na-t complex at-all as Kata ",
+		" na:な:ナ  Kata ナ is just like the left side of the Hira な  --  more-so even: な:ナ ",
+		" na:な:ナ , Compare:  na:ナ  me:メ  nu:ヌ  (those last two are still similar: め ぬ )",
+		" TT: index< to the 'U' char,  ナ is very simple ... na-t complex at-all :: な ",
 		" Hiragana t-ies a knot, sorta like there are two chars thar "},
 	//
 	//
@@ -565,7 +536,7 @@ var fileOfCards = []charSetStruct{
 
 		" nu:ぬ:ヌ   Compare:  me:メ  &  na:ナ ",
 		" nu flew ヌ -- till it hit a ceiling ",
-		" TT: R-ring<--- to the '1' char, at least two lines cross, nu flew ヌ -- till it hit a ceiling ",
+		" TT: R-ring<--- to the '1' char, at least two lines cross, nu flew ヌ -- hit a ceiling ",
 		" ?-flew ヌ -- till it hit a ceiling "},
 	//
 	//
@@ -902,10 +873,10 @@ var fileOfCards = []charSetStruct{
 	//
 	{"ラ", "ら", "ra", "raラ", "ら",
 
+		" ra:ら:ラ    Compare:  hu:フ u:ウ  ラ:ら:ra:la",
 		" ra",
 		" ra",
-		" ra",
-		" ra"},
+		" Compare:  hu:フ u:ウ  ラ:ら:? "},
 	//
 	//
 	{"リ", "り", "ri", "riリ", "り",
@@ -990,6 +961,36 @@ var fileOfCards = []charSetStruct{
 		" n"},
 }
 
+var aCard = charSetStruct{}
+
+// The structure of a single 'card' (aCard.) from fileOfCards
+type charSetStruct struct {
+	KeyK  string
+	KeyH  string
+	KeyR  string
+	KeyRK string
+
+	Keyh string // New name for the old name (below): aCard.'Value'
+	//Value string
+
+	Hint1h    string
+	Hint2k    string
+	Hint3TT   string
+	HintSansR string
+}
+
+/*
+ Above, we instantiate a series of struct objects as a slice of instances of the charSetStruct type
+ fileOfCards being that "slice" of structures of type charSetStruct
+
+ i.e., We are creating a slice named fileOfCards that holds instances of the charSetStruct type
+
+Each element in the slice is initialized using the composite literal syntax whereby
+... we are providing values for each field of the charSetStruct struct: i.e.,
+... each set of values enclosed in curly braces { ... } represents an instance of the struct.
+*/
+
+// Constants:
 const colorReset = "\033[0m"
 const colorRed = "\033[31m"
 const colorGreen = "\033[32m"

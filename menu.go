@@ -31,9 +31,9 @@ func mainMenuPromptScanSelectAndBeginSelectedExorcise() {
 	for {
 		fmt.Printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 		fmt.Printf("  Main Menu: \n\n")
-		fmt.Printf("  Enter 1 to practice recognizing Romaji: and typing Hiragana (simple: quite useful)\n")
-		fmt.Printf("  Enter 2 for recognizing Romaji-Katakana pairs: typing Hiragana (somewhat easy: very useful)\n")
-		fmt.Printf("  Enter 3 to practice recognizing Katakana, type either Hiragana or Romaji\n")
+		fmt.Printf("  Enter 1 to practice recognizing Romaji: and typing Hiragana (simple, quite useful)\n")
+		fmt.Printf("  Enter 2 for recognizing Romaji-Katakana pairs: typing Hiragana (somewhat easy, useful)\n")
+		fmt.Printf("  Enter 3 to practice recognizing Katakana, type either Hiragana or Romaji (very versatile)\n")
 		fmt.Printf("  Enter 5 to practice typing drill lines\n\n\n")
 		_, _ = fmt.Scan(&mainMenuSelection)
 

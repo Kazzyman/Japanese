@@ -94,11 +94,11 @@ func meatOfRomajiNakedExorcise(in string) { // NOTE: we have already been prompt
 			fmt.Printf("%s", colorGreen)
 			fmt.Printf("      ^^Right! ")
 			fmt.Printf("%s", colorReset)
-			fmt.Printf("It is nearly-always from shi:し , and NEVER from shi:し or as chi:ぢヂ\n")
+			fmt.Printf(" yep, it is nearly-always from shi:し , and NEVER from chi:ぢヂ\n")
 			// log the hit:
 			logSkipThisPrompt(aCard.KeyR)
 			logHitsRomaji("Right", aCard.KeyR)
-		} else if in != "?" {
+		} else if in != "?" { // what is this???? ? **do-this** a few more times below v v v v v v v v v v v v v v v v
 			fmt.Printf("%s", colorRed)
 			fmt.Printf("     ^^Oops! ")
 			fmt.Printf("%s", colorReset)
@@ -106,7 +106,7 @@ func meatOfRomajiNakedExorcise(in string) { // NOTE: we have already been prompt
 			fmt.Printf("%s", colorCyan)
 			fmt.Printf("%s ", aCard.KeyH)
 			fmt.Printf("%s", colorReset)
-			fmt.Printf("ta->da,ji,zu: it is nearly-never from chi:ち but is nearly-always from shi:し\n")
+			fmt.Printf(" it is nearly-never from chi:ち but is nearly-always from shi:し\n")
 			// log the miss:
 			logReinforceThisPrompt(aCard.KeyR)
 			logHitsRomaji("Oops", aCard.KeyR)
