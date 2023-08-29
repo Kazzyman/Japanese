@@ -1,15 +1,8 @@
-switch CurrenActivity {
-	case "Romaji_Prompt":
-		//check_for_match()
-	case "Romaji+Kata_Prompt":
-
-	case "Kata_Prompt-Respond-w-Hira|Romaji":
-	}
-	giveHintInResponseToSingleQuestionMarkContextSensitiveDir(aCard.KeyH, aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT) // dole-out a hint
-
 Finish/Proof-read singleQuestionMarksHints.go
 
-Second chance on Oops! , then give a hint for a third try, but then skip logging as a fineOn
+? make a directive to show the non-empty elements of the fineOn array ?
+
+Log to a file all occurrences of when interventions were applied to the random card picks
 
 Add Japanese words (with Kanji) to the menus etc. Then ...
 ... Create a struct, a file-of-cards, with kanji chars, both words and phrases, to implement an activity similar to 1-4

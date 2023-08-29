@@ -94,12 +94,12 @@ func TouchTypingExorcise(selectedExorcise string) {
 					// ... AND, we need to leave the loop after processing it
 					switch selectedExorcise {
 					case "Romaji_Prompt": // 1
-						meatOfRomajiNakedExorcise(usersGuessOrOptionDirective) // <-- may or may not be a guess, so check it
+						meatOfRomajiNakedExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
 						//check_for_match()
 					case "Romaji+Kata_Prompt": // 2
-						meatOfRomajiKataExorcise(usersGuessOrOptionDirective) // <-- may or may not be a guess, so check it
+						meatOfRomajiKataExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
 					case "Kata_Prompt-Respond-w-Hira|Romaji": // 3 and 4
-						meatOfNakedKataExorcise(usersGuessOrOptionDirective) // <-- may or may not be a guess, so check it
+						meatOfNakedKataExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
 					}
 					break outOfForLoop
 				} else { // It must be a successive directive, so we continue to process it from the top of the loop
@@ -108,12 +108,12 @@ func TouchTypingExorcise(selectedExorcise string) {
 			} else {
 				switch selectedExorcise {
 				case "Romaji_Prompt":
-					meatOfRomajiNakedExorcise(usersGuessOrOptionDirective) // <-- may or may not be a guess, so check it
+					meatOfRomajiNakedExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
 					//check_for_match()
 				case "Romaji+Kata_Prompt":
-					meatOfRomajiKataExorcise(usersGuessOrOptionDirective) // <-- may or may not be a guess, so check it
+					meatOfRomajiKataExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
 				case "Kata_Prompt-Respond-w-Hira|Romaji":
-					meatOfNakedKataExorcise(usersGuessOrOptionDirective) // <-- may or may not be a guess, so check it
+					meatOfNakedKataExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
 				}
 				// It is probably a valid guess, AND we need to leave the loop after processing it
 				break outOfForLoop
