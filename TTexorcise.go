@@ -26,6 +26,13 @@ func TouchTypingExorcise(selectedExorcise string) {
 	for {
 		pick_RandomCard_Assign_aCard()         // Assigns a random card to the global aCard
 		if isThis_a_cardWeNeedMoreWorkOn > 2 { // if we have gone without augmenting the random picks with cards we have prev missed ...
+			//
+			// Log to a file that this action was taken **do-this**
+			fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+			check(err)                                                                                 // ... gets a file handle to JapLog.txt
+			//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
+			_, err2 := fmt.Fprintf(fileHandleBig, "\ninterval card:%s interval:%d \n", aCard.KeyH, isThis_a_cardWeNeedMoreWorkOn)
+			check(err2)
 			isThis_a_cardWeNeedMoreWorkOn = 0 // ... for a while now, then let's go get a card we've missed before, instead of that random one
 			check_it_for_needing_more_practice()
 		}
@@ -174,5 +181,11 @@ func branchOnUserSelectedDirectiveIfGiven(usersGuessOrOptionDirective, selectedE
 		rm()
 	case "stack":
 		stack_the_map()
+	}
+}
+
+func check(e error) { // create a func named check which takes one parameter "e" of type error
+	if e != nil {
+		panic(e) // use panic() to display error code
 	}
 }

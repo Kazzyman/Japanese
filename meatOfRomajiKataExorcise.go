@@ -7,20 +7,13 @@ import "fmt"
 func meatOfRomajiKataExorcise(in string, skipFlag bool) {
 	var thisCaseOfAnInHasAlreadyBeenProcessedAbove bool
 	thisCaseOfAnInHasAlreadyBeenProcessedAbove = false
-	/*  **do-this**
-	??? Retain the first sections with the "^^Right!" & "^^Oops!" messages and actions, and maybe copy the rest to G-A-H-H ???
-		This func provides some special "^^Right!" or "^^Oops!" messages and actions in a "'fall'-through" manner ...
-		... and, THAT is ALL that it does! (SOME hints ARE also appended in the case of either a "^^Right!" or an "^^Oops!")
-		... It only calls one func: checkForHints(value)
-		-----------------------------------------------------------------
-	*/
 
-	// Next, we check for some additional 'very-special' prompt(key)/value events or conditions ...
-	// ... one 'very'-special key handler to emphasize the sameness of the two variants of zu sound:
-	if aCard.KeyRK == "zuズ" || aCard.KeyRK == "zuヅ" || aCard.KeyRK == "zuズ from つ or す" || aCard.KeyRK == "zuヅ from つ or す" {
-		//      ^^     ^^                ^^     ^^  are in main, but ^^     ^^^^^^^^^^^^^      and      ^^       ^^^^^^^^^^^^^ are NOT!!!!
-		// ^^^  **do-this** ^^^ add these to main.go var fileOfCards = []charSetStruct{
-		// "zu: from つ or す" IS in thar one time as a KeyR
+	// *******************************************************************************************
+	// Handel special prompt cases prior to doing the normal "if in == " processing
+	// One 'very'-special key handler to emphasize the sameness of two variants of the zu sound
+	// *******************************************************************************************
+	//
+	if aCard.KeyRK == "zuズ" || aCard.KeyRK == "zuヅ" {
 		if in == "づ" || in == "ず" {
 			thisCaseOfAnInHasAlreadyBeenProcessedAbove = true
 			fmt.Printf("%s", colorGreen)
@@ -108,20 +101,13 @@ func meatOfRomajiKataExorcise(in string, skipFlag bool) {
 func meatOfRomajiKataExorcise_secondTry(in string) {
 	var thisCaseOfAnInHasAlreadyBeenProcessedAbove bool
 	thisCaseOfAnInHasAlreadyBeenProcessedAbove = false
-	/*  **do-this**
-	??? Retain the first sections with the "^^Right!" & "^^Oops!" messages and actions, and maybe copy the rest to G-A-H-H ???
-		This func provides some special "^^Right!" or "^^Oops!" messages and actions in a "'fall'-through" manner ...
-		... and, THAT is ALL that it does! (SOME hints ARE also appended in the case of either a "^^Right!" or an "^^Oops!")
-		... It only calls one func: checkForHints(value)
-		-----------------------------------------------------------------
-	*/
 
-	// Next, we check for some additional 'very-special' prompt(key)/value events or conditions ...
-	// ... one 'very'-special key handler to emphasize the sameness of the two variants of zu sound:
-	if aCard.KeyRK == "zuズ" || aCard.KeyRK == "zuヅ" || aCard.KeyRK == "zuズ from つ or す" || aCard.KeyRK == "zuヅ from つ or す" {
-		//      ^^     ^^                ^^     ^^  are in main, but ^^     ^^^^^^^^^^^^^      and      ^^       ^^^^^^^^^^^^^ are NOT!!!!
-		// ^^^  **do-this** ^^^ add these to main.go var fileOfCards = []charSetStruct{
-		// "zu: from つ or す" IS in thar one time as a KeyR
+	// *******************************************************************************************
+	// Handel special prompt cases prior to doing the normal "if in == " processing
+	// One 'very'-special key handler to emphasize the sameness of two variants of the zu sound
+	// *******************************************************************************************
+	//
+	if aCard.KeyRK == "zuズ" || aCard.KeyRK == "zuヅ" {
 		if in == "づ" || in == "ず" {
 			thisCaseOfAnInHasAlreadyBeenProcessedAbove = true
 			fmt.Printf("%s", colorGreen)

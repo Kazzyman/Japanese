@@ -8,22 +8,14 @@ import (
 func meatOfRomajiNakedExorcise(in string, skipFlag bool) { // NOTE: we have already been prompted with KeyR
 	// ..^ ^ ^ called as|with: (usersGuessOrOptionDirective, aCard.KeyH) that KeyH being the particular Hira in question
 	// so, in=the-users-guess, keyH=aCard.KeyH
-	/*  **do-this**
-	??? Retain the first sections with the "^^Right!" & "^^Oops!" messages and actions
-		This func provides some special "^^Right!" or "^^Oops!" messages and actions in a "'fall'-through" manner ...
-		... and, THAT is ALL that it does! (SOME hints ARE also appended in the case of either a "^^Right!" or an "^^Oops!")
-		... It only calls one func: checkForHints(value)
-		-----------------------------------------------------------------
-	*/
+
 	var thisCaseOfAnInHasAlreadyBeenProcessedAbove bool
 	thisCaseOfAnInHasAlreadyBeenProcessedAbove = false
 	// *******************************************************************************************
 	// Handel special prompt cases prior to doing the normal "if in == " processing
-	// And, finally: one 'very'-special key handler to emphasize the sameness of two variants of the zu sound
+	// One 'very'-special key handler to emphasize the sameness of two variants of the zu sound
 	// *******************************************************************************************
 
-	// Next, we check for some additional 'very-special' prompt events or conditions ...
-	// and, one 'very'-special handler to emphasize the sameness of the two variants of the zu sound
 	if aCard.KeyR == "zu" {
 		thisCaseOfAnInHasAlreadyBeenProcessedAbove = true
 		if in == "づ" {
@@ -111,22 +103,13 @@ func meatOfRomajiNakedExorcise(in string, skipFlag bool) { // NOTE: we have alre
 func meatOfRomajiNakedExorcise_secondTry(in string) { // NOTE: we have already been prompted with KeyR
 	// ..^ ^ ^ called as|with: (usersGuessOrOptionDirective, aCard.KeyH) that KeyH being the particular Hira in question
 	// so, in=the-users-guess, keyH=aCard.KeyH
-	/*  **do-this**
-	??? Retain the first sections with the "^^Right!" & "^^Oops!" messages and actions
-		This func provides some special "^^Right!" or "^^Oops!" messages and actions in a "'fall'-through" manner ...
-		... and, THAT is ALL that it does! (SOME hints ARE also appended in the case of either a "^^Right!" or an "^^Oops!")
-		... It only calls one func: checkForHints(value)
-		-----------------------------------------------------------------
-	*/
+
 	var thisCaseOfAnInHasAlreadyBeenProcessedAbove bool
 	thisCaseOfAnInHasAlreadyBeenProcessedAbove = false
 	// *******************************************************************************************
 	// Handel special prompt cases prior to doing the normal "if in == " processing
-	// And, finally: one 'very'-special key handler to emphasize the sameness of two variants of the zu sound
+	// One 'very'-special key handler to emphasize the sameness of two variants of the zu sound
 	// *******************************************************************************************
-
-	// Next, we check for some additional 'very-special' prompt events or conditions ...
-	// and, one 'very'-special handler to emphasize the sameness of the two variants of the zu sound
 	if aCard.KeyR == "zu" {
 		thisCaseOfAnInHasAlreadyBeenProcessedAbove = true
 		if in == "づ" {

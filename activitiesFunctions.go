@@ -221,7 +221,13 @@ func check_it_for_fine_on() {
 			if f >= 2 { // if the freq is 3+ we need another card
 				//rm() // we show the map
 				//fmt.Printf("\n You were correct on: %s twice or more ... \n", aCard.KeyR)
-				pick_RandomCard_Assign_aCard() // we get that new card ...
+				// Log to a file that this action was taken **do-this**
+				fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+				check(err)                                                                                 // ... gets a file handle to JapLog.txt
+				//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
+				_, err2 := fmt.Fprintf(fileHandleBig, "\nwasFineOnString:%s card:%s freq:%d \n", s, aCard.KeyH, f)
+				check(err2)
+				pick_RandomCard_Assign_aCard() // We get that new card ...
 				//fmt.Println(" ... so here is a new one ... \n")
 				check_it_for_fine_on() // ... and we check THAT new card with a recursive call
 			} else { // else the card had a freq less than 3, so ...
@@ -242,6 +248,12 @@ func check_it_for_needing_more_practice() {
 				//rm() // we show the map
 				fmt.Printf("\n The Random card: %s was missed once or more \n", aCard.KeyH)
 				fmt.Println("... so we will keep it and quiz you on it ... ")
+				// Log to a file that this action was taken **do-this**
+				fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+				check(err)                                                                                 // ... gets a file handle to JapLog.txt
+				//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
+				_, err2 := fmt.Fprintf(fileHandleBig, "\nMore Practice1, card:%s fineOnString:%s freq:%d \n", aCard.KeyH, s, f)
+				check(err2)
 				skip_this_step = true
 				break //  ... we exit the loop and the func -- we will keep and use this random card, and skip the next loop
 				//check_it_for_fine_on() // ... and we check THAT new card with a recursive call
@@ -258,6 +270,12 @@ func check_it_for_needing_more_practice() {
 					//rm() // we show the map
 					fmt.Println("\n This Random card was missed 1 or more times ")
 					fmt.Println("... so we will test you on it, since it has been a while")
+					// Log to a file that this action was taken **do-this**
+					fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+					check(err)                                                                                 // ... gets a file handle to JapLog.txt
+					//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
+					_, err2 := fmt.Fprintf(fileHandleBig, "\nMore Practice2, card:%s fineOnString:%s freq:%d \n", aCard.KeyH, s, f)
+					check(err2)
 					practice_this_card(aCard.KeyR) // locate and assign aCard // set it as new aCard
 					break                          //  ... we exit the loop and the func -- we will keep and use this random card
 					//check_it_for_fine_on() // ... and we check THAT new card with a recursive call

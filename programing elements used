@@ -18,3 +18,4 @@ string concatenation
 string splitting
 range operator
 colors
+write stats to an external file

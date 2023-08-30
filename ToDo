@@ -1,27 +1,17 @@
-Finish/Proof-read singleQuestionMarksHints.go
-
 ? make a directive to show the non-empty elements of the fineOn array ?
 
-Log to a file all occurrences of when interventions were applied to the random card picks
+Finish details of ...
+... logging to a file all occurrences of when interventions were applied to the random card picks etc.
+Read the stats file, maybe condense/accumulate the events : load a map with each occurrence and then show the map
+add date and time to each session
 
 Add Japanese words (with Kanji) to the menus etc. Then ...
 ... Create a struct, a file-of-cards, with kanji chars, both words and phrases, to implement an activity similar to 1-4
-
-
-
-try making the meat func polymorphic
-
-polymorphic hint functionality ??? or simply finish/use giveAhint_from_aCard.go
 
 Finish composing hint content in data.go:
 ... note:
 ... we will probably never want to be prompted with Hiragana chars, ever! Because, that would just be too easy ...
 ... it is more useful to only see a Katakana or Romaji prompt, so we would only ever want a 'Hiragana hint'.
-//
-
-Enact the method for deploying the hint for romaji prompts using that last hint line only ???
-
-
 
 Try refining drill lines in fifth activity, Kata, Hira, and Romaji (respond to each with Hiragana)
 
@@ -30,3 +20,37 @@ Chars from the blue card: 46+15+25+21=107 : if we include all the suffixed combi
 ... 46*2=92 would be the total for the complete simple hiragana+katakana set; of base chars.
  ... doubling it all (the 107 from above) for katakana gives a grand total of 214 Japanese chars excluding the various punctuation characters.
 */
+
+e98e6-03e3e
+79d48-68855
+ba064-cbcd3
+d9bf7-46540
+f23e3-2067a
+8cad7-51ec3
+63b49-6762f
+36c67-2c2e3
+32701-58c98
+d3919-539f6
+dc47b-4c578
+793a5-5299b
+394ac-57541
+ec02b-d0e06
+dbade-da51f
+65da6-c458f
+
+e98e6-03e3e
+79d48-68855
+ba064-cbcd3
+d9bf7-46540
+f23e3-2067a
+8cad7-51ec3
+63b49-6762f
+36c67-2c2e3
+32701-58c98
+d3919-539f6
+dc47b-4c578
+793a5-5299b
+394ac-57541
+ec02b-d0e06
+dbade-da51f
+65da6-c458f

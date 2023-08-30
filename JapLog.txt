@@ -1,0 +1,98 @@
+
+card:し interval:0 
+
+card:こ interval:0 
+
+card:り interval:0 
+
+card:そ interval:0 
+
+card:き interval:0 
+
+card:ぞ interval:0 
+
+card:で interval:0 
+
+card:で interval:0 
+
+card:ね interval:0 
+
+card:こ interval:0 
+
+card:で fineOnString:de freq:2 
+
+card:げ interval:0 
+
+card:ぎ interval:0 
+
+card:じゅ interval:0 
+
+card:は interval:0 
+
+card:お interval:0 
+
+card:な interval:0 
+
+card:し interval:0 
+
+card:し fineOnString:shi freq:2 
+
+card:し fineOnString:shi freq:2 
+
+card:しゅ interval:0 
+
+card:だ interval:0 
+
+card:が interval:0 
+
+card:そ fineOnString:so freq:2 
+
+card:お fineOnString:o freq:2 
+
+card:ば interval:0 
+
+card:づ interval:0 
+
+card:る interval:0 
+
+card:こ fineOnString:ko freq:2 
+
+card:にゅ interval:0 
+
+card:お fineOnString:o freq:2 
+
+card:を fineOnString:wo freq:2 
+
+card:じゃ interval:0 
+
+card:ぎゃ interval:0 
+
+card:ほ fineOnString:ho freq:2 
+
+card:ね fineOnString:ne freq:2 
+
+card:げ fineOnString:ge freq:2 
+
+card:ば fineOnString:ba freq:2 
+
+card:そ fineOnString:so freq:2 
+
+card:れ interval:0 
+
+card:さ interval:3 
+
+card:りゃ interval:3 
+
+card:びゃ interval:3 
+
+card:ご interval:3 
+
+card:を interval:3 
+
+card:ぴ interval:3 
+
+card:め interval:3 
+
+card:ほ interval:3 
+
+card:ご interval:3 

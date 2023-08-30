@@ -5,6 +5,14 @@ var fileOfCards = []charSetStruct{
 	// Did not work :
 	//const fileOfCards = []charSetStruct{
 
+	{"ヂ-obs", "ぢ", "ji-obs", "obs-jiヂ", "ぢ",
+		" not really a thing ",
+		" not really a thing ",
+		" not really a thing ",
+		" not really a thing "},
+	/*
+
+	 */
 	// vowels: (a-i-u-e-o) ==========================================================================================
 	// 2 of あ ア a -- 2 times for a:あ:ア
 	{"ア", "あ", "a", "aア", "あ",
@@ -12,7 +20,6 @@ var fileOfCards = []charSetStruct{
 		" The Kata a:ア looks nothing-like the hiragana あ, but like hira te:て   あア-Fuck-mae-te:て! ",
 		" TT: middle<- to the '3' char for あ:ア  ?is maybe a grotesque A:ア ?? ",
 		" Compare:  me:め  あ  nu:ぬ  ne:ね      あ-Fuck-mae-te!"},
-	//
 	{"ア", "あ", "a", "aア", "あ",
 		" a:あ:ア  ahh-'no-got-stabbed',  Compare: me:め  a:あ  nu:ぬ  ne:ね    あア-Fuck-mae-te:て!",
 		" The Kata a:ア looks nothing-like the hiragana あ, but like hira te:て   あア-Fuck-mae-te:て! ",
@@ -25,7 +32,6 @@ var fileOfCards = []charSetStruct{
 		" i:い:イ  for the Kata ... maybe shift the two lines of the hiragana い to forms an 'I'  i:イ",
 		" TT: middle< to the 'E' char  い:イ ",
 		" ... at least it is still two mostly-vertical lines: イ "},
-	//
 	{"イ", "い", "i", "iイ", "い",
 		" i:い  the Kata イ looks more like a hiragana te:て, but still two mostly-vertical lines: イ",
 		" i:い:イ  for the Kata ... maybe shift the two lines of the hiragana い to forms an 'I'  i:イ",
@@ -653,12 +659,12 @@ var fileOfCards = []charSetStruct{
 		" ba",
 		" ba",
 		" ba",
-		" ba"},
+		" ha-->?"},
 	{"バ", "ば", "ba", "baバ", "ば",
 		" ba",
 		" ba",
 		" ba",
-		" ba"},
+		" ha-->?"},
 	// 1 bi
 	{"ビ", "び", "bi", "biビ", "び",
 		" bi",
