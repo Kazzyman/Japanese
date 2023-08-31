@@ -167,11 +167,30 @@ func drillLines() {
 	obtainAndDealWithUserInput(fifthSlice)
 
 	var pause string
+	fmt.Println("Enter 'menu' to return to the main menu")
 	_, err := fmt.Scan(&pause)
+	if pause == "menu" {
+		/*
+			case "menu": // From func branchOnUserSelectedDirectiveIfGiven(usersGuessOrOptionDirective, selectedExorcise string)
+				// Flush the old stats and hits arrays
+				cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
+				cyclicArrayHits = CyclicArrayHits{}
+				usersGuessOrOptionDirective = "null"
+				betweenMainMenuSelectionsTTE(selectedExorcise)
+				mainMenuPromptScanSelectAndBeginSelectedExorcise()
+		*/
+		// Flush the old stats and hits arrays
+		cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
+		cyclicArrayHits = CyclicArrayHits{}
+		// finalExorcise = "drillLines"
+		//usersGuessOrOptionDirective = "null"
+		betweenMainMenuSelectionsTTE("drillLines")
+		mainMenuPromptScanSelectAndBeginSelectedExorcise()
+	}
 	if err != nil {
 		return
 	}
-	fmt.Println(pause)
+	//
 }
 
 // Used 5 times, above in: func drillLines()
@@ -179,6 +198,7 @@ func obtainAndDealWithUserInput(refSlice []string) {
 	// Get user input
 	reader := bufio.NewReader(os.Stdin)
 	input, _ := reader.ReadString('\n')
+
 	// Convert to strings
 	chars := strings.Fields(input)
 
@@ -194,6 +214,30 @@ func obtainAndDealWithUserInput(refSlice []string) {
 	}
 	if match {
 		fmt.Printf("\nGood job! The slices match: %t \n\n", match)
+	}
+	var pause string
+	fmt.Println("Enter 'menu' to return to the main menu")
+	_, err := fmt.Scan(&pause)
+	if err != nil {
+		// return
+	}
+	if pause == "menu" {
+		/*
+			case "menu": // From func branchOnUserSelectedDirectiveIfGiven(usersGuessOrOptionDirective, selectedExorcise string)
+				// Flush the old stats and hits arrays
+				cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
+				cyclicArrayHits = CyclicArrayHits{}
+				usersGuessOrOptionDirective = "null"
+				betweenMainMenuSelectionsTTE(selectedExorcise)
+				mainMenuPromptScanSelectAndBeginSelectedExorcise()
+		*/
+		// Flush the old stats and hits arrays
+		cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
+		cyclicArrayHits = CyclicArrayHits{}
+		// finalExorcise = "drillLines"
+		//usersGuessOrOptionDirective = "null"
+		betweenMainMenuSelectionsTTE("drillLines")
+		mainMenuPromptScanSelectAndBeginSelectedExorcise()
 	}
 }
 
@@ -225,7 +269,8 @@ func check_it_for_fine_on() {
 				fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
 				check(err)                                                                                 // ... gets a file handle to JapLog.txt
 				//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
-				_, err2 := fmt.Fprintf(fileHandleBig, "\nwasFineOnString:%s card:%s freq:%d \n", s, aCard.KeyH, f)
+				_, err2 := fmt.Fprintf(fileHandleBig, "\n Prompt %s was found in frequencyMapOf_IsFineOnChars, KeyH:%s freq:%d \n",
+					s, aCard.KeyH, f)
 				check(err2)
 				pick_RandomCard_Assign_aCard() // We get that new card ...
 				//fmt.Println(" ... so here is a new one ... \n")
@@ -252,7 +297,8 @@ func check_it_for_needing_more_practice() {
 				fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
 				check(err)                                                                                 // ... gets a file handle to JapLog.txt
 				//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
-				_, err2 := fmt.Fprintf(fileHandleBig, "\nMore Practice1, card:%s fineOnString:%s freq:%d \n", aCard.KeyH, s, f)
+				_, err2 := fmt.Fprintf(fileHandleBig, "\nPart1of2 found:%s in frequencyMapOf_need_workOn, freq:%d \n",
+					s, f)
 				check(err2)
 				skip_this_step = true
 				break //  ... we exit the loop and the func -- we will keep and use this random card, and skip the next loop
@@ -274,7 +320,8 @@ func check_it_for_needing_more_practice() {
 					fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
 					check(err)                                                                                 // ... gets a file handle to JapLog.txt
 					//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
-					_, err2 := fmt.Fprintf(fileHandleBig, "\nMore Practice2, card:%s fineOnString:%s freq:%d \n", aCard.KeyH, s, f)
+					_, err2 := fmt.Fprintf(fileHandleBig, "\nPart2of2 found:%s in frequencyMapOf_need_workOn, freq:%d \n",
+						s, f)
 					check(err2)
 					practice_this_card(aCard.KeyR) // locate and assign aCard // set it as new aCard
 					break                          //  ... we exit the loop and the func -- we will keep and use this random card

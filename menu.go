@@ -6,6 +6,7 @@ import (
 	"encoding/binary"
 	"fmt"
 	"os"
+	"time"
 	//"math/rand"
 )
 
@@ -26,28 +27,36 @@ func display_ListingOf_OptionsThese_AllHave_inCommon() {
 }
 
 func mainMenuPromptScanSelectAndBeginSelectedExorcise() {
-	var mainMenuSelection int
+	var mainMenuSelection string
 	//seedFile_Maker()
 	for {
 		fmt.Printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 		fmt.Printf("  Main Menu: \n\n")
-		fmt.Printf("  Enter 1 to practice recognizing Romaji: and typing Hiragana (simple, quite useful)\n")
-		fmt.Printf("  Enter 2 for recognizing Romaji-Katakana pairs: typing Hiragana (somewhat easy, useful)\n")
-		fmt.Printf("  Enter 3 to practice recognizing Katakana, type either Hiragana or Romaji (very versatile)\n")
-		fmt.Printf("  Enter 5 to practice typing drill lines\n\n\n")
+		fmt.Printf("  Enter '1' to practice recognizing Romaji: and typing Hiragana (simple, quite useful)\n")
+		fmt.Printf("  Enter '2' for recognizing Romaji-Katakana pairs: typing Hiragana (somewhat easy, useful)\n")
+		fmt.Printf("  Enter '3' to practice recognizing Katakana, type either Hiragana or Romaji (very versatile)\n")
+		fmt.Printf("  Enter '5' to practice typing drill lines\n")
+		fmt.Printf("  Enter 'exit' to quit\n\n\n")
 		_, _ = fmt.Scan(&mainMenuSelection)
 
-		if mainMenuSelection == 1 {
-			selectedExorcise := "Romaji_Prompt"                         // 1
+		if mainMenuSelection == "1" {
+			selectedExorcise := "Romaji_Prompt" // 1
+			log_to_JapLog_file_inception_time(selectedExorcise)
 			display_Romaji_instructions_BeginExorcise(selectedExorcise) // 1
-		} else if mainMenuSelection == 2 {
-			selectedExorcise := "Romaji+Kata_Prompt"                              // 2
+		} else if mainMenuSelection == "2" {
+			selectedExorcise := "Romaji+Kata_Prompt" // 2
+			log_to_JapLog_file_inception_time(selectedExorcise)
 			display_Romaji_plus_Kata_instructions_BeginExorcise(selectedExorcise) // 2
-		} else if mainMenuSelection == 3 || mainMenuSelection == 4 {
-			selectedExorcise := "Kata_Prompt-Respond-w-Hira|Romaji"          // 3 or 4
-			display_KataExorciseInstructions_BeginExorcise(selectedExorcise) //3 or 4
-		} else if mainMenuSelection == 5 {
+		} else if mainMenuSelection == "3" {
+			selectedExorcise := "Kata_Prompt-Respond-w-Hira|Romaji" // 3 or 4
+			log_to_JapLog_file_inception_time(selectedExorcise)
+			display_KataExorciseInstructions_BeginExorcise(selectedExorcise) // 3 or 4
+		} else if mainMenuSelection == "5" {
+			selectedExorcise := "drillLines"
+			log_to_JapLog_file_inception_time(selectedExorcise)
 			drillLines() // 5
+		} else if mainMenuSelection == "exit" || mainMenuSelection == "quit" {
+			os.Exit(1)
 		}
 	}
 }
@@ -152,24 +161,74 @@ func seedFile_Maker() {
 	}
 }
 
+func log_to_JapLog_file_inception_time(selectedExorcise string) {
+	currentTime := time.Now()
+	if selectedExorcise == "Romaji_Prompt" {
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+		check(err)                                                                                 // ... gets a file handle to JapLog.txt
+		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
+		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 1 'Romaji_Prompt' occured at: %s \n",
+			currentTime.Format("15:04:05 on Monday 01-02-2006"))
+		check(err2)
+	} else if selectedExorcise == "Romaji+Kata_Prompt" {
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+		check(err)                                                                                 // ... gets a file handle to JapLog.txt
+		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
+		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 2 'Romaji+Kata_Prompt' occured at: %s \n",
+			currentTime.Format("15:04:05 on Monday 01-02-2006"))
+		check(err2)
+	} else if selectedExorcise == "Kata_Prompt-Respond-w-Hira|Romaji" {
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+		check(err)                                                                                 // ... gets a file handle to JapLog.txt
+		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
+		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 3 or 4 'Kata_Prompt-Respond-w-Hira|Romaji' occured at: %s \n",
+			currentTime.Format("15:04:05 on Monday 01-02-2006"))
+		check(err2)
+	} else if selectedExorcise == "drillLines" {
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+		check(err)                                                                                 // ... gets a file handle to JapLog.txt
+		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
+		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 5 'Drill Lines' occured at: %s \n",
+			currentTime.Format("01-02-2006 15:04:05 Monday"))
+		check(err2)
+	}
+}
+
 // Possible other things to do after an activity and before beginning another activity
 func betweenMainMenuSelectionsTTE(selectedExorcise string) {
+	currentTime := time.Now()
 	if selectedExorcise == "Romaji_Prompt" {
-		//println("between 1 and another exorcise")
-		// Save seed before exiting
-		createAndWrite_seedFile()
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+		check(err)                                                                                 // ... gets a file handle to JapLog.txt
+		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
+		_, err2 := fmt.Fprintf(fileHandleBig, "\nTransition from exorcise 1 'Romaji_Prompt' occured at: %s \n",
+			currentTime.Format("15:04:05 on Monday 01-02-2006"))
+		check(err2)
+		//createAndWrite_seedFile()
 	} else if selectedExorcise == "Romaji+Kata_Prompt" {
-		//println("between 2 and another exorcise")
-		// Save seed before exiting
-		createAndWrite_seedFile()
-	} else if selectedExorcise == "Kata_Prompt-Respond-w-Hira" {
-		//println("between 3 and another exorcise")
-		// Save seed before exiting
-		createAndWrite_seedFile()
-	} else if selectedExorcise == "Kata_Prompt-Respond-w-Romaji" {
-		//println("between 4 and another exorcise")
-		// Save seed before exiting
-		createAndWrite_seedFile()
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+		check(err)                                                                                 // ... gets a file handle to JapLog.txt
+		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
+		_, err2 := fmt.Fprintf(fileHandleBig, "\nTransition from exorcise 2 'Romaji+Kata_Prompt' occured at: %s \n",
+			currentTime.Format("15:04:05 on Monday 01-02-2006"))
+		check(err2)
+		//createAndWrite_seedFile()
+	} else if selectedExorcise == "Kata_Prompt-Respond-w-Hira|Romaji" {
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+		check(err)                                                                                 // ... gets a file handle to JapLog.txt
+		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
+		_, err2 := fmt.Fprintf(fileHandleBig, "\nTransition from exorcise 3 or 4 'Kata_Prompt-Respond-w-Hira|Romaji' occured at: %s \n",
+			currentTime.Format("15:04:05 on Monday 01-02-2006"))
+		check(err2)
+		//createAndWrite_seedFile()
+	} else if selectedExorcise == "drillLines" {
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+		check(err)                                                                                 // ... gets a file handle to JapLog.txt
+		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
+		_, err2 := fmt.Fprintf(fileHandleBig, "\nTransition from exorcise 5 'Drill Lines' occured at: %s \n",
+			currentTime.Format("01-02-2006 15:04:05 Monday"))
+		check(err2)
+		//createAndWrite_seedFile()
 	}
 }
 

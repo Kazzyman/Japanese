@@ -1,98 +1,74 @@
 
-card:し interval:0 
+Inception of exorcise 3 or 4 'Kata_Prompt-Respond-w-Hira|Romaji' occured at: 21:43:37 on Wednesday 08-30-2023 
 
-card:こ interval:0 
+Checked card:え in the frequencyMapOf_need_workOn after:3 cycles
 
-card:り interval:0 
+Checked card:し in the frequencyMapOf_need_workOn after:3 cycles
 
-card:そ interval:0 
+Checked card:びゃ in the frequencyMapOf_need_workOn after:3 cycles
 
-card:き interval:0 
+Checked card:ちゃ in the frequencyMapOf_need_workOn after:3 cycles
 
-card:ぞ interval:0 
+Checked card:げ in the frequencyMapOf_need_workOn after:3 cycles
 
-card:で interval:0 
+Checked card:ひゅ in the frequencyMapOf_need_workOn after:3 cycles
 
-card:で interval:0 
+Checked card:し in the frequencyMapOf_need_workOn after:3 cycles
 
-card:ね interval:0 
+Checked card:ぽ in the frequencyMapOf_need_workOn after:3 cycles
 
-card:こ interval:0 
+Checked card:ぜ in the frequencyMapOf_need_workOn after:3 cycles
 
-card:で fineOnString:de freq:2 
+Checked card:ん in the frequencyMapOf_need_workOn after:3 cycles
 
-card:げ interval:0 
+Checked card:つ in the frequencyMapOf_need_workOn after:3 cycles
 
-card:ぎ interval:0 
+Checked card:みょ in the frequencyMapOf_need_workOn after:3 cycles
 
-card:じゅ interval:0 
+ Prompt wa was found in frequencyMapOf_IsFineOnChars, KeyH:わ freq:2 
 
-card:は interval:0 
+Checked card:き in the frequencyMapOf_need_workOn after:3 cycles
 
-card:お interval:0 
+Checked card:づ in the frequencyMapOf_need_workOn after:3 cycles
 
-card:な interval:0 
+Checked card:にゅ in the frequencyMapOf_need_workOn after:3 cycles
 
-card:し interval:0 
+ Prompt ra was found in frequencyMapOf_IsFineOnChars, KeyH:ら freq:2 
 
-card:し fineOnString:shi freq:2 
+Checked card:お in the frequencyMapOf_need_workOn after:3 cycles
 
-card:し fineOnString:shi freq:2 
+Checked card:ね in the frequencyMapOf_need_workOn after:3 cycles
 
-card:しゅ interval:0 
+Checked card:が in the frequencyMapOf_need_workOn after:3 cycles
 
-card:だ interval:0 
+Checked card:へ in the frequencyMapOf_need_workOn after:3 cycles
 
-card:が interval:0 
+Checked card:ち in the frequencyMapOf_need_workOn after:3 cycles
 
-card:そ fineOnString:so freq:2 
+ Prompt te was found in frequencyMapOf_IsFineOnChars, KeyH:て freq:2 
 
-card:お fineOnString:o freq:2 
+Checked card:みゅ in the frequencyMapOf_need_workOn after:3 cycles
 
-card:ば interval:0 
+Checked card:べ in the frequencyMapOf_need_workOn after:3 cycles
 
-card:づ interval:0 
+Checked card:ね in the frequencyMapOf_need_workOn after:3 cycles
 
-card:る interval:0 
+Checked card:ほ in the frequencyMapOf_need_workOn after:3 cycles
 
-card:こ fineOnString:ko freq:2 
+ Prompt ra was found in frequencyMapOf_IsFineOnChars, KeyH:ら freq:2 
 
-card:にゅ interval:0 
+Checked card:ぴゅ in the frequencyMapOf_need_workOn after:3 cycles
 
-card:お fineOnString:o freq:2 
+Checked card:ら in the frequencyMapOf_need_workOn after:3 cycles
 
-card:を fineOnString:wo freq:2 
+ Prompt ra was found in frequencyMapOf_IsFineOnChars, KeyH:ら freq:2 
 
-card:じゃ interval:0 
+ Prompt ra was found in frequencyMapOf_IsFineOnChars, KeyH:ら freq:2 
 
-card:ぎゃ interval:0 
+ Prompt ne was found in frequencyMapOf_IsFineOnChars, KeyH:ね freq:2 
 
-card:ほ fineOnString:ho freq:2 
+Checked card:も in the frequencyMapOf_need_workOn after:3 cycles
 
-card:ね fineOnString:ne freq:2 
+Checked card:ち in the frequencyMapOf_need_workOn after:3 cycles
 
-card:げ fineOnString:ge freq:2 
-
-card:ば fineOnString:ba freq:2 
-
-card:そ fineOnString:so freq:2 
-
-card:れ interval:0 
-
-card:さ interval:3 
-
-card:りゃ interval:3 
-
-card:びゃ interval:3 
-
-card:ご interval:3 
-
-card:を interval:3 
-
-card:ぴ interval:3 
-
-card:め interval:3 
-
-card:ほ interval:3 
-
-card:ご interval:3 
+Transition from exorcise 3 or 4 'Kata_Prompt-Respond-w-Hira|Romaji' occured at: 21:52:44 on Wednesday 08-30-2023 

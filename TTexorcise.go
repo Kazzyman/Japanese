@@ -31,7 +31,8 @@ func TouchTypingExorcise(selectedExorcise string) {
 			fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
 			check(err)                                                                                 // ... gets a file handle to JapLog.txt
 			//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
-			_, err2 := fmt.Fprintf(fileHandleBig, "\ninterval card:%s interval:%d \n", aCard.KeyH, isThis_a_cardWeNeedMoreWorkOn)
+			_, err2 := fmt.Fprintf(fileHandleBig, "\nChecked card:%s in the frequencyMapOf_need_workOn after:%d cycles\n",
+				aCard.KeyH, isThis_a_cardWeNeedMoreWorkOn)
 			check(err2)
 			isThis_a_cardWeNeedMoreWorkOn = 0 // ... for a while now, then let's go get a card we've missed before, instead of that random one
 			check_it_for_needing_more_practice()

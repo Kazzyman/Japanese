@@ -1,10 +1,5 @@
 ? make a directive to show the non-empty elements of the fineOn array ?
 
-Finish details of ...
-... logging to a file all occurrences of when interventions were applied to the random card picks etc.
-Read the stats file, maybe condense/accumulate the events : load a map with each occurrence and then show the map
-add date and time to each session
-
 Add Japanese words (with Kanji) to the menus etc. Then ...
 ... Create a struct, a file-of-cards, with kanji chars, both words and phrases, to implement an activity similar to 1-4
 
