@@ -128,74 +128,8 @@ func re_display_KataExorciseInstructions() {
 	body_of_KataExorciseInstructions()
 }
 
-/*
-.
-.
-*/
-
-const seedFile = "randomSeed.dat"
-
-var seed int64
-
-//goland:noinspection ALL
-func seedFile_Maker() {
-	// Try to read existing seed
-	if data, err := os.ReadFile(seedFile); err == nil {
-		seed = int64(binary.LittleEndian.Uint64(data))
-	} else {
-		// No existing seed, create a new one
-		err := binary.Read(rand.Reader, binary.LittleEndian, &seed)
-		if err != nil {
-			return
-		}
-		f, _ := os.Create(seedFile)
-		defer func(f *os.File) {
-			err := f.Close()
-			if err != nil {
-			}
-		}(f)
-		err2 := binary.Write(f, binary.LittleEndian, seed)
-		if err2 != nil {
-			return
-		}
-	}
-}
-
-func log_to_JapLog_file_inception_time(selectedExorcise string) {
-	currentTime := time.Now()
-	if selectedExorcise == "Romaji_Prompt" {
-		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
-		check(err)                                                                                 // ... gets a file handle to JapLog.txt
-		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
-		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 1 'Romaji_Prompt' occured at: %s \n",
-			currentTime.Format("15:04:05 on Monday 01-02-2006"))
-		check(err2)
-	} else if selectedExorcise == "Romaji+Kata_Prompt" {
-		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
-		check(err)                                                                                 // ... gets a file handle to JapLog.txt
-		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
-		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 2 'Romaji+Kata_Prompt' occured at: %s \n",
-			currentTime.Format("15:04:05 on Monday 01-02-2006"))
-		check(err2)
-	} else if selectedExorcise == "Kata_Prompt-Respond-w-Hira|Romaji" {
-		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
-		check(err)                                                                                 // ... gets a file handle to JapLog.txt
-		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
-		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 3 or 4 'Kata_Prompt-Respond-w-Hira|Romaji' occured at: %s \n",
-			currentTime.Format("15:04:05 on Monday 01-02-2006"))
-		check(err2)
-	} else if selectedExorcise == "drillLines" {
-		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
-		check(err)                                                                                 // ... gets a file handle to JapLog.txt
-		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
-		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 5 'Drill Lines' occured at: %s \n",
-			currentTime.Format("01-02-2006 15:04:05 Monday"))
-		check(err2)
-	}
-}
-
-// Possible other things to do after an activity and before beginning another activity
-func betweenMainMenuSelectionsTTE(selectedExorcise string) {
+// Things to do after an activity, and before beginning another activity
+func do_betweenMainMenuSelectionsTTE(selectedExorcise string) {
 	currentTime := time.Now()
 	if selectedExorcise == "Romaji_Prompt" {
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
@@ -229,6 +163,39 @@ func betweenMainMenuSelectionsTTE(selectedExorcise string) {
 			currentTime.Format("01-02-2006 15:04:05 Monday"))
 		check(err2)
 		//createAndWrite_seedFile()
+	}
+}
+
+/*
+.
+.
+*/
+
+const seedFile = "randomSeed.dat"
+
+var seed int64
+
+//goland:noinspection ALL
+func seedFile_Maker() {
+	// Try to read existing seed
+	if data, err := os.ReadFile(seedFile); err == nil {
+		seed = int64(binary.LittleEndian.Uint64(data))
+	} else {
+		// No existing seed, create a new one
+		err := binary.Read(rand.Reader, binary.LittleEndian, &seed)
+		if err != nil {
+			return
+		}
+		f, _ := os.Create(seedFile)
+		defer func(f *os.File) {
+			err := f.Close()
+			if err != nil {
+			}
+		}(f)
+		err2 := binary.Write(f, binary.LittleEndian, seed)
+		if err2 != nil {
+			return
+		}
 	}
 }
 

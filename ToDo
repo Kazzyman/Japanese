@@ -1,20 +1,23 @@
-? make a directive to show the non-empty elements of the fineOn array ?
+re-document all of the code files
 
-Add Japanese words (with Kanji) to the menus etc. Then ...
-... Create a struct, a file-of-cards, with kanji chars, both words and phrases, to implement an activity similar to 1-4
+"These you have done fine on": make a directive to show the non-empty elements of the fineOn array; and also a dir of
+those chars that the user has had difficulty with.
+
+Add Japanese translations (with Kanji) to the menus etc. Then ...
+... Create a struct, a file-of-cards, with a mixture of japanese chars, comprising both words and phrases, to implement
+an activity similar to 1-4 wherein a prompt is given and the user is asked to select the most-appropriate response.
 
 Finish composing hint content in data.go:
-... note:
-... we will probably never want to be prompted with Hiragana chars, ever! Because, that would just be too easy ...
-... it is more useful to only see a Katakana or Romaji prompt, so we would only ever want a 'Hiragana hint'.
 
-Try refining drill lines in fifth activity, Kata, Hira, and Romaji (respond to each with Hiragana)
+Try refining #5, the drill lines activity
 
 /*
 Chars from the blue card: 46+15+25+21=107 : if we include all the suffixed combination "chars".
 ... 46*2=92 would be the total for the complete simple hiragana+katakana set; of base chars.
  ... doubling it all (the 107 from above) for katakana gives a grand total of 214 Japanese chars excluding the various punctuation characters.
 */
+
+
 
 e98e6-03e3e
 79d48-68855

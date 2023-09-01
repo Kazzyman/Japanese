@@ -3,60 +3,39 @@ package main
 // **do-this**
 import (
 	"fmt"
+	"os"
 	"strings"
+	"time"
 )
 
 // LOGGERS:
 //
-// 2 'Reinforce-or-Skip' loggers|Inserters:
-func logSkipThisPrompt(promptToSkip string) {
+// 'Reinforce-or-Skip' loggers|Inserters:
+func logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(promptToSkip string) {
 	frequencyMapOf_IsFineOnChars[promptToSkip]++
 }
-func logReinforceThisPrompt(promptToWorkMoreOn string) {
+func logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(promptToWorkMoreOn string) {
 	frequencyMapOf_need_workOn[promptToWorkMoreOn]++
 }
 
-// 3 'Right' or 'Oops' loggers|Inserters:
+// Universal hits logger|Inserter:
+// Used in exorcises 1, 2, 3, 4
+func logHits_in_cyclicArrayHits(RightOrOops, JChar string) {
+	cyclicArrayHits.InsertRightOrOops(RightOrOops)
+	cyclicArrayHits.InsertChar(JChar)
+}
+
 //
-// Used in RomajiKata Exorcise
-func logHitsRomajiKata(RightOrOops string) {
-	cyclicArrayHits.InsertRightOrOops(RightOrOops)
-	cyclicArrayHits.InsertChar(aCard.KeyRK) // this works because this func is not passed the Key
-}
-
-// Used in NakedKata exorcise
-func logHitsKata(RightOrOops, kataChar string) {
-	cyclicArrayHits.InsertRightOrOops(RightOrOops)
-	cyclicArrayHits.InsertChar(kataChar)
-}
-
-// Used in NakedRomaji exorcise
-func logHitsRomaji(RightOrOops, romaji string) {
-	cyclicArrayHits.InsertRightOrOops(RightOrOops)
-	cyclicArrayHits.InsertChar(romaji)
-}
-
-// 3 GottenWrong loggers|Inserters:
+// A special Universal logger|Inserter: so we can drill the user more on chars he has missed
 //
-// Used in NakedKata exorcise
-func logKataGottenWrong(kataChar string) {
-	// ***am-doing*** save into a file, or some combination of file and cyclic array, so as to drill more on missed
-	cyclicArrayOfTheJcharsGottenWrong.InsertCharsWrong(kataChar)
+// Used in exorcises 1, 2, 3, 4
+func logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(Jchar string) {
+	cyclicArrayOfTheJcharsGottenWrong.InsertCharsWrong(Jchar)
 }
 
-// Used in RomajiKata exorcise
-func logRomajiKataGottenWrong(hiraChar string) {
-	cyclicArrayOfTheJcharsGottenWrong.InsertCharsWrong(hiraChar)
-}
-
-// Used in NakedRomaji exorcise
-func logRomajiGottenWrong(romajiChars string) {
-	cyclicArrayOfTheJcharsGottenWrong.InsertCharsWrong(romajiChars)
-}
-
-// directives:
+// Directives:
 func hits() {
-	// Create a map to store the frequency of each string
+	// Create maps to store the frequency of each relevant string for that map
 	frequencyMapRightOrOops := make(map[string]int)
 	frequencyMapChar := make(map[string]int) // These, apparently, create a map to associate a unique string with an int
 	frequencyMapWrongs := make(map[string]int)
@@ -64,25 +43,21 @@ func hits() {
 	//
 	// Parse the relevant cyclic array to extract the strings and put them into the relevant map:
 	//
-	// load RightOrOops map
+	// Load the RightOrOops frequency map
 	for i := 0; i < len(cyclicArrayHits.RightOrOops); i++ {
 		str := cyclicArrayHits.RightOrOops[i]
-		//
-		// Apparently this loads a string into; and increments the frequency of, that particular string, in the map
-		//frequencyMapChar[str]++ // ... this, apparently, increments the int mapped to a particular 'str' in said map
+		// Apparently; this loads a string into, and increments the frequency of, that particular string, in the map
 		frequencyMapRightOrOops[str]++ // Specifically, the '++' must increment the int value associated with str
 	}
-	// load char map
+	// Load the char frequency map // As documented in the foregoing 'for' loop
 	for i := 0; i < len(cyclicArrayHits.jchar); i++ {
 		str := cyclicArrayHits.jchar[i]
-		//
-		// Apparently this loads a string into; and increments the frequency of, that particular string, in the map
-		frequencyMapChar[str]++ // Specifically, the '++' must increment the int value associated with str
+		frequencyMapChar[str]++
 	}
-	// load wrongs map
+	// Load the wrongs frequency map // As documented in the foregoing 'for' loop
 	for i := 0; i < len(cyclicArrayOfTheJcharsGottenWrong.jchar); i++ {
-		str := cyclicArrayOfTheJcharsGottenWrong.jchar[i] // As was done above ...
-		frequencyMapWrongs[str]++                         // Specifically, the '++' must increment the int value associated with str
+		str := cyclicArrayOfTheJcharsGottenWrong.jchar[i]
+		frequencyMapWrongs[str]++
 	}
 
 	// -- PRINT -- the 'Right' and 'Oops' and their frequencies (Right or Oops) (top of printout)
@@ -107,7 +82,7 @@ func hits() {
 			// else, it is an 'empty' position in the map due to empty uninitialized positions in the cyclic array
 		}
 	}
-	// Print the unique Chars and their frequencies (continuing printout from above)
+	// Print the unique Chars and their frequencies (continuing the printout above)
 	numberOfUniqueCharsHit := 0
 	for str, freq := range frequencyMapChar {
 		if str == "" {
@@ -126,7 +101,7 @@ func hits() {
 	fmt.Printf("%d \n\n", numberOfUniqueCharsHit)
 	fmt.Printf(colorReset)
 
-	// Print the ones gotten wrong  (continuing printout from above)
+	// Print the ones gotten wrong  (continuing the printout above)
 	for str, freq := range frequencyMapWrongs {
 		if str == "" {
 			// it is an 'empty' position in the map due to empty uninitialized positions in the cyclic array
@@ -152,4 +127,37 @@ func hits() {
 		}
 	}
 	fmt.Println("")
+}
+
+func log_to_JapLog_file_inception_time(selectedExorcise string) {
+	currentTime := time.Now()
+	if selectedExorcise == "Romaji_Prompt" {
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+		check(err)                                                                                 // ... gets a file handle to JapLog.txt
+		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
+		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 1 'Romaji_Prompt' occured at: %s \n",
+			currentTime.Format("15:04:05 on Monday 01-02-2006"))
+		check(err2)
+	} else if selectedExorcise == "Romaji+Kata_Prompt" {
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+		check(err)                                                                                 // ... gets a file handle to JapLog.txt
+		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
+		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 2 'Romaji+Kata_Prompt' occured at: %s \n",
+			currentTime.Format("15:04:05 on Monday 01-02-2006"))
+		check(err2)
+	} else if selectedExorcise == "Kata_Prompt-Respond-w-Hira|Romaji" {
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+		check(err)                                                                                 // ... gets a file handle to JapLog.txt
+		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
+		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 3 or 4 'Kata_Prompt-Respond-w-Hira|Romaji' occured at: %s \n",
+			currentTime.Format("15:04:05 on Monday 01-02-2006"))
+		check(err2)
+	} else if selectedExorcise == "drillLines" {
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+		check(err)                                                                                 // ... gets a file handle to JapLog.txt
+		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
+		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 5 'Drill Lines' occured at: %s \n",
+			currentTime.Format("01-02-2006 15:04:05 Monday"))
+		check(err2)
+	}
 }

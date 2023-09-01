@@ -119,6 +119,21 @@ func reSet_aCard_andThereBy_reSet_thePromptString() {
 	}
 }
 
+func read_map_of_fineOn() {
+	for s, f := range frequencyMapOf_IsFineOnChars {
+		fmt.Printf(" --- From MapOf_IsFineOn: string is:")
+		fmt.Printf(colorCyan)
+		fmt.Printf("%s", s)
+		fmt.Printf(colorReset)
+		fmt.Printf(", freq is:")
+		fmt.Printf(colorRed)
+		fmt.Printf("%d", f)
+		fmt.Printf(colorReset)
+		fmt.Printf(" ---\n")
+	}
+	fmt.Println("")
+}
+
 // end of DIRECTIVES -----------------------------------------------------------------------------------
 
 // Activity #5
@@ -148,23 +163,23 @@ func drillLines() {
 	//
 	fmt.Println("  1  2   3  4   5   6   7   8   9   10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25")
 	fmt.Println("あ　い　う　え　お　か　き　く　け　こ　さ　し　す　せ　そ　た　ち　つ　て　と　な　に　ぬ　ね　の")
-	obtainAndDealWithUserInput(firstSlice)
+	for_drillLines_obtainAndDealWithUserInput(firstSlice)
 
 	fmt.Println("  1  2   3  4   5  　6  7   8   9   10  11  12  13  14  15  16  17  18  19  20  21")
 	fmt.Println("は　ひ　ふ　へ　ほ　ま　み　む　め　も　や　ゆ　よ　ら　り　る　れ　ろ　わ　を　ん")
-	obtainAndDealWithUserInput(secondSlice)
+	for_drillLines_obtainAndDealWithUserInput(secondSlice)
 
 	fmt.Println("  1   2   3  4   5   6    7   8  9   10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25 ")
 	fmt.Println("ga  gi  gu  ge  go,  za  ji  zu  ze  zo, da  ji  zu  de  do, ba  bi  bu  be  bo, pa  pi  pu  pe  po")
-	obtainAndDealWithUserInput(thirdSlice)
+	for_drillLines_obtainAndDealWithUserInput(thirdSlice)
 
 	fmt.Println(" 1     2      3    4     5   6    7    8    9   　10    11   12   13   14   15   16   17   18   19   20  21   22   23   24")
 	fmt.Println("gya  　gyu 　 gyo  ja  　ju  jo  　ja  ju 　 jo  bya 　byu  byo  pya  pyu  pyo  kya  kyu  kyo  sha  shu  sho  cha  chu  cho")
-	obtainAndDealWithUserInput(fourthSlice)
+	for_drillLines_obtainAndDealWithUserInput(fourthSlice)
 
 	fmt.Println("1      2    3      4   　  5     6     7    8      9    10    11    12")
 	fmt.Println("nya  　nyu  nyo 　 hya 　 hyu  hyo 　 mya  myu　  myo  rya 　 ryu  ryo")
-	obtainAndDealWithUserInput(fifthSlice)
+	for_drillLines_obtainAndDealWithUserInput(fifthSlice)
 
 	var pause string
 	fmt.Println("Enter 'menu' to return to the main menu")
@@ -176,7 +191,7 @@ func drillLines() {
 				cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
 				cyclicArrayHits = CyclicArrayHits{}
 				usersGuessOrOptionDirective = "null"
-				betweenMainMenuSelectionsTTE(selectedExorcise)
+				do_betweenMainMenuSelectionsTTE(selectedExorcise)
 				mainMenuPromptScanSelectAndBeginSelectedExorcise()
 		*/
 		// Flush the old stats and hits arrays
@@ -184,7 +199,7 @@ func drillLines() {
 		cyclicArrayHits = CyclicArrayHits{}
 		// finalExorcise = "drillLines"
 		//usersGuessOrOptionDirective = "null"
-		betweenMainMenuSelectionsTTE("drillLines")
+		do_betweenMainMenuSelectionsTTE("drillLines")
 		mainMenuPromptScanSelectAndBeginSelectedExorcise()
 	}
 	if err != nil {
@@ -194,7 +209,7 @@ func drillLines() {
 }
 
 // Used 5 times, above in: func drillLines()
-func obtainAndDealWithUserInput(refSlice []string) {
+func for_drillLines_obtainAndDealWithUserInput(refSlice []string) {
 	// Get user input
 	reader := bufio.NewReader(os.Stdin)
 	input, _ := reader.ReadString('\n')
@@ -228,15 +243,13 @@ func obtainAndDealWithUserInput(refSlice []string) {
 				cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
 				cyclicArrayHits = CyclicArrayHits{}
 				usersGuessOrOptionDirective = "null"
-				betweenMainMenuSelectionsTTE(selectedExorcise)
+				do_betweenMainMenuSelectionsTTE(selectedExorcise)
 				mainMenuPromptScanSelectAndBeginSelectedExorcise()
 		*/
 		// Flush the old stats and hits arrays
 		cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
 		cyclicArrayHits = CyclicArrayHits{}
-		// finalExorcise = "drillLines"
-		//usersGuessOrOptionDirective = "null"
-		betweenMainMenuSelectionsTTE("drillLines")
+		do_betweenMainMenuSelectionsTTE("drillLines")
 		mainMenuPromptScanSelectAndBeginSelectedExorcise()
 	}
 }
@@ -249,12 +262,10 @@ func obtainAndDealWithUserInput(refSlice []string) {
 // Globals:
 // .
 // A map v v v v v v v is used to store correct guesses, and is only written to after a correct guess
-var frequencyMapOf_IsFineOnChars = make(map[string]int) // create the map, dir 'rm' reads it
+var frequencyMapOf_IsFineOnChars = make(map[string]int) // create the map, dir 'read_map_of_fineOn' reads it
 var frequencyMapOf_need_workOn = make(map[string]int)
 
-/*
-.
-*/
+// .
 // Parse the map to see if the new random card matches any members of the map
 // Each time we get a new random card we check the map to see if it has been done correctly 3 or more times ...
 // ... if it has, then we pick another card, and check it
@@ -263,7 +274,7 @@ func check_it_for_fine_on() {
 	for s, f := range frequencyMapOf_IsFineOnChars {
 		if s == aCard.KeyR { // if it is in the map we need to check the freq
 			if f >= 2 { // if the freq is 3+ we need another card
-				//rm() // we show the map
+				//read_map_of_fineOn() // we show the map
 				//fmt.Printf("\n You were correct on: %s twice or more ... \n", aCard.KeyR)
 				// Log to a file that this action was taken **do-this**
 				fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
@@ -290,7 +301,7 @@ func check_it_for_needing_more_practice() {
 	for s, f := range frequencyMapOf_need_workOn {
 		if s == aCard.KeyR { // Check if the latest random card is in the need_workOn map, and check the freq ...
 			if f >= 1 { // ... if the freq is 1+ we definitely need more work on this particular card, so we keep it
-				//rm() // we show the map
+				//read_map_of_fineOn() // we show the map
 				fmt.Printf("\n The Random card: %s was missed once or more \n", aCard.KeyH)
 				fmt.Println("... so we will keep it and quiz you on it ... ")
 				// Log to a file that this action was taken **do-this**
@@ -313,7 +324,7 @@ func check_it_for_needing_more_practice() {
 		for s, f := range frequencyMapOf_need_workOn {
 			if s == aCard.KeyR { // Check if the latest random is in the map, and check the freq ...
 				if f >= 1 { // ... if the freq is 1+ we definitely need more work on this particular card, so we set it as aCard
-					//rm() // we show the map
+					//read_map_of_fineOn() // we show the map
 					fmt.Println("\n This Random card was missed 1 or more times ")
 					fmt.Println("... so we will test you on it, since it has been a while")
 					// Log to a file that this action was taken **do-this**
@@ -332,21 +343,6 @@ func check_it_for_needing_more_practice() {
 			}
 		}
 	}
-}
-
-func rm() {
-	for s, f := range frequencyMapOf_IsFineOnChars {
-		fmt.Printf(" --- From MapOf_IsFineOn: string is:")
-		fmt.Printf(colorCyan)
-		fmt.Printf("%s", s)
-		fmt.Printf(colorReset)
-		fmt.Printf(", freq is:")
-		fmt.Printf(colorRed)
-		fmt.Printf("%d", f)
-		fmt.Printf(colorReset)
-		fmt.Printf(" ---\n")
-	}
-	fmt.Println("")
 }
 
 func stack_the_map() {

@@ -72,3 +72,45 @@ Checked card:も in the frequencyMapOf_need_workOn after:3 cycles
 Checked card:ち in the frequencyMapOf_need_workOn after:3 cycles
 
 Transition from exorcise 3 or 4 'Kata_Prompt-Respond-w-Hira|Romaji' occured at: 21:52:44 on Wednesday 08-30-2023 
+
+Inception of exorcise 3 or 4 'Kata_Prompt-Respond-w-Hira|Romaji' occured at: 22:16:15 on Thursday 08-31-2023 
+
+Checked card:ま in the frequencyMapOf_need_workOn after:3 cycles
+
+Checked card:ら in the frequencyMapOf_need_workOn after:3 cycles
+
+Inception of exorcise 3 or 4 'Kata_Prompt-Respond-w-Hira|Romaji' occured at: 23:00:51 on Thursday 08-31-2023 
+
+Checked card:れ in the frequencyMapOf_need_workOn after:3 cycles
+
+Checked card:つ in the frequencyMapOf_need_workOn after:3 cycles
+
+Checked card:ん in the frequencyMapOf_need_workOn after:3 cycles
+
+Checked card:ぴ in the frequencyMapOf_need_workOn after:3 cycles
+
+Checked card:い in the frequencyMapOf_need_workOn after:3 cycles
+
+Checked card:か in the frequencyMapOf_need_workOn after:3 cycles
+
+Checked card:ま in the frequencyMapOf_need_workOn after:3 cycles
+
+Checked card:す in the frequencyMapOf_need_workOn after:3 cycles
+
+Checked card:お in the frequencyMapOf_need_workOn after:3 cycles
+
+Checked card:る in the frequencyMapOf_need_workOn after:3 cycles
+
+Checked card:ぎゃ in the frequencyMapOf_need_workOn after:3 cycles
+
+Checked card:ぞ in the frequencyMapOf_need_workOn after:3 cycles
+
+Inception of exorcise 3 or 4 'Kata_Prompt-Respond-w-Hira|Romaji' occured at: 23:27:11 on Thursday 08-31-2023 
+
+Inception of exorcise 3 or 4 'Kata_Prompt-Respond-w-Hira|Romaji' occured at: 13:59:42 on Friday 09-01-2023 
+
+Checked card:お in the frequencyMapOf_need_workOn after:3 cycles
+
+Inception of exorcise 3 or 4 'Kata_Prompt-Respond-w-Hira|Romaji' occured at: 14:07:07 on Friday 09-01-2023 
+
+Inception of exorcise 3 or 4 'Kata_Prompt-Respond-w-Hira|Romaji' occured at: 14:13:14 on Friday 09-01-2023 

@@ -107,7 +107,7 @@ func TouchTypingExorcise(selectedExorcise string) {
 					case "Romaji+Kata_Prompt": // 2
 						meatOfRomajiKataExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
 					case "Kata_Prompt-Respond-w-Hira|Romaji": // 3 and 4
-						meatOfNakedKataExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
+						meatOfKataExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
 					}
 					break outOfForLoop
 				} else { // It must be a successive directive, so we continue to process it from the top of the loop
@@ -121,7 +121,7 @@ func TouchTypingExorcise(selectedExorcise string) {
 				case "Romaji+Kata_Prompt":
 					meatOfRomajiKataExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
 				case "Kata_Prompt-Respond-w-Hira|Romaji":
-					meatOfNakedKataExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
+					meatOfKataExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
 				}
 				// It is probably a valid guess, AND we need to leave the loop after processing it
 				break outOfForLoop
@@ -137,7 +137,7 @@ func branchOnUserSelectedDirectiveIfGiven(usersGuessOrOptionDirective, selectedE
 		cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
 		cyclicArrayHits = CyclicArrayHits{}
 		usersGuessOrOptionDirective = "null"
-		betweenMainMenuSelectionsTTE(selectedExorcise)
+		do_betweenMainMenuSelectionsTTE(selectedExorcise)
 		mainMenuPromptScanSelectAndBeginSelectedExorcise()
 	case "reset":
 		// flush the old stats and hits arrays
@@ -179,7 +179,7 @@ func branchOnUserSelectedDirectiveIfGiven(usersGuessOrOptionDirective, selectedE
 			re_display_KataExorciseInstructions()
 		}
 	case "rm":
-		rm()
+		read_map_of_fineOn()
 	case "stack":
 		stack_the_map()
 	}
