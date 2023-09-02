@@ -5,14 +5,14 @@ import (
 	"fmt"
 )
 
-func meatOfRomajiNakedExorcise(in string, skipFlag bool) { // NOTE: we have already been prompted with KeyR
-	// ..^ ^ ^ called as|with: (usersGuessOrOptionDirective, aCard.KeyH) that KeyH being the particular Hira in question
-	// so, in=the-users-guess, keyH=aCard.KeyH
+func meatOfRomajiExorcise(in string, skipFlag bool) { // NOTE: we have already been prompted with KeyR
+	// ..^ ^ ^ called as|with: (usersGuessOrOptionDirective, (bool)'skipFlag')
+	// so, 'in' == the-users-guess
 
 	var thisCaseOfAnInHasAlreadyBeenProcessedAbove bool
 	thisCaseOfAnInHasAlreadyBeenProcessedAbove = false
 	// *******************************************************************************************
-	// Handel special prompt cases prior to doing the normal "if in == " processing
+	// Handle special prompt cases prior to doing the normal "if in == " processing, i.e.,
 	// One 'very'-special key handler to emphasize the sameness of two variants of the zu sound
 	// *******************************************************************************************
 
@@ -47,7 +47,7 @@ func meatOfRomajiNakedExorcise(in string, skipFlag bool) { // NOTE: we have alre
 			usersGuessOrOptionDirective := semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(aCard.KeyR)
 			secondTry_meatOfRomajiExorcise(usersGuessOrOptionDirective)
 			// if the user guesses correctly on this ^ second try, skip the rest of this func
-			if skipFlag == false {
+			if skipFlag == false { // skipFlag will be false if the user guesses correctly below, in the secondTry_... func
 				fmt.Printf("%s", colorReset)
 				fmt.Printf("It was: ")
 				fmt.Printf("%s", colorCyan)
@@ -129,6 +129,21 @@ func secondTry_meatOfRomajiExorcise(in string) { // NOTE: we have already been p
 			logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyR)
 			logHits_in_cyclicArrayHits("Right", aCard.KeyR)
 		} else {
+			if in == "set" ||
+				in == "?" || // <-- if it IS a directive
+				in == "??" ||
+				in == "menu" ||
+				in == "reset" ||
+				in == "stat" ||
+				in == "dir" ||
+				in == "notes" ||
+				in == "quit" ||
+				in == "exit" ||
+				in == "stats" ||
+				in == "rm" ||
+				in == "stack" {
+				branchOnUserSelectedDirectiveIfGiven(in, "Kata_Prompt-Respond-w-Hira|Romaji") // <-- handle the directive
+			}
 			fmt.Printf("%s", colorRed)
 			fmt.Printf("     ^^Oops! ")
 			// log the miss:
@@ -136,7 +151,7 @@ func secondTry_meatOfRomajiExorcise(in string) { // NOTE: we have already been p
 			logHits_in_cyclicArrayHits("Oops", aCard.KeyR)
 			logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyR + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
 			// User failed second attempt, so do a "recursion", but with a skipFlag
-			meatOfRomajiNakedExorcise(in, true)
+			meatOfRomajiExorcise(in, true)
 		}
 	}
 
@@ -147,7 +162,7 @@ func secondTry_meatOfRomajiExorcise(in string) { // NOTE: we have already been p
 		// ********************************************************
 		// 'else', no special cases were found, so we process normal cases of "if in == aCard.KeyR"
 		// ********************************************************
-		if in == aCard.KeyH { // if in is the appropriate hira to match the Romaji prompt
+		if in == aCard.KeyH { // if 'in' is the appropriate hira (aCard.KeyH) to match the Romaji prompt
 			fmt.Printf("%s", colorGreen)
 			fmt.Printf("     　^^Right! \n") // intentional '\n'
 			fmt.Printf("%s", colorReset)
@@ -155,6 +170,21 @@ func secondTry_meatOfRomajiExorcise(in string) { // NOTE: we have already been p
 			logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyR)
 			logHits_in_cyclicArrayHits("Right", aCard.KeyR)
 		} else {
+			if in == "set" ||
+				in == "?" || // <-- if it IS a directive
+				in == "??" ||
+				in == "menu" ||
+				in == "reset" ||
+				in == "stat" ||
+				in == "dir" ||
+				in == "notes" ||
+				in == "quit" ||
+				in == "exit" ||
+				in == "stats" ||
+				in == "rm" ||
+				in == "stack" {
+				branchOnUserSelectedDirectiveIfGiven(in, "Kata_Prompt-Respond-w-Hira|Romaji") // <-- handle the directive
+			}
 			fmt.Printf("%s", colorRed)
 			fmt.Printf("      　^^Oops! ")
 			// log the miss:
@@ -162,7 +192,7 @@ func secondTry_meatOfRomajiExorcise(in string) { // NOTE: we have already been p
 			logHits_in_cyclicArrayHits("Oops", aCard.KeyR)
 			logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyR + ":it was:" + aCard.KeyH + ":but you had guessed:" + in)
 			// User failed second attempt, so do a "recursion", but with a skipFlag
-			meatOfRomajiNakedExorcise(in, true)
+			meatOfRomajiExorcise(in, true)
 		}
 	}
 }

@@ -119,6 +119,21 @@ func secondTry_meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It could have been either ず or づ as they are the same sound\n")
 		} else {
+			if in == "set" ||
+				in == "?" || // <-- if it IS a directive
+				in == "??" ||
+				in == "menu" ||
+				in == "reset" ||
+				in == "stat" ||
+				in == "dir" ||
+				in == "notes" ||
+				in == "quit" ||
+				in == "exit" ||
+				in == "stats" ||
+				in == "rm" ||
+				in == "stack" {
+				branchOnUserSelectedDirectiveIfGiven(in, "Kata_Prompt-Respond-w-Hira|Romaji") // <-- handle the directive
+			}
 			fmt.Printf("%s", colorRed)
 			fmt.Printf("        ^^Oops! ")
 			//
@@ -148,6 +163,21 @@ func secondTry_meatOfRomajiKataExorcise(in string) {
 				logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyR)
 				//
 			} else {
+				if in == "set" ||
+					in == "?" || // <-- if it IS a directive
+					in == "??" ||
+					in == "menu" ||
+					in == "reset" ||
+					in == "stat" ||
+					in == "dir" ||
+					in == "notes" ||
+					in == "quit" ||
+					in == "exit" ||
+					in == "stats" ||
+					in == "rm" ||
+					in == "stack" {
+					branchOnUserSelectedDirectiveIfGiven(in, "Kata_Prompt-Respond-w-Hira|Romaji") // <-- handle the directive
+				}
 				fmt.Printf("%s", colorRed)
 				fmt.Printf("      　 ^^Oops! ")
 				//

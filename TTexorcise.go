@@ -102,7 +102,7 @@ func TouchTypingExorcise(selectedExorcise string) {
 					// ... AND, we need to leave the loop after processing it
 					switch selectedExorcise {
 					case "Romaji_Prompt": // 1
-						meatOfRomajiNakedExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
+						meatOfRomajiExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
 						//check_for_match()
 					case "Romaji+Kata_Prompt": // 2
 						meatOfRomajiKataExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
@@ -116,7 +116,7 @@ func TouchTypingExorcise(selectedExorcise string) {
 			} else {
 				switch selectedExorcise {
 				case "Romaji_Prompt":
-					meatOfRomajiNakedExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
+					meatOfRomajiExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
 					//check_for_match()
 				case "Romaji+Kata_Prompt":
 					meatOfRomajiKataExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
