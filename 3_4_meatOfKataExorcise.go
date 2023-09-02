@@ -64,7 +64,7 @@ func meatOfKataExorcise(in string, skipFlag bool) {
 		logHits_in_cyclicArrayHits("Oops", aCard.KeyK)
 		logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyK + ":it was:" + aCard.KeyR + ":but you had guessed:" + in)
 		logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyR)
-		//
+		// copy
 		// When this func is re-called by the second, with flag set false, we skip this, and do the next
 		if skipFlag == true {
 			// Solicit the second guess ... and pass it to: secondTry_meatOfKataExorcise(in, true)
