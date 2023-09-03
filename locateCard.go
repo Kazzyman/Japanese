@@ -122,3 +122,17 @@ func practice_this_card(aCard_reset_request_as_Romaji string) {
 		fmt.Println("Element not found in: silentlyLocateCard(setKeyRequest string)")
 	}
 }
+func practice_this_cardD(aCard_reset_request_as_Romaji string) {
+	for _, card := range fileOfCardsMostDifficult {
+		if card.KeyR == aCard_reset_request_as_Romaji { // card.KeyR is the field that contains the Romaji
+			// v v v if we find a 'card' in the range of 'fileOfCards',
+			// ... we set the foundElement global var, which is used in reSet_aCard_andThereBy_reSet_thePromptString()
+			foundElement = &card // foundElement is a global var and contains all the fields of a card or element
+			aCardD = *foundElement
+			break
+		}
+	}
+	if foundElement == nil {
+		fmt.Println("Element not found in: silentlyLocateCard(setKeyRequest string)")
+	}
+}

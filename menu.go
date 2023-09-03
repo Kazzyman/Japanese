@@ -36,6 +36,8 @@ func mainMenuPromptScanSelectAndBeginSelectedExorcise() {
 		fmt.Printf("  Enter '2' for recognizing Romaji-Katakana pairs: typing Hiragana (somewhat easy, useful)\n")
 		fmt.Printf("  Enter '3' to practice recognizing Katakana, type either Hiragana or Romaji (very versatile)\n")
 		fmt.Printf("  Enter '5' to practice typing drill lines\n")
+		fmt.Printf("  Enter '6' to practice Hiragana\n")
+		fmt.Printf("  Enter '7' to practice Most-Difficult ones\n")
 		fmt.Printf("  Enter 'exit' to quit\n\n\n")
 		_, _ = fmt.Scan(&mainMenuSelection)
 
@@ -55,6 +57,14 @@ func mainMenuPromptScanSelectAndBeginSelectedExorcise() {
 			selectedExorcise := "drillLines"
 			log_to_JapLog_file_inception_time(selectedExorcise)
 			drillLines() // 5
+		} else if mainMenuSelection == "6" {
+			selectedExorcise := "Hira_prompt" // 3 or 4
+			log_to_JapLog_file_inception_time(selectedExorcise)
+			display_Hira_instructions_BeginExorcise(selectedExorcise) // 3 or 4
+		} else if mainMenuSelection == "7" {
+			selectedExorcise := "Most_Difficult" // 3 or 4
+			//log_to_JapLog_file_inception_time(selectedExorcise)
+			display_Difficult_instructions_BeginExorcise(selectedExorcise) // 3 or 4
 		} else if mainMenuSelection == "exit" || mainMenuSelection == "quit" {
 			os.Exit(1)
 		}
@@ -126,6 +136,51 @@ func body_of_KataExorciseInstructions() {
 //goland:noinspection ALL
 func re_display_KataExorciseInstructions() {
 	body_of_KataExorciseInstructions()
+}
+
+// 6
+//
+//goland:noinspection ALL
+func display_Hira_instructions_BeginExorcise(selectedExorcise string) {
+	body_of_Hira_instructions()
+	TouchTypingExorcise(selectedExorcise)
+}
+
+//goland:noinspection ALL
+func body_of_Hira_instructions() {
+	fmt.Println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+	fmt.Println("Practicing touch-typing (TT) Romaji in response to Hiragana prompts:\n")
+	fmt.Println("Type the Romaji corresponding to the Hiragana prompt\n")
+	display_ListingOf_OptionsThese_AllHave_inCommon() // The func is located at the end of this file
+	fmt.Println("Type the Romaji corresponding to the Hiragana prompt: \n")
+}
+
+//goland:noinspection ALL
+func reDisplay_Hira_instructions() {
+	body_of_Romaji_instructions()
+}
+
+// 7
+//
+//goland:noinspection ALL
+func display_Difficult_instructions_BeginExorcise(selectedExorcise string) {
+	body_of_Difficult_instructions()
+	TouchTypingExorciseDifficult(selectedExorcise)
+}
+
+//goland:noinspection ALL
+func body_of_Difficult_instructions() {
+	fmt.Println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+	fmt.Println("Practicing recognizing Katakana chars: Using Hiragana-input-mode on your system ...")
+	fmt.Println("... enter the Hiragana chars that correspond to the Katakana.\n")
+	fmt.Println("Or, alternatively, type the Romaji that corresponds to the Katakana\n")
+	display_ListingOf_OptionsThese_AllHave_inCommon() // The func is located at the end of this file
+	fmt.Println("Type either the Hiragana or Romaji that corresponds to the Katakana prompt: \n")
+}
+
+//goland:noinspection ALL
+func reDisplay_Difficult_instructions() {
+	body_of_Difficult_instructions()
 }
 
 // Things to do after an activity, and before beginning another activity
