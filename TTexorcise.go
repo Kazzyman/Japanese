@@ -39,6 +39,7 @@ func TouchTypingExorcise(selectedExorcise string) {
 		}
 		// in any case:
 		check_it_for_fine_on()
+		check_it_for_fine_onH()
 		isThis_a_cardWeNeedMoreWorkOn++
 
 		// Prompt with the appropriate field from the new random card and accept user's guess:
@@ -61,7 +62,7 @@ func TouchTypingExorcise(selectedExorcise string) {
 		//
 		//case of exorcise 6
 		case "Hira_prompt":
-			usersGuessOrOptionDirective = semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(aCard.KeyH) // Semi-universal prompt, passing H
+			usersGuessOrOptionDirective = prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(aCard.KeyH) // Semi-universal prompt, passing H
 		}
 
 	outOfForLoop: // this loop is only needed because we want to handel the case of successive directives (tricky)
@@ -88,7 +89,7 @@ func TouchTypingExorcise(selectedExorcise string) {
 					usersGuessOrOptionDirective = Kata_Prompt_Scan_4_Romaji_or_HiraResponse(aCard.KeyK)
 					// ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
 				case "Hira_prompt": // 6
-					usersGuessOrOptionDirective = semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(aCard.KeyH) // Semi-universal prompt, passing H
+					usersGuessOrOptionDirective = prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(aCard.KeyH) // Semi-universal prompt, passing H
 				}
 				// v v v v v   do not process directives from the re-prompting   v v v v v
 				if usersGuessOrOptionDirective != "set" &&

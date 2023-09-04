@@ -104,4 +104,30 @@ The line "ca.index = (ca.index + 1) % len(ca.jchar)" updates the index to the ne
 In summary, the (ca *CyclicArray...) method receiver declaration defines a method named 'Insert...' that operates on
 ... a CyclicArray... object. The method updates the array at the current index and cycles the index to the next position,
 ... (in such a way as to loop back to first position) effectively implementing the behavior of a cyclic array.
+
+The method receiver syntax tells the compiler that the method needs to be able to modify the state of the struct.
+The compiler knows that it can only do this if it has a pointer to the struct, so it creates a pointer to the struct
+and passes that pointer to the method.
+
+The type declaration does not cause the compiler to generate a pointer. The type declaration simply defines the type of
+the variable. In this case, the type of the variable is CyclicArrayOfTheJcharsGottenWrong.
+
+The var declaration does not cause the compiler to generate a pointer either. The var declaration simply declares the
+variable and assigns it a value. In this case, the value is the zero-value of the CyclicArrayOfTheJcharsGottenWrong struct.
+
+The method receiver syntax is what causes the compiler to generate a pointer. The method receiver syntax tells the compiler
+that the method needs to be able to modify the state of the struct, and the compiler knows that it can only do this if it
+has a pointer to the struct.
+
+You do not have to have previously used the & with a var or a type declaration in order to later get an
+address, a pointer, to said var type or object.
+
+In this case, the var cyclicArrayOfTheJcharsGottenWrong CyclicArrayOfTheJcharsGottenWrong statement does not use
+the & operator. This means that the cyclicArrayOfTheJcharsGottenWrong variable is a value, not a pointer.
+
+However, the *CyclicArray in the method receiver declaration is a pointer. This means that the method needs to be able
+to modify the state of the CyclicArrayOfTheJcharsGottenWrong struct, and it can only do that if it has a pointer to the struct.
+
+The *CyclicArray is created implicitly by the compiler. The compiler knows that the method needs to be able to modify the
+state of the struct, so it creates a pointer to the struct and passes that pointer to the method.
 */

@@ -2,12 +2,10 @@ package main
 
 // **do-this**
 import (
-	"bufio"
 	"fmt"
 	"math/rand"
 	"os"
 	"regexp"
-	"strings"
 )
 
 // The content of "prompt" (i.e., aCard.KeyR | aCard.KeyRK | aCard.KeyK) is set by the calling activity
@@ -21,6 +19,17 @@ func semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(prompt string) (
 	fmt.Printf("%s", prompt)    // Prompt the user, in a pretty blue color: Options: '?' | '??'
 	fmt.Printf("%s", colorCyan) //
 	fmt.Printf(" Type the corresponding Hiragana, or '?' for help with: %s \n", prompt)
+	fmt.Printf(" or, type '??' for help on a particular Hiragana char ... \n")
+	fmt.Printf(" Here:> ")
+	fmt.Printf("%s", colorReset)
+	_, _ = fmt.Scan(&usersGuessOrOptionDirective)
+	return usersGuessOrOptionDirective
+}
+func prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(prompt string) (usersGuessOrOptionDirective string) {
+	// The return signature (above) creates a local var usersGuessOrOptionDirective, used below in the Scan():
+	fmt.Printf("%s", prompt)    // Prompt the user, in a pretty blue color: Options: '?' | '??'
+	fmt.Printf("%s", colorCyan) //
+	fmt.Printf(" Type the corresponding Romaji, or '?' for help with: %s \n", prompt)
 	fmt.Printf(" or, type '??' for help on a particular Hiragana char ... \n")
 	fmt.Printf(" Here:> ")
 	fmt.Printf("%s", colorReset)
@@ -147,124 +156,6 @@ func read_map_of_fineOn() {
 
 // end of DIRECTIVES -----------------------------------------------------------------------------------
 
-// Activity #5
-func drillLines() {
-	var firstSlice []string
-	var secondSlice []string
-	var thirdSlice []string
-	var fourthSlice []string
-	var fifthSlice []string
-
-	firstSlice = []string{"あ", "い", "う", "え", "お", "か", "き", "く", "け", "こ", "さ", "し", "す", "せ", "そ",
-		"た", "ち", "つ", "て", "と", "な", "に", "ぬ", "ね", "の"}
-
-	//                      1     2     3    4     5     6    7    8     9     10   11    12    13   14    15   16    17    18    19   20   21
-	secondSlice = []string{"は", "ひ", "ふ", "へ", "ほ", "ま", "み", "む", "め", "も", "や", "ゆ", "よ", "ら", "り", "る", "れ", "ろ", "わ", "を", "ん"}
-
-	//                     1     2     3    4     5    6     7     8    9     10   11    12    13    14   15   16    17
-	thirdSlice = []string{"が", "ぎ", "ぐ", "げ", "ご", "ざ", "じ", "ず", "ぜ", "ぞ", "だ", "ぢ", "づ", "で", "ど", "ば", "び",
-		//   18   19    20    21    22   23    24   25
-		"ぶ", "べ", "ぼ", "ぱ", "ぴ", "ぷ", "ぺ", "ぽ"}
-
-	fourthSlice = []string{"ぎゃ", "ぎゅ", "ぎょ", "じゃ", "じゅ", "じょ", "ぢゃ", "ぢゅ", "ぢょ", "びゃ", "びゅ", "びょ",
-		"ぴゃ", "ぴゅ", "ぴょ", "きゃ", "きゅ", "きょ", "しゃ", "しゅ", "しょ", "ちゃ", "ちゅ", "きょ"}
-
-	fifthSlice = []string{"にゃ", "にゅ", "にょ", "ひゃ", "ひゅ", "ひょ", "みゃ", "みゅ", "みょ", "りゃ", "りゅ", "りょ"}
-	//
-	//
-	fmt.Println("  1  2   3  4   5   6   7   8   9   10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25")
-	fmt.Println("あ　い　う　え　お　か　き　く　け　こ　さ　し　す　せ　そ　た　ち　つ　て　と　な　に　ぬ　ね　の")
-	for_drillLines_obtainAndDealWithUserInput(firstSlice)
-
-	fmt.Println("  1  2   3  4   5  　6  7   8   9   10  11  12  13  14  15  16  17  18  19  20  21")
-	fmt.Println("は　ひ　ふ　へ　ほ　ま　み　む　め　も　や　ゆ　よ　ら　り　る　れ　ろ　わ　を　ん")
-	for_drillLines_obtainAndDealWithUserInput(secondSlice)
-
-	fmt.Println("  1   2   3  4   5   6    7   8  9   10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25 ")
-	fmt.Println("ga  gi  gu  ge  go,  za  ji  zu  ze  zo, da  ji  zu  de  do, ba  bi  bu  be  bo, pa  pi  pu  pe  po")
-	for_drillLines_obtainAndDealWithUserInput(thirdSlice)
-
-	fmt.Println(" 1     2      3    4     5   6    7    8    9   　10    11   12   13   14   15   16   17   18   19   20  21   22   23   24")
-	fmt.Println("gya  　gyu 　 gyo  ja  　ju  jo  　ja  ju 　 jo  bya 　byu  byo  pya  pyu  pyo  kya  kyu  kyo  sha  shu  sho  cha  chu  cho")
-	for_drillLines_obtainAndDealWithUserInput(fourthSlice)
-
-	fmt.Println("1      2    3      4   　  5     6     7    8      9    10    11    12")
-	fmt.Println("nya  　nyu  nyo 　 hya 　 hyu  hyo 　 mya  myu　  myo  rya 　 ryu  ryo")
-	for_drillLines_obtainAndDealWithUserInput(fifthSlice)
-
-	var pause string
-	fmt.Println("Enter 'menu' to return to the main menu")
-	_, err := fmt.Scan(&pause)
-	if pause == "menu" {
-		/*
-			case "menu": // From func branchOnUserSelectedDirectiveIfGiven(usersGuessOrOptionDirective, selectedExorcise string)
-				// Flush the old stats and hits arrays
-				cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
-				cyclicArrayHits = CyclicArrayHits{}
-				usersGuessOrOptionDirective = "null"
-				do_betweenMainMenuSelectionsTTE(selectedExorcise)
-				mainMenuPromptScanSelectAndBeginSelectedExorcise()
-		*/
-		// Flush the old stats and hits arrays
-		cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
-		cyclicArrayHits = CyclicArrayHits{}
-		// finalExorcise = "drillLines"
-		//usersGuessOrOptionDirective = "null"
-		do_betweenMainMenuSelectionsTTE("drillLines")
-		mainMenuPromptScanSelectAndBeginSelectedExorcise()
-	}
-	if err != nil {
-		return
-	}
-	//
-}
-
-// Used 5 times, above in: func drillLines()
-func for_drillLines_obtainAndDealWithUserInput(refSlice []string) {
-	// Get user input
-	reader := bufio.NewReader(os.Stdin)
-	input, _ := reader.ReadString('\n')
-
-	// Convert to strings
-	chars := strings.Fields(input)
-
-	match := true
-	for i, v := range chars {
-		if v != refSlice[i] {
-			match = false
-			fmt.Printf("\n Failure to match at possition: %d \n\n", i+1)
-			if len(refSlice) == i {
-				break
-			}
-		}
-	}
-	if match {
-		fmt.Printf("\nGood job! The slices match: %t \n\n", match)
-	}
-	var pause string
-	fmt.Println("Enter 'menu' to return to the main menu")
-	_, err := fmt.Scan(&pause)
-	if err != nil {
-		// return
-	}
-	if pause == "menu" {
-		/*
-			case "menu": // From func branchOnUserSelectedDirectiveIfGiven(usersGuessOrOptionDirective, selectedExorcise string)
-				// Flush the old stats and hits arrays
-				cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
-				cyclicArrayHits = CyclicArrayHits{}
-				usersGuessOrOptionDirective = "null"
-				do_betweenMainMenuSelectionsTTE(selectedExorcise)
-				mainMenuPromptScanSelectAndBeginSelectedExorcise()
-		*/
-		// Flush the old stats and hits arrays
-		cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
-		cyclicArrayHits = CyclicArrayHits{}
-		do_betweenMainMenuSelectionsTTE("drillLines")
-		mainMenuPromptScanSelectAndBeginSelectedExorcise()
-	}
-}
-
 /*
 .
 .
@@ -306,25 +197,22 @@ func check_it_for_fine_on() {
 	}
 }
 
-func check_it_for_fine_onD() {
+func check_it_for_fine_onH() {
 	for s, f := range frequencyMapOf_IsFineOnChars {
-		if s == aCardD.KeyR { // if it is in the map we need to check the freq
+		if s == aCard.KeyH { // if it is in the map we need to check the freq
 			if f >= 2 { // if the freq is 3+ we need another card
 				//read_map_of_fineOn() // we show the map
 				//fmt.Printf("\n You were correct on: %s twice or more ... \n", aCard.KeyR)
-				/*
-					// Log to a file that this action was taken **do-this**
-					fileHandleBig, err := os.OpenFile("JapLogD.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
-					check(err)                                                                                  // ... gets a file handle to JapLog.txt
-					//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
-					_, err2 := fmt.Fprintf(fileHandleBig, "\n Prompt %s was found in frequencyMapOf_IsFineOnChars, KeyH:%s freq:%d \n",
-						s, aCard.KeyH, f)
-					check(err2)
-
-				*/
-				pick_Difficult_RandomCard_Assign_aCard() // We get that new card ...
+				// Log to a file that this action was taken **do-this**
+				fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+				check(err)                                                                                 // ... gets a file handle to JapLog.txt
+				//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
+				_, err2 := fmt.Fprintf(fileHandleBig, "\n Prompt %s was found in frequencyMapOf_IsFineOnChars, KeyH:%s freq:%d \n",
+					s, aCard.KeyH, f)
+				check(err2)
+				pick_RandomCard_Assign_aCard() // We get that new card ...
 				//fmt.Println(" ... so here is a new one ... \n")
-				check_it_for_fine_onD() // ... and we check THAT new card with a recursive call
+				check_it_for_fine_onH() // ... and we check THAT new card with a recursive call
 			} else { // else the card had a freq less than 3, so ...
 				break //  ... we exit the loop and the func -- we will use this card
 			}
@@ -375,62 +263,6 @@ func check_it_for_needing_more_practice() {
 					check(err2)
 					practice_this_card(aCard.KeyR) // locate and assign aCard // set it as new aCard
 					break                          //  ... we exit the loop and the func -- we will keep and use this random card
-					//check_it_for_fine_on() // ... and we check THAT new card with a recursive call
-				} else { // else the card had a freq less than 2, so ...
-					continue // keep looking through the map for another instance that may in there, with a significant freq
-				}
-			}
-		}
-	}
-}
-
-func check_it_for_needing_more_practiceD() {
-	var skip_this_step bool
-	skip_this_step = false
-	for s, f := range frequencyMapOf_need_workOn {
-		if s == aCardD.KeyR { // Check if the latest random card is in the need_workOn map, and check the freq ...
-			if f >= 1 { // ... if the freq is 1+ we definitely need more work on this particular card, so we keep it
-				//read_map_of_fineOn() // we show the map
-				fmt.Printf("\n The Random card: %s was missed once or more \n", aCardD.KeyH)
-				fmt.Println("... so we will keep it and quiz you on it ... ")
-				/*
-					// Log to a file that this action was taken **do-this**
-					fileHandleBig, err := os.OpenFile("JapLogD.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
-					check(err)                                                                                  // ... gets a file handle to JapLog.txt
-					//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
-					_, err2 := fmt.Fprintf(fileHandleBig, "\nPart1of2 found:%s in frequencyMapOf_need_workOn, freq:%d \n",
-						s, f)
-					check(err2)
-
-				*/
-				skip_this_step = true
-				break //  ... we exit the loop and the func -- we will keep and use this random card, and skip the next loop
-				//check_it_for_fine_on() // ... and we check THAT new card with a recursive call
-			} else { // else the card had a freq less than 2, so ...
-				continue // keep looking through the map for another instance that may in there, with a significant freq
-			}
-		}
-	}
-	if skip_this_step == false {
-		// The latest random was not in the map, but it is time to serve-up something difficult ... so:
-		for s, f := range frequencyMapOf_need_workOn {
-			if s == aCardD.KeyR { // Check if the latest random is in the map, and check the freq ...
-				if f >= 1 { // ... if the freq is 1+ we definitely need more work on this particular card, so we set it as aCard
-					//read_map_of_fineOn() // we show the map
-					fmt.Println("\n This Random card was missed 1 or more times ")
-					fmt.Println("... so we will test you on it, since it has been a while")
-					/*
-						// Log to a file that this action was taken **do-this**
-						fileHandleBig, err := os.OpenFile("JapLogD.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
-						check(err)                                                                                  // ... gets a file handle to JapLog.txt
-						//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
-						_, err2 := fmt.Fprintf(fileHandleBig, "\nPart2of2 found:%s in frequencyMapOf_need_workOn, freq:%d \n",
-							s, f)
-						check(err2)
-
-					*/
-					practice_this_cardD(aCardD.KeyR) // locate and assign aCard // set it as new aCard
-					break                            //  ... we exit the loop and the func -- we will keep and use this random card
 					//check_it_for_fine_on() // ... and we check THAT new card with a recursive call
 				} else { // else the card had a freq less than 2, so ...
 					continue // keep looking through the map for another instance that may in there, with a significant freq

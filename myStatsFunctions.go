@@ -159,5 +159,13 @@ func log_to_JapLog_file_inception_time(selectedExorcise string) {
 		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 5 'Drill Lines' occured at: %s \n",
 			currentTime.Format("01-02-2006 15:04:05 Monday"))
 		check(err2)
+
+	} else if selectedExorcise == "Hira_prompt" {
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+		check(err)                                                                                 // ... gets a file handle to JapLog.txt
+		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
+		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 6 'Hira_prompt' occurred at: %s \n",
+			currentTime.Format("15:04:05 on Monday 01-02-2006"))
+		check(err2)
 	}
 }
