@@ -128,9 +128,7 @@ var fileOfCards = []charSetStruct{
 		" not really a thing ",
 		" not really a thing ",
 		" not really a thing "},
-	/*
 
-	 */
 	// vowels: (a-i-u-e-o) ==========================================================================================
 	// 2 of あ ア a -- 2 times for a:あ:ア
 	{"ア", "あ", "a", "aア", "あ",

@@ -11,6 +11,12 @@ import (
 // TouchTypingExorcise
 // The content of "prompt" (i.e., aCard.KeyR | aCard.KeyRK | aCard.KeyK) is set by the calling activity
 //
+// Used exclusively for exorcise 6
+var Hira_prompt_KeyH string
+var Hira_prompt_KeyK string
+var Hira_prompt_KeyX string
+var Hira_prompt_is string
+
 func TouchTypingExorcise(selectedExorcise string) {
 	// Accepts the following for ^ ^ ^ ^ :  RomajiNakedPrompt -- RomajiKataPrompt -- KataNakedPrompt
 	//
@@ -23,23 +29,39 @@ func TouchTypingExorcise(selectedExorcise string) {
 	var usersGuessOrOptionDirective string
 	//
 	isThis_a_cardWeNeedMoreWorkOn := 0 // now and then we will consider working on a char the user has had trouble with
+	///
+	///
+	// --- Here begins the main loop, which encapsulates the entirety of this func ---
 	for {
 		pick_RandomCard_Assign_aCard()         // Assigns a random card to the global aCard
 		if isThis_a_cardWeNeedMoreWorkOn > 2 { // if we have gone without augmenting the random picks with cards we have prev missed ...
 			//
-			// Log to a file that this action was taken **do-this**
-			fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
-			check(err)                                                                                 // ... gets a file handle to JapLog.txt
-			//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
-			_, err2 := fmt.Fprintf(fileHandleBig, "\nChecked card:%s in the frequencyMapOf_need_workOn after:%d cycles\n",
-				aCard.KeyH, isThis_a_cardWeNeedMoreWorkOn)
-			check(err2)
-			isThis_a_cardWeNeedMoreWorkOn = 0 // ... for a while now, then let's go get a card we've missed before, instead of that random one
-			check_it_for_needing_more_practice()
+			/*
+				// Log to a file that this action was taken **do-this**
+				fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+				check(err)                                                                                 // ... gets a file handle to JapLog.txt
+				//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
+				_, err2 := fmt.Fprintf(fileHandleBig, "\nChecked card:%s in the frequencyMapOf_need_workOn after:%d cycles\n",
+					aCard.KeyH, isThis_a_cardWeNeedMoreWorkOn)
+				check(err2)
+
+			*/
+			isThis_a_cardWeNeedMoreWorkOn = 0    // ... for a while now, then let's go get a card we've missed before, instead of that random one
+			check_it_for_needing_more_practice() // **do-this** this func probably need some work to function with exorcise 6
 		}
 		// in any case:
-		check_it_for_fine_on()
-		check_it_for_fine_onH()
+		/*
+			if Hira_prompt_is == "kata" {
+				check_it_for_fine_on() // Checks for Romaji only
+			} else if Hira_prompt_is == "hira" {
+				check_it_for_fine_onH() // Checks for Hiragana only
+			}
+		*/
+		if selectedExorcise == "Hira_prompt" {
+			check_it_for_fine_onHK() // Attempts to check for both Hira and Romaji
+		} else {
+			check_it_for_fine_on() // Checks for Romaji only
+		}
 		isThis_a_cardWeNeedMoreWorkOn++
 
 		// Prompt with the appropriate field from the new random card and accept user's guess:
@@ -62,7 +84,20 @@ func TouchTypingExorcise(selectedExorcise string) {
 		//
 		//case of exorcise 6
 		case "Hira_prompt":
-			usersGuessOrOptionDirective = prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(aCard.KeyH) // Semi-universal prompt, passing H
+			Hira_prompt_KeyH = aCard.KeyH
+			Hira_prompt_KeyK = aCard.KeyK
+			// Generate random 0 or 1
+			random := rand.Intn(2)
+
+			if random == 0 {
+				Hira_prompt_is = "hira"
+				Hira_prompt_KeyX = aCard.KeyH
+				usersGuessOrOptionDirective = prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(Hira_prompt_KeyH) // RomajiResponse prompt, passing H
+			} else {
+				Hira_prompt_is = "kata"
+				Hira_prompt_KeyX = aCard.KeyK
+				usersGuessOrOptionDirective = prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(Hira_prompt_KeyK) // RomajiResponse prompt, passing K
+			}
 		}
 
 	outOfForLoop: // this loop is only needed because we want to handel the case of successive directives (tricky)
@@ -88,8 +123,21 @@ func TouchTypingExorcise(selectedExorcise string) {
 				case "Kata_Prompt-Respond-w-Hira|Romaji": // 3 or 4
 					usersGuessOrOptionDirective = Kata_Prompt_Scan_4_Romaji_or_HiraResponse(aCard.KeyK)
 					// ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
-				case "Hira_prompt": // 6
-					usersGuessOrOptionDirective = prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(aCard.KeyH) // Semi-universal prompt, passing H
+				case "Hira_prompt":
+					//for {
+					// Generate random 0 or 1
+					random := rand.Intn(2)
+
+					if random == 0 {
+						Hira_prompt_is = "hira"
+						Hira_prompt_KeyX = aCard.KeyH
+						usersGuessOrOptionDirective = prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(aCard.KeyH) // RomajiResponse prompt, passing H
+					} else {
+						Hira_prompt_is = "kata"
+						Hira_prompt_KeyX = aCard.KeyK
+						usersGuessOrOptionDirective = prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(aCard.KeyK) // RomajiResponse prompt, passing K
+					}
+					//}
 				}
 				// v v v v v   do not process directives from the re-prompting   v v v v v
 				if usersGuessOrOptionDirective != "set" &&

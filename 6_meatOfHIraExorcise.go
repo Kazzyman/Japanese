@@ -45,24 +45,41 @@ func meatOfHiraExorcise(in string, skipFlag bool) { // NOTE: we have already bee
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It could have been either ず or づ as they are the same sound: zu\n")
 			// log the hit:
-			logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyH)
-			logHits_in_cyclicArrayHits("Right", aCard.KeyH)
+			if Hira_prompt_is == "hira" {
+				logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyH)
+				logHits_in_cyclicArrayHits("Right", aCard.KeyH)
+			} else if Hira_prompt_is == "kata" {
+				logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyK)
+				logHits_in_cyclicArrayHits("Right", aCard.KeyK)
+			}
 		} else if in == "zu" {
 			fmt.Printf("%s", colorGreen)
 			fmt.Printf("      ^^Right! ")
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It could have been either ず or づ as they are the same sound: zu\n")
 			// log the hit:
-			logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyH)
-			logHits_in_cyclicArrayHits("Right", aCard.KeyH)
+			if Hira_prompt_is == "hira" {
+				logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyH)
+				logHits_in_cyclicArrayHits("Right", aCard.KeyH)
+			} else if Hira_prompt_is == "kata" {
+				logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyK)
+				logHits_in_cyclicArrayHits("Right", aCard.KeyK)
+			}
 		} else {
 			fmt.Printf("%s", colorRed)
 			fmt.Printf("     ^^Oops! ")
 			// log the miss:
-			logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyH)
-			logHits_in_cyclicArrayHits("Oops", aCard.KeyH)
-			logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyH +
-				":it was:" + aCard.KeyR + ":but you had guessed:" + in)
+			if Hira_prompt_is == "hira" {
+				logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyH)
+				logHits_in_cyclicArrayHits("Oops", aCard.KeyH)
+				logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyH +
+					":it was:" + aCard.KeyR + ":but you had guessed:" + in)
+			} else if Hira_prompt_is == "kata" {
+				logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyK)
+				logHits_in_cyclicArrayHits("Oops", aCard.KeyK)
+				logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyK +
+					":it was:" + aCard.KeyR + ":but you had guessed:" + in)
+			}
 
 			// When this func is re-called by secondTry_, with flag set false, we skip this, and do the next
 			if skipFlag == true {
@@ -71,7 +88,7 @@ func meatOfHiraExorcise(in string, skipFlag bool) { // NOTE: we have already bee
 				fmt.Printf(colorReset)
 				// Re-prompt, will send that second guess to the secondTry_meatOfRomajiExorcise func ...
 				// Obtain the second guess, will pass it as 'in' to the secondTry_ func, below
-				in = semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(aCard.KeyH)
+				in = prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(Hira_prompt_KeyX)
 				if in == "set" ||
 					in == "?" || // <-- If it IS a directive
 					in == "??" ||
@@ -110,21 +127,33 @@ func meatOfHiraExorcise(in string, skipFlag bool) { // NOTE: we have already bee
 		// ********************************************************
 		// 'else', no special cases were found, so we process normal cases of "if 'in' == aCard.KeyR"
 		// ********************************************************
-		if in == aCard.KeyR { // if 'in' is the appropriate Romaji to match the hira prompt
+		if in == aCard.KeyR { // if 'in' is the appropriate Romaji to match the hira or kata prompt
 			fmt.Printf("%s", colorGreen)
 			fmt.Printf("     　^^Right! \n") // intentional '\n'
 			fmt.Printf("%s", colorReset)
 			// log the hit:
-			logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyH)
-			logHits_in_cyclicArrayHits("Right", aCard.KeyH)
+			if Hira_prompt_is == "hira" {
+				logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyH)
+				logHits_in_cyclicArrayHits("Right", aCard.KeyH)
+			} else if Hira_prompt_is == "kata" {
+				logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyK)
+				logHits_in_cyclicArrayHits("Right", aCard.KeyK)
+			}
 		} else {
 			fmt.Printf("%s", colorRed)
 			fmt.Printf("      　^^Oops! ")
 			// log the miss:
-			logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyH)
-			logHits_in_cyclicArrayHits("Oops", aCard.KeyH)
-			logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyH +
-				":it was:" + aCard.KeyR + ":but you had guessed:" + in)
+			if Hira_prompt_is == "hira" {
+				logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyH)
+				logHits_in_cyclicArrayHits("Oops", aCard.KeyH)
+				logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyH +
+					":it was:" + aCard.KeyR + ":but you had guessed:" + in)
+			} else if Hira_prompt_is == "kata" {
+				logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyK)
+				logHits_in_cyclicArrayHits("Oops", aCard.KeyK)
+				logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyK +
+					":it was:" + aCard.KeyR + ":but you had guessed:" + in)
+			}
 			//
 			// When this func is re-called by secondTry_, with flag set false, we skip this, and do the next
 			if skipFlag == true {
@@ -132,7 +161,8 @@ func meatOfHiraExorcise(in string, skipFlag bool) { // NOTE: we have already bee
 				fmt.Println("Try again") // This only prints on first pass
 				fmt.Printf(colorReset)
 				// ... Re-prompt, and send that second guess to the secondTry_meatOfKataExorcise func
-				in = semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(aCard.KeyH)
+				in = prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(Hira_prompt_KeyX)
+				//in = semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(aCard.KeyH)
 				if in == "set" ||
 					in == "?" || // <-- If it IS a directive
 					in == "??" ||
@@ -187,32 +217,49 @@ func secondTry_meatOfHiraExorcise(in string) { // NOTE: we have already been pro
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It could have been either ず or づ as they are the same sound: zu\n")
 			// log the hit:
-			logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyH)
-			logHits_in_cyclicArrayHits("Right", aCard.KeyH)
+			if Hira_prompt_is == "hira" {
+				logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyH)
+				logHits_in_cyclicArrayHits("Right", aCard.KeyH)
+			} else if Hira_prompt_is == "kata" {
+				logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyK)
+				logHits_in_cyclicArrayHits("Right", aCard.KeyK)
+			}
 		} else if in == "zu" {
 			fmt.Printf("%s", colorGreen)
 			fmt.Printf("      ^^Right! ")
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It could have been either ず or づ as they are the same sound: zu\n")
 			// log the hit:
-			logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyH)
-			logHits_in_cyclicArrayHits("Right", aCard.KeyH)
+			if Hira_prompt_is == "hira" {
+				logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyH)
+				logHits_in_cyclicArrayHits("Right", aCard.KeyH)
+			} else if Hira_prompt_is == "kata" {
+				logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyK)
+				logHits_in_cyclicArrayHits("Right", aCard.KeyK)
+			}
 		} else {
 			//
 			fmt.Printf("%s", colorRed)
 			fmt.Printf("     ^^Oops! ")
 			// log the miss:
-			logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyH)
-			logHits_in_cyclicArrayHits("Oops", aCard.KeyH)
-			logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyH +
-				":it was:" + aCard.KeyR + ":but you had guessed:" + in)
+			if Hira_prompt_is == "hira" {
+				logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyH)
+				logHits_in_cyclicArrayHits("Oops", aCard.KeyH)
+				logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyH +
+					":it was:" + aCard.KeyR + ":but you had guessed:" + in)
+			} else if Hira_prompt_is == "kata" {
+				logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyK)
+				logHits_in_cyclicArrayHits("Oops", aCard.KeyK)
+				logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyK +
+					":it was:" + aCard.KeyR + ":but you had guessed:" + in)
+			}
 
 			// Solicit the third and final guess ... and pass it to: secondTry_meatOfRomajiExorcise(in, false)
 			fmt.Println("Try again") // This only prints on first pass
 			fmt.Printf(colorReset)
 			// Obtain the second guess, and pass it as 'in'
 			// Re-prompt, and send that third and final guess to the secondTry_meatOfRomajiExorcise func
-			in = semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(aCard.KeyH)
+			in = prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(Hira_prompt_KeyX)
 			if in == "set" ||
 				in == "?" || // <-- If it IS a directive
 				in == "??" ||
@@ -231,10 +278,17 @@ func secondTry_meatOfHiraExorcise(in string) { // NOTE: we have already been pro
 			fmt.Printf("%s", colorRed)
 			fmt.Printf("      　^^Oops! ")
 
-			logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyH)
-			logHits_in_cyclicArrayHits("Oops", aCard.KeyH)
-			logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyH +
-				":it was:" + aCard.KeyR + ":but you had guessed:" + in)
+			if Hira_prompt_is == "hira" {
+				logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyH)
+				logHits_in_cyclicArrayHits("Oops", aCard.KeyH)
+				logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyH +
+					":it was:" + aCard.KeyR + ":but you had guessed:" + in)
+			} else if Hira_prompt_is == "kata" {
+				logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyK)
+				logHits_in_cyclicArrayHits("Oops", aCard.KeyK)
+				logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyK +
+					":it was:" + aCard.KeyR + ":but you had guessed:" + in)
+			}
 
 			//
 			// User failed third and final attempt, so do a "recursion", but with a skipFlag false
@@ -249,13 +303,18 @@ func secondTry_meatOfHiraExorcise(in string) { // NOTE: we have already been pro
 		// ********************************************************
 		// 'else', no special cases were found, so we process normal cases of "if in == aCard.KeyH"
 		// ********************************************************
-		if in == aCard.KeyR { // If 'in' is the appropriate hira (aCard.KeyH) to match the Romaji prompt
+		if in == aCard.KeyR { // if 'in' is the appropriate Romaji to match the hira or kata prompt
 			fmt.Printf("%s", colorGreen)
 			fmt.Printf("     　^^Right! \n") // Intentional '\n'
 			fmt.Printf("%s", colorReset)
 			// log the hit:
-			logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyH)
-			logHits_in_cyclicArrayHits("Right", aCard.KeyH)
+			if Hira_prompt_is == "hira" {
+				logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyH)
+				logHits_in_cyclicArrayHits("Right", aCard.KeyH)
+			} else if Hira_prompt_is == "kata" {
+				logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyK)
+				logHits_in_cyclicArrayHits("Right", aCard.KeyK)
+			}
 		} else {
 
 			// Solicit the third and final guess ... and pass it to: meatOfRomajiExorcise(in, false)
@@ -264,7 +323,7 @@ func secondTry_meatOfHiraExorcise(in string) { // NOTE: we have already been pro
 			fmt.Printf("%s", colorReset)
 			// Obtain the last guess, and pass it as 'in'
 			// Re-prompt, and send that third and last guess back to: meatOfRomajiExorcise(in, false)
-			in = semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(aCard.KeyH)
+			in = prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(Hira_prompt_KeyX)
 			if in == "set" ||
 				in == "?" || // <-- If it IS a directive
 				in == "??" ||

@@ -210,7 +210,7 @@ func body_of_Hira_instructions() {
 
 //goland:noinspection ALL
 func reDisplay_Hira_instructions() {
-	body_of_Romaji_instructions()
+	body_of_Hira_instructions()
 }
 
 // 7
