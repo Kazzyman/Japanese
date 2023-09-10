@@ -2,9 +2,7 @@ package main
 
 // **do-this**
 import (
-	"fmt"
 	"math/rand"
-	"os"
 	"time"
 )
 
@@ -12,10 +10,10 @@ import (
 // The content of "prompt" (i.e., aCard.KeyR | aCard.KeyRK | aCard.KeyK) is set by the calling activity
 //
 // Used exclusively for exorcise 6
-var Hira_prompt_KeyH string
-var Hira_prompt_KeyK string
-var Hira_prompt_KeyX string
-var Hira_prompt_is string
+var Mixed_prompts_KeyH string
+var Mixed_prompts_KeyK string
+var Mixed_prompts_KeyX string
+var Mixed_prompt_is string
 
 func TouchTypingExorcise(selectedExorcise string) {
 	// Accepts the following for ^ ^ ^ ^ :  RomajiNakedPrompt -- RomajiKataPrompt -- KataNakedPrompt
@@ -32,33 +30,44 @@ func TouchTypingExorcise(selectedExorcise string) {
 	///
 	///
 	// --- Here begins the main loop, which encapsulates the entirety of this func ---
+
 	for {
-		pick_RandomCard_Assign_aCard()         // Assigns a random card to the global aCard
+		// Does not work well with duplicates in file
+		/*
+			if fromEndOfFileCounter%2 == 0 {
+				pick_RandomCard_Assign_aCard() // Assigns a random card to the global aCard
+				fromEndOfFileCounter++
+			} else {
+				aCard = fileOfCards[nonRandomCardFromEnd]
+				nonRandomCardFromEnd--
+			}
+		*/
+		pick_RandomCard_Assign_aCard() // Assigns a random card to the global aCard
+
 		if isThis_a_cardWeNeedMoreWorkOn > 2 { // if we have gone without augmenting the random picks with cards we have prev missed ...
 			//
 			/*
 				// Log to a file that this action was taken **do-this**
 				fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
 				check(err)                                                                                 // ... gets a file handle to JapLog.txt
-				//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
 				_, err2 := fmt.Fprintf(fileHandleBig, "\nChecked card:%s in the frequencyMapOf_need_workOn after:%d cycles\n",
 					aCard.KeyH, isThis_a_cardWeNeedMoreWorkOn)
 				check(err2)
-
+				fileHandleBig.Close()
 			*/
 			isThis_a_cardWeNeedMoreWorkOn = 0    // ... for a while now, then let's go get a card we've missed before, instead of that random one
 			check_it_for_needing_more_practice() // **do-this** this func probably need some work to function with exorcise 6
 		}
 		// in any case:
 		/*
-			if Hira_prompt_is == "kata" {
+			if Mixed_prompt_is == "kata" {
 				check_it_for_fine_on() // Checks for Romaji only
-			} else if Hira_prompt_is == "hira" {
+			} else if Mixed_prompt_is == "hira" {
 				check_it_for_fine_onH() // Checks for Hiragana only
 			}
 		*/
 		if selectedExorcise == "Hira_prompt" {
-			check_it_for_fine_onHK() // Attempts to check for both Hira and Romaji
+			check_it_for_fine_on6() // Attempts to check for both Hira and Romaji
 		} else {
 			check_it_for_fine_on() // Checks for Romaji only
 		}
@@ -84,19 +93,19 @@ func TouchTypingExorcise(selectedExorcise string) {
 		//
 		//case of exorcise 6
 		case "Hira_prompt":
-			Hira_prompt_KeyH = aCard.KeyH
-			Hira_prompt_KeyK = aCard.KeyK
+			Mixed_prompts_KeyH = aCard.KeyH
+			Mixed_prompts_KeyK = aCard.KeyK
 			// Generate random 0 or 1
 			random := rand.Intn(2)
 
 			if random == 0 {
-				Hira_prompt_is = "hira"
-				Hira_prompt_KeyX = aCard.KeyH
-				usersGuessOrOptionDirective = prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(Hira_prompt_KeyH) // RomajiResponse prompt, passing H
+				Mixed_prompt_is = "hira"
+				Mixed_prompts_KeyX = aCard.KeyH
+				usersGuessOrOptionDirective = prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(Mixed_prompts_KeyH) // RomajiResponse prompt, passing H
 			} else {
-				Hira_prompt_is = "kata"
-				Hira_prompt_KeyX = aCard.KeyK
-				usersGuessOrOptionDirective = prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(Hira_prompt_KeyK) // RomajiResponse prompt, passing K
+				Mixed_prompt_is = "kata"
+				Mixed_prompts_KeyX = aCard.KeyK
+				usersGuessOrOptionDirective = prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(Mixed_prompts_KeyK) // RomajiResponse prompt, passing K
 			}
 		}
 
@@ -129,12 +138,12 @@ func TouchTypingExorcise(selectedExorcise string) {
 					random := rand.Intn(2)
 
 					if random == 0 {
-						Hira_prompt_is = "hira"
-						Hira_prompt_KeyX = aCard.KeyH
+						Mixed_prompt_is = "hira"
+						Mixed_prompts_KeyX = aCard.KeyH
 						usersGuessOrOptionDirective = prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(aCard.KeyH) // RomajiResponse prompt, passing H
 					} else {
-						Hira_prompt_is = "kata"
-						Hira_prompt_KeyX = aCard.KeyK
+						Mixed_prompt_is = "kata"
+						Mixed_prompts_KeyX = aCard.KeyK
 						usersGuessOrOptionDirective = prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(aCard.KeyK) // RomajiResponse prompt, passing K
 					}
 					//}
@@ -164,7 +173,7 @@ func TouchTypingExorcise(selectedExorcise string) {
 					case "Kata_Prompt-Respond-w-Hira|Romaji": // 3 and 4
 						meatOfKataExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
 					case "Hira_prompt":
-						meatOfHiraExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
+						meatOf_Mixed_HiraKataExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
 					}
 					break outOfForLoop
 				} else { // It must be a successive directive, so we continue to process it from the top of the loop
@@ -180,76 +189,11 @@ func TouchTypingExorcise(selectedExorcise string) {
 				case "Kata_Prompt-Respond-w-Hira|Romaji":
 					meatOfKataExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
 				case "Hira_prompt":
-					meatOfHiraExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
+					meatOf_Mixed_HiraKataExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
 				}
 				// It is probably a valid guess, AND we need to leave the loop after processing it
 				break outOfForLoop
 			}
 		} // end of loop used to handel successive directives without double processing of guesses
-	}
-}
-
-func branchOnUserSelectedDirectiveIfGiven(usersGuessOrOptionDirective, selectedExorcise string) {
-	switch usersGuessOrOptionDirective {
-	case "menu":
-		// Flush the old stats and hits arrays
-		cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
-		cyclicArrayHits = CyclicArrayHits{}
-		usersGuessOrOptionDirective = "null"
-		do_betweenMainMenuSelectionsTTE(selectedExorcise)
-		mainMenuPromptScanSelectAndBeginSelectedExorcise()
-	case "reset":
-		// flush the old stats and hits arrays
-		cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
-		cyclicArrayHits = CyclicArrayHits{}
-	case "quit":
-		os.Exit(1)
-	case "exit":
-		os.Exit(1)
-	case "??": // Directives follow:
-		handle_doubleQuestMark_directive()
-	case "?":
-		handle_singleQuestMark_contextSensitive_directive(selectedExorcise)
-		// The above ^^^ func must handle the case of being called from a naked kata (Romaji Prompt) activity w v v v
-		//giveHintInResponseToSingleQuestionMarkContextSensitiveDir_sansRomaji(key, sansRomaji_hint string)
-	case "set":
-		reSet_aCard_andThereBy_reSet_thePromptString()
-	case "stat":
-		hits()
-	case "stats":
-		hits()
-	case "notes":
-		//goland:noinspection ALL  **do-this**
-		fmt.Println("\nIn the traditional Hepburn romanization system, the sound じ in hiragana is romanized as \"ji\" \n" +
-			"and the katakana ジ is also romanized as \"ji\" \n\n" +
-			"However, in some other romanization systems like the Nihon-shiki and Kunrei-shiki, the sound じ is romanized as\n" +
-			" \"zi\" instead of \"ji\"\n\n" +
-			"The sound gi:ぎ in hiragana is romanized as \"gi\" and the katakana ギ is also romanized as \"gi\"\n")
-		//goland:noinspection ALL  **do-this**
-		fmt.Println("゜is called \"handakuten\" 半濁点 translates to \"half-voicing mark\" or \"semi-voiced mark\"\n" +
-			"゛is called \"dakuten\" 濁点 meaning 'voiced mark' or 'voicing mark'")
-	case "dir": // reDisplay the DIRECTORY OF DIRECTIVES (and instructions):
-		switch selectedExorcise {
-		case "Romaji_Prompt": // 1
-			reDisplay_Romaji_instructions()
-		case "Romaji+Kata_Prompt": // 2
-			reDisplay_Romaji_plus_Kata_instructions()
-		case "Kata_Prompt-Respond-w-Hira|Romaji": // 3 & 4
-			re_display_KataExorciseInstructions()
-		case "Most_Difficult":
-			reDisplay_Difficult_instructions()
-		case "Hira_prompt":
-			reDisplay_Hira_instructions()
-		}
-	case "rm":
-		read_map_of_fineOn()
-	case "stack":
-		stack_the_map()
-	}
-}
-
-func check(e error) { // create a func named check which takes one parameter "e" of type error
-	if e != nil {
-		panic(e) // use panic() to display error code
 	}
 }

@@ -2,8 +2,6 @@ package main
 
 // **do-this** menu
 import (
-	"crypto/rand"
-	"encoding/binary"
 	"fmt"
 	"os"
 	"time"
@@ -28,32 +26,108 @@ func display_ListingOf_OptionsThese_AllHave_inCommon() {
 
 func mainMenuPromptScanSelectAndBeginSelectedExorcise() {
 	var mainMenuSelection string
-	//seedFile_Maker()
+	//seedFile_Maker(); createAndWrite_seedFile()
 	for {
 		fmt.Printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 		///
 
-		fmt.Printf("メインメニュー:\n\n" +
-			"ひらがなを認識しタイプする練習をするには「1」を入力してください。(シンプルで、非常に役立ちます)\n\n" +
-			"ローマ字-カタカナのペアを認識し、ひらがなをタイプする練習をするには「2」を入力してください。(ある程度簡単で、役立ちます)\n\n" +
-			"カタカナを認識し、ひらがなまたはローマ字をタイプする練習をするには「3」を入力してください。(非常に汎用性が高い)\n\n" +
+		fmt.Printf("" +
+			" Menu main: me-i-n me-ni-yu\n" +
+			"メインメニュー:\n\n\n" +
+			// 1 -
+			"-- 1 -- v v v \n" +
+			"        nin-shi-ki  t-I-pu-su-ru       todo           Enter                  simple       very     useful\n" +
+			"ひらがな を 認識 し タイプする 練習 を するには「1」を 入力  してください。 (シンプル で、非常 に 役立ちます)\n" +
+			"^Hiragana   ^^Recognizing      ^^practicing        Enter^      ^please do     ^simple          useful^ \n\n\n" +
+			// ^ 1 - Recognizing Hiragana & practicing typing, Enter 1 (simple and very useful) ^ ^
+			//
+			// 2 -
+			"-- 2 -- v v v \n" +
+			"                     pair             Hiragana    t-I-pu  practicing   todo         enter                sort-of \n" +
+			"ローマ字-カタカナ の ペア を 認識 し、ひらがな を タイプする 練習 を するには「2」を 入力 してください。(ある程度簡単 で、役立ちます)\n" +
+			"^Romaji-Katakana     pair    ^Recognizing        t-I-pu-su   ^practice  ^todo         ^enter   ^please do \n\n\n" +
+			// 2 - Recognizing Romaji+Katakana, practicing typing Hiragana (sort-of simple and useful)
+			//
+			// 3 -
+			"-- 3 -- v v v \n" +
+			"Katakana   recogni   Hiragana  or     Romaji      t-I-pu    practice   todo\n" +
+			"カタカナ を 認識 し、ひらがな また は ローマ字 を タイプする 練習 を するには「3」を 入力 してください。(非常に汎用性が高い)\n" +
+			"^Katakana   ^Recog   Hiragana  or     Romaji       typing     ^practice              enter please do  \n\n\n" +
+			// 3 - Katakana recognizing, practice typing Hiragana or Romaji, 3 Enter ( )
+			//
+			// 5 -
+			"-- 5 -- v v v \n" +
+			"   t-I-pu    practice   todo\n" +
 			"ドリルラインをタイプする練習をするには「5」を入力してください。\n\n" +
+			"" +
+			// 5 -
+			//
+			// 6 -
+			"-- 6 -- v v v \n" +
+			"   t-I-pu    practice   todo\n" +
 			"ひらがなを認識し、ローマ字をタイプする練習をするには「6」を入力してください。 \n\n" +
+			"" +
+			// 6-
+			//
+			// 7 -
+			"-- 7 -- v v v \n" +
+			"   t-I-pu    practice   todo\n" +
 			"最も難しいカタカナを練習するには「7」を入力してください。\n\n" +
-			"終了するには「exit」と入力してください。\n\n")
-
+			"" +
+			// 7 -
+			//
+			// exit -
+			"-- exit -- v v v \n" +
+			"   t-I-pu    practice   todo\n" +
+			"終了するには「exit」と入力してください。" +
+			"" +
+			// exit -
+			"\n\n")
+		/// Display the Main Menu
+		fmt.Printf("  Main Menu: \n\n" +
+			"  Enter '1' to practice recognizing Romaji: and typing Hiragana (simple, quite useful)\n" +
+			"  Enter '2' for recognizing Romaji-Katakana pairs: typing Hiragana (somewhat easy, useful)\n" +
+			"  Enter '3' to practice recognizing Katakana, type either Hiragana or Romaji (very versatile)\n" +
+			"  Enter '5' to practice typing drill lines\n" +
+			"  Enter '6' mixed Hira and Kata prompts: answer with Romaji\n" +
+			"  Enter '7' to practice the Most-Difficult kata, type either Hiragana or Romaji\n" +
+			"  Enter '8' to practice Sequential Kata, type either Hiragana or Romaji\n" +
+			"  Enter '9' to practice Sequential Hira, type either Hiragana or Romaji\n" +
+			"  Enter 'exit' to quit\n\n\n")
+		// Pause to accept (Scan) a string var, e.g., "7" or "exit", from the command line, from the user
+		_, _ = fmt.Scan(&mainMenuSelection) // Create address for, and auto-dereference, var mainMenuSelection
 		///
+		/*
+			///
+			fmt.Printf("// To prove that mainMenuSelection is a variable of type string :\n")
+			fmt.Printf("// First, prove that it is a string type with:\n\n" +
+				"fmt.Printf(\"The type of 'mainMenuSelection' is: %%T \\n\\n\", mainMenuSelection)" +
+				"\n\nWhich yields: \n\n")
+			fmt.Printf("\tThe type of 'mainMenuSelection' is: %T \n\n", mainMenuSelection)
 
-		fmt.Printf("  Main Menu: \n\n")
-		fmt.Printf("  Enter '1' to practice recognizing Romaji: and typing Hiragana (simple, quite useful)\n")
-		fmt.Printf("  Enter '2' for recognizing Romaji-Katakana pairs: typing Hiragana (somewhat easy, useful)\n")
-		fmt.Printf("  Enter '3' to practice recognizing Katakana, type either Hiragana or Romaji (very versatile)\n")
-		fmt.Printf("  Enter '5' to practice typing drill lines\n")
-		fmt.Printf("  Enter '6' to practice recognizing Hiragana: and typing Romaji\n")
-		fmt.Printf("  Enter '7' to practice the Most-Difficult kata\n")
-		fmt.Printf("  Enter 'exit' to quit\n\n\n")
-		_, _ = fmt.Scan(&mainMenuSelection)
+			fmt.Println("Note: in Go, constants don't have a direct reflection type.")
 
+			fmt.Printf("Next, we execute the following code:\n\n" +
+				"xType := reflect.TypeOf(mainMenuSelection).Kind()\n" +
+				"\tif xType == reflect.String {\n" +
+				"\t\t fmt.Println(\"\\t\\\"== reflect.String\\\" has shown that mainMenuSelection is a variable (var)\\n\")\n" +
+				"\t}\n" +
+				"\tif xType != reflect.String {\n" +
+				"\t\t fmt.Println(\"\\t\\\"!= reflect.String\\\" has shown that mainMenuSelection is a constant (const)\\n\")\n" +
+				"\t}\n\n" +
+				"It should print: \n\n\t\"== reflect.String\" has shown that mainMenuSelection is a variable\n\n" +
+				"\nAnd, it actually prints: \n\n")
+			//
+			xType := reflect.TypeOf(mainMenuSelection).Kind()
+			if xType == reflect.String {
+				fmt.Println("\t\"== reflect.String\" has shown that mainMenuSelection is a variable\n\n")
+			}
+			if xType != reflect.String {
+				fmt.Println("\t\"!= reflect.String\" has shown that mainMenuSelection is probably a constant\n\n")
+			}
+			///
+		*/
+		///
 		if mainMenuSelection == "1" {
 			selectedExorcise := "Romaji_Prompt" // 1
 			log_to_JapLog_file_inception_time(selectedExorcise)
@@ -71,13 +145,21 @@ func mainMenuPromptScanSelectAndBeginSelectedExorcise() {
 			log_to_JapLog_file_inception_time(selectedExorcise)
 			drillLines() // 5
 		} else if mainMenuSelection == "6" {
-			selectedExorcise := "Hira_prompt" // 3 or 4
+			selectedExorcise := "Hira_prompt" // 6
 			log_to_JapLog_file_inception_time(selectedExorcise)
-			display_Hira_instructions_BeginExorcise(selectedExorcise) // 3 or 4
+			display_Hira_instructions_BeginExorcise(selectedExorcise) // 6
 		} else if mainMenuSelection == "7" {
-			selectedExorcise := "Most_Difficult" // 3 or 4
+			selectedExorcise := "Most_Difficult" // 7
 			//log_to_JapLog_file_inception_time(selectedExorcise)
-			display_Difficult_instructions_BeginExorcise(selectedExorcise) // 3 or 4
+			display_Difficult_instructions_BeginExorcise(selectedExorcise) // 7
+		} else if mainMenuSelection == "8" {
+			selectedExorcise := "Sequential-Kata" // 8
+			//log_to_JapLog_file_inception_time(selectedExorcise)
+			display_Seq_instructions_BeginExorcise(selectedExorcise) // 8
+		} else if mainMenuSelection == "9" {
+			selectedExorcise := "Sequential-Hira" // 9
+			//log_to_JapLog_file_inception_time(selectedExorcise)
+			display_Seq_instructions_BeginExorcise(selectedExorcise) // 8
 		} else if mainMenuSelection == "exit" || mainMenuSelection == "quit" {
 			os.Exit(1)
 		}
@@ -158,6 +240,10 @@ func display_Hira_instructions_BeginExorcise(selectedExorcise string) {
 	body_of_Hira_instructions()
 	TouchTypingExorcise(selectedExorcise)
 }
+func display_Seq_instructions_BeginExorcise(selectedExorcise string) {
+	body_of_Hira_instructions()
+	TouchTypingExorciseSequential(selectedExorcise)
+}
 
 //goland:noinspection ALL
 func body_of_Hira_instructions() {
@@ -236,49 +322,45 @@ func reDisplay_Difficult_instructions() {
 	body_of_Difficult_instructions()
 }
 
+// This is executed each time menu is given as a dir by the user during any activity
 // Things to do after an activity, and before beginning another activity
 func do_betweenMainMenuSelectionsTTE(selectedExorcise string) {
 	currentTime := time.Now()
 	if selectedExorcise == "Romaji_Prompt" { // 1
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
 		check(err)                                                                                 // ... gets a file handle to JapLog.txt
-		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
 		_, err2 := fmt.Fprintf(fileHandleBig, "\nTransition from exorcise 1 'Romaji_Prompt' occured at: %s \n",
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
-		//createAndWrite_seedFile()
+		_ = fileHandleBig.Close()
 	} else if selectedExorcise == "Romaji+Kata_Prompt" { // 2
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
 		check(err)                                                                                 // ... gets a file handle to JapLog.txt
-		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
 		_, err2 := fmt.Fprintf(fileHandleBig, "\nTransition from exorcise 2 'Romaji+Kata_Prompt' occured at: %s \n",
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
-		//createAndWrite_seedFile()
+		_ = fileHandleBig.Close()
 	} else if selectedExorcise == "Kata_Prompt-Respond-w-Hira|Romaji" { // 3, 4
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
 		check(err)                                                                                 // ... gets a file handle to JapLog.txt
-		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
 		_, err2 := fmt.Fprintf(fileHandleBig, "\nTransition from exorcise 3 or 4 'Kata_Prompt-Respond-w-Hira|Romaji' occured at: %s \n",
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
-		//createAndWrite_seedFile()
+		_ = fileHandleBig.Close()
 	} else if selectedExorcise == "drillLines" {
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
 		check(err)                                                                                 // ... gets a file handle to JapLog.txt
-		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
 		_, err2 := fmt.Fprintf(fileHandleBig, "\nTransition from exorcise 5 'Drill Lines' occured at: %s \n",
 			currentTime.Format("01-02-2006 15:04:05 Monday"))
 		check(err2)
-		//createAndWrite_seedFile()
+		_ = fileHandleBig.Close()
 	} else if selectedExorcise == "Hira_prompt" { // 3, 4
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
 		check(err)                                                                                 // ... gets a file handle to JapLog.txt
-		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
 		_, err2 := fmt.Fprintf(fileHandleBig, "\nTransition from exorcise 6 'Hira_prompt' occured at: %s \n",
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
-		//createAndWrite_seedFile()
+		_ = fileHandleBig.Close()
 	}
 }
 
@@ -286,44 +368,3 @@ func do_betweenMainMenuSelectionsTTE(selectedExorcise string) {
 .
 .
 */
-
-const seedFile = "randomSeed.dat"
-
-var seed int64
-
-//goland:noinspection ALL
-func seedFile_Maker() {
-	// Try to read existing seed
-	if data, err := os.ReadFile(seedFile); err == nil {
-		seed = int64(binary.LittleEndian.Uint64(data))
-	} else {
-		// No existing seed, create a new one
-		err := binary.Read(rand.Reader, binary.LittleEndian, &seed)
-		if err != nil {
-			return
-		}
-		f, _ := os.Create(seedFile)
-		defer func(f *os.File) {
-			err := f.Close()
-			if err != nil {
-			}
-		}(f)
-		err2 := binary.Write(f, binary.LittleEndian, seed)
-		if err2 != nil {
-			return
-		}
-	}
-}
-
-func createAndWrite_seedFile() {
-	f, _ := os.Create(seedFile)
-	defer func(f *os.File) {
-		err := f.Close()
-		if err != nil {
-		}
-	}(f)
-	err := binary.Write(f, binary.LittleEndian, seed)
-	if err != nil {
-		return
-	}
-}

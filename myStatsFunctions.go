@@ -19,7 +19,7 @@ func logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(promptToWorkMoreOn 
 }
 
 // Universal hits logger|Inserter:
-// Used in exorcises 1, 2, 3, 4
+// Used in exorcises 1, 2, 3, 4, 6, 7
 func logHits_in_cyclicArrayHits(RightOrOops, JChar string) {
 	cyclicArrayHits.InsertRightOrOops(RightOrOops)
 	cyclicArrayHits.InsertChar(JChar)
@@ -28,7 +28,7 @@ func logHits_in_cyclicArrayHits(RightOrOops, JChar string) {
 //
 // A special Universal logger|Inserter: so we can drill the user more on chars he has missed
 //
-// Used in exorcises 1, 2, 3, 4
+// Used in exorcises 1, 2, 3, 4, 6, 7
 func logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(Jchar string) {
 	cyclicArrayOfTheJcharsGottenWrong.InsertCharsWrong(Jchar)
 }
@@ -131,41 +131,47 @@ func hits() {
 
 func log_to_JapLog_file_inception_time(selectedExorcise string) {
 	currentTime := time.Now()
-	if selectedExorcise == "Romaji_Prompt" {
+	if selectedExorcise == "Romaji_Prompt" { // 1
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
 		check(err)                                                                                 // ... gets a file handle to JapLog.txt
-		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
 		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 1 'Romaji_Prompt' occured at: %s \n",
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
-	} else if selectedExorcise == "Romaji+Kata_Prompt" {
+		_ = fileHandleBig.Close()
+	} else if selectedExorcise == "Romaji+Kata_Prompt" { // 2
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
 		check(err)                                                                                 // ... gets a file handle to JapLog.txt
-		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
 		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 2 'Romaji+Kata_Prompt' occured at: %s \n",
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
-	} else if selectedExorcise == "Kata_Prompt-Respond-w-Hira|Romaji" {
+		_ = fileHandleBig.Close()
+	} else if selectedExorcise == "Kata_Prompt-Respond-w-Hira|Romaji" { // 3, 4
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
 		check(err)                                                                                 // ... gets a file handle to JapLog.txt
-		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
 		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 3 or 4 'Kata_Prompt-Respond-w-Hira|Romaji' occured at: %s \n",
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
-	} else if selectedExorcise == "drillLines" {
+		_ = fileHandleBig.Close()
+	} else if selectedExorcise == "drillLines" { // 5
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
 		check(err)                                                                                 // ... gets a file handle to JapLog.txt
-		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
 		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 5 'Drill Lines' occured at: %s \n",
 			currentTime.Format("01-02-2006 15:04:05 Monday"))
 		check(err2)
-
-	} else if selectedExorcise == "Hira_prompt" {
+		_ = fileHandleBig.Close()
+	} else if selectedExorcise == "Hira_prompt" { // 6
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
 		check(err)                                                                                 // ... gets a file handle to JapLog.txt
-		//defer fileHandleBig.Close() // It’s idiomatic to defer a Close immediately after opening a file.
 		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 6 'Hira_prompt' occurred at: %s \n",
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
+		_ = fileHandleBig.Close()
+	} else if selectedExorcise == "Most_Difficult" { // 7
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+		check(err)                                                                                 // ... gets a file handle to JapLog.txt
+		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 6 'Hira_prompt' occurred at: %s \n",
+			currentTime.Format("15:04:05 on Monday 01-02-2006"))
+		check(err2)
+		_ = fileHandleBig.Close()
 	}
 }

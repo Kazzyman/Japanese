@@ -1,45 +1,24 @@
 package main
 
-import (
-	"math/rand"
-	"time"
-)
-
 // TouchTypingExorcise
 // The content of "prompt" (i.e., aCardD.KeyR | aCardD.KeyRK | aCardD.KeyK) is set by the calling activity
 //
-func TouchTypingExorciseDifficult(selectedExorcise string) {
+var lastNonRandomCard = len(fileOfCards) - 1
+var nonRandomCard = 0
+
+func TouchTypingExorciseSequential(selectedExorcise string) {
 	// Accepts the following for ^ ^ ^ ^ :  RomajiNakedPrompt -- RomajiKataPrompt -- KataNakedPrompt
 	//
-	// rand.Seed(seed) is|was|use2be done in main.go, at the top of main()
-	// was: // see: seedFile_Maker() , bottom of menu.go file
-	//
-	rand.Seed(time.Now().UnixNano()) // old way, works with rand.Seed(seed) top of main() ???
-	// Example of seed Use per Claude: fmt.Println(rand.Int())
 
 	var usersGuessOrOptionDirective string
 	//
-	isThis_a_cardWeNeedMoreWorkOn := 0 // now and then we will consider working on a char the user has had trouble with
 	for {
-		pick_Difficult_RandomCard_Assign_aCard() // Assigns a random card to the global aCard
-		/*
-			if isThis_a_cardWeNeedMoreWorkOn > 2 {   // if we have gone without augmenting the random picks with cards we have prev missed ...
-				//
-					// Log to a file that this action was taken **do-this**
-					fileHandleBig, err := os.OpenFile("JapLogD.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
-					check(err)                                                                                  // ... gets a file handle to JapLog.txt
-					_, err2 := fmt.Fprintf(fileHandleBig, "\nChecked card:%s in the frequencyMapOf_need_workOn after:%d cycles\n",
-						aCardD.KeyH, isThis_a_cardWeNeedMoreWorkOn)
-					check(err2)
-					_ = fileHandleBig.Close()
-				isThis_a_cardWeNeedMoreWorkOn = 0 // ... for a while now, then let's go get a card we've missed before, instead of that random one
-				check_it_for_needing_more_practiceD()
-			}
-		*/
-		// in any case:
-		//check_it_for_fine_onD()
-		isThis_a_cardWeNeedMoreWorkOn++
-
+		if nonRandomCard == lastNonRandomCard {
+			nonRandomCard = 1
+		} else {
+			aCardS = fileOfCardsS[nonRandomCard]
+			nonRandomCard++
+		}
 		// Prompt with the appropriate field from the new random card and accept user's guess:
 		switch selectedExorcise {
 		//
@@ -53,12 +32,12 @@ func TouchTypingExorciseDifficult(selectedExorcise string) {
 			usersGuessOrOptionDirective = semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(aCardD.KeyRK) // Semi-universal prompt, passing RK
 		// ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
 		//
-		// case of exorcise 3 and 4
-		case "Kata_Prompt-Respond-w-Hira|Romaji":
-			usersGuessOrOptionDirective = Kata_Prompt_Scan_4_Romaji_or_HiraResponse(aCardD.KeyK) // Kata prompt, passing K
+		// case of exorcise 8
+		case "Sequential-Kata":
+			usersGuessOrOptionDirective = Kata_Prompt_Scan_4_Romaji_or_HiraResponse(aCardS.KeyK) // Kata prompt, passing K
 			// ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
-		case "Most_Difficult": // 7
-			usersGuessOrOptionDirective = Kata_Prompt_Scan_4_Romaji_or_HiraResponse(aCardD.KeyK) // Kata prompt, passing K
+		case "Sequential-Hira": // 9
+			usersGuessOrOptionDirective = Kata_Prompt_Scan_4_Romaji_or_HiraResponse(aCardS.KeyH)
 		}
 
 	outOfForLoop: // this loop is only needed because we want to handel the case of successive directives (tricky)
@@ -81,11 +60,11 @@ func TouchTypingExorciseDifficult(selectedExorcise string) {
 				case "Romaji+Kata_Prompt": // 2
 					usersGuessOrOptionDirective = semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(aCardD.KeyRK)
 					// ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
-				case "Kata_Prompt-Respond-w-Hira|Romaji": // 3 or 4
-					usersGuessOrOptionDirective = Kata_Prompt_Scan_4_Romaji_or_HiraResponse(aCardD.KeyK)
+				case "Sequential-Kata": // 8
+					usersGuessOrOptionDirective = Kata_Prompt_Scan_4_Romaji_or_HiraResponse(aCardS.KeyK)
 				// ... , if it is executed after a directive is handled, will be prompting from the same card -- so it is all good
-				case "Most_Difficult": // 7
-					usersGuessOrOptionDirective = Kata_Prompt_Scan_4_Romaji_or_HiraResponse(aCardD.KeyK)
+				case "Sequential-Hira": // 9
+					usersGuessOrOptionDirective = Kata_Prompt_Scan_4_Romaji_or_HiraResponse(aCardS.KeyH)
 				}
 				// v v v v v   do not process directives from the re-prompting   v v v v v
 				if usersGuessOrOptionDirective != "set" &&
@@ -109,10 +88,10 @@ func TouchTypingExorciseDifficult(selectedExorcise string) {
 						//check_for_match()
 					case "Romaji+Kata_Prompt": // 2
 						meatOfRomajiKataExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
-					case "Kata_Prompt-Respond-w-Hira|Romaji": // 3 and 4
-						meatOfKataExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
-					case "Most_Difficult": // 7
-						meatOfKataExorciseD(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
+					case "Sequential-Kata": // 3 and 4
+						meatOfSequentialKata(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
+					case "Sequential-Hira": // 9
+						meatOfSequentialHira(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
 					}
 					break outOfForLoop
 				} else { // It must be a successive directive, so we continue to process it from the top of the loop
@@ -125,10 +104,10 @@ func TouchTypingExorciseDifficult(selectedExorcise string) {
 					//check_for_match()
 				case "Romaji+Kata_Prompt":
 					meatOfRomajiKataExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
-				case "Kata_Prompt-Respond-w-Hira|Romaji":
-					meatOfKataExorcise(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
-				case "Most_Difficult": // 7
-					meatOfKataExorciseD(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
+				case "Sequential-Kata":
+					meatOfSequentialKata(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
+				case "Sequential-Hira": // 9
+					meatOfSequentialHira(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
 				}
 				// It is probably a valid guess, AND we need to leave the loop after processing it
 				break outOfForLoop
