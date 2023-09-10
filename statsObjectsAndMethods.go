@@ -27,8 +27,8 @@ var cyclicArrayHits CyclicArrayHits
 
 // Create a structure which will populate the cyclic array, and then two methods, one for each of the two data fields
 type CyclicArrayHits struct { // Declare a new type, in this case a struct, to be known as a CyclicArrayHits type.
-	jchar       [300]string // a 300-element array of string vars, as the field 'jchar' (to hold the various japanese chars as strings)
-	RightOrOops [300]string // a 300-element array of string vars, as the field 'RightOrOops' (to hold Right! or Oops! strings)
+	jchar       [700]string // a 300-element array of string vars, as the field 'jchar' (to hold the various japanese chars as strings)
+	RightOrOops [700]string // a 300-element array of string vars, as the field 'RightOrOops' (to hold Right! or Oops! strings)
 	index       int         // a single var of type int, as the field 'index'
 }
 
@@ -55,7 +55,7 @@ func (ca *CyclicArrayHits) InsertChar(jchar string) { // Please refer also to th
 var cyclicArrayOfTheJcharsGottenWrong CyclicArrayOfTheJcharsGottenWrong
 
 type CyclicArrayOfTheJcharsGottenWrong struct {
-	jchar [300]string
+	jchar [700]string
 	index int
 }
 

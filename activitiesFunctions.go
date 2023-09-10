@@ -324,7 +324,7 @@ func check_it_for_needing_more_practice() {
 		}
 	}
 }
-func check_it_for_needing_more_practiceD() {
+func check_it_for_needing_more_practiceD_7() {
 	var skip_this_step bool
 	skip_this_step = false
 	for s, f := range frequencyMapOf_need_workOn {
