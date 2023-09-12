@@ -1,16 +1,20 @@
 package main
 
-// Finished September 12 of 2023 at 0112 hours
+// Finished September 12 of 2023 at 0112 0729 hours
 import (
 	"fmt"
 	"regexp"
 )
 
 /*
+Basically: The first function, below, is passed the first guess, and it then obtains the second guess
+The second func is passed the second guess, and obtains the third guess
+Finally, the first func is re-called by the second,: the first func is, then, passed the third and final guess
+
 The idea is to give the user two additional tries: if he fails at the first or second attempt then no answer or hint is
 to be displayed. But, after the third and final attempt (the maximum allowed) we will pass a skipFlag of false so that
 the answer and hint WILL be displayed after that third wrong guess -- when re-entering this first function:
-that is, when it is finally re-called by the second func.
+that is, when it is finally re-called by the second func (the secondTry_ func, below).
 .
 When it IS re-called by the second func, skipFlag will be false. But, upon first-entry to this first func,
 skipFlag will be true, so that the answer, and hint, will NOT be displayed after the first attempt. The answer and
@@ -95,7 +99,7 @@ func meatOfSequentialKata(in string, skipFlag bool) {
 				in == "rm" ||
 				in == "stack" {
 				branchOnUserSelectedDirectiveIfGiven(in,
-					"Kata_Prompt-Respond-w-Hira|Romaji") // <-- Perform the Directive
+					"Respond-w-Hira|Romaji") // <-- Perform the Directive
 			}
 			secondTry_meatOfSequentialKata(in) // This instance of 'in' is the user's second guess.
 		}
@@ -156,7 +160,7 @@ func meatOfSequentialKata(in string, skipFlag bool) {
 				in == "rm" ||
 				in == "stack" {
 				branchOnUserSelectedDirectiveIfGiven(in,
-					"Kata_Prompt-Respond-w-Hira|Romaji") // <-- Perform the Directive
+					"Respond-w-Hira|Romaji") // <-- Perform the Directive
 			}
 			secondTry_meatOfSequentialKata(in)
 		}

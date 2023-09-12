@@ -1,33 +1,29 @@
 package main
 
-// **do-this**
+// Refer also to 8, which is a similar set of functions
 import (
 	"fmt"
 	"regexp"
 )
 
 /*
-.
 The idea is to give the user two additional tries: if he fails at the first or second attempt then no answer or hint is
 to be displayed. But, after the third and final attempt (the maximum allowed) we will pass a skipFlag of false so that
-the answer and hint WILL be displayed after that third wrong guess -- when re-entering this first-of-three functions:
-that is, when it is finally re-called by the second func.
+the answer and hint WILL be displayed after that third wrong guess -- when re-entering this first function:
+that is, when it is finally re-called by the second func (the secondTry_ func, below).
 .
 When it IS re-called by the second func, skipFlag will be false. But, upon first-entry to this first func,
 skipFlag will be true, so that the answer, and hint, will NOT be displayed after the first attempt. The answer and
 hint can only be displayed by the first func (it is absent in the second func). The second func will pass-back to the
-first func a skipFlag val of false, thereby causing the first to display the answer and one-line of hints from
+first func a skipFlag val of false, thereby causing the first to display the answer plus one-line of hints from
 checkForHints(value string).
 .
-meatOfKataExorcise(in string, skipFlag bool) is passed the first guess which was collected by the caller:
-... TouchTypingExorcise(selectedExorcise)
-
-meatOfKataExorcise(in string, skipFlag bool) then determines what should be done in response.
+This, first of two functions, meatOfKataExorciseD is passed the first guess which was collected by the caller
 
 If the user is found to have guessed incorrectly the user will be prompted for a second guess.
 
-That guess is passed to the second func guess, and obtains the third guess
-Finally, the first func is re-called by the second,: the first func is, then, passed the third and final guess
+That guess is passed to the secondTry_ func below -- which may obtain a third guess
+Finally, this first func is re-called by the second,: the first func is, then, passed the third and final guess
 .
 */
 func meatOfKataExorciseD(in string, skipFlag bool) {
@@ -84,7 +80,7 @@ func meatOfKataExorciseD(in string, skipFlag bool) {
 				in == "rm" ||
 				in == "stack" {
 				branchOnUserSelectedDirectiveIfGiven(in,
-					"Kata_Prompt-Respond-w-Hira|Romaji") // <-- Perform the directive
+					"Respond-w-Hira|Romaji") // Perform the Directive
 			}
 			secondTry_meatOfKataExorciseD(in) // This instance of 'in' is the user's second guess.
 		}
@@ -137,7 +133,7 @@ func meatOfKataExorciseD(in string, skipFlag bool) {
 				in == "rm" ||
 				in == "stack" {
 				branchOnUserSelectedDirectiveIfGiven(in,
-					"Kata_Prompt-Respond-w-Hira|Romaji") // <-- Perform the directive
+					"Respond-w-Hira|Romaji") // <-- Perform the Directive
 			}
 			secondTry_meatOfKataExorciseD(in)
 		}

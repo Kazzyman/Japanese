@@ -53,7 +53,7 @@ func meatOfSequentialHira(in string, skipFlag bool) {
 				in == "rm" ||
 				in == "stack" {
 				branchOnUserSelectedDirectiveIfGiven(in,
-					"Kata_Prompt-Respond-w-Hira|Romaji") // <-- Perform the Directive
+					"Respond-w-Hira|Romaji") // <-- Perform the Directive
 			}
 			secondTry_meatOfSequentialHira(in) // This instance of 'in' is the user's second guess.
 		}
@@ -106,7 +106,7 @@ func secondTry_meatOfSequentialHira(in string) { // <-- This second-instance of 
 			in == "stats" ||
 			in == "rm" ||
 			in == "stack" {
-			branchOnUserSelectedDirectiveIfGiven(in, "Respond-w-Hira|Romaji") // <-- Do dir
+			branchOnUserSelectedDirectiveIfGiven(in, "Respond-w-Hira|Romaji") // Perform the Directive
 		}
 		fmt.Printf("%s", colorRed)
 		fmt.Printf("      　^^Oops! ")

@@ -10,6 +10,7 @@ import (
 
 //goland:noinspection ALL
 func display_ListingOf_OptionsThese_AllHave_inCommon() {
+	fmt.Println("View source code at https://github.com/Kazzyman/Japanese")
 	fmt.Println("    (using US or Alpha-Numeric input mode):")
 	fmt.Println("        Enter 'menu' to return to the the main menu ")
 	fmt.Println("        Enter 'dir' to redisplay this menu of available directives")
@@ -83,6 +84,7 @@ func mainMenuPromptScanSelectAndBeginSelectedExorcise() {
 			"" +
 			// exit -
 			"\n\n")
+		fmt.Println("View source code at https://github.com/Kazzyman/Japanese\n")
 		/// Display the Main Menu
 		fmt.Printf("  Main Menu: \n\n" +
 			"  Enter '1' to practice recognizing Romaji: and typing Hiragana (simple, quite useful)\n" +
@@ -137,7 +139,7 @@ func mainMenuPromptScanSelectAndBeginSelectedExorcise() {
 			log_to_JapLog_file_inception_time(selectedExorcise)
 			display_Romaji_plus_Kata_instructions_BeginExorcise(selectedExorcise) // 2
 		} else if mainMenuSelection == "3" {
-			selectedExorcise := "Kata_Prompt-Respond-w-Hira|Romaji" // 3 or 4
+			selectedExorcise := "Respond-w-Hira|Romaji" // 3 or 4
 			log_to_JapLog_file_inception_time(selectedExorcise)
 			display_KataExorciseInstructions_BeginExorcise(selectedExorcise) // 3 or 4
 		} else if mainMenuSelection == "5" {
