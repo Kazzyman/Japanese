@@ -76,7 +76,7 @@ func meatOfKataExorcise(in string, skipFlag bool) {
 			fmt.Println("Try again") // This ONLY prints on the first pass through this func
 			fmt.Printf(colorReset)
 			// Re-prompt, and will send that second guess to the secondTry_meatOfKataExorcise func
-			in = Kata_Prompt_Scan_4_Romaji_or_HiraResponse(aCard.KeyK) // Obtain second guess, and pass it as 'in'
+			in = Prompt_Scan_4_Romaji_or_HiraResponse(aCard.KeyK) // Obtain second guess, and pass it as 'in'
 			if in == "set" ||
 				in == "?" || // <-- If it IS a directive
 				in == "??" ||
@@ -136,7 +136,7 @@ func meatOfKataExorcise(in string, skipFlag bool) {
 			// So, we solicit another guess ... (user's second guess) and ...
 			fmt.Println("Try again") // This only prints on first pass
 			// Re-prompt, and send that second guess to the secondTry_meatOfKataExorcise func
-			in = Kata_Prompt_Scan_4_Romaji_or_HiraResponse(aCard.KeyK)
+			in = Prompt_Scan_4_Romaji_or_HiraResponse(aCard.KeyK)
 			if in == "set" ||
 				in == "?" || // <-- if it IS a directive
 				in == "??" ||
@@ -208,7 +208,7 @@ func secondTry_meatOfKataExorcise(in string) { // <-- This second-instance of 'i
 		fmt.Println("       Try again, you have one last attempt ... ")
 		fmt.Printf("%s", colorReset)
 		// Re-prompt, will be sending that final guess back to: meatOfKataExorcise(in, false)
-		in = Kata_Prompt_Scan_4_Romaji_or_HiraResponse(aCard.KeyK) // <-- Obtain the final guess, will pass it as 'in'
+		in = Prompt_Scan_4_Romaji_or_HiraResponse(aCard.KeyK) // <-- Obtain the final guess, will pass it as 'in'
 		if in == "set" ||
 			in == "?" || // <-- if it IS a directive
 			in == "??" ||
@@ -222,7 +222,7 @@ func secondTry_meatOfKataExorcise(in string) { // <-- This second-instance of 'i
 			in == "stats" ||
 			in == "rm" ||
 			in == "stack" {
-			branchOnUserSelectedDirectiveIfGiven(in, "Kata_Prompt-Respond-w-Hira|Romaji") // <-- Do dir
+			branchOnUserSelectedDirectiveIfGiven(in, "Respond-w-Hira|Romaji") // <-- Do dir
 		}
 		fmt.Printf("%s", colorRed)
 		fmt.Printf("      　^^Oops! ")
@@ -247,7 +247,7 @@ func secondTry_meatOfKataExorcise(in string) { // <-- This second-instance of 'i
 		fmt.Println("       Try again, you have one last attempt ... ")
 		fmt.Printf("%s", colorReset)
 		// Re-prompt, will that third guess back to: meatOfKataExorcise(in, false)
-		in = Kata_Prompt_Scan_4_Romaji_or_HiraResponse(aCard.KeyK) // Obtain the second guess, will pass it as 'in'
+		in = Prompt_Scan_4_Romaji_or_HiraResponse(aCard.KeyK) // Obtain the second guess, will pass it as 'in'
 		if in == "set" ||
 			in == "?" || // <-- If it IS a directive
 			in == "??" ||
@@ -261,7 +261,7 @@ func secondTry_meatOfKataExorcise(in string) { // <-- This second-instance of 'i
 			in == "stats" ||
 			in == "rm" ||
 			in == "stack" {
-			branchOnUserSelectedDirectiveIfGiven(in, "Kata_Prompt-Respond-w-Hira|Romaji") // <-- Do dir
+			branchOnUserSelectedDirectiveIfGiven(in, "Respond-w-Hira|Romaji") // <-- Do dir
 		}
 		meatOfKataExorcise(in, false) // Process the third and final try
 	}

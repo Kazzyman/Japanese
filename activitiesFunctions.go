@@ -37,10 +37,10 @@ func prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(prompt string) (usersGuessOr
 	return usersGuessOrOptionDirective
 }
 
-//goland:noinspection ALL  **do-this**
-// Ask the user for a Romaji|Hira response to the one (unique-and-naked) Katakana prompt:
-//goland:noinspection ALL  **do-this**
-func Kata_Prompt_Scan_4_Romaji_or_HiraResponse(prompt string) (usersGuessOrOptionDirective string) {
+// Ask the user for a Romaji|Hira response to the (naked, sans romaji) Katakana or Hiragana prompt:
+// Used in exorcises 3, 7, 8, 9
+//goland:noinspection ALL
+func Prompt_Scan_4_Romaji_or_HiraResponse(prompt string) (usersGuessOrOptionDirective string) {
 	// The return signature (above) creates a local var usersGuessOrOptionDirective, used below in the Scan():
 	fmt.Printf("%s", prompt)    // Prompt the user, in a pretty blue color: Options: '?' | '??'
 	fmt.Printf("%s", colorCyan) //
@@ -53,7 +53,6 @@ func Kata_Prompt_Scan_4_Romaji_or_HiraResponse(prompt string) (usersGuessOrOptio
 }
 
 //goland:noinspection ALL  **do-this**
-
 func pick_RandomCard_Assign_aCard() {
 	/*
 	  // Use the seed (example by Claude)
@@ -473,8 +472,8 @@ func branchOnUserSelectedDirectiveIfGiven(usersGuessOrOptionDirective, selectedE
 			reDisplay_Romaji_instructions()
 		case "Romaji+Kata_Prompt": // 2
 			reDisplay_Romaji_plus_Kata_instructions()
-		case "Kata_Prompt-Respond-w-Hira|Romaji": // 3 & 4
-			re_display_KataExorciseInstructions()
+		case "Respond-w-Hira|Romaji": // 3 & 4, 8, 9
+			re_display_ExorciseInstructions()
 		case "Most_Difficult":
 			reDisplay_Difficult_instructions()
 		case "Hira_prompt":

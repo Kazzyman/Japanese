@@ -41,7 +41,7 @@ func TouchTypingExorciseDifficult(selectedExorcise string) {
 		isThis_a_cardWeNeedMoreWorkOn++
 
 		// Prompt with the appropriate field from the new random card and accept user's guess:
-		usersGuessOrOptionDirective = Kata_Prompt_Scan_4_Romaji_or_HiraResponse(aCardD.KeyK) // Kata prompt, passing K
+		usersGuessOrOptionDirective = Prompt_Scan_4_Romaji_or_HiraResponse(aCardD.KeyK) // Kata prompt, passing K
 
 	outOfForLoop: // this loop is only needed because we want to handel the case of successive directives (tricky)
 		// ESPECIALLY, this labeled 'for-loop' is used to handel successive directives WITHOUT DOUBLE PROCESSING of guesses
@@ -56,7 +56,7 @@ func TouchTypingExorciseDifficult(selectedExorcise string) {
 				// v v v v v   re-prompt   v v v v v v
 				// -- re-prompt following the execution of a directive -------------------------------------------------------- v v v v
 				// ****************************************************************************************************
-				usersGuessOrOptionDirective = Kata_Prompt_Scan_4_Romaji_or_HiraResponse(aCardD.KeyK)
+				usersGuessOrOptionDirective = Prompt_Scan_4_Romaji_or_HiraResponse(aCardD.KeyK)
 				// v v v v v   do not process directives from the re-prompting   v v v v v
 				if usersGuessOrOptionDirective != "set" &&
 					usersGuessOrOptionDirective != "?" &&

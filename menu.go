@@ -229,7 +229,7 @@ func body_of_KataExorciseInstructions() {
 }
 
 //goland:noinspection ALL
-func re_display_KataExorciseInstructions() {
+func re_display_ExorciseInstructions() {
 	body_of_KataExorciseInstructions()
 }
 
