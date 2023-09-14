@@ -99,19 +99,18 @@ func meatOfSequentialKata(in string, skipFlag bool) {
 				in == "rm" ||
 				in == "stack" {
 				branchOnUserSelectedDirectiveIfGiven(in,
-					"Respond-w-Hira|Romaji") // <-- Perform the Directive
+					"Respond_w_Hira_or_Romaji") // <-- Perform the Directive
 			}
 			secondTry_meatOfSequentialKata(in) // This instance of 'in' is the user's second guess.
 		}
 		// If user guesses incorrectly on his third-and-final try, then, and only then, execute the rest of this func
 		if skipFlag == false { // skipFlag is true on first entry, & false when recalled after third failed attempt
 			fmt.Printf("%s", colorReset)
-			fmt.Printf("\n It was: ")
+			fmt.Printf(" It was: ")
 			fmt.Printf("%s", colorCyan)
 			fmt.Printf("%s", aCardS.KeyR)
 			fmt.Printf("%s", colorReset)
-			// Only the hint field lacking the correct Romaji will be shown (only the last field: HintSansR)
-			checkForHints(aCardS.KeyH) // Note: we only give hints for non-conjunctives
+			fmt.Printf("\n\n%s\n%s\n%s\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
 			fmt.Println("")
 		}
 	} // If user was ^^Right!, then we return to the caller (directly from this very line)
@@ -160,22 +159,19 @@ func meatOfSequentialKata(in string, skipFlag bool) {
 				in == "rm" ||
 				in == "stack" {
 				branchOnUserSelectedDirectiveIfGiven(in,
-					"Respond-w-Hira|Romaji") // <-- Perform the Directive
+					"Respond_w_Hira_or_Romaji") // <-- Perform the Directive
 			}
 			secondTry_meatOfSequentialKata(in)
 		}
 		// If user guesses incorrectly on his third-and-final try, then, and only then, execute the rest of this func
 		if skipFlag == false { // skipFlag is true on first entry, & false when recalled after the third failed attempt
 			fmt.Printf("%s", colorReset)
-			fmt.Printf("\n It was: ")
+			fmt.Printf(" It was: ")
 			fmt.Printf("%s", colorCyan)
 			fmt.Printf("%s", aCardS.KeyH)
 			fmt.Printf("%s", colorReset)
-			checkForHints(aCardS.KeyH) // Note: we only give hints for non-conjunctives
+			fmt.Printf("\n\n%s\n%s\n%s\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
 			fmt.Println("")
-			// In this SECOND case: of having typed a Hiragana, all four lines of hints are displayed from the card
-			// ... though, NOT in the FIRST case: of having typed a Romaji (then only the last line will be shown)
-			// .
 		} // Due to the fact that the next } below is paired with an '} else if' ...
 	} // ... if ^^Right!, then we return to the caller (directly from this line)
 }
@@ -232,7 +228,7 @@ func secondTry_meatOfSequentialKata(in string) { // <-- This second-instance of 
 			in == "stats" ||
 			in == "rm" ||
 			in == "stack" {
-			branchOnUserSelectedDirectiveIfGiven(in, "Respond-w-Hira|Romaji") // <-- Do dir
+			branchOnUserSelectedDirectiveIfGiven(in, "Respond_w_Hira_or_Romaji") // <-- Do dir
 		}
 		fmt.Printf("%s", colorRed)
 		fmt.Printf("      　^^Oops! ")
@@ -271,7 +267,7 @@ func secondTry_meatOfSequentialKata(in string) { // <-- This second-instance of 
 			in == "stats" ||
 			in == "rm" ||
 			in == "stack" {
-			branchOnUserSelectedDirectiveIfGiven(in, "Respond-w-Hira|Romaji") // <-- Do dir
+			branchOnUserSelectedDirectiveIfGiven(in, "Respond_w_Hira_or_Romaji") // <-- Do dir
 		}
 		meatOfSequentialKata(in, false) // Process the third and final try
 	}

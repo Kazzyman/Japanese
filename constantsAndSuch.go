@@ -393,8 +393,8 @@ var fileOfCardsS = []charSetStruct{
 	{"レ", "れ", "re", "reレ", "れ",
 		" re:レ:れ  laying on the little finger",
 		" re:レ:れ  the れ looks like someone getting blown, laid ",
-		" TT: left-pinky on it's ';' char",
-		" レ:れ   TT: left-pinky on it's ';' char"},
+		" TT: right-pinky on it's ';' char",
+		" レ:れ   TT: right-pinky on it's ';' char"},
 
 	{"フ", "ふ", "fu", "fuフ", "ふ",
 		" fu:ふ:フ  ふじ　Mount Fuji 富士山  富:Fu: wealth, abundant  士:Ji: gentleman, samurai, warrior",
@@ -581,7 +581,7 @@ var aCard = charSetStruct{}
 
 var fileOfCards = []charSetStruct{
 	// Did not work :
-	//const fileOfCards = []charSetStruct{
+	// const fileOfCards = []charSetStruct{
 
 	// vowels: (a-i-u-e-o) ==========================================================================================
 	// 2 of あ ア a -- 2 times for a:あ:ア
@@ -1529,18 +1529,18 @@ var fileOfCards = []charSetStruct{
 	{"レ", "れ", "re", "reレ", "れ",
 		" re:レ:れ  laying on the little finger",
 		" re:レ:れ  the れ looks like someone getting blown, laid ",
-		" TT: left-pinky on it's ';' char",
-		" レ:れ   TT: left-pinky on it's ';' char"},
+		" TT: right-pinky on it's ';' char",
+		" レ:れ   TT: right-pinky on it's ';' char"},
 	{"レ", "れ", "re", "reレ", "れ",
 		" re:レ:れ  laying on the little finger",
 		" re:レ:れ  the れ looks like someone getting blown, laid ",
-		" TT: left-pinky on it's ';' char",
-		" レ:れ   TT: left-pinky on it's ';' char"},
+		" TT: right-pinky on it's ';' char",
+		" レ:れ   TT: right-pinky on it's ';' char"},
 	{"レ", "れ", "re", "reレ", "れ",
 		" re:レ:れ  laying on the little finger",
 		" re:レ:れ  the れ looks like someone getting blown, laid ",
-		" TT: left-pinky on it's ';' char",
-		" レ:れ   TT: left-pinky on it's ';' char"},
+		" TT: right-pinky on it's ';' char",
+		" レ:れ   TT: right-pinky on it's ';' char"},
 	// 2 ro
 	{"ロ", "ろ", "ro", "roロ", "ろ",
 		" ro:ロ:ろ  no loop on ro:ろ  Compare ru:る",
@@ -1609,7 +1609,7 @@ var fileOfCards = []charSetStruct{
 		" ン:ん   TT: index to the 'Y' char, sounds the way it looks"},
 }
 
-//const aCard = charSetStruct{} // did not work
+// const aCard = charSetStruct{} // did not work
 
 // The structure of a single 'card' (aCard.) from fileOfCards
 type charSetStruct struct {

@@ -2,17 +2,18 @@ package main
 
 // Finished September 12 of 2023 at 0112 hours
 // TouchTypingExorcise
-// The content of "prompt" (i.e., aCardD.KeyH | aCardD.KeyK) is set by the calling activity
+// The content of "prompt" (i.e., aCardS.KeyH | aCardS.KeyK) is set by the calling activity
 //
 var lastNonRandomCard = len(fileOfCardsS) // Index of the last card in the deck
 var nonRandomCard = 0                     // Index of the first card in the deck
 
 func TouchTypingExorciseSequential(selectedExorcise string) {
-	// ^ ^ ^ ^ Accepts the following for ^ ^ ^ ^ :  "Sequential-Hira" or "Sequential-Kata" ...
+	// ^ ^ ^ ^ Accepts the following for ^ ^ ^ ^ :  "Sequential_Hira" or "Sequential_Kata" ...
 	// ... given in mainMenuPromptScanSelectAndBeginSelectedExorcise() , found in menu.go
 
 	var usersGuessOrOptionDirective string // It's all in the name
 	//
+	// --- Here begins the main loop, which encapsulates the entirety of this func ---
 	for {
 		if nonRandomCard == lastNonRandomCard { // If the last-read card was the last card in the deck
 			nonRandomCard = 0 // ... Then, begin a second pass through the deck
@@ -23,11 +24,12 @@ func TouchTypingExorciseSequential(selectedExorcise string) {
 		switch selectedExorcise {
 		// Prompt with the appropriate field from the latest-read card and accept user's guess or Option Directive:
 		// case of exorcise 8
-		case "Sequential-Kata": // 8
+		case "Sequential_Kata": // 8
 			usersGuessOrOptionDirective = Prompt_Scan_4_Romaji_or_HiraResponse(aCardS.KeyK) // Kata prompt
 			// ... if executed after a Directive is handled, will be prompting from the same card -- it's all good
-		case "Sequential-Hira": // 9
+		case "Sequential_Hira": // 9
 			usersGuessOrOptionDirective = Prompt_Scan_4_Romaji_or_HiraResponse(aCardS.KeyH) // Hira prompt
+			// ... if executed after a Directive is handled, will be prompting from the same card -- it's all good
 		}
 
 	outOfForLoop: // This loop is needed because we want to handel the case of successive Directives (tricky) ...
@@ -46,10 +48,10 @@ func TouchTypingExorciseSequential(selectedExorcise string) {
 				// -- Re-prompt following the execution of a Directive ---------------------------------------- v v v v
 				// ****************************************************************************************************
 				switch selectedExorcise { // Identical to the above switch for prompt selection ***********************
-				case "Sequential-Kata": // 8
+				case "Sequential_Kata": // 8
 					usersGuessOrOptionDirective = Prompt_Scan_4_Romaji_or_HiraResponse(aCardS.KeyK) // Kata prompt
 				// ... if executed after a Directive is handled, will be prompting from the same card -- it's all good
-				case "Sequential-Hira": // 9
+				case "Sequential_Hira": // 9
 					usersGuessOrOptionDirective = Prompt_Scan_4_Romaji_or_HiraResponse(aCardS.KeyH) // Hira prompt
 				}
 				// v v v v v  Do not process directives from the above re-prompting   v v v v v
@@ -70,9 +72,9 @@ func TouchTypingExorciseSequential(selectedExorcise string) {
 					// ... AND, we will therefore, need to leave the loop after processing the user's guess
 					// Based on the Selected Exorcise, process the user's guess (determine if it is correct, etc.)
 					switch selectedExorcise {
-					case "Sequential-Kata": // 8
+					case "Sequential_Kata": // 8
 						meatOfSequentialKata(usersGuessOrOptionDirective, true)
-					case "Sequential-Hira": // 9
+					case "Sequential_Hira": // 9
 						meatOfSequentialHira(usersGuessOrOptionDirective, true)
 					}
 					break outOfForLoop
@@ -81,9 +83,9 @@ func TouchTypingExorciseSequential(selectedExorcise string) {
 				}
 			} else {
 				switch selectedExorcise {
-				case "Sequential-Kata": // 8
+				case "Sequential_Kata": // 8
 					meatOfSequentialKata(usersGuessOrOptionDirective, true)
-				case "Sequential-Hira": // 9
+				case "Sequential_Hira": // 9
 					meatOfSequentialHira(usersGuessOrOptionDirective, true)
 				}
 				// It is probably a valid guess, AND we need to leave the loop after processing it

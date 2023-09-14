@@ -138,7 +138,7 @@ func log_to_JapLog_file_inception_time(selectedExorcise string) {
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
 		_ = fileHandleBig.Close()
-	} else if selectedExorcise == "Romaji+Kata_Prompt" { // 2
+	} else if selectedExorcise == "Romaji_w_Kata_Prompt" { // 2
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
 		check(err)                                                                                 // ... gets a file handle to JapLog.txt
 		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 2 'Romaji+Kata_Prompt' occured at: %s \n",
@@ -159,7 +159,7 @@ func log_to_JapLog_file_inception_time(selectedExorcise string) {
 			currentTime.Format("01-02-2006 15:04:05 Monday"))
 		check(err2)
 		_ = fileHandleBig.Close()
-	} else if selectedExorcise == "Hira_prompt" { // 6
+	} else if selectedExorcise == "Mixed_prompts" { // 6
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
 		check(err)                                                                                 // ... gets a file handle to JapLog.txt
 		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 6 'Hira_prompt' occurred at: %s \n",

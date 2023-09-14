@@ -37,7 +37,7 @@ func TouchTypingExorciseDifficult(selectedExorcise string) {
 			}
 		*/
 		// in any case:
-		//check_it_for_fine_onD()
+		// check_it_for_fine_onD()
 		isThis_a_cardWeNeedMoreWorkOn++
 
 		// Prompt with the appropriate field from the new random card and accept user's guess:

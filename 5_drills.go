@@ -69,7 +69,7 @@ func drillLines() {
 		cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
 		cyclicArrayHits = CyclicArrayHits{}
 		// finalExorcise = "drillLines"
-		//usersGuessOrOptionDirective = "null"
+		// usersGuessOrOptionDirective = "null"
 		do_betweenMainMenuSelectionsTTE("drillLines")
 		mainMenuPromptScanSelectAndBeginSelectedExorcise()
 	}

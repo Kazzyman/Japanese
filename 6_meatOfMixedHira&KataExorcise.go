@@ -7,17 +7,9 @@ import (
 
 /*
 .
-The idea is to give the user two additional tries: if he fails at the first or second attempt then no answer or hint is
-to be displayed. But, after the third and final attempt (the maximum allowed) we will pass a skipFlag of false so that
-the answer and hint WILL be displayed after that third wrong guess -- when re-entering this first-of-three functions:
-that is, when it is finally re-called by the third func.
-.
-When it IS re-called by the third and final func, skipFlag will be false. But, upon first-entry to this first func,
-skipFlag will be true, so that the answer, and hint, will NOT be displayed after only the first attempt. And, since the
-answer and hint can only be displayed by this first func, it will not be displayed by the second, and will only be
-INDIRECTLY displayed by the third func: the third will pass-back to this func a skipFlag val which is finally false.
+Refer to 8, which is a similar function
 
-All this means that only functions 1 & 2 will be soliciting and obtaining new guesses
+All this means that:
 The first func is passed the first guess, and obtains the second guess
 The second func is passed the second guess, and obtains the third guess
 Finally, the first func is re-called by the second,: the first func is, then, passed the third and final guess
@@ -102,19 +94,18 @@ func meatOf_Mixed_HiraKataExorcise(in string, skipFlag bool) { // NOTE: we have 
 					in == "stats" ||
 					in == "rm" ||
 					in == "stack" {
-					branchOnUserSelectedDirectiveIfGiven(in, "Hira_Prompt") // <-- Do the directive
+					branchOnUserSelectedDirectiveIfGiven(in, "Mixed_prompts") // <-- Do the directive
 				}
 				secondTry_meatOf_mixed_HiraKataExorcise(in) // This instance of 'in' is actually the third and final guess
 			}
 			// If the user guesses incorrectly on third-and-final try, then, and only then, execute the following
 			if skipFlag == false { // skipFlag is true on first entry, & false when recalled after third failed attempt
 				fmt.Printf("%s", colorReset)
-				fmt.Printf("\n It was: ")
+				fmt.Printf(" It was: ")
 				fmt.Printf("%s", colorCyan)
 				fmt.Printf("%s", aCard.KeyR)
 				fmt.Printf("%s", colorReset)
-				//checkForHints(aCard.KeyH) // Note: we only give hints for non-conjunctives
-				giveHintInResponseToSingleQuestionMarkContextSensitiveDir(aCard.KeyH, aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT) // dole-out a hint
+				fmt.Printf("\n\n%s\n%s\n%s\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
 				fmt.Println("")
 			}
 		} // If the user was ^^Right!, then we return to TouchTypingExorcise(SE) (directly from this line)
@@ -162,7 +153,7 @@ func meatOf_Mixed_HiraKataExorcise(in string, skipFlag bool) { // NOTE: we have 
 				fmt.Printf(colorReset)
 				// ... Re-prompt, and send that second guess to the secondTry_meatOfKataExorcise func
 				in = prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(Mixed_prompts_KeyX)
-				//in = semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(aCard.KeyH)
+				// in = semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(aCard.KeyH)
 				if in == "set" ||
 					in == "?" || // <-- If it IS a directive
 					in == "??" ||
@@ -176,20 +167,19 @@ func meatOf_Mixed_HiraKataExorcise(in string, skipFlag bool) { // NOTE: we have 
 					in == "stats" ||
 					in == "rm" ||
 					in == "stack" {
-					branchOnUserSelectedDirectiveIfGiven(in, "Hira_Prompt") // <-- Do the directive
+					branchOnUserSelectedDirectiveIfGiven(in, "Mixed_prompts") // <-- Do the directive
 				}
 				secondTry_meatOf_mixed_HiraKataExorcise(in)
 			}
 			// If the user guesses incorrectly on third-and-final try, then, and only then, execute the following
 			if skipFlag == false { // skipFlag is true on first entry, & false when recalled after third failed attempt
 				fmt.Printf("%s", colorReset)
-				fmt.Printf("\n It was: ")
+				fmt.Printf(" It was: ")
 				fmt.Printf("%s", colorCyan)
 				fmt.Printf("%s", aCard.KeyR)
 				fmt.Printf("%s", colorReset)
-				//checkForHints(aCard.KeyH) // Note: we only give hints for non-conjunctives
-				giveHintInResponseToSingleQuestionMarkContextSensitiveDir(aCard.KeyH, aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT) // dole-out a hint
-				fmt.Println("")
+				fmt.Printf("\n\n%s\n%s\n%s\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
+				fmt.Println()
 			}
 		}
 	}

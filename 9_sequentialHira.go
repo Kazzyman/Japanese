@@ -53,19 +53,19 @@ func meatOfSequentialHira(in string, skipFlag bool) {
 				in == "rm" ||
 				in == "stack" {
 				branchOnUserSelectedDirectiveIfGiven(in,
-					"Respond-w-Hira|Romaji") // <-- Perform the Directive
+					"Respond_w_Hira_or_Romaji") // <-- Perform the Directive
 			}
 			secondTry_meatOfSequentialHira(in) // This instance of 'in' is the user's second guess.
 		}
 		// If user guesses incorrectly on his third-and-final try, then, and only then, execute the rest of this func
 		if skipFlag == false { // skipFlag is true on first entry, & false when recalled after third failed attempt
 			fmt.Printf("%s", colorReset)
-			fmt.Printf("\n It was: ")
+			fmt.Printf(" It was: ")
 			fmt.Printf("%s", colorCyan)
 			fmt.Printf("%s", aCardS.KeyR)
 			fmt.Printf("%s", colorReset)
 			//
-			checkForHints(aCardS.KeyH)
+			fmt.Printf("\n\n%s\n%s\n%s\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
 			fmt.Println("")
 		}
 	} // If user was ^^Right!, then we return to the caller (directly from this very line)
@@ -106,7 +106,7 @@ func secondTry_meatOfSequentialHira(in string) { // <-- This second-instance of 
 			in == "stats" ||
 			in == "rm" ||
 			in == "stack" {
-			branchOnUserSelectedDirectiveIfGiven(in, "Respond-w-Hira|Romaji") // Perform the Directive
+			branchOnUserSelectedDirectiveIfGiven(in, "Respond_w_Hira_or_Romaji") // Perform the Directive
 		}
 		fmt.Printf("%s", colorRed)
 		fmt.Printf("      　^^Oops! ")

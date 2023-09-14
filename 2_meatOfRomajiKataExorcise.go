@@ -6,17 +6,9 @@ import "fmt"
 
 /*
 .
-The idea is to give the user two additional tries: if he fails at the first or second attempt then no answer or hint is
-to be displayed. But, after the third and final attempt (the maximum allowed) we will pass a skipFlag of false so that
-the answer and hint WILL be displayed after that third wrong guess -- when re-entering this first-of-three functions:
-that is, when it is finally re-called by the third func.
-.
-When it IS re-called by the third and final func, skipFlag will be false. But, upon first-entry to this first func,
-skipFlag will be true, so that the answer, and hint, will NOT be displayed after only the first attempt. And, since the
-answer and hint can only be displayed by this first func, it will not be displayed by the second, and will only be
-INDIRECTLY displayed by the third func: the third will pass-back to this func a skipFlag val which is finally false.
+Refer to 8, which is a similar function
 
-All this means that only functions 1 & 2 will be soliciting and obtaining new guesses
+All this means that:
 The first func is passed the first guess, and obtains the second guess
 The second func is passed the second guess, and obtains the third guess
 Finally, the first func is re-called by the second,: the first func is, then, passed the third and final guess
@@ -77,18 +69,18 @@ func meatOfRomajiKataExorcise(in string, skipFlag bool) {
 					in == "stats" ||
 					in == "rm" ||
 					in == "stack" {
-					branchOnUserSelectedDirectiveIfGiven(in, "Romaji+Kata_Prompt") // <-- Do directive
+					branchOnUserSelectedDirectiveIfGiven(in, "Romaji_w_Kata_Prompt") // <-- Do directive
 				}
 				secondTry_meatOfRomajiKataExorcise(in) // This instance of 'in' is actually the third and final guess
 			}
 			// If the user guesses incorrectly on third-and-final try, then, and only then, execute the following
 			if skipFlag == false { // skipFlag is true on first entry, & false when recalled after third failed attempt
 				fmt.Printf("%s", colorReset)
-				fmt.Printf("\n It was: ")
+				fmt.Printf(" It was: ")
 				fmt.Printf("%s", colorCyan)
 				fmt.Printf("%s", aCard.KeyH) // done
 				fmt.Printf("%s", colorReset)
-				checkForHints(aCard.KeyH) // Note: we only give hints for non-conjunctives
+				fmt.Printf("\n\n%s\n%s\n%s\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
 				fmt.Println("")
 			}
 		} // If the user was ^^Right!, then we return to TouchTypingExorcise(SE) (directly from this line)
@@ -140,18 +132,18 @@ func meatOfRomajiKataExorcise(in string, skipFlag bool) {
 					in == "stats" ||
 					in == "rm" ||
 					in == "stack" {
-					branchOnUserSelectedDirectiveIfGiven(in, "Romaji+Kata_Prompt") // <-- Do the directive
+					branchOnUserSelectedDirectiveIfGiven(in, "Romaji_w_Kata_Prompt") // <-- Do the directive
 				}
 				secondTry_meatOfRomajiKataExorcise(in) // done RK
 			}
 			// If the user guesses incorrectly on third-and-final try, then, and only then, execute the following
 			if skipFlag == false { // skipFlag is true on first entry, & false when recalled after third failed attempt
 				fmt.Printf("%s", colorReset)
-				fmt.Printf("\n It was: ")
+				fmt.Printf(" It was: ")
 				fmt.Printf("%s", colorCyan)
 				fmt.Printf("%s", aCard.KeyH) // done RK
 				fmt.Printf("%s", colorReset)
-				checkForHints(aCard.KeyH) // Note: we only give hints for non-conjunctives
+				fmt.Printf("\n\n%s\n%s\n%s\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
 				fmt.Println("")
 			}
 		}
@@ -197,7 +189,7 @@ func secondTry_meatOfRomajiKataExorcise(in string) {
 				in == "stats" ||
 				in == "rm" ||
 				in == "stack" {
-				branchOnUserSelectedDirectiveIfGiven(in, "Romaji+Kata_Prompt") // <-- Do the directive
+				branchOnUserSelectedDirectiveIfGiven(in, "Romaji_w_Kata_Prompt") // <-- Do the directive
 			}
 			fmt.Printf("%s", colorRed)
 			fmt.Printf("        ^^Oops! ")
@@ -210,7 +202,7 @@ func secondTry_meatOfRomajiKataExorcise(in string) {
 			// User failed third and final attempt, so do a "recursion", but with a skipFlag false
 			meatOfRomajiKataExorcise(in, false)
 		}
-	} //else {
+	} // else {
 	// This 'else' (immediately above) covers a lot of if, else ifs: Dozens of them!
 	// ...
 	// The next two conditions are for all remaining normal (not special) prompt(key)/value events or conditions
@@ -249,7 +241,7 @@ func secondTry_meatOfRomajiKataExorcise(in string) {
 				in == "stats" ||
 				in == "rm" ||
 				in == "stack" {
-				branchOnUserSelectedDirectiveIfGiven(in, "Romaji+Kata_Prompt") // <-- handle the directive // done
+				branchOnUserSelectedDirectiveIfGiven(in, "Romaji_w_Kata_Prompt") // <-- handle the directive // done
 			}
 			// User failed third and final attempt, so do a "recursion", but with a skipFlag false
 			meatOfRomajiKataExorcise(in, false) // Process the third try // done

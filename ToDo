@@ -1,3 +1,48 @@
+After the third failed guess, there is never any point in showing less than the first 3 hint lines !!!!
+
+However, in the case of '?' Directive handling, the following guidelines would be optimal 
+and, the same would be true of the '??' Directive handling, the following guidelines would be optimal
+
+(in the first case we would need to switch on the selected exorcise, 
+but, for the second case, we will know what the user knows since he has given either a hira or a romaji as the seed)
+
+
+1 prompts w romaji, expects hira : hint should be sans hira, but may include all else, 
+though romaji-EX-clusion would be entirely-pointless 
+
+
+2 prompts w rom+kata, expects hira : hint should be sans hira, but may also include all else, 
+though romaji-and/or-kata-EX-clusion would be entirely-pointless 
+
+
+3 prompts w kata only : accepts either hira or romaji, 
+so, ideally, only a vague hint sans any mention of hira, kata, or romaji is preferred, 
+though kata-EX-clusion would be entirely-pointless
+
+
+6 prompts w a mixture of kata and hira : accepts mainly romaji : 
+so, hint should be sans romaji; and the pointless cases are not really worth worrying about !! 
+
+
+7 prompts w kata only : accepts either hira or romaji, 
+so, ideally, only a vague hint sans any mention of hira, kata, or romaji is preferred, 
+though kata-EX-clusion would be entirely-pointless
+
+
+8 prompts w kata only : accepts either hira or romaji, 
+so, ideally, only a vague hint sans any mention of hira, kata, or romaji is preferred, 
+though kata-EX-clusion would be entirely-pointless
+
+
+9 prompts w hira only : and, actually, only accepts romaji : 
+hint should be sans romaji -- hira EX-clusion being entirely-pointless 
+
+
+
+
+
+
+
 
 re-document all of the code files, especially the second and third try routines
 

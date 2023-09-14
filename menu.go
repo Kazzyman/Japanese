@@ -1,15 +1,16 @@
 package main
 
 // **do-this** menu
+
 import (
 	"fmt"
 	"os"
 	"time"
-	//"math/rand"
+	// "math/rand"
 )
 
-//goland:noinspection ALL
-func display_ListingOf_OptionsThese_AllHave_inCommon() {
+// 'Directive Menu' shared by all exorcises; displays only at inception or in response to the 'dir' Directive
+func display_Listing_of_Directives_allExorcisesHave_inCommon() { // (unique)     - -
 	fmt.Println("View source code at https://github.com/Kazzyman/Japanese")
 	fmt.Println("    (using US or Alpha-Numeric input mode):")
 	fmt.Println("        Enter 'menu' to return to the the main menu ")
@@ -21,71 +22,69 @@ func display_ListingOf_OptionsThese_AllHave_inCommon() {
 	fmt.Println("        Enter 'stat' to view what you have done so far in the current session")
 	fmt.Println("        Enter 'reset' to reset the hits logs")
 	fmt.Println("        Enter 'exit' or 'quit' to terminate the app")
-	//goland:noinspection ALL
+		//goland:noinspection ALL
 	fmt.Println("\n")
 }
 
-func mainMenuPromptScanSelectAndBeginSelectedExorcise() {
+// 'Primary Menu' This is the first thing the user will see. Re-displays in response to the 'menu' Directive
+func mainMenuPromptScanSelectAndBeginSelectedExorcise() {                 // (unique)     - -
 	var mainMenuSelection string
-	//seedFile_Maker(); createAndWrite_seedFile()
 	for {
 		fmt.Printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-		///
-
+		//
+		// Display the Main Menu (Japanese) - - - - - - - - - - - - - - - - 
+		//
 		fmt.Printf("" +
 			" Menu main: me-i-n me-ni-yu\n" +
 			"メインメニュー:\n\n\n" +
-			// 1 -
+			//
 			"-- 1 -- v v v \n" +
 			"        nin-shi-ki  t-I-pu-su-ru       todo           Enter                  simple       very     useful\n" +
 			"ひらがな を 認識 し タイプする 練習 を するには「1」を 入力  してください。 (シンプル で、非常 に 役立ちます)\n" +
 			"^Hiragana   ^^Recognizing      ^^practicing        Enter^      ^please do     ^simple          useful^ \n\n\n" +
 			// ^ 1 - Recognizing Hiragana & practicing typing, Enter 1 (simple and very useful) ^ ^
 			//
-			// 2 -
 			"-- 2 -- v v v \n" +
 			"                     pair             Hiragana    t-I-pu  practicing   todo         enter                sort-of \n" +
 			"ローマ字-カタカナ の ペア を 認識 し、ひらがな を タイプする 練習 を するには「2」を 入力 してください。(ある程度簡単 で、役立ちます)\n" +
 			"^Romaji-Katakana     pair    ^Recognizing        t-I-pu-su   ^practice  ^todo         ^enter   ^please do \n\n\n" +
-			// 2 - Recognizing Romaji+Katakana, practicing typing Hiragana (sort-of simple and useful)
+			// ^ 2 - Recognizing Romaji+Katakana, practicing typing Hiragana (sort-of simple and useful)
 			//
-			// 3 -
 			"-- 3 -- v v v \n" +
 			"Katakana   recogni   Hiragana  or     Romaji      t-I-pu    practice   todo\n" +
 			"カタカナ を 認識 し、ひらがな また は ローマ字 を タイプする 練習 を するには「3」を 入力 してください。(非常に汎用性が高い)\n" +
 			"^Katakana   ^Recog   Hiragana  or     Romaji       typing     ^practice              enter please do  \n\n\n" +
-			// 3 - Katakana recognizing, practice typing Hiragana or Romaji, 3 Enter ( )
+			// ^ 3 - Katakana recognizing, practice typing Hiragana or Romaji, 3 Enter ( )
 			//
-			// 5 -
 			"-- 5 -- v v v \n" +
 			"   t-I-pu    practice   todo\n" +
 			"ドリルラインをタイプする練習をするには「5」を入力してください。\n\n" +
 			"" +
-			// 5 -
+			// ^ 5 -
 			//
-			// 6 -
 			"-- 6 -- v v v \n" +
 			"   t-I-pu    practice   todo\n" +
 			"ひらがなを認識し、ローマ字をタイプする練習をするには「6」を入力してください。 \n\n" +
 			"" +
-			// 6-
+			// ^ 6-
 			//
-			// 7 -
 			"-- 7 -- v v v \n" +
 			"   t-I-pu    practice   todo\n" +
 			"最も難しいカタカナを練習するには「7」を入力してください。\n\n" +
 			"" +
-			// 7 -
+			// ^ 7 -
 			//
-			// exit -
 			"-- exit -- v v v \n" +
 			"   t-I-pu    practice   todo\n" +
 			"終了するには「exit」と入力してください。" +
 			"" +
-			// exit -
-			"\n\n")
+			// ^ exit -
+			"\n\n") 
+		//					
+	// Display the Main Menu (English)
+			//goland:noinspection ALL
 		fmt.Println("View source code at https://github.com/Kazzyman/Japanese\n")
-		/// Display the Main Menu
+	// Display the Main Menu (English)
 		fmt.Printf("  Main Menu: \n\n" +
 			"  Enter '1' to practice recognizing Romaji: and typing Hiragana (simple, quite useful)\n" +
 			"  Enter '2' for recognizing Romaji-Katakana pairs: typing Hiragana (somewhat easy, useful)\n" +
@@ -96,9 +95,9 @@ func mainMenuPromptScanSelectAndBeginSelectedExorcise() {
 			"  Enter '8' to practice Sequential Kata, type either Hiragana or Romaji\n" +
 			"  Enter '9' to practice Sequential Hira, type either Hiragana or Romaji\n" +
 			"  Enter 'exit' to quit\n\n\n")
-		// Pause to accept (Scan) a string var, e.g., "7" or "exit", from the command line, from the user
+		// Pause to accept (Scan) a string var, e.g., "1-9" or "exit", from the command line, from the user
 		_, _ = fmt.Scan(&mainMenuSelection) // Create address for, and auto-dereference, var mainMenuSelection
-		///
+
 		/*
 			///
 			fmt.Printf("// To prove that mainMenuSelection is a variable of type string :\n")
@@ -129,126 +128,135 @@ func mainMenuPromptScanSelectAndBeginSelectedExorcise() {
 			}
 			///
 		*/
-		///
+		/*
+			Unique string identifiers:
+				1  "Romaji_Prompt"
+				2  "Romaji_w_Kata_Prompt"
+				3  "Respond_w_Hira_or_Romaji"
+				5  "drillLines"
+				6  "Mixed_prompts"
+				7  "Most_Difficult"
+				8  "Sequential_Kata"
+				9  "Sequential_Hira"
+		*/
+		// Assign a descriptive string to the numerically selected exorcise, and delegate accordingly.
+		//
 		if mainMenuSelection == "1" {
-			selectedExorcise := "Romaji_Prompt" // 1
-			log_to_JapLog_file_inception_time(selectedExorcise)
-			display_Romaji_instructions_BeginExorcise(selectedExorcise) // 1
+			selectedExorcise := "Romaji_Prompt" // unique string identifier for 1
+				log_to_JapLog_file_inception_time(selectedExorcise)
+			display_Romaji_instructions_BeginExorcise(selectedExorcise)                // # 1 (unique)
+
 		} else if mainMenuSelection == "2" {
-			selectedExorcise := "Romaji+Kata_Prompt" // 2
-			log_to_JapLog_file_inception_time(selectedExorcise)
-			display_Romaji_plus_Kata_instructions_BeginExorcise(selectedExorcise) // 2
+			selectedExorcise := "Romaji_w_Kata_Prompt" // 
+				log_to_JapLog_file_inception_time(selectedExorcise)
+			display_Romaji_plus_Kata_instructions_BeginExorcise(selectedExorcise)      // # 2 (unique)
+
 		} else if mainMenuSelection == "3" {
-			selectedExorcise := "Respond-w-Hira|Romaji" // 3 or 4
-			log_to_JapLog_file_inception_time(selectedExorcise)
-			display_KataExorciseInstructions_BeginExorcise(selectedExorcise) // 3 or 4
+			selectedExorcise := "Respond_w_Hira_or_Romaji" // User will face only Katakana prompts
+				log_to_JapLog_file_inception_time(selectedExorcise)
+			display_KataExorciseInstructions_BeginExorcise(selectedExorcise)           // # 3 & '4' (unique)
+
 		} else if mainMenuSelection == "5" {
 			selectedExorcise := "drillLines"
-			log_to_JapLog_file_inception_time(selectedExorcise)
-			drillLines() // 5
+				log_to_JapLog_file_inception_time(selectedExorcise)
+			drillLines()                                                               // # 5 (unique)
+
 		} else if mainMenuSelection == "6" {
-			selectedExorcise := "Hira_prompt" // 6
-			log_to_JapLog_file_inception_time(selectedExorcise)
-			display_Hira_instructions_BeginExorcise(selectedExorcise) // 6
+			selectedExorcise := "Mixed_prompts" // Mixed, meaning Hira & Kata prompts (user may respond only with Romaji)
+				log_to_JapLog_file_inception_time(selectedExorcise)
+			display_Mixed_prompts_instructions_BeginExorcise(selectedExorcise)         // # 6 (unique)
+
 		} else if mainMenuSelection == "7" {
-			selectedExorcise := "Most_Difficult" // 7
-			//log_to_JapLog_file_inception_time(selectedExorcise)
-			display_Difficult_instructions_BeginExorcise(selectedExorcise) // 7
+			selectedExorcise := "Most_Difficult" // unique string identifier for 7
+				log_to_JapLog_file_inception_time(selectedExorcise)
+			display_Difficult_instructions_BeginExorcise(selectedExorcise)             // # 7 (unique)
+
 		} else if mainMenuSelection == "8" {
-			selectedExorcise := "Sequential-Kata" // 8
-			//log_to_JapLog_file_inception_time(selectedExorcise)
-			display_Seq_instructions_BeginExorcise(selectedExorcise) // 8
+			selectedExorcise := "Sequential_Kata" // unique string identifier for 8
+				log_to_JapLog_file_inception_time(selectedExorcise)
+			display_Seq_instructions_BeginExorcise(selectedExorcise)               // #8 (shared with 9)
+
 		} else if mainMenuSelection == "9" {
-			selectedExorcise := "Sequential-Hira" // 9
-			//log_to_JapLog_file_inception_time(selectedExorcise)
-			display_Seq_instructions_BeginExorcise(selectedExorcise) // 8
+			selectedExorcise := "Sequential_Hira" // unique string identifier for 9
+				log_to_JapLog_file_inception_time(selectedExorcise)
+			display_Seq_instructions_BeginExorcise(selectedExorcise)               // #9 (shared with 8)
+			
 		} else if mainMenuSelection == "exit" || mainMenuSelection == "quit" {
 			os.Exit(1)
 		}
 	}
 }
 
-// 1
-//
-//goland:noinspection ALL
-func display_Romaji_instructions_BeginExorcise(selectedExorcise string) {
-	body_of_Romaji_instructions()
-	TouchTypingExorcise(selectedExorcise)
+// 1 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+func display_Romaji_instructions_BeginExorcise(selectedExorcise string) { //                  - -
+	body_of_Romaji_instructions()  
+		TouchTypingExorcise(selectedExorcise) 
 }
-
-//goland:noinspection ALL
-func body_of_Romaji_instructions() {
+func reDisplay_Romaji_instructions() { //                                                     - -
+	body_of_Romaji_instructions() 
+}
+		//goland:noinspection ALL
+func body_of_Romaji_instructions() { //                                                       - -
 	fmt.Println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 	fmt.Println("Practicing touch-typing (TT) Hiragana in response to Romaji prompts:\n")
 	fmt.Println("Using Hiragana-input-mode on your sys, Type the Hiragana corresponding to the Romaji prompt\n")
-	display_ListingOf_OptionsThese_AllHave_inCommon() // The func is located at the end of this file
-	fmt.Println("Using Hiragana-input-mode, Type the Hiragana corresponding to the Romaji prompt: \n")
+		display_Listing_of_Directives_allExorcisesHave_inCommon() 
+	fmt.Println("1 Using Hiragana-input-mode, Type the Hiragana corresponding to the Romaji prompt: \n")
 }
+//  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 1
 
-//goland:noinspection ALL
-func reDisplay_Romaji_instructions() {
-	body_of_Romaji_instructions()
-}
-
-// 2
-//
-//goland:noinspection ALL
-func display_Romaji_plus_Kata_instructions_BeginExorcise(selectedExorcise string) {
+// 2 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+func display_Romaji_plus_Kata_instructions_BeginExorcise(selectedExorcise string) { //        - -
 	body_of_Romaji_plus_Kata_instructions()
-	TouchTypingExorcise(selectedExorcise)
+		TouchTypingExorcise(selectedExorcise)
 }
-
-//goland:noinspection ALL
-func body_of_Romaji_plus_Kata_instructions() {
+func reDisplay_Romaji_plus_Kata_instructions() { //                                           - -
+	body_of_Romaji_plus_Kata_instructions()
+}
+		//goland:noinspection ALL
+func body_of_Romaji_plus_Kata_instructions() { //                                             - -
 	fmt.Println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 	fmt.Println("Practicing touch-typing (TT) Hiragana in response to Romaji-Katakana prompts:\n")
-	fmt.Println("Using Hiragana-input-mode on your sys, Type the Hiragana corresponding to the Romaji-Katakana prompt\n")
-	display_ListingOf_OptionsThese_AllHave_inCommon() // The func is located at the end of this file
-	fmt.Println("Using Hiragana-input-mode, Type the Hiragana corresponding to the Romaji-Katakana prompt: \n")
+	fmt.Println("Using Hiragana-input-mode on your sys, Type a Hiragana corresponding to the Romaji-Kata prompt\n")
+		display_Listing_of_Directives_allExorcisesHave_inCommon() // The func is located at the end of this file
+	fmt.Println("2 Using Hiragana-input-mode, Type a Hiragana corresponding to the Romaji-Katakana prompt: \n")
 }
+//  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 2
 
-//goland:noinspection ALL
-func reDisplay_Romaji_plus_Kata_instructions() {
-	body_of_Romaji_plus_Kata_instructions()
-}
-
-// 3 and 4
-//
-//goland:noinspection ALL
-func display_KataExorciseInstructions_BeginExorcise(selectedExorcise string) {
+// 3 & '4' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+func display_KataExorciseInstructions_BeginExorcise(selectedExorcise string) { //             - -
 	body_of_KataExorciseInstructions()
-	TouchTypingExorcise(selectedExorcise)
+		TouchTypingExorcise(selectedExorcise)
 }
-
-//goland:noinspection ALL
-func body_of_KataExorciseInstructions() {
+func re_display_ExorciseInstructions() { //                                                   - -
+	body_of_KataExorciseInstructions()
+}
+		//goland:noinspection ALL
+func body_of_KataExorciseInstructions() { //                                                  - -
 	fmt.Println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 	fmt.Println("Practicing recognizing Katakana chars: Using Hiragana-input-mode on your system ...")
 	fmt.Println("... enter the Hiragana chars that correspond to the Katakana.\n")
 	fmt.Println("Or, alternatively, type the Romaji that corresponds to the Katakana\n")
-	display_ListingOf_OptionsThese_AllHave_inCommon() // The func is located at the end of this file
-	fmt.Println("Type either the Hiragana or Romaji that corresponds to the Katakana prompt: \n")
+		display_Listing_of_Directives_allExorcisesHave_inCommon() 
+	fmt.Println("3 Type either a Hiragana or Romaji that corresponds to the Katakana prompt: \n")
 }
+//  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 3 & '4'
 
-//goland:noinspection ALL
-func re_display_ExorciseInstructions() {
-	body_of_KataExorciseInstructions()
+// 6 8 9 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+func display_Mixed_prompts_instructions_BeginExorcise(selectedExorcise string) { //           - -
+	body_of_Mixed_prompts_instructions()
+		TouchTypingExorcise(selectedExorcise)
 }
-
-// 6
-//
-//goland:noinspection ALL
-func display_Hira_instructions_BeginExorcise(selectedExorcise string) {
-	body_of_Hira_instructions()
-	TouchTypingExorcise(selectedExorcise)
+// 8 9 : instructions for mixed prompts is appropriate for both sequential exorcises 
+func display_Seq_instructions_BeginExorcise(selectedExorcise string) { //                     - -
+	body_of_Mixed_prompts_instructions() 
+		TouchTypingExorciseSequential(selectedExorcise)
 }
-func display_Seq_instructions_BeginExorcise(selectedExorcise string) {
-	body_of_Hira_instructions()
-	TouchTypingExorciseSequential(selectedExorcise)
+func reDisplay_Mixed_prompts_instructions() { //                                              - -
+	body_of_Mixed_prompts_instructions()
 }
-
-//goland:noinspection ALL
-func body_of_Hira_instructions() {
+		//goland:noinspection ALL
+func body_of_Mixed_prompts_instructions() {
 	fmt.Println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 	fmt.Printf("力いまのレーまじ\n\n" +
 		"ひらがなのプロンプトに答える形でローマ字のタッチタイピングの練習をしましょう。\n\n" +
@@ -290,83 +298,99 @@ func body_of_Hira_instructions() {
 		"To reset the hit log, type \"reset\".\n\n" +
 		"To exit the app, type \"exit\" or \"quit\".")
 	//
-	fmt.Println("Practicing touch-typing (TT) Romaji in response to Hiragana prompts:\n")
-	fmt.Println("Type the Romaji corresponding to the Hiragana prompt\n")
-	display_ListingOf_OptionsThese_AllHave_inCommon() // The func is located at the end of this file
-	fmt.Println("Type the Romaji corresponding to the Hiragana prompt: \n")
+	fmt.Println("Practicing touch-typing (TT) Romaji in response to mixed prompts:\n")
+	fmt.Println("Type the Romaji corresponding to the prompt\n")
+		display_Listing_of_Directives_allExorcisesHave_inCommon() 
+	fmt.Println("6 8 9 Type the Romaji corresponding to the prompt: \n")
 }
 
-//goland:noinspection ALL
-func reDisplay_Hira_instructions() {
-	body_of_Hira_instructions()
-}
+
+//  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 6
 
 // 7
 //
-//goland:noinspection ALL
-func display_Difficult_instructions_BeginExorcise(selectedExorcise string) {
+func display_Difficult_instructions_BeginExorcise(selectedExorcise string) { //                   - -
 	body_of_Difficult_instructions()
 	TouchTypingExorciseDifficult(selectedExorcise)
 }
-
-//goland:noinspection ALL
-func body_of_Difficult_instructions() {
+func reDisplay_Difficult_instructions() { //                                                      - -
+	body_of_Difficult_instructions()
+}
+		//goland:noinspection ALL
+func body_of_Difficult_instructions() { //                                                        - -
 	fmt.Println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 	fmt.Println("Practicing recognizing Katakana chars: Using Hiragana-input-mode on your system ...")
 	fmt.Println("... enter the Hiragana chars that correspond to the Katakana.\n")
 	fmt.Println("Or, alternatively, type the Romaji that corresponds to the Katakana\n")
-	display_ListingOf_OptionsThese_AllHave_inCommon() // The func is located at the end of this file
-	fmt.Println("Type either the Hiragana or Romaji that corresponds to the Katakana prompt: \n")
+	display_Listing_of_Directives_allExorcisesHave_inCommon() // The func is located at the end of this file
+	fmt.Println("7 Type either the Hiragana or Romaji that corresponds to the Katakana prompt: \n")
 }
 
-//goland:noinspection ALL
-func reDisplay_Difficult_instructions() {
-	body_of_Difficult_instructions()
-}
-
-// This is executed each time menu is given as a dir by the user during any activity
-// Things to do after an activity, and before beginning another activity
+/*
+	Unique string identifiers:
+		1  "Romaji_Prompt"
+		2  "Romaji_w_Kata_Prompt"
+		3  "Respond_w_Hira_or_Romaji"
+		5  "drillLines"
+		6  "Mixed_prompts"
+		7  "Most_Difficult"
+		8  "Sequential_Kata"
+		9  "Sequential_Hira"
+*/
+// This func is executed each time 'menu' is given as a Directive by the user during any Exorcise 
+// Things to do after an Exorcise, and before beginning another Exorcise
 func do_betweenMainMenuSelectionsTTE(selectedExorcise string) {
 	currentTime := time.Now()
 	if selectedExorcise == "Romaji_Prompt" { // 1
-		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
-		check(err)                                                                                 // ... gets a file handle to JapLog.txt
-		_, err2 := fmt.Fprintf(fileHandleBig, "\nTransition from exorcise 1 'Romaji_Prompt' occured at: %s \n",
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) 
+		check(err)              
+		_, err2 := fmt.Fprintf(fileHandleBig,
+			"\nTransition from exorcise 1 'Romaji_Prompt' occured at: %s \n",
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
 		_ = fileHandleBig.Close()
-	} else if selectedExorcise == "Romaji+Kata_Prompt" { // 2
-		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
-		check(err)                                                                                 // ... gets a file handle to JapLog.txt
-		_, err2 := fmt.Fprintf(fileHandleBig, "\nTransition from exorcise 2 'Romaji+Kata_Prompt' occured at: %s \n",
+	} else if selectedExorcise == "Romaji_w_Kata_Prompt" { // 2
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) 
+		check(err)                                 
+		_, err2 := fmt.Fprintf(fileHandleBig,
+			"\nTransition from exorcise 2 'Romaji_w_Kata_Prompt' occured at: %s \n",
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
 		_ = fileHandleBig.Close()
-	} else if selectedExorcise == "Kata_Prompt-Respond-w-Hira|Romaji" { // 3, 4
-		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
-		check(err)                                                                                 // ... gets a file handle to JapLog.txt
-		_, err2 := fmt.Fprintf(fileHandleBig, "\nTransition from exorcise 3 or 4 'Kata_Prompt-Respond-w-Hira|Romaji' occured at: %s \n",
+	} else if selectedExorcise == "Respond_w_Hira_or_Romaji" { // 3, 4
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) 
+		check(err)   
+		_, err2 := fmt.Fprintf(fileHandleBig,
+			"\nTransition from exorcise 3 or 4 'Respond_w_Hira_or_Romaji' occured at: %s \n",
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
 		_ = fileHandleBig.Close()
 	} else if selectedExorcise == "drillLines" {
-		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
-		check(err)                                                                                 // ... gets a file handle to JapLog.txt
-		_, err2 := fmt.Fprintf(fileHandleBig, "\nTransition from exorcise 5 'Drill Lines' occured at: %s \n",
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) 
+		check(err)                                               
+		_, err2 := fmt.Fprintf(fileHandleBig,
+			"\nTransition from exorcise 5 'Drill Lines' occured at: %s \n",
 			currentTime.Format("01-02-2006 15:04:05 Monday"))
 		check(err2)
 		_ = fileHandleBig.Close()
-	} else if selectedExorcise == "Hira_prompt" { // 3, 4
-		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
-		check(err)                                                                                 // ... gets a file handle to JapLog.txt
-		_, err2 := fmt.Fprintf(fileHandleBig, "\nTransition from exorcise 6 'Hira_prompt' occured at: %s \n",
+	} else if selectedExorcise == "Mixed_prompts" { // 3, 4
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) 
+		check(err)                    
+		_, err2 := fmt.Fprintf(fileHandleBig,
+			"\nTransition from exorcise 6 'Mixed_prompts' occured at: %s \n",
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
 		_ = fileHandleBig.Close()
 	}
 }
-
 /*
-.
-.
+	Unique string identifiers:
+		1  "Romaji_Prompt"
+		2  "Romaji_w_Kata_Prompt"
+		3  "Respond_w_Hira_or_Romaji"
+		5  "drillLines"
+		6  "Mixed_prompts"
+		7  "Most_Difficult"
+		8  "Sequential_Kata"
+		9  "Sequential_Hira"
 */
