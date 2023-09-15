@@ -6,7 +6,6 @@ import (
 	"time"
 )
 
-// TouchTypingExorcise
 // The content of "prompt" (i.e., aCard.KeyR | aCard.KeyRK | aCard.KeyK) is set by the calling activity
 //
 // Used exclusively for exorcise 6
@@ -16,7 +15,7 @@ var Mixed_prompts_KeyX string
 var Mixed_prompt_is string
 
 // Entry point for numbers 1, 2, 3, and 6 Exorcises
-func TouchTypingExorcise(selectedExorcise string) {
+func TouchTypingExorcise(selectedExorcise string) { //       - -
 	//
 	rand.Seed(time.Now().UnixNano())
 

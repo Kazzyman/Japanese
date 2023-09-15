@@ -1,11 +1,33 @@
+there may yet be issues with the card picks some-where-s in 7 (fine on & need work on) 
+
+re-document all of the code files, especially the second and third try routines
+
+Add Japanese translations (with Kanji) to the menus etc. Then ...
+... Create a struct, a file-of-cards, with a mixture of japanese chars, comprising both words and phrases, to implement
+an activity similar to 1-4 wherein a prompt is given and the user is asked to select the most-appropriate response.
+
+Try refining #5, the drill lines activity
+
+/*
+Chars from the blue card: 46+15+25+21=107 : if we include all the suffixed combination "chars".
+... 46*2=92 would be the total for the complete simple hiragana+katakana set; of base chars.
+ ... doubling it all (the 107 from above) for katakana gives a grand total of 214 Japanese chars excluding the various punctuation characters.
+*/
+
+//
+//
+
+/*
 After the third failed guess, there is never any point in showing less than the first 3 hint lines !!!!
+So, I think that all this has been done already (though 3 has the sans Romaji for the first Kata section) 
 
 However, in the case of '?' Directive handling, the following guidelines would be optimal 
-and, the same would be true of the '??' Directive handling, the following guidelines would be optimal
+and, the same would be true of the '??' Directive handling: the following guidelines would be optimal
 
-(in the first case we would need to switch on the selected exorcise, 
-but, for the second case, we will know what the user knows since he has given either a hira or a romaji as the seed)
+(in the first case we would need to switch on the selected exorcise, but, for the second case, 
+we will know what the user knows since he has already 'given' either a hira or a romaji as the seed)
 
+Switch in in place, but not yet fleshed-out 
 
 1 prompts w romaji, expects hira : hint should be sans hira, but may include all else, 
 though romaji-EX-clusion would be entirely-pointless 
@@ -37,30 +59,6 @@ though kata-EX-clusion would be entirely-pointless
 9 prompts w hira only : and, actually, only accepts romaji : 
 hint should be sans romaji -- hira EX-clusion being entirely-pointless 
 
-
-
-
-
-
-
-
-re-document all of the code files, especially the second and third try routines
-
-7 does no logging and therefore the stat and rm dirs do not work
-and, there are probably issues with the card picks some-where-s in 7
-
-Add Japanese translations (with Kanji) to the menus etc. Then ...
-... Create a struct, a file-of-cards, with a mixture of japanese chars, comprising both words and phrases, to implement
-an activity similar to 1-4 wherein a prompt is given and the user is asked to select the most-appropriate response.
-
-Finish composing hint content in constantsAndSuch.go:
-
-Try refining #5, the drill lines activity
-
-/*
-Chars from the blue card: 46+15+25+21=107 : if we include all the suffixed combination "chars".
-... 46*2=92 would be the total for the complete simple hiragana+katakana set; of base chars.
- ... doubling it all (the 107 from above) for katakana gives a grand total of 214 Japanese chars excluding the various punctuation characters.
 */
 
 e98e6-03e3e

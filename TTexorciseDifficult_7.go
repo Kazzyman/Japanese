@@ -1,14 +1,15 @@
 package main
 
 import (
+	"fmt"
 	"math/rand"
+	"os"
 	"time"
 )
 
-// TouchTypingExorcise
 // The content of "prompt" (i.e., aCardD.KeyR | aCardD.KeyRK | aCardD.KeyK) is set by the calling activity
 //
-func TouchTypingExorciseDifficult(selectedExorcise string) {
+func TouchTypingExorciseDifficult(selectedExorcise string) { //    - -
 	// Accepts the following for ^ ^ ^ ^ :  RomajiNakedPrompt -- RomajiKataPrompt -- KataNakedPrompt
 	//
 	// rand.Seed(seed) is|was|use2be done in main.go, at the top of main()
@@ -22,7 +23,7 @@ func TouchTypingExorciseDifficult(selectedExorcise string) {
 	isThis_a_cardWeNeedMoreWorkOn := 0 // now and then we will consider working on a char the user has had trouble with
 	for {
 		pick_Difficult_RandomCard_Assign_aCard() // Assigns a random card to the global aCard
-		/*
+		
 			if isThis_a_cardWeNeedMoreWorkOn > 2 {   // if we have gone without augmenting the random picks with cards we have prev missed ...
 				//
 					// Log to a file that this action was taken **do-this**
@@ -33,11 +34,11 @@ func TouchTypingExorciseDifficult(selectedExorcise string) {
 					check(err2)
 					_ = fileHandleBig.Close()
 				isThis_a_cardWeNeedMoreWorkOn = 0 // ... for a while now, then let's go get a card we've missed before, instead of that random one
-				check_it_for_needing_more_practiceD()
+				check_it_for_needing_more_practiceD_7()
 			}
-		*/
+		
 		// in any case:
-		// check_it_for_fine_onD()
+		check_it_for_fine_on7()
 		isThis_a_cardWeNeedMoreWorkOn++
 
 		// Prompt with the appropriate field from the new random card and accept user's guess:

@@ -145,7 +145,7 @@ func log_to_JapLog_file_inception_time(selectedExorcise string) {
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
 		_ = fileHandleBig.Close()
-	} else if selectedExorcise == "Kata_Prompt-Respond-w-Hira|Romaji" { // 3, 4
+	} else if selectedExorcise == "Respond_w_Hira_or_Romaji" { // 3, 4
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
 		check(err)                                                                                 // ... gets a file handle to JapLog.txt
 		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 3 or 4 'Kata_Prompt-Respond-w-Hira|Romaji' occured at: %s \n",
@@ -169,9 +169,25 @@ func log_to_JapLog_file_inception_time(selectedExorcise string) {
 	} else if selectedExorcise == "Most_Difficult" { // 7
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
 		check(err)                                                                                 // ... gets a file handle to JapLog.txt
-		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 6 'Hira_prompt' occurred at: %s \n",
+		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 7 'Most_Difficult' occurred at: %s \n",
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
 		_ = fileHandleBig.Close()
-	}
+	//
+	//
+	} else if selectedExorcise == "Sequential_Kata" { // 8
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+		check(err)                                                                                 // ... gets a file handle to JapLog.txt
+		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 8 'Sequential_Kata' occurred at: %s \n",
+			currentTime.Format("15:04:05 on Monday 01-02-2006"))
+		check(err2)
+		_ = fileHandleBig.Close()
+	} else if selectedExorcise == "Sequential_Hira" { // 9
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+		check(err)                                                                                 // ... gets a file handle to JapLog.txt
+		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of exorcise 9 'Sequential_Hira' occurred at: %s \n",
+			currentTime.Format("15:04:05 on Monday 01-02-2006"))
+		check(err2)
+		_ = fileHandleBig.Close()
+	} 
 }

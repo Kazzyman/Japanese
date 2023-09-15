@@ -349,6 +349,7 @@ func do_betweenMainMenuSelectionsTTE(selectedExorcise string) {
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
 		_ = fileHandleBig.Close()
+		//
 	} else if selectedExorcise == "Romaji_w_Kata_Prompt" { // 2
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) 
 		check(err)                                 
@@ -357,6 +358,7 @@ func do_betweenMainMenuSelectionsTTE(selectedExorcise string) {
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
 		_ = fileHandleBig.Close()
+		//
 	} else if selectedExorcise == "Respond_w_Hira_or_Romaji" { // 3, 4
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) 
 		check(err)   
@@ -365,7 +367,8 @@ func do_betweenMainMenuSelectionsTTE(selectedExorcise string) {
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
 		_ = fileHandleBig.Close()
-	} else if selectedExorcise == "drillLines" {
+		//
+	} else if selectedExorcise == "drillLines" { // 5
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) 
 		check(err)                                               
 		_, err2 := fmt.Fprintf(fileHandleBig,
@@ -373,11 +376,39 @@ func do_betweenMainMenuSelectionsTTE(selectedExorcise string) {
 			currentTime.Format("01-02-2006 15:04:05 Monday"))
 		check(err2)
 		_ = fileHandleBig.Close()
-	} else if selectedExorcise == "Mixed_prompts" { // 3, 4
+		//
+	} else if selectedExorcise == "Mixed_prompts" { // 6
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) 
 		check(err)                    
 		_, err2 := fmt.Fprintf(fileHandleBig,
 			"\nTransition from exorcise 6 'Mixed_prompts' occured at: %s \n",
+			currentTime.Format("15:04:05 on Monday 01-02-2006"))
+		check(err2)
+		_ = fileHandleBig.Close()
+		//
+	} else if selectedExorcise == "Most_Difficult" { // 7
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
+		check(err)
+		_, err2 := fmt.Fprintf(fileHandleBig,
+			"\nTransition from exorcise 7 'Most_Difficult' occured at: %s \n",
+			currentTime.Format("15:04:05 on Monday 01-02-2006"))
+		check(err2)
+		_ = fileHandleBig.Close()
+		//
+	} else if selectedExorcise == "Sequential_Kata" { // 8
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
+		check(err)
+		_, err2 := fmt.Fprintf(fileHandleBig,
+			"\nTransition from exorcise 8 'Sequential_Kata' occured at: %s \n",
+			currentTime.Format("15:04:05 on Monday 01-02-2006"))
+		check(err2)
+		_ = fileHandleBig.Close()
+		//
+	} else if selectedExorcise == "Sequential_Hira" { // 9
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
+		check(err)
+		_, err2 := fmt.Fprintf(fileHandleBig,
+			"\nTransition from exorcise 9 'Sequential_Hira' occured at: %s \n",
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
 		_ = fileHandleBig.Close()

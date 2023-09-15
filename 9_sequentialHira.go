@@ -39,22 +39,8 @@ func meatOfSequentialHira(in string, skipFlag bool) {
 			fmt.Printf(colorReset)
 			// Re-prompt
 			in = Prompt_Scan_4_Romaji_or_HiraResponse(aCardS.KeyH) // Obtain second guess, and pass it as 'in'
-			if in == "set" ||
-				in == "?" ||
-				in == "??" ||
-				in == "menu" ||
-				in == "reset" ||
-				in == "stat" ||
-				in == "dir" ||
-				in == "notes" ||
-				in == "quit" ||
-				in == "exit" ||
-				in == "stats" ||
-				in == "rm" ||
-				in == "stack" {
 				branchOnUserSelectedDirectiveIfGiven(in,
 					"Respond_w_Hira_or_Romaji") // <-- Perform the Directive
-			}
 			secondTry_meatOfSequentialHira(in) // This instance of 'in' is the user's second guess.
 		}
 		// If user guesses incorrectly on his third-and-final try, then, and only then, execute the rest of this func
@@ -65,7 +51,7 @@ func meatOfSequentialHira(in string, skipFlag bool) {
 			fmt.Printf("%s", aCardS.KeyR)
 			fmt.Printf("%s", colorReset)
 			//
-			fmt.Printf("\n\n%s\n%s\n%s\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
+			fmt.Printf("\n\n%s\n%s\n%s\n", aCardS.Hint1h, aCardS.Hint2k, aCardS.Hint3TT)
 			fmt.Println("")
 		}
 	} // If user was ^^Right!, then we return to the caller (directly from this very line)
@@ -93,21 +79,7 @@ func secondTry_meatOfSequentialHira(in string) { // <-- This second-instance of 
 		fmt.Printf("%s", colorReset)
 		// Re-prompt, will be sending that final guess back to: meatOfKataExorcise(in, false)
 		in = Prompt_Scan_4_Romaji_or_HiraResponse(aCardS.KeyH) // <-- Obtain the final guess, will pass it as 'in'
-		if in == "set" ||
-			in == "?" || // <-- if it IS a directive
-			in == "??" ||
-			in == "menu" ||
-			in == "reset" ||
-			in == "stat" ||
-			in == "dir" ||
-			in == "notes" ||
-			in == "quit" ||
-			in == "exit" ||
-			in == "stats" ||
-			in == "rm" ||
-			in == "stack" {
 			branchOnUserSelectedDirectiveIfGiven(in, "Respond_w_Hira_or_Romaji") // Perform the Directive
-		}
 		fmt.Printf("%s", colorRed)
 		fmt.Printf("      　^^Oops! ")
 		//

@@ -56,21 +56,7 @@ func meatOfRomajiKataExorcise(in string, skipFlag bool) {
 				// Re-prompt, will send that second guess to the secondTry_meatOfRomajiKataExorcise func ...
 				// Obtain the second guess, will pass it as 'in' to the secondTry_ func, below
 				in = semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(aCard.KeyRK)
-				if in == "set" ||
-					in == "?" || // <-- If it IS a directive
-					in == "??" ||
-					in == "menu" ||
-					in == "reset" ||
-					in == "stat" ||
-					in == "dir" ||
-					in == "notes" ||
-					in == "quit" ||
-					in == "exit" ||
-					in == "stats" ||
-					in == "rm" ||
-					in == "stack" {
 					branchOnUserSelectedDirectiveIfGiven(in, "Romaji_w_Kata_Prompt") // <-- Do directive
-				}
 				secondTry_meatOfRomajiKataExorcise(in) // This instance of 'in' is actually the third and final guess
 			}
 			// If the user guesses incorrectly on third-and-final try, then, and only then, execute the following
@@ -119,21 +105,7 @@ func meatOfRomajiKataExorcise(in string, skipFlag bool) {
 				fmt.Printf(colorReset)
 				// ... Re-prompt, and send that second guess to the secondTry_meatOfRomajiKataExorcise func
 				in = semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(aCard.KeyRK) // done RK ?
-				if in == "set" ||
-					in == "?" || // <-- If it IS a directive
-					in == "??" ||
-					in == "menu" ||
-					in == "reset" ||
-					in == "stat" ||
-					in == "dir" ||
-					in == "notes" ||
-					in == "quit" ||
-					in == "exit" ||
-					in == "stats" ||
-					in == "rm" ||
-					in == "stack" {
 					branchOnUserSelectedDirectiveIfGiven(in, "Romaji_w_Kata_Prompt") // <-- Do the directive
-				}
 				secondTry_meatOfRomajiKataExorcise(in) // done RK
 			}
 			// If the user guesses incorrectly on third-and-final try, then, and only then, execute the following
@@ -176,21 +148,7 @@ func secondTry_meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("%s", colorReset)
 			fmt.Printf("It could have been either ず or づ as they are the same sound\n")
 		} else {
-			if in == "set" ||
-				in == "?" || // <-- If it IS a directive
-				in == "??" ||
-				in == "menu" ||
-				in == "reset" ||
-				in == "stat" ||
-				in == "dir" ||
-				in == "notes" ||
-				in == "quit" ||
-				in == "exit" ||
-				in == "stats" ||
-				in == "rm" ||
-				in == "stack" {
 				branchOnUserSelectedDirectiveIfGiven(in, "Romaji_w_Kata_Prompt") // <-- Do the directive
-			}
 			fmt.Printf("%s", colorRed)
 			fmt.Printf("        ^^Oops! ")
 			//
@@ -228,21 +186,7 @@ func secondTry_meatOfRomajiKataExorcise(in string) {
 			fmt.Printf("%s", colorReset)
 			// Re-prompt, and send that third and final guess back to: meatOfRomajiKataExorcise(in, false)
 			in = semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(aCard.KeyRK) // Obtain the last guess, and pass it as 'in' // done RK
-			if in == "set" ||
-				in == "?" || // <-- if it IS a directive
-				in == "??" ||
-				in == "menu" ||
-				in == "reset" ||
-				in == "stat" ||
-				in == "dir" ||
-				in == "notes" ||
-				in == "quit" ||
-				in == "exit" ||
-				in == "stats" ||
-				in == "rm" ||
-				in == "stack" {
 				branchOnUserSelectedDirectiveIfGiven(in, "Romaji_w_Kata_Prompt") // <-- handle the directive // done
-			}
 			// User failed third and final attempt, so do a "recursion", but with a skipFlag false
 			meatOfRomajiKataExorcise(in, false) // Process the third try // done
 		}

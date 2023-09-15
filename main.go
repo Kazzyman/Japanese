@@ -29,7 +29,11 @@ func randomize_a_file() {
 		fmt.Println("Error opening the sequentialList.txt file:", err)
 		return
 	}
-	defer sequentialFile.Close()
+	
+	// defer sequentialFile.Close()
+	defer func(sequentialFile *os.File) {
+		_ = sequentialFile.Close()
+	}(sequentialFile)
 
 	// Read the file, line by line, into slice: records
 	var records []string
@@ -69,7 +73,14 @@ func randomize_a_file() {
 		fmt.Println("Error creating randomList.txt:", err)
 		return
 	}
-	defer randomFile.Close()
+	
+	// defer randomFile.Close() 
+	defer func(randomFile *os.File) {
+		err := randomFile.Close()
+		if err != nil {
+			fmt.Println("Error closing file randomFile: randomList.txt")
+		}
+	}(randomFile)
 
 	// Write the shuffled records to the new file
 	writer := bufio.NewWriter(randomFile)

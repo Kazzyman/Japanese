@@ -1,15 +1,12 @@
 package main
 
 // Finished September 12 of 2023 at 0112 hours
-// TouchTypingExorcise
 // The content of "prompt" (i.e., aCardS.KeyH | aCardS.KeyK) is set by the calling activity
 //
-var lastNonRandomCard = len(fileOfCardsS) // Index of the last card in the deck
-var nonRandomCard = 0                     // Index of the first card in the deck
+var lastNonRandomCard = len(fileOfCardsS) // Index of the last card in the deck      - -
+var nonRandomCard = 0                     // Index of the first card in the deck     - -
 
-func TouchTypingExorciseSequential(selectedExorcise string) {
-	// ^ ^ ^ ^ Accepts the following for ^ ^ ^ ^ :  "Sequential_Hira" or "Sequential_Kata" ...
-	// ... given in mainMenuPromptScanSelectAndBeginSelectedExorcise() , found in menu.go
+func TouchTypingExorciseSequential(selectedExorcise string) { //                     - -
 
 	var usersGuessOrOptionDirective string // It's all in the name
 	//

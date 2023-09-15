@@ -13,47 +13,45 @@ import (
 
 // Ask the user for a Hiragana response (universal for both of the Romaji-containing prompts):
 //
-//goland:noinspection ALL  **do-this**
-func semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(prompt string) (usersGuessOrOptionDirective string) {
-	// The return signature (above) creates a local var usersGuessOrOptionDirective, used below in the Scan():
+func semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(prompt string) (in string) { //         - -
+	usersGuessOrOptionDirective := in
+		// The return signature (above) creates a local var 'in'', used below in the Scan():
 	fmt.Printf("%s", prompt)    // Prompt the user, in a pretty blue color: Options: '?' | '??'
 	fmt.Printf("%s", colorCyan) //
 	fmt.Printf(" Type the corresponding Hiragana, or '?' for help with: %s \n", prompt)
 	fmt.Printf(" or, type '??' for help on a particular Hiragana char ... \n")
 	fmt.Printf(" Here:> ")
 	fmt.Printf("%s", colorReset)
-	_, _ = fmt.Scan(&usersGuessOrOptionDirective)
+		_, _ = fmt.Scan(&usersGuessOrOptionDirective)
 	return usersGuessOrOptionDirective
 }
-func prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(prompt string) (usersGuessOrOptionDirective string) {
-	// The return signature (above) creates a local var usersGuessOrOptionDirective, used below in the Scan():
+func prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(prompt string) (in string) { //                     - -
+	usersGuessOrOptionDirective := in
+		// The return signature (above) creates a local var 'in', used below in the Scan():
 	fmt.Printf("%s", prompt)    // Prompt the user, in a pretty blue color: Options: '?' | '??'
 	fmt.Printf("%s", colorCyan) //
 	fmt.Printf(" Type the corresponding Romaji, or '?' for help with: %s \n", prompt)
 	fmt.Printf(" or, type '??' for help on a particular Hiragana char ... \n")
 	fmt.Printf(" Here:> ")
 	fmt.Printf("%s", colorReset)
-	_, _ = fmt.Scan(&usersGuessOrOptionDirective)
+		_, _ = fmt.Scan(&usersGuessOrOptionDirective)
 	return usersGuessOrOptionDirective
 }
 
 // Ask the user for a Romaji|Hira response to the (naked, sans romaji) Katakana or Hiragana prompt:
 // Used in exorcises 3, 7, 8, 9
-//goland:noinspection ALL
-func Prompt_Scan_4_Romaji_or_HiraResponse(prompt string) (usersGuessOrOptionDirective string) {
-	// The return signature (above) creates a local var usersGuessOrOptionDirective, used below in the Scan():
+func Prompt_Scan_4_Romaji_or_HiraResponse(prompt string) (usersGuessOrOptionDirective string) { //      - -
 	fmt.Printf("%s", prompt)    // Prompt the user, in a pretty blue color: Options: '?' | '??'
 	fmt.Printf("%s", colorCyan) //
 	fmt.Printf(" Type the corresponding Romaji|Hira, or '?' for help with: %s \n", prompt)
 	fmt.Printf(" or, type '??' for help on a particular Hiragana char ... \n") //
 	fmt.Printf(" Here:> ")
 	fmt.Printf("%s", colorReset)
-	_, _ = fmt.Scan(&usersGuessOrOptionDirective)
+		_, _ = fmt.Scan(&usersGuessOrOptionDirective)
 	return usersGuessOrOptionDirective
 }
 
-//goland:noinspection ALL  **do-this**
-func pick_RandomCard_Assign_aCard() {
+func pick_RandomCard_Assign_aCard() { //                     - -
 	/*
 	  // Use the seed (example by Claude)
 	  rand.Seed(seed)
@@ -72,7 +70,7 @@ func pick_RandomCard_Assign_aCard() {
 	randIndex := rand.Intn(len(fileOfCards))
 	aCard = fileOfCards[randIndex] // randomly pick a 'card' from the 'deck' and store it in a global var
 }
-func pick_Difficult_RandomCard_Assign_aCard() {
+func pick_Difficult_RandomCard_Assign_aCard() { //           - -
 	/*
 	  // Use the seed (example by Claude)
 	  rand.Seed(seed)
@@ -83,8 +81,9 @@ func pick_Difficult_RandomCard_Assign_aCard() {
 }
 
 // DIRECTIVES : --------------------------------------------------------------------------------------------
-//goland:noinspection ALL  **do-this** Works with Hiragana or Romaji in all activities
-func handle_doubleQuestMark_directive() {
+// 
+func handle_doubleQuestMark_directive() { //                 - -
+	// Works with Hiragana or Romaji in all activities
 	var hiraganaCharOrRomajiAssociatedWithStructElementToDisplayHelpFieldsFrom string // the value to find in locateCard.go
 	//
 	fmt.Printf("\n  -- Type either the Hiragana char or the Romaji that you need help with:> ")
@@ -94,10 +93,7 @@ func handle_doubleQuestMark_directive() {
 	fmt.Println("")
 }
 
-
-
-//goland:noinspection ALL  **do-this**
-func reSet_aCard_andThereBy_reSet_thePromptString() {
+func reSet_aCard_andThereBy_reSet_thePromptString() { //     - -
 	var theHiraganaOfCardToSilentlyLocate string
 	var isAlphanumeric bool
 
@@ -137,7 +133,7 @@ func reSet_aCard_andThereBy_reSet_thePromptString() {
 	}
 }
 
-func read_map_of_fineOn() {
+func read_map_of_fineOn() { //     - -
 	for s, f := range frequencyMapOf_IsFineOnChars {
 		fmt.Printf(" --- From MapOf_IsFineOn: string is:")
 		fmt.Printf(colorCyan)
@@ -170,7 +166,7 @@ var frequencyMapOf_need_workOn = make(map[string]int)
 // Each time we get a new random card we check the map to see if it has been done correctly 3 or more times ...
 // ... if it has, then we pick another card, and check it
 // else we break
-func check_it_for_fine_on() {
+func check_it_for_fine_on() { //          - -
 	for s, f := range frequencyMapOf_IsFineOnChars {
 		if s == aCard.KeyR { // if it is in the map we need to check the freq
 			if f >= 2 { // if the freq is 3+ we need another card
@@ -195,7 +191,7 @@ func check_it_for_fine_on() {
 	}
 }
 
-func check_it_for_fine_on6() {
+func check_it_for_fine_on6() { //       - -
 	for s, f := range frequencyMapOf_IsFineOnChars {
 		if s == aCard.KeyH || s == aCard.KeyK { // if it is in the map we need to check the freq
 			if f >= 2 { // if the freq is 3+ we need another card
@@ -228,7 +224,7 @@ func check_it_for_fine_on6() {
 		}
 	}
 }
-func check_it_for_fine_on7() {
+func check_it_for_fine_on7() { //       - -
 	for s, f := range frequencyMapOf_IsFineOnChars {
 		if s == aCard.KeyH || s == aCard.KeyK { // if it is in the map we need to check the freq
 			if f >= 2 { // if the freq is 3+ we need another card
@@ -262,7 +258,7 @@ func check_it_for_fine_on7() {
 	}
 }
 
-func check_it_for_needing_more_practice() {
+func check_it_for_needing_more_practice() { //       - -
 	var skip_this_step bool
 	skip_this_step = false
 	for s, f := range frequencyMapOf_need_workOn {
@@ -311,7 +307,7 @@ func check_it_for_needing_more_practice() {
 		}
 	}
 }
-func check_it_for_needing_more_practiceD_7() {
+func check_it_for_needing_more_practiceD_7() { //      - -
 	var skip_this_step bool
 	skip_this_step = false
 	for s, f := range frequencyMapOf_need_workOn {
@@ -403,96 +399,156 @@ func createAndWrite_seedFile() {
 	}
 }
 */
-func stack_the_map() {
+func stack_the_map() { //             - -
 	promptToSkip := "shi"
 	for i := 0; i < 6; i++ {
 		frequencyMapOf_IsFineOnChars[promptToSkip]++
 	}
 }
 
-func branchOnUserSelectedDirectiveIfGiven(usersGuessOrOptionDirective, selectedExorcise string) {
-	switch usersGuessOrOptionDirective {
-	case "menu":
-		// Flush the old stats and hits arrays
-		cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
-		cyclicArrayHits = CyclicArrayHits{}
-		usersGuessOrOptionDirective = "null"
-		nonRandomCard = 0
-		// Also, flush the map
-		frequencyMapOf_IsFineOnChars = make(map[string]int)
-		do_betweenMainMenuSelectionsTTE(selectedExorcise) // This only writes transition entries to the log file
-		mainMenuPromptScanSelectAndBeginSelectedExorcise()
-	case "reset":
-		// flush the old stats and hits arrays
-		cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
-		cyclicArrayHits = CyclicArrayHits{}
-		// Also, flush the map
-		frequencyMapOf_IsFineOnChars = make(map[string]int)
-	case "quit":
-		os.Exit(1)
-	case "exit":
-		os.Exit(1)
-	case "??": // Directives follow:
-		handle_doubleQuestMark_directive()
-	case "?":
-		switch selectedExorcise {
-		case "Romaji_Prompt": // 1 rwh
-			fmt.Printf("\n%s\n%s\n%s\n\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
-		
-		case "Romaji_w_Kata_Prompt": // 2 rwh
-			fmt.Printf("\n%s\n%s\n%s\n\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
-		
-		case "Respond_w_Hira_or_Romaji": // 3 & 4, 8, 9
-			fmt.Printf("\n\n%s\n", aCard.HintSansR)
-		
-		case "Most_Difficult":
-			fmt.Printf("\n%s\n%s\n%s\n\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
-			
-		case "Mixed_prompts":
-			fmt.Printf("\n\n%s\n", aCard.HintSansR)
+func branchOnUserSelectedDirectiveIfGiven(in, selectedExorcise string) { //             - -
+	if in == "set" ||
+		in == "?" || // <-- If it IS a directive
+		in == "??" ||
+		in == "menu" ||
+		in == "reset" ||
+		in == "stat" ||
+		in == "dir" ||
+		in == "notes" ||
+		in == "quit" ||
+		in == "exit" ||
+		in == "stats" ||
+		in == "rm" ||
+		in == "stack" {
+		switch in {
+		case "menu":
+			// Flush the old stats and hits arrays
+			cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
+			cyclicArrayHits = CyclicArrayHits{}
+			// usersGuessOrOptionDirective = "null"
+			nonRandomCard = 0
+			// Also, flush the map
+			frequencyMapOf_IsFineOnChars = make(map[string]int)
+			do_betweenMainMenuSelectionsTTE(selectedExorcise) // This only writes transition entries to the log file
+			mainMenuPromptScanSelectAndBeginSelectedExorcise()
+		case "reset":
+			// flush the old stats and hits arrays
+			cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
+			cyclicArrayHits = CyclicArrayHits{}
+			// Also, flush the map
+			frequencyMapOf_IsFineOnChars = make(map[string]int)
+		case "quit":
+			os.Exit(1)
+		case "exit":
+			os.Exit(1)
+		case "??": // Directives follow:
+			handle_doubleQuestMark_directive()
+		case "?":
+			switch selectedExorcise {
+			/*
+			After the third failed guess, there is never any point in showing less than the first 3 hint lines !!!!
+			So, I think that all this has been done already (though 3 has the sans Romaji for the first Kata section)
+
+			However, in the case of '?' Directive handling, the following guidelines would be optimal
+			and, the same would be true of the '??' Directive handling: the following guidelines would be optimal
+
+			(in the first case we would need to switch on the selected exorcise, but, for the second case,
+			we will know what the user knows since he has already 'given' either a hira or a romaji as the seed)
+			*/
+			case "Romaji_Prompt": // 1 respond with Hira
+					/*
+						hint should be sans hira, but may include all else,
+						though romaji-EX-clusion would be entirely-pointless
+					*/
+				fmt.Printf("\n%s\n%s\n%s\n\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
+			//
+			case "Romaji_w_Kata_Prompt": // 2 respond with Hira
+					/*
+						hint should be sans hira, but may also include all else,
+						though romaji-and/or-kata-EX-clusion would be entirely-pointless
+					*/
+				fmt.Printf("\n%s\n%s\n%s\n\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
+			//
+			case "Respond_w_Hira_or_Romaji": // 3 & '4'
+				// fmt.Printf("\n\n%s\n", aCard.HintSansR)
+				fmt.Printf("\n%s\n%s\n%s\n\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
+					/*
+						ideally, only a vague hint sans any mention of hira, kata, or romaji is preferred,
+						though kata-EX-clusion would be entirely-pointless
+					*/
+			//
+			case "Mixed_prompts": // 6
+				// fmt.Printf("\n\n%s\n", aCard.HintSansR)
+				fmt.Printf("\n%s\n%s\n%s\n\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
+					/*
+					   6 prompts w a mixture of kata and hira : accepts MAINLY romaji :
+						so, hint SHOULD BE SANS ROMAJI; and the pointless cases are not really worth worrying about !!
+					*/
+			//
+			//	
+			case "Most_Difficult": // 7
+				fmt.Printf("\n%s\n%s\n%s\n\n", aCardD.Hint1h, aCardD.Hint2k, aCardD.Hint3TT)
+					// 7 prompts w kata only : accepts either hira OR romaji,
+					// so, ideally, only a vague hint sans any mention of hira, kata, or romaji is preferred,
+					// though kata-EX-clusion would be entirely-pointless
+			//
+			case "Sequential_Kata": // 8
+				fmt.Printf("\n%s\n%s\n%s\n\n", aCardS.Hint1h, aCardS.Hint2k, aCardS.Hint3TT)
+				   // 8 prompts w kata only : accepts either hira OR romaji,
+				   // so, ideally, only a vague hint sans any mention of hira, kata, or romaji is preferred,
+				   // though kata-EX-clusion would be entirely-pointless
+			//
+			case "Sequential_Hira": // 9
+				fmt.Printf("\n%s\n%s\n%s\n\n", aCardS.Hint1h, aCardS.Hint2k, aCardS.Hint3TT)
+					// 9 prompts w hira only : and, ACTUALLY, only ACCEPTS romaji :
+					// hint should be sans romaji -- hira EX-clusion being entirely-pointless
+			//
+			} // End of switch within a switch 
+
+		case "set":
+			reSet_aCard_andThereBy_reSet_thePromptString()
+		case "stat":
+			hits()
+		case "stats":
+			hits()
+		case "notes":
+					//goland:noinspection ALL  **do-this**
+			fmt.Println("\nIn the traditional Hepburn romanization system, the sound じ in hiragana is romanized as \"ji\" \n" +
+				"and the katakana ジ is also romanized as \"ji\" \n\n" +
+				"However, in some other romanization systems like the Nihon-shiki and Kunrei-shiki, the sound じ is romanized as\n" +
+				" \"zi\" instead of \"ji\"\n\n" +
+				"The sound gi:ぎ in hiragana is romanized as \"gi\" and the katakana ギ is also romanized as \"gi\"\n")
+					//goland:noinspection ALL  **do-this**
+			fmt.Println("゜is called \"handakuten\" 半濁点 translates to \"half-voicing mark\" or \"semi-voiced mark\"\n" +
+				"゛is called \"dakuten\" 濁点 meaning 'voiced mark' or 'voicing mark'")
+		case "dir": // reDisplay the DIRECTORY OF DIRECTIVES (and instructions):
+			switch selectedExorcise {
+				case "Romaji_Prompt": // 1
+					reDisplay_Romaji_instructions()
+				case "Romaji_w_Kata_Prompt": // 2
+					reDisplay_Romaji_plus_Kata_instructions()
+				case "Respond_w_Hira_or_Romaji": // 3 & '4'
+					re_display_ExorciseInstructions()
+				case "Most_Difficult": // 7
+					reDisplay_Difficult_instructions()
+				// 
+				case "Mixed_prompts": // 6
+					reDisplay_Mixed_prompts_instructions()
+				case "Sequential_Kata": // 8
+					reDisplay_Mixed_prompts_instructions()
+				case "Sequential_Hira": // 9
+					reDisplay_Mixed_prompts_instructions()
+			}
+		case "rm":
+			read_map_of_fineOn()
+		case "stack":
+			stack_the_map()
 		}
-		// The above ^^^ func must handle the case of being called from a naked kata (Romaji Prompt) activity w v v v
-		
-		// handle_singleQuestMark_contextSensitive_directive(selectedExorcise)
-		// The above ^^^ func must handle the case of being called from a naked kata (Romaji Prompt) activity w v v v
-		// giveHintInResponseToSingleQuestionMarkContextSensitiveDir_sansRomaji(key, sansRomaji_hint string)
-	case "set":
-		reSet_aCard_andThereBy_reSet_thePromptString()
-	case "stat":
-		hits()
-	case "stats":
-		hits()
-	case "notes":
-		//goland:noinspection ALL  **do-this**
-		fmt.Println("\nIn the traditional Hepburn romanization system, the sound じ in hiragana is romanized as \"ji\" \n" +
-			"and the katakana ジ is also romanized as \"ji\" \n\n" +
-			"However, in some other romanization systems like the Nihon-shiki and Kunrei-shiki, the sound じ is romanized as\n" +
-			" \"zi\" instead of \"ji\"\n\n" +
-			"The sound gi:ぎ in hiragana is romanized as \"gi\" and the katakana ギ is also romanized as \"gi\"\n")
-		//goland:noinspection ALL  **do-this**
-		fmt.Println("゜is called \"handakuten\" 半濁点 translates to \"half-voicing mark\" or \"semi-voiced mark\"\n" +
-			"゛is called \"dakuten\" 濁点 meaning 'voiced mark' or 'voicing mark'")
-	case "dir": // reDisplay the DIRECTORY OF DIRECTIVES (and instructions):
-		switch selectedExorcise {
-		case "Romaji_Prompt": // 1
-			reDisplay_Romaji_instructions()
-		case "Romaji_w_Kata_Prompt": // 2
-			reDisplay_Romaji_plus_Kata_instructions()
-		case "Respond_w_Hira_or_Romaji": // 3 & 4, 8, 9
-			re_display_ExorciseInstructions()
-		case "Most_Difficult":
-			reDisplay_Difficult_instructions()
-		case "Mixed_prompts":
-			reDisplay_Mixed_prompts_instructions()
-		}
-	case "rm":
-		read_map_of_fineOn()
-	case "stack":
-		stack_the_map()
 	}
 }
 
-func check(e error) { // create a func named check which takes one parameter "e" of type error
+// Creates a func named check which takes one parameter "e" of type error
+func check(e error) { //      - -
 	if e != nil {
 		panic(e) // use panic() to display error code
 	}

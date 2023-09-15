@@ -52,6 +52,9 @@ func meatOfKataExorciseD(in string, skipFlag bool) {
 		fmt.Printf("      　^^Right! ")
 		fmt.Printf("%s", colorReset)
 		//
+		logHits_in_cyclicArrayHits("Right", aCardD.KeyK)
+		logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCardD.KeyR)
+		//
 		fmt.Println() // This line will be the last-executed before returning to the caller: TouchTypingExorcise
 		//
 		// The following 'else' will be executed, potentially only twice: 1: for the first, and 2: for the final guess
@@ -59,6 +62,12 @@ func meatOfKataExorciseD(in string, skipFlag bool) {
 		// ... a second attempt will be solicited via: secondTry_meatOfKataExorcise(in) -- UNLESS skipFlag is false
 		fmt.Printf("%s", colorRed)
 		fmt.Printf("      　^^Oops! ") // This ALWAYS prints unless ^^Right! is printed
+		//
+		logHits_in_cyclicArrayHits("Oops", aCardD.KeyK)
+		logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCardD.KeyK +
+			":it was:" + aCardD.KeyR + ":but you had guessed:" + in)
+		logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCardD.KeyR)
+		//
 		// When this func is re-called by the second, with skipFlag set false, we skip this, and do the next
 		if skipFlag == true {
 			// Solicit the second guess ... and pass it to: secondTry_meatOfKataExorcise(in)
@@ -66,22 +75,8 @@ func meatOfKataExorciseD(in string, skipFlag bool) {
 			fmt.Printf(colorReset)
 			// Re-prompt, and will send that second guess to the secondTry_meatOfKataExorcise func
 			in = Prompt_Scan_4_Romaji_or_HiraResponse(aCardD.KeyK) // Obtain second guess, and pass it as 'in'
-			if in == "set" ||
-				in == "?" || // <-- If it IS a directive
-				in == "??" ||
-				in == "menu" ||
-				in == "reset" ||
-				in == "stat" ||
-				in == "dir" ||
-				in == "notes" ||
-				in == "quit" ||
-				in == "exit" ||
-				in == "stats" ||
-				in == "rm" ||
-				in == "stack" {
 				branchOnUserSelectedDirectiveIfGiven(in,
 					"Respond_w_Hira_or_Romaji") // Perform the Directive
-			}
 			secondTry_meatOfKataExorciseD(in) // This instance of 'in' is the user's second guess.
 		}
 		// If user guesses incorrectly on his third-and-final try, then, and only then, execute the rest of this func
@@ -92,7 +87,7 @@ func meatOfKataExorciseD(in string, skipFlag bool) {
 			fmt.Printf("%s", aCardD.KeyR)
 			fmt.Printf("%s", colorReset)
 			// Only the fields lacking the correct Romaji will be shown (only the last field: HintSansR)
-			fmt.Printf("\n\n%s\n", aCard.HintSansR)
+			fmt.Printf("\n\n%s\n", aCardD.HintSansR)
 			fmt.Println("")
 		}
 	} // If user was ^^Right!, then we return to TouchTypingExorcise(selectedExorcise) (directly from this very line)
@@ -106,6 +101,9 @@ func meatOfKataExorciseD(in string, skipFlag bool) {
 		fmt.Printf("      　^^Right! ")
 		fmt.Printf("%s", colorReset)
 		//
+		logHits_in_cyclicArrayHits("Right", aCardD.KeyK)
+		logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCardD.KeyR)
+		//
 		fmt.Println() // This line is the last-executed of this func, returns to TouchTypingExorcise(SE)
 		//
 		//
@@ -113,28 +111,19 @@ func meatOfKataExorciseD(in string, skipFlag bool) {
 		fmt.Printf("%s", colorRed)
 		fmt.Printf("      　^^Oops! ") // This ALWAYS prints unless ^^Right! is printed
 		//
+		logHits_in_cyclicArrayHits("Oops", aCardD.KeyK)
+		logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCardD.KeyK +
+			":it was:" + aCardD.KeyR + ":but you had guessed:" + in)
+		logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCardD.KeyR)
+		//
 		// When this func is re-called, with flag set false, we skip this, and do the next
 		if skipFlag == true {
 			// So, we solicit another guess ... (user's second guess) and ...
 			fmt.Println("Try again") // This only prints on first pass
 			// Re-prompt, and send that second guess to the secondTry_meatOfKataExorcise func
 			in = Prompt_Scan_4_Romaji_or_HiraResponse(aCardD.KeyK)
-			if in == "set" ||
-				in == "?" || // <-- if it IS a directive
-				in == "??" ||
-				in == "menu" ||
-				in == "reset" ||
-				in == "stat" ||
-				in == "dir" ||
-				in == "notes" ||
-				in == "quit" ||
-				in == "exit" ||
-				in == "stats" ||
-				in == "rm" ||
-				in == "stack" {
 				branchOnUserSelectedDirectiveIfGiven(in,
 					"Respond_w_Hira_or_Romaji") // <-- Perform the Directive
-			}
 			secondTry_meatOfKataExorciseD(in)
 		}
 		// If user guesses incorrectly on his third-and-final try, then, and only then, execute the rest of this func
@@ -144,7 +133,7 @@ func meatOfKataExorciseD(in string, skipFlag bool) {
 			fmt.Printf("%s", colorCyan)
 			fmt.Printf("%s", aCardD.KeyH)
 			fmt.Printf("%s", colorReset)
-			fmt.Printf("\n\n%s\n%s\n%s\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
+			fmt.Printf("\n\n%s\n%s\n%s\n", aCardD.Hint1h, aCardD.Hint2k, aCardD.Hint3TT)
 			fmt.Println("")
 			// In this SECOND case: of having typed a Hiragana, all four lines of hints can be displayed from the card
 			// ... though, NOT in the FIRST case: of having typed a Romaji (then only the last line will be shown)
@@ -180,6 +169,8 @@ func secondTry_meatOfKataExorciseD(in string) { // <-- This second-instance of '
 		fmt.Printf("      　^^Right! ")
 		fmt.Printf("%s", colorReset)
 		//
+		logHits_in_cyclicArrayHits("Right", aCardD.KeyK)
+		logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCardD.KeyR)
 		//
 		fmt.Println() // Returns to caller: meatOfKataExorcise(na)
 	} else if isAlphanumeric == true && in != aCardD.KeyR { // If user had typed an alpha, but NOT the correct Romaji
@@ -189,30 +180,24 @@ func secondTry_meatOfKataExorciseD(in string) { // <-- This second-instance of '
 		fmt.Printf("%s", colorReset)
 		// Re-prompt, will be sending that final guess back to: meatOfKataExorcise(in, false)
 		in = Prompt_Scan_4_Romaji_or_HiraResponse(aCardD.KeyK) // <-- Obtain the final guess, will pass it as 'in'
-		if in == "set" ||
-			in == "?" || // <-- if it IS a directive
-			in == "??" ||
-			in == "menu" ||
-			in == "reset" ||
-			in == "stat" ||
-			in == "dir" ||
-			in == "notes" ||
-			in == "quit" ||
-			in == "exit" ||
-			in == "stats" ||
-			in == "rm" ||
-			in == "stack" {
 			branchOnUserSelectedDirectiveIfGiven(in, "Respond_w_Hira_or_Romaji") // <-- Do dir
-		}
 		fmt.Printf("%s", colorRed)
 		fmt.Printf("      　^^Oops! ")
-		meatOfKataExorcise(in, false) // Process the third try
+		//
+		logHits_in_cyclicArrayHits("Oops", aCardD.KeyK)
+		logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCardD.KeyK +
+			":it was:" + aCardD.KeyR + ":but you had guessed:" + in)
+		logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCardD.KeyR)
+		//
+		meatOfKataExorciseD(in, false) // Process the third try
 		//
 	} else if isAlphanumeric == false && in == aCardD.KeyH { // If the user HAS typed the CORRECT Hiragana ...
 		fmt.Printf("%s", colorGreen)
 		fmt.Printf("      　^^Right! ")
 		fmt.Printf("%s", colorReset)
 		//
+		logHits_in_cyclicArrayHits("Right", aCardD.KeyK)
+		logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCardD.KeyR)
 		//
 		fmt.Println() // Returns to caller from this line
 	} else if isAlphanumeric == false && in != aCardD.KeyH { // User typed the INCORRECT Hiragana at Kata prompt
@@ -222,21 +207,7 @@ func secondTry_meatOfKataExorciseD(in string) { // <-- This second-instance of '
 		fmt.Printf("%s", colorReset)
 		// Re-prompt, will that third guess back to: meatOfKataExorcise(in, false)
 		in = Prompt_Scan_4_Romaji_or_HiraResponse(aCardD.KeyK) // Obtain the second guess, will pass it as 'in'
-		if in == "set" ||
-			in == "?" || // <-- If it IS a directive
-			in == "??" ||
-			in == "menu" ||
-			in == "reset" ||
-			in == "stat" ||
-			in == "dir" ||
-			in == "notes" ||
-			in == "quit" ||
-			in == "exit" ||
-			in == "stats" ||
-			in == "rm" ||
-			in == "stack" {
 			branchOnUserSelectedDirectiveIfGiven(in, "Respond_w_Hira_or_Romaji") // <-- Do dir
-		}
-		meatOfKataExorcise(in, false) // Process the third and final try
+		meatOfKataExorciseD(in, false) // Process the third and final try
 	}
 }

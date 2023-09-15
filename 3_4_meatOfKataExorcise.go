@@ -63,22 +63,8 @@ func meatOfKataExorcise(in string, skipFlag bool) {
 			fmt.Printf(colorReset)
 			// Re-prompt, and will send that second guess to the secondTry_meatOfKataExorcise func
 			in = Prompt_Scan_4_Romaji_or_HiraResponse(aCard.KeyK) // Obtain second guess, and pass it as 'in'
-			if in == "set" ||
-				in == "?" || // <-- If it IS a directive
-				in == "??" ||
-				in == "menu" ||
-				in == "reset" ||
-				in == "stat" ||
-				in == "dir" ||
-				in == "notes" ||
-				in == "quit" ||
-				in == "exit" ||
-				in == "stats" ||
-				in == "rm" ||
-				in == "stack" {
 				branchOnUserSelectedDirectiveIfGiven(in,
 					"Respond_w_Hira_or_Romaji") // <-- Perform the directive
-			}
 			secondTry_meatOfKataExorcise(in) // This instance of 'in' is the user's second guess.
 		}
 		// If user guesses incorrectly on his third-and-final try, then, and only then, execute the rest of this func
@@ -89,7 +75,8 @@ func meatOfKataExorcise(in string, skipFlag bool) {
 			fmt.Printf("%s", aCard.KeyR)
 			fmt.Printf("%s", colorReset)
 			// Only the field lacking the correct Romaji will be shown (only the last field: HintSansR)
-			fmt.Printf("\n\n%s\n", aCard.HintSansR)
+			// fmt.Printf("\n\n%s\n", aCard.HintSansR) // Optionally limiting hint to being sans all mention of Romaji 
+			fmt.Printf("\n\n%s\n%s\n%s\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
 			fmt.Println("")
 		}
 	} // If user was ^^Right!, then we return to TouchTypingExorcise(selectedExorcise) (directly from this very line)
@@ -123,22 +110,8 @@ func meatOfKataExorcise(in string, skipFlag bool) {
 			fmt.Println("Try again") // This only prints on first pass
 			// Re-prompt, and send that second guess to the secondTry_meatOfKataExorcise func
 			in = Prompt_Scan_4_Romaji_or_HiraResponse(aCard.KeyK)
-			if in == "set" ||
-				in == "?" || // <-- if it IS a directive
-				in == "??" ||
-				in == "menu" ||
-				in == "reset" ||
-				in == "stat" ||
-				in == "dir" ||
-				in == "notes" ||
-				in == "quit" ||
-				in == "exit" ||
-				in == "stats" ||
-				in == "rm" ||
-				in == "stack" {
 				branchOnUserSelectedDirectiveIfGiven(in,
 					"Respond_w_Hira_or_Romaji") // <-- Perform the directive
-			}
 			secondTry_meatOfKataExorcise(in)
 		}
 		// If user guesses incorrectly on his third-and-final try, then, and only then, execute the rest of this func
@@ -196,21 +169,7 @@ func secondTry_meatOfKataExorcise(in string) { // <-- This second-instance of 'i
 		fmt.Printf("%s", colorReset)
 		// Re-prompt, will be sending that final guess back to: meatOfKataExorcise(in, false)
 		in = Prompt_Scan_4_Romaji_or_HiraResponse(aCard.KeyK) // <-- Obtain the final guess, will pass it as 'in'
-		if in == "set" ||
-			in == "?" || // <-- if it IS a directive
-			in == "??" ||
-			in == "menu" ||
-			in == "reset" ||
-			in == "stat" ||
-			in == "dir" ||
-			in == "notes" ||
-			in == "quit" ||
-			in == "exit" ||
-			in == "stats" ||
-			in == "rm" ||
-			in == "stack" {
 			branchOnUserSelectedDirectiveIfGiven(in, "Respond_w_Hira_or_Romaji") // <-- Do dir
-		}
 		fmt.Printf("%s", colorRed)
 		fmt.Printf("      　^^Oops! ")
 		logHits_in_cyclicArrayHits("Oops", aCard.KeyK)
@@ -235,21 +194,7 @@ func secondTry_meatOfKataExorcise(in string) { // <-- This second-instance of 'i
 		fmt.Printf("%s", colorReset)
 		// Re-prompt, will that third guess back to: meatOfKataExorcise(in, false)
 		in = Prompt_Scan_4_Romaji_or_HiraResponse(aCard.KeyK) // Obtain the second guess, will pass it as 'in'
-		if in == "set" ||
-			in == "?" || // <-- If it IS a directive
-			in == "??" ||
-			in == "menu" ||
-			in == "reset" ||
-			in == "stat" ||
-			in == "dir" ||
-			in == "notes" ||
-			in == "quit" ||
-			in == "exit" ||
-			in == "stats" ||
-			in == "rm" ||
-			in == "stack" {
 			branchOnUserSelectedDirectiveIfGiven(in, "Respond_w_Hira_or_Romaji") // <-- Do dir
-		}
 		meatOfKataExorcise(in, false) // Process the third and final try
 	}
 }
