@@ -8,7 +8,7 @@ exterior data files
 cyclic arrays
 maps make(map[string]int)
 labeled loops: break, continue
-switch
+multi-level switches
 recursive functions
 Regular expression matching
 buffered reader

@@ -1,10 +1,11 @@
-there may yet be issues with the card picks some-where-s in 7 (fine on & need work on) 
+There may yet still be issues with the card picks some-where-s in 7 (fine on & need work on) 
 
-re-document all of the code files, especially the second and third try routines
+Check and re-document all of the code files, especially the second and third try routines
 
 Add Japanese translations (with Kanji) to the menus etc. Then ...
 ... Create a struct, a file-of-cards, with a mixture of japanese chars, comprising both words and phrases, to implement
-an activity similar to 1-4 wherein a prompt is given and the user is asked to select the most-appropriate response.
+an activity similar to 1-9 wherein a prompt is given and the user is asked to select the most-appropriate response.
+This may need to be mainly multiple-choice selections. 
 
 Try refining #5, the drill lines activity
 

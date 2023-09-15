@@ -2,7 +2,9 @@ package main
 
 // **do-this**
 import (
+	"fmt"
 	"math/rand"
+	"os"
 	"time"
 )
 
@@ -39,15 +41,15 @@ func TouchTypingExorcise(selectedExorcise string) { //       - -
 		pick_RandomCard_Assign_aCard() // Assigns a random card to the global aCard
 
 		if isThis_a_cardWeNeedMoreWorkOn > 2 { // if we have gone without augmenting the random picks with cards we have prev missed ...
-			/*
+			
 				// Log to a file that this action was taken **do-this**
-				fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+				fileHandleBig, err := os.OpenFile("JapLog1236.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
 				check(err)                                                                                 // ... gets a file handle to JapLog.txt
 				_, err2 := fmt.Fprintf(fileHandleBig, "\nChecked card:%s in the frequencyMapOf_need_workOn after:%d cycles\n",
 					aCard.KeyH, isThis_a_cardWeNeedMoreWorkOn)
 				check(err2)
 				fileHandleBig.Close()
-			*/
+			
 			isThis_a_cardWeNeedMoreWorkOn = 0    // ... for a while now, then let's go get a card we've missed before, instead of that random one
 			check_it_for_needing_more_practice() // **do-this** this func probably need some work to function with exorcise 6
 		}

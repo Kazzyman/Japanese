@@ -51,6 +51,7 @@ func meatOfSequentialHira(in string, skipFlag bool) {
 			fmt.Printf("%s", aCardS.KeyR)
 			fmt.Printf("%s", colorReset)
 			//
+			// Display hints in white
 			fmt.Printf("\n\n%s\n%s\n%s\n", aCardS.Hint1h, aCardS.Hint2k, aCardS.Hint3TT)
 			fmt.Println("")
 		}

@@ -86,6 +86,7 @@ func meatOfKataExorciseD(in string, skipFlag bool) {
 			fmt.Printf("%s", colorCyan)
 			fmt.Printf("%s", aCardD.KeyR)
 			fmt.Printf("%s", colorReset)
+			// Display hints in white
 			// Only the fields lacking the correct Romaji will be shown (only the last field: HintSansR)
 			fmt.Printf("\n\n%s\n", aCardD.HintSansR)
 			fmt.Println("")
@@ -133,6 +134,7 @@ func meatOfKataExorciseD(in string, skipFlag bool) {
 			fmt.Printf("%s", colorCyan)
 			fmt.Printf("%s", aCardD.KeyH)
 			fmt.Printf("%s", colorReset)
+			// Display hints in white
 			fmt.Printf("\n\n%s\n%s\n%s\n", aCardD.Hint1h, aCardD.Hint2k, aCardD.Hint3TT)
 			fmt.Println("")
 			// In this SECOND case: of having typed a Hiragana, all four lines of hints can be displayed from the card

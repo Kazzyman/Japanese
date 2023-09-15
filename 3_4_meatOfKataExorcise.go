@@ -76,6 +76,7 @@ func meatOfKataExorcise(in string, skipFlag bool) {
 			fmt.Printf("%s", colorReset)
 			// Only the field lacking the correct Romaji will be shown (only the last field: HintSansR)
 			// fmt.Printf("\n\n%s\n", aCard.HintSansR) // Optionally limiting hint to being sans all mention of Romaji 
+			// Display hints in white
 			fmt.Printf("\n\n%s\n%s\n%s\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
 			fmt.Println("")
 		}
@@ -121,6 +122,7 @@ func meatOfKataExorcise(in string, skipFlag bool) {
 			fmt.Printf("%s", colorCyan)
 			fmt.Printf("%s", aCard.KeyH)
 			fmt.Printf("%s", colorReset)
+			// Display hints in white
 			fmt.Printf("\n\n%s\n%s\n%s\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
 			
 			fmt.Println("")

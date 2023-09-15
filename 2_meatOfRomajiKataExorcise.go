@@ -66,6 +66,7 @@ func meatOfRomajiKataExorcise(in string, skipFlag bool) {
 				fmt.Printf("%s", colorCyan)
 				fmt.Printf("%s", aCard.KeyH) // done
 				fmt.Printf("%s", colorReset)
+				// Display hints in white
 				fmt.Printf("\n\n%s\n%s\n%s\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
 				fmt.Println("")
 			}
@@ -115,6 +116,7 @@ func meatOfRomajiKataExorcise(in string, skipFlag bool) {
 				fmt.Printf("%s", colorCyan)
 				fmt.Printf("%s", aCard.KeyH) // done RK
 				fmt.Printf("%s", colorReset)
+				// Display hints in white
 				fmt.Printf("\n\n%s\n%s\n%s\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
 				fmt.Println("")
 			}

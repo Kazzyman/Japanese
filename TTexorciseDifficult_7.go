@@ -27,7 +27,7 @@ func TouchTypingExorciseDifficult(selectedExorcise string) { //    - -
 			if isThis_a_cardWeNeedMoreWorkOn > 2 {   // if we have gone without augmenting the random picks with cards we have prev missed ...
 				//
 					// Log to a file that this action was taken **do-this**
-					fileHandleBig, err := os.OpenFile("JapLogD.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+					fileHandleBig, err := os.OpenFile("JapLog7D.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
 					check(err)                                                                                  // ... gets a file handle to JapLog.txt
 					_, err2 := fmt.Fprintf(fileHandleBig, "\nChecked card:%s in the frequencyMapOf_need_workOn after:%d cycles\n",
 						aCardD.KeyH, isThis_a_cardWeNeedMoreWorkOn)
