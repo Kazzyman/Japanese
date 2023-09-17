@@ -11,8 +11,8 @@ import (
 Refer to 8, which is a similar function
 
 All this means that:
-The first func is passed the first guess, and obtains the second guess
-The second func is passed the second guess, and obtains the third guess
+The first of these two functions is passed the user's first guess, and, optionally, obtains a second guess
+Optionally, the second func is passed the second guess, and obtains a third guess
 Finally, the first func is re-called by the second,: the first func is, then, passed the third and final guess
 .
 */

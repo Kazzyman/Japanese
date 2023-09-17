@@ -19,7 +19,7 @@ func semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(prompt string) (
 	fmt.Printf("%s", prompt)    // Prompt the user, in a pretty blue color: Options: '?' | '??'
 	fmt.Printf("%s", colorCyan) //
 	fmt.Printf(" Type the corresponding Hiragana, or '?' for help with: %s \n", prompt)
-	fmt.Printf(" or, type '??' for help on a particular Hiragana char ... \n")
+	fmt.Printf(" or, type '??' for help with something else ... \n")
 	fmt.Printf(" Here:> ")
 	fmt.Printf("%s", colorReset)
 		_, _ = fmt.Scan(&usersGuessOrOptionDirective)
@@ -31,7 +31,7 @@ func prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(prompt string) (in string) {
 	fmt.Printf("%s", prompt)    // Prompt the user, in a pretty blue color: Options: '?' | '??'
 	fmt.Printf("%s", colorCyan) //
 	fmt.Printf(" Type the corresponding Romaji, or '?' for help with: %s \n", prompt)
-	fmt.Printf(" or, type '??' for help on a particular Hiragana char ... \n")
+	fmt.Printf(" or, type '??' for help with something else ... \n")
 	fmt.Printf(" Here:> ")
 	fmt.Printf("%s", colorReset)
 		_, _ = fmt.Scan(&usersGuessOrOptionDirective)
@@ -44,7 +44,7 @@ func Prompt_Scan_4_Romaji_or_HiraResponse(prompt string) (usersGuessOrOptionDire
 	fmt.Printf("%s", prompt)    // Prompt the user, in a pretty blue color: Options: '?' | '??'
 	fmt.Printf("%s", colorCyan) //
 	fmt.Printf(" Type the corresponding Romaji|Hira, or '?' for help with: %s \n", prompt)
-	fmt.Printf(" or, type '??' for help on a particular Hiragana char ... \n") //
+	fmt.Printf(" or, type '??' for help with something else ... \n") //
 	fmt.Printf(" Here:> ")
 	fmt.Printf("%s", colorReset)
 		_, _ = fmt.Scan(&usersGuessOrOptionDirective)
@@ -52,12 +52,7 @@ func Prompt_Scan_4_Romaji_or_HiraResponse(prompt string) (usersGuessOrOptionDire
 }
 
 func pick_RandomCard_Assign_aCard() { //                     - -
-	/*
-	  // Use the seed (example by Claude)
-	  rand.Seed(seed)
-	  fmt.Println(rand.Int())
-	*/
-	// Does not work well with duplicates in file
+	// This commented-out section does not work well with duplicates in the file
 	/*
 		if nonRandomCard%2 == 0 {
 			randIndex := rand.Intn(len(fileOfCards))
@@ -71,11 +66,6 @@ func pick_RandomCard_Assign_aCard() { //                     - -
 	aCard = fileOfCards[randIndex] // randomly pick a 'card' from the 'deck' and store it in a global var
 }
 func pick_Difficult_RandomCard_Assign_aCard() { //           - -
-	/*
-	  // Use the seed (example by Claude)
-	  rand.Seed(seed)
-	  fmt.Println(rand.Int())
-	*/
 	randIndex := rand.Intn(len(fileOfCardsMostDifficult))
 	aCardD = fileOfCardsMostDifficult[randIndex] // randomly pick a 'card' from the 'deck' and store it in a global var
 }
@@ -83,7 +73,7 @@ func pick_Difficult_RandomCard_Assign_aCard() { //           - -
 // DIRECTIVES : --------------------------------------------------------------------------------------------
 // 
 func handle_doubleQuestMark_directive() { //                 - -
-	// Works with Hiragana or Romaji in all activities
+	// Works with Hiragana or Romaji user input in all Exorcises 
 	var hiraganaCharOrRomajiAssociatedWithStructElementToDisplayHelpFieldsFrom string // the value to find in locateCard.go
 	//
 	fmt.Printf("\n  -- Type either the Hiragana char or the Romaji that you need help with:> ")
@@ -92,7 +82,7 @@ func handle_doubleQuestMark_directive() { //                 - -
 	locateCardAndDisplayHelpFieldsContainedInIt(hiraganaCharOrRomajiAssociatedWithStructElementToDisplayHelpFieldsFrom)
 	fmt.Println("")
 }
-
+// Set Directive 'set'
 func reSet_aCard_andThereBy_reSet_thePromptString() { //     - -
 	var theHiraganaOfCardToSilentlyLocate string
 	var isAlphanumeric bool
@@ -134,6 +124,12 @@ func reSet_aCard_andThereBy_reSet_thePromptString() { //     - -
 }
 
 func read_map_of_fineOn() { //     - -
+	if len(frequencyMapOf_IsFineOnChars) == 0 {
+		fmt.Printf(colorRed)
+		fmt.Printf("\nThe map is empty\n")
+		fmt.Printf(colorReset)
+	}
+	//
 	for s, f := range frequencyMapOf_IsFineOnChars {
 		fmt.Printf(" --- From MapOf_IsFineOn: string is:")
 		fmt.Printf(colorCyan)
@@ -404,6 +400,7 @@ func stack_the_map() { //             - -
 	for i := 0; i < 6; i++ {
 		frequencyMapOf_IsFineOnChars[promptToSkip]++
 	}
+	fmt.Printf("\nSix occurrences of 'shi' have been added to frequencyMapOf_IsFineOnChars\n\n")
 }
 
 func branchOnUserSelectedDirectiveIfGiven(in, selectedExorcise string) { //             - -
@@ -432,10 +429,10 @@ func branchOnUserSelectedDirectiveIfGiven(in, selectedExorcise string) { //     
 			do_betweenMainMenuSelectionsTTE(selectedExorcise) // This only writes transition entries to the log file
 			mainMenuPromptScanSelectAndBeginSelectedExorcise()
 		case "reset":
-			// flush the old stats and hits arrays
+			// Flush (clear) the old stats and hits arrays
 			cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
 			cyclicArrayHits = CyclicArrayHits{}
-			// Also, flush the map
+			// Also, flush (clear) the map
 			frequencyMapOf_IsFineOnChars = make(map[string]int)
 		case "quit":
 			os.Exit(1)
@@ -542,6 +539,7 @@ func branchOnUserSelectedDirectiveIfGiven(in, selectedExorcise string) { //     
 		case "rm":
 			read_map_of_fineOn()
 		case "stack":
+			// Load six occurrences of 'shi' to the map 
 			stack_the_map()
 		}
 	}

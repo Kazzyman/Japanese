@@ -65,8 +65,8 @@ func TouchTypingExorciseSequential(selectedExorcise string) { //                
 					usersGuessOrOptionDirective != "stack" &&
 					usersGuessOrOptionDirective != "exit" &&
 					usersGuessOrOptionDirective != "dir" {
-					//  v ^ v ^ At this point we know that the usersGuessOrOptionDirective is probably a valid guess,
-					// ... AND, we will therefore, need to leave the loop after processing the user's guess
+			//  v ^ v ^ At this point we know that the usersGuessOrOptionDirective is not a Dir and should be considered to ba a guess,
+					// ... AND we will, therefore, need to leave the loop after processing the user's guess
 					// Based on the Selected Exorcise, process the user's guess (determine if it is correct, etc.)
 					switch selectedExorcise {
 					case "Sequential_Kata": // 8

@@ -72,8 +72,8 @@ func TouchTypingExorciseDifficult(selectedExorcise string) { //    - -
 					usersGuessOrOptionDirective != "stack" &&
 					usersGuessOrOptionDirective != "exit" &&
 					usersGuessOrOptionDirective != "dir" {
-					//  v ^ v ^ at this point we know that the usersGuessOrOptionDirective is probably a valid guess,
-					// ... AND, we need to leave the loop after processing it
+			//  v ^ v ^ At this point we know that the usersGuessOrOptionDirective is not a Dir and should be considered to ba a guess,
+					// ... AND we will, therefore, need to leave the loop after processing the user's guess
 					meatOfKataExorciseD(usersGuessOrOptionDirective, true) // <-- may or may not be a guess, so check it
 					break outOfForLoop
 				} else { // It must be a successive directive, so we continue to process it from the top of the loop

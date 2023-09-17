@@ -10,7 +10,7 @@ import (
 
 // The content of "prompt" (i.e., aCard.KeyR | aCard.KeyRK | aCard.KeyK) is set by the calling activity
 //
-// Used exclusively for exorcise 6
+// Convenience globals used exclusively for exorcise 6
 var Mixed_prompts_KeyH string
 var Mixed_prompts_KeyK string
 var Mixed_prompts_KeyX string
@@ -48,10 +48,10 @@ func TouchTypingExorcise(selectedExorcise string) { //       - -
 				_, err2 := fmt.Fprintf(fileHandleBig, "\nChecked card:%s in the frequencyMapOf_need_workOn after:%d cycles\n",
 					aCard.KeyH, isThis_a_cardWeNeedMoreWorkOn)
 				check(err2)
-				fileHandleBig.Close()
+			_ = fileHandleBig.Close() // Close the file, and discard any resulting errors that may be returned by that func
 			
 			isThis_a_cardWeNeedMoreWorkOn = 0    // ... for a while now, then let's go get a card we've missed before, instead of that random one
-			check_it_for_needing_more_practice() // **do-this** this func probably need some work to function with exorcise 6
+			check_it_for_needing_more_practice() // **do-this** this func probably needs some work to function with exorcise 6
 		}
 		// In any case:
 		if selectedExorcise == "Mixed_prompts" {
@@ -89,7 +89,7 @@ func TouchTypingExorcise(selectedExorcise string) { //       - -
 			random := rand.Intn(2)
 
 			if random == 0 {
-				Mixed_prompt_is = "hira"
+				Mixed_prompt_is = "hira" // Set a Convenience global
 				Mixed_prompts_KeyX = aCard.KeyH
 				usersGuessOrOptionDirective = prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(Mixed_prompts_KeyH)
 			} else {
@@ -141,6 +141,7 @@ func TouchTypingExorcise(selectedExorcise string) { //       - -
 					}
 				}
 				// v v v v v  Do not process directives from the above re-prompting   v v v v v
+				// which is to say, do not execute a meat func unless usersGuessOrOptionDirective is not a Directive 
 				if usersGuessOrOptionDirective != "set" &&
 					usersGuessOrOptionDirective != "?" &&
 					usersGuessOrOptionDirective != "??" &&
@@ -154,8 +155,8 @@ func TouchTypingExorcise(selectedExorcise string) { //       - -
 					usersGuessOrOptionDirective != "stack" &&
 					usersGuessOrOptionDirective != "exit" &&
 					usersGuessOrOptionDirective != "dir" {
-					//  v ^ v ^ At this point we know that the usersGuessOrOptionDirective is probably a valid guess,
-					// ... AND, we will therefore, need to leave the loop after processing the user's guess
+			//  v ^ v ^ At this point we know that the usersGuessOrOptionDirective is not a Dir and should be considered to ba a guess,
+					// ... AND we will, therefore, need to leave the loop after processing the user's guess
 					// Based on the Selected Exorcise, process the user's guess (determine if it is correct, etc.)
 					switch selectedExorcise {
 					case "Romaji_Prompt": // 1

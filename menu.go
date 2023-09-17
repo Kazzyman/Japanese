@@ -18,9 +18,11 @@ func display_Listing_of_Directives_allExorcisesHave_inCommon() { // (unique)    
 	fmt.Println("        Enter 'notes' for some background on Romaji conventions")
 	fmt.Println("        Enter '?' for context-sensitive help ")
 	fmt.Println("        Enter '??' for help on a particular Hiragana char")
-	fmt.Println("        Enter 'set' to reset the prompt & \"key\" ")
+	fmt.Println("        Enter 'set' to set a new specified prompt & \"key\" ")
 	fmt.Println("        Enter 'stat' to view what you have done so far in the current session")
-	fmt.Println("        Enter 'reset' to reset the hits logs")
+	fmt.Println("        Enter 'reset' to reset (flush or clear) the stats logs")
+	fmt.Println("        Enter 'rm' to read_map_of_fineOn")
+	// fmt.Println("        Enter 'stack' to prime or stack the frequencyMapOf_IsFineOnChars map")
 	fmt.Println("        Enter 'exit' or 'quit' to terminate the app")
 		//goland:noinspection ALL
 	fmt.Println("\n")
@@ -198,10 +200,11 @@ func reDisplay_Romaji_instructions() { //                                       
 		//goland:noinspection ALL
 func body_of_Romaji_instructions() { //                                                       - -
 	fmt.Println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+	fmt.Println("Exorcise 1")
 	fmt.Println("Practicing touch-typing (TT) Hiragana in response to Romaji prompts:\n")
 	fmt.Println("Using Hiragana-input-mode on your sys, Type the Hiragana corresponding to the Romaji prompt\n")
 		display_Listing_of_Directives_allExorcisesHave_inCommon() 
-	fmt.Println("1 Using Hiragana-input-mode, Type the Hiragana corresponding to the Romaji prompt: \n")
+	fmt.Println("Using Hiragana-input-mode, Type the Hiragana corresponding to the Romaji prompt: \n")
 }
 //  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 1
 
@@ -216,10 +219,11 @@ func reDisplay_Romaji_plus_Kata_instructions() { //                             
 		//goland:noinspection ALL
 func body_of_Romaji_plus_Kata_instructions() { //                                             - -
 	fmt.Println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+	fmt.Println("Exorcise 2")
 	fmt.Println("Practicing touch-typing (TT) Hiragana in response to Romaji-Katakana prompts:\n")
 	fmt.Println("Using Hiragana-input-mode on your sys, Type a Hiragana corresponding to the Romaji-Kata prompt\n")
 		display_Listing_of_Directives_allExorcisesHave_inCommon() // The func is located at the end of this file
-	fmt.Println("2 Using Hiragana-input-mode, Type a Hiragana corresponding to the Romaji-Katakana prompt: \n")
+	fmt.Println("Using Hiragana-input-mode, Type a Hiragana corresponding to the Romaji-Katakana prompt: \n")
 }
 //  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 2
 
@@ -234,11 +238,12 @@ func re_display_ExorciseInstructions() { //                                     
 		//goland:noinspection ALL
 func body_of_KataExorciseInstructions() { //                                                  - -
 	fmt.Println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+	fmt.Println("Exorcise 3")
 	fmt.Println("Practicing recognizing Katakana chars: Using Hiragana-input-mode on your system ...")
 	fmt.Println("... enter the Hiragana chars that correspond to the Katakana.\n")
 	fmt.Println("Or, alternatively, type the Romaji that corresponds to the Katakana\n")
 		display_Listing_of_Directives_allExorcisesHave_inCommon() 
-	fmt.Println("3 Type either a Hiragana or Romaji that corresponds to the Katakana prompt: \n")
+	fmt.Println("Type either a Hiragana or Romaji that corresponds to the Katakana prompt: \n")
 }
 //  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 3 & '4'
 
@@ -298,10 +303,11 @@ func body_of_Mixed_prompts_instructions() {
 		"To reset the hit log, type \"reset\".\n\n" +
 		"To exit the app, type \"exit\" or \"quit\".")
 	//
+	fmt.Println("Exorcises 6, 8, and 9")
 	fmt.Println("Practicing touch-typing (TT) Romaji in response to mixed prompts:\n")
 	fmt.Println("Type the Romaji corresponding to the prompt\n")
 		display_Listing_of_Directives_allExorcisesHave_inCommon() 
-	fmt.Println("6 8 9 Type the Romaji corresponding to the prompt: \n")
+	fmt.Println("Type the Romaji corresponding to the prompt: \n")
 }
 
 
@@ -319,11 +325,12 @@ func reDisplay_Difficult_instructions() { //                                    
 		//goland:noinspection ALL
 func body_of_Difficult_instructions() { //                                                        - -
 	fmt.Println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+	fmt.Println("Exorcise 7")
 	fmt.Println("Practicing recognizing Katakana chars: Using Hiragana-input-mode on your system ...")
 	fmt.Println("... enter the Hiragana chars that correspond to the Katakana.\n")
 	fmt.Println("Or, alternatively, type the Romaji that corresponds to the Katakana\n")
 	display_Listing_of_Directives_allExorcisesHave_inCommon() // The func is located at the end of this file
-	fmt.Println("7 Type either the Hiragana or Romaji that corresponds to the Katakana prompt: \n")
+	fmt.Println("Type either the Hiragana or Romaji that corresponds to the Katakana prompt: \n")
 }
 
 /*

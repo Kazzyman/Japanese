@@ -6,8 +6,8 @@ import (
 
 // Finished September 12 of 2023 at 0132 hours
 /*
-This is essentially a clone of meatOfSequentialKata(in string, skipFlag bool), sans the Alpha testing,
-refer to that func for documentation
+This is essentially a clone of 8, meatOfSequentialKata(in string, skipFlag bool), sans the Alpha testing,
+refer to that func for complete documentation
 */
 func meatOfSequentialHira(in string, skipFlag bool) {
 
