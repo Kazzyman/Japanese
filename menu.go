@@ -279,7 +279,7 @@ func do_betweenMainMenuSelectionsTTE(selectedExercise string) {
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) 
 		check(err)              
 		_, err2 := fmt.Fprintf(fileHandleBig,
-			"\nTransition from e xercise 1 'Romaji_Prompt' occured at: %s \n",
+			"\nTransition from exercise 1 'Romaji_Prompt' occured at: %s \n",
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
 		_ = fileHandleBig.Close()
@@ -288,7 +288,7 @@ func do_betweenMainMenuSelectionsTTE(selectedExercise string) {
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) 
 		check(err)                                 
 		_, err2 := fmt.Fprintf(fileHandleBig,
-			"\nTransition from e xercise 2 'Romaji_w_Kata_Prompt' occured at: %s \n",
+			"\nTransition from exercise 2 'Romaji_w_Kata_Prompt' occured at: %s \n",
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
 		_ = fileHandleBig.Close()
@@ -297,7 +297,7 @@ func do_betweenMainMenuSelectionsTTE(selectedExercise string) {
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) 
 		check(err)   
 		_, err2 := fmt.Fprintf(fileHandleBig,
-			"\nTransition from e xercise 3 or 4 'Respond_w_Hira_or_Romaji' occured at: %s \n",
+			"\nTransition from exercise 3 or 4 'Respond_w_Hira_or_Romaji' occured at: %s \n",
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
 		_ = fileHandleBig.Close()
@@ -306,7 +306,7 @@ func do_betweenMainMenuSelectionsTTE(selectedExercise string) {
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) 
 		check(err)                                               
 		_, err2 := fmt.Fprintf(fileHandleBig,
-			"\nTransition from e xercise 5 'Drill Lines' occured at: %s \n",
+			"\nTransition from exercise 5 'Drill Lines' occured at: %s \n",
 			currentTime.Format("01-02-2006 15:04:05 Monday"))
 		check(err2)
 		_ = fileHandleBig.Close()
@@ -315,7 +315,7 @@ func do_betweenMainMenuSelectionsTTE(selectedExercise string) {
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) 
 		check(err)                    
 		_, err2 := fmt.Fprintf(fileHandleBig,
-			"\nTransition from e xercise 6 'Mixed_prompts' occured at: %s \n",
+			"\nTransition from exercise 6 'Mixed_prompts' occured at: %s \n",
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
 		_ = fileHandleBig.Close()
@@ -324,7 +324,7 @@ func do_betweenMainMenuSelectionsTTE(selectedExercise string) {
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
 		check(err)
 		_, err2 := fmt.Fprintf(fileHandleBig,
-			"\nTransition from e xercise 7 'Most_Difficult' occured at: %s \n",
+			"\nTransition from exercise 7 'Most_Difficult' occured at: %s \n",
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
 		_ = fileHandleBig.Close()
@@ -333,7 +333,7 @@ func do_betweenMainMenuSelectionsTTE(selectedExercise string) {
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
 		check(err)
 		_, err2 := fmt.Fprintf(fileHandleBig,
-			"\nTransition from e xercise 8 'Sequential_Kata' occured at: %s \n",
+			"\nTransition from exercise 8 'Sequential_Kata' occured at: %s \n",
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
 		_ = fileHandleBig.Close()
@@ -342,7 +342,7 @@ func do_betweenMainMenuSelectionsTTE(selectedExercise string) {
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
 		check(err)
 		_, err2 := fmt.Fprintf(fileHandleBig,
-			"\nTransition from e xercise 9 'Sequential_Hira' occured at: %s \n",
+			"\nTransition from exercise 9 'Sequential_Hira' occured at: %s \n",
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
 		_ = fileHandleBig.Close()
