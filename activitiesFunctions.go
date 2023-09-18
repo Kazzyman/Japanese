@@ -12,8 +12,8 @@ import (
 //	                                     ^ 1           ^ 2         ^ 3,4
 
 // Ask the user for a Hiragana response (universal for both of the Romaji-containing prompts):
-//
-func semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(prompt string) (in string) { //         - -
+// Used in exercises 1 and 2 (see GoLand's usages at right)
+func semi_Universal_Prompt_Scan_4_HiraResponse_to_RomajiPrompt(prompt string) (in string) { //         - -
 	usersGuessOrOptionDirective := in
 		// The return signature (above) creates a local var 'in'', used below in the Scan():
 	fmt.Printf("%s", prompt)    // Prompt the user, in a pretty blue color: Options: '?' | '??'
@@ -25,7 +25,8 @@ func semi_Universal_Prompt_Scan_4_HiraResponse_NOT_a_KataPrompt(prompt string) (
 		_, _ = fmt.Scan(&usersGuessOrOptionDirective)
 	return usersGuessOrOptionDirective
 }
-func prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(prompt string) (in string) { //                     - -
+// Used in exercises 6 and 9 (see GoLand's usages at right)
+func prompt_and_Scan_4_RomajiResponse_to_Any_Prompt(prompt string) (in string) { //                     - -
 	usersGuessOrOptionDirective := in
 		// The return signature (above) creates a local var 'in', used below in the Scan():
 	fmt.Printf("%s", prompt)    // Prompt the user, in a pretty blue color: Options: '?' | '??'
@@ -39,7 +40,6 @@ func prompt_and_Scan_4_RomajiResponse_to_HiraPrompt(prompt string) (in string) {
 }
 
 // Ask the user for a Romaji|Hira response to the (naked, sans romaji) Katakana or Hiragana prompt:
-// Used in exorcises 3, 7, 8, 9
 func Prompt_Scan_4_Romaji_or_HiraResponse(prompt string) (usersGuessOrOptionDirective string) { //      - -
 	fmt.Printf("%s", prompt)    // Prompt the user, in a pretty blue color: Options: '?' | '??'
 	fmt.Printf("%s", colorCyan) //
@@ -51,29 +51,21 @@ func Prompt_Scan_4_Romaji_or_HiraResponse(prompt string) (usersGuessOrOptionDire
 	return usersGuessOrOptionDirective
 }
 
-func pick_RandomCard_Assign_aCard() { //                     - -
-	// This commented-out section does not work well with duplicates in the file
-	/*
-		if nonRandomCard%2 == 0 {
-			randIndex := rand.Intn(len(fileOfCards))
-			aCard = fileOfCards[randIndex] // randomly pick a 'card' from the 'deck' and store it in a global var
-		} else {
-			aCard = fileOfCards[nonRandomCard]
-			nonRandomCard++
-		}
-	*/
-	randIndex := rand.Intn(len(fileOfCards))
-	aCard = fileOfCards[randIndex] // randomly pick a 'card' from the 'deck' and store it in a global var
-}
+// Exercises 8 and 9 don't use one of these two, and, instead, they pick their own aCardS 
 func pick_Difficult_RandomCard_Assign_aCard() { //           - -
 	randIndex := rand.Intn(len(fileOfCardsMostDifficult))
 	aCardD = fileOfCardsMostDifficult[randIndex] // randomly pick a 'card' from the 'deck' and store it in a global var
 }
+func pick_RandomCard_Assign_aCard() { //                     - -
+	randIndex := rand.Intn(len(fileOfCards))
+	aCard = fileOfCards[randIndex] // randomly pick a 'card' from the 'deck' and store it in a global var
+}
+
 
 // DIRECTIVES : --------------------------------------------------------------------------------------------
 // 
 func handle_doubleQuestMark_directive() { //                 - -
-	// Works with Hiragana or Romaji user input in all Exorcises 
+	// Works with Hiragana or Romaji user input in all Exercises 
 	var hiraganaCharOrRomajiAssociatedWithStructElementToDisplayHelpFieldsFrom string // the value to find in locateCard.go
 	//
 	fmt.Printf("\n  -- Type either the Hiragana char or the Romaji that you need help with:> ")
@@ -82,7 +74,7 @@ func handle_doubleQuestMark_directive() { //                 - -
 	locateCardAndDisplayHelpFieldsContainedInIt(hiraganaCharOrRomajiAssociatedWithStructElementToDisplayHelpFieldsFrom)
 	fmt.Println("")
 }
-// Set Directive 'set'
+// Handles the set Directive 'set'
 func reSet_aCard_andThereBy_reSet_thePromptString() { //     - -
 	var theHiraganaOfCardToSilentlyLocate string
 	var isAlphanumeric bool
@@ -191,8 +183,8 @@ func check_it_for_fine_on6() { //       - -
 	for s, f := range frequencyMapOf_IsFineOnChars {
 		if s == aCard.KeyH || s == aCard.KeyK { // if it is in the map we need to check the freq
 			if f >= 2 { // if the freq is 3+ we need another card
-				// read_map_of_fineOn() // we show the map
-				// fmt.Printf("\n You were correct on: %s twice or more ... \n", aCard.KeyR)
+					// read_map_of_fineOn() // we show the map
+					// fmt.Printf("\n You were correct on: %s twice or more ... \n", aCard.KeyR)
 				// Log to a file that this action was taken **do-this**
 				if s == aCard.KeyH {
 					fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
@@ -210,7 +202,7 @@ func check_it_for_fine_on6() { //       - -
 					_ = fileHandleBig.Close()
 				}
 				pick_RandomCard_Assign_aCard() // We get that new card ...
-				// fmt.Println(" ... so here is a new one ... \n")
+					// fmt.Println(" ... so here is a new one ... \n")
 				check_it_for_fine_on6() // ... and we check THAT new card with a recursive call
 			} else { // else the card had a freq less than 3, so ...
 				break //  ... we exit the loop and the func -- we will use this card
@@ -224,8 +216,8 @@ func check_it_for_fine_on7() { //       - -
 	for s, f := range frequencyMapOf_IsFineOnChars {
 		if s == aCard.KeyH || s == aCard.KeyK { // if it is in the map we need to check the freq
 			if f >= 2 { // if the freq is 3+ we need another card
-				// read_map_of_fineOn() // we show the map
-				// fmt.Printf("\n You were correct on: %s twice or more ... \n", aCard.KeyR)
+					// read_map_of_fineOn() // we show the map
+					// fmt.Printf("\n You were correct on: %s twice or more ... \n", aCard.KeyR)
 				// Log to a file that this action was taken **do-this**
 				if s == aCard.KeyH {
 					fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
@@ -243,7 +235,7 @@ func check_it_for_fine_on7() { //       - -
 					_ = fileHandleBig.Close()
 				}
 				pick_Difficult_RandomCard_Assign_aCard() // We get that new card ...
-				// fmt.Println(" ... so here is a new one ... \n")
+					// fmt.Println(" ... so here is a new one ... \n")
 				check_it_for_fine_on7() // ... and we check THAT new card with a recursive call
 			} else { // else the card had a freq less than 3, so ...
 				break //  ... we exit the loop and the func -- we will use this card
@@ -260,7 +252,7 @@ func check_it_for_needing_more_practice() { //       - -
 	for s, f := range frequencyMapOf_need_workOn {
 		if s == aCard.KeyR { // Check if the latest random card is in the need_workOn map, and check the freq ...
 			if f >= 1 { // ... if the freq is 1+ we definitely need more work on this particular card, so we keep it
-				// read_map_of_fineOn() // we show the map
+					// read_map_of_fineOn() // we show the map
 				fmt.Printf("\n The Random card: %s was missed once or more \n", aCard.KeyH)
 				fmt.Println("... so we will keep it and quiz you on it ... ")
 				// Log to a file that this action was taken **do-this**
@@ -272,7 +264,6 @@ func check_it_for_needing_more_practice() { //       - -
 				skip_this_step = true
 				_ = fileHandleBig.Close()
 				break //  ... we exit the loop and the func -- we will keep and use this random card, and skip the next loop
-				// check_it_for_fine_on() // ... and we check THAT new card with a recursive call
 			} else { // else the card had a freq less than 2, so ...
 				continue // keep looking through the map for another instance that may in there, with a significant freq
 			}
@@ -295,7 +286,6 @@ func check_it_for_needing_more_practice() { //       - -
 					_ = fileHandleBig.Close()
 					practice_this_card(aCard.KeyR) // locate and assign aCard // set it as new aCard
 					break                          //  ... we exit the loop and the func -- we will keep and use this random card
-					// check_it_for_fine_on() // ... and we check THAT new card with a recursive call
 				} else { // else the card had a freq less than 2, so ...
 					continue // keep looking through the map for another instance that may in there, with a significant freq
 				}
@@ -309,7 +299,7 @@ func check_it_for_needing_more_practiceD_7() { //      - -
 	for s, f := range frequencyMapOf_need_workOn {
 		if s == aCard.KeyR { // Check if the latest random card is in the need_workOn map, and check the freq ...
 			if f >= 1 { // ... if the freq is 1+ we definitely need more work on this particular card, so we keep it
-				// read_map_of_fineOn() // we show the map
+					// read_map_of_fineOn() // we show the map
 				fmt.Printf("\n The Random card: %s was missed once or more \n", aCard.KeyH)
 				fmt.Println("... so we will keep it and quiz you on it ... ")
 				// Log to a file that this action was taken **do-this**
@@ -321,7 +311,6 @@ func check_it_for_needing_more_practiceD_7() { //      - -
 				skip_this_step = true
 				_ = fileHandleBig.Close()
 				break //  ... we exit the loop and the func -- we will keep and use this random card, and skip the next loop
-				// check_it_for_fine_on() // ... and we check THAT new card with a recursive call
 			} else { // else the card had a freq less than 2, so ...
 				continue // keep looking through the map for another instance that may in there, with a significant freq
 			}
@@ -332,7 +321,7 @@ func check_it_for_needing_more_practiceD_7() { //      - -
 		for s, f := range frequencyMapOf_need_workOn {
 			if s == aCard.KeyR { // Check if the latest random is in the map, and check the freq ...
 				if f >= 1 { // ... if the freq is 1+ we definitely need more work on this particular card, so we set it as aCard
-					// read_map_of_fineOn() // we show the map
+						// read_map_of_fineOn() // we show the map
 					fmt.Println("\n This Random card was missed 1 or more times ")
 					fmt.Println("... so we will test you on it, since it has been a while")
 					// Log to a file that this action was taken **do-this**
@@ -344,7 +333,6 @@ func check_it_for_needing_more_practiceD_7() { //      - -
 					_ = fileHandleBig.Close()
 					practice_this_cardD(aCard.KeyR) // locate and assign aCard // set it as new aCard
 					break                           //  ... we exit the loop and the func -- we will keep and use this random card
-					// check_it_for_fine_on() // ... and we check THAT new card with a recursive call
 				} else { // else the card had a freq less than 2, so ...
 					continue // keep looking through the map for another instance that may in there, with a significant freq
 				}
@@ -403,7 +391,7 @@ func stack_the_map() { //             - -
 	fmt.Printf("\nSix occurrences of 'shi' have been added to frequencyMapOf_IsFineOnChars\n\n")
 }
 
-func branchOnUserSelectedDirectiveIfGiven(in, selectedExorcise string) { //             - -
+func branchOnUserSelectedDirectiveIfGiven(in, selectedExercise string) { //             - -
 	if in == "set" ||
 		in == "?" || // <-- If it IS a directive
 		in == "??" ||
@@ -426,8 +414,8 @@ func branchOnUserSelectedDirectiveIfGiven(in, selectedExorcise string) { //     
 			nonRandomCard = 0
 			// Also, flush the map
 			frequencyMapOf_IsFineOnChars = make(map[string]int)
-			do_betweenMainMenuSelectionsTTE(selectedExorcise) // This only writes transition entries to the log file
-			mainMenuPromptScanSelectAndBeginSelectedExorcise()
+			do_betweenMainMenuSelectionsTTE(selectedExercise) // This only writes transition entries to the log file
+			mainMenuPromptScanSelectAndBeginSelectedExercise()
 		case "reset":
 			// Flush (clear) the old stats and hits arrays
 			cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
@@ -441,7 +429,7 @@ func branchOnUserSelectedDirectiveIfGiven(in, selectedExorcise string) { //     
 		case "??": // Directives follow:
 			handle_doubleQuestMark_directive()
 		case "?":
-			switch selectedExorcise {
+			switch selectedExercise {
 			/*
 			After the third failed guess, there is never any point in showing less than the first 3 hint lines !!!!
 			So, I think that all this has been done already (though 3 has the sans Romaji for the first Kata section)
@@ -449,7 +437,7 @@ func branchOnUserSelectedDirectiveIfGiven(in, selectedExorcise string) { //     
 			However, in the case of '?' Directive handling, the following guidelines would be optimal
 			and, the same would be true of the '??' Directive handling: the following guidelines would be optimal
 
-			(in the first case we would need to switch on the selected exorcise, but, for the second case,
+			(in the first case we would need to switch on the selected exercise, but, for the second case,
 			we will know what the user knows since he has already 'given' either a hira or a romaji as the seed)
 			*/
 			case "Romaji_Prompt": // 1 respond with Hira
@@ -519,27 +507,26 @@ func branchOnUserSelectedDirectiveIfGiven(in, selectedExorcise string) { //     
 			fmt.Println("゜is called \"handakuten\" 半濁点 translates to \"half-voicing mark\" or \"semi-voiced mark\"\n" +
 				"゛is called \"dakuten\" 濁点 meaning 'voiced mark' or 'voicing mark'")
 		case "dir": // reDisplay the DIRECTORY OF DIRECTIVES (and instructions):
-			switch selectedExorcise {
+			switch selectedExercise {
 				case "Romaji_Prompt": // 1
-					reDisplay_Romaji_instructions()
+					body_of_Romaji_instructions()
 				case "Romaji_w_Kata_Prompt": // 2
-					reDisplay_Romaji_plus_Kata_instructions()
+					body_of_Romaji_plus_Kata_instructions()
 				case "Respond_w_Hira_or_Romaji": // 3 & '4'
-					re_display_ExorciseInstructions()
+					body_of_KataExerciseInstructions()
 				case "Most_Difficult": // 7
-					reDisplay_Difficult_instructions()
-				// 
+					body_of_Difficult_instructions()
 				case "Mixed_prompts": // 6
-					reDisplay_Mixed_prompts_instructions()
+					body_of_instructions_for_Romaji_responces_only()
 				case "Sequential_Kata": // 8
-					reDisplay_Mixed_prompts_instructions()
+					body_of_KataExerciseInstructions()
 				case "Sequential_Hira": // 9
-					reDisplay_Mixed_prompts_instructions()
+					body_of_instructions_for_Romaji_responces_only()
 			}
 		case "rm":
 			read_map_of_fineOn()
 		case "stack":
-			// Load six occurrences of 'shi' to the map 
+			// Load six occurrences of 'shi' to the map_of_fineOn 
 			stack_the_map()
 		}
 	}

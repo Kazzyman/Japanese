@@ -23,7 +23,7 @@ first func a skipFlag val of false, thereby causing the first to display the ans
 checkForHints(value string).
 .
 meatOfSequentialKata(in string, skipFlag bool) is passed the first guess which was collected by the caller:
-... TouchTypingExorciseSequential()
+... TouchTypingExerciseSequential()
 
 meatOfSequentialKata(in string, skipFlag bool) then determines what should be done in response.
 
@@ -35,7 +35,7 @@ Finally, the first func is re-called by the second,: the first func is, then, pa
 */
 func meatOfSequentialKata(in string, skipFlag bool) {
 	// Used for processing either a Romaji OR a Hiragana guess which was obtained prior to this func being called
-	// ... either by TouchTypingExorciseSequential, or by: secondTry_meatOfSequentialKata
+	// ... either by TouchTypingExerciseSequential, or by: secondTry_meatOfSequentialKata
 	// ... (it is secondTry_meatOfSequentialKata which actually solicits and obtains the THIRD guess)
 	// .
 	// Since this func must deal with either Hiragana or Romaji inputs, we must first determine which kind we have
@@ -132,6 +132,7 @@ func meatOfSequentialKata(in string, skipFlag bool) {
 			fmt.Println("Try again") // This only prints on first pass
 			// Re-prompt, and send that second guess to the secondTry_ func, below
 			in = Prompt_Scan_4_Romaji_or_HiraResponse(aCardS.KeyK)
+			// Prompt_Scan_4_Romaji_or_HiraResponse
 				branchOnUserSelectedDirectiveIfGiven(in,
 					"Respond_w_Hira_or_Romaji") // <-- Perform the Directive
 			secondTry_meatOfSequentialKata(in)
@@ -208,11 +209,11 @@ func secondTry_meatOfSequentialKata(in string) { // <-- This second-instance of 
 		//
 		fmt.Println() // Returns to caller from this line
 	} else if isAlphanumeric == false && in != aCardS.KeyH { // User typed the INCORRECT Hiragana at Kata prompt
-		// Solicit the third guess ... and pass it to: thirdTry_meatOfKataExorcise(in, true)
+		// Solicit the third guess ... and pass it to: thirdTry_meatOfKataExercise(in, true)
 		fmt.Printf("%s", colorRed)
 		fmt.Println("       Try again, you have one last attempt ... ")
 		fmt.Printf("%s", colorReset)
-		// Re-prompt, will that third guess back to: meatOfKataExorcise(in, false)
+		// Re-prompt, will that third guess back to: meatOfKataExercise(in, false)
 		in = Prompt_Scan_4_Romaji_or_HiraResponse(aCardS.KeyK) // Obtain the second guess, will pass it as 'in'
 			branchOnUserSelectedDirectiveIfGiven(in, "Respond_w_Hira_or_Romaji") // <-- Do dir
 		meatOfSequentialKata(in, false) // Process the third and final try

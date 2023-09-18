@@ -12,7 +12,7 @@ func main() {
 	// randomize_a_file()
 	for {
 		// rand.Seed(seed)
-		mainMenuPromptScanSelectAndBeginSelectedExorcise()
+		mainMenuPromptScanSelectAndBeginSelectedExercise()
 	}
 }
 

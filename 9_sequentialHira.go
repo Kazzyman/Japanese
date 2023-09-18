@@ -19,7 +19,7 @@ func meatOfSequentialHira(in string, skipFlag bool) {
 		logHits_in_cyclicArrayHits("Right", aCardS.KeyH)
 		logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCardS.KeyR)
 		//
-		fmt.Println() // This line will be the last-executed before returning to the caller: TouchTypingExorcise
+		fmt.Println() // This line will be the last-executed before returning to the caller: TouchTypingExercise
 		//
 		// The following 'else' will be executed, potentially only twice: 1: for the first, and 2: for the final guess
 	} else if in != aCardS.KeyR {
@@ -38,7 +38,7 @@ func meatOfSequentialHira(in string, skipFlag bool) {
 			fmt.Println("Try again") // This ONLY prints on the first pass through this func
 			fmt.Printf(colorReset)
 			// Re-prompt
-			in = Prompt_Scan_4_Romaji_or_HiraResponse(aCardS.KeyH) // Obtain second guess, and pass it as 'in'
+			in = prompt_and_Scan_4_RomajiResponse_to_Any_Prompt(aCardS.KeyH) // Obtain second guess, and pass it as 'in'
 				branchOnUserSelectedDirectiveIfGiven(in,
 					"Respond_w_Hira_or_Romaji") // <-- Perform the Directive
 			secondTry_meatOfSequentialHira(in) // This instance of 'in' is the user's second guess.
@@ -72,14 +72,14 @@ func secondTry_meatOfSequentialHira(in string) { // <-- This second-instance of 
 		logHits_in_cyclicArrayHits("Right", aCardS.KeyH)
 		logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCardS.KeyR)
 		//
-		fmt.Println() // Returns to caller: meatOfKataExorcise(na)
+		fmt.Println() // Returns to caller: meatOfKataExercise(na)
 	} else if in != aCardS.KeyR { // If user had typed an alpha, but NOT the correct Romaji
-		// Solicit the final guess ... will pass it back to: meatOfKataExorcise(in, false)
+		// Solicit the final guess ... will pass it back to: meatOfKataExercise(in, false)
 		fmt.Printf("%s", colorRed)
 		fmt.Println("       Try again, you have one last attempt ... ")
 		fmt.Printf("%s", colorReset)
-		// Re-prompt, will be sending that final guess back to: meatOfKataExorcise(in, false)
-		in = Prompt_Scan_4_Romaji_or_HiraResponse(aCardS.KeyH) // <-- Obtain the final guess, will pass it as 'in'
+		// Re-prompt, will be sending that final guess back to: meatOfKataExercise(in, false)
+		in = prompt_and_Scan_4_RomajiResponse_to_Any_Prompt(aCardS.KeyH)         // <-- Obtain the final guess, will pass it as 'in'
 			branchOnUserSelectedDirectiveIfGiven(in, "Respond_w_Hira_or_Romaji") // Perform the Directive
 		fmt.Printf("%s", colorRed)
 		fmt.Printf("      　^^Oops! ")

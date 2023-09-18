@@ -57,21 +57,21 @@ func drillLines() {
 	_, err := fmt.Scan(&pause)
 	if pause == "menu" {
 		/*
-			case "menu": // From func branchOnUserSelectedDirectiveIfGiven(usersGuessOrOptionDirective, selectedExorcise string)
+			case "menu": // From func branchOnUserSelectedDirectiveIfGiven(usersGuessOrOptionDirective, selectedExercise string)
 				// Flush the old stats and hits arrays
 				cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
 				cyclicArrayHits = CyclicArrayHits{}
 				usersGuessOrOptionDirective = "null"
-				do_betweenMainMenuSelectionsTTE(selectedExorcise)
-				mainMenuPromptScanSelectAndBeginSelectedExorcise()
+				do_betweenMainMenuSelectionsTTE(selectedExercise)
+				mainMenuPromptScanSelectAndBeginSelectedExercise()
 		*/
 		// Flush the old stats and hits arrays
 		cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
 		cyclicArrayHits = CyclicArrayHits{}
-		// finalExorcise = "drillLines"
+		// finalExercise = "drillLines"
 		// usersGuessOrOptionDirective = "null"
 		do_betweenMainMenuSelectionsTTE("drillLines")
-		mainMenuPromptScanSelectAndBeginSelectedExorcise()
+		mainMenuPromptScanSelectAndBeginSelectedExercise()
 	}
 	if err != nil {
 		return
@@ -109,18 +109,18 @@ func for_drillLines_obtainAndDealWithUserInput(refSlice []string) {
 	}
 	if pause == "menu" {
 		/*
-			case "menu": // From func branchOnUserSelectedDirectiveIfGiven(usersGuessOrOptionDirective, selectedExorcise string)
+			case "menu": // From func branchOnUserSelectedDirectiveIfGiven(usersGuessOrOptionDirective, selectedExercise string)
 				// Flush the old stats and hits arrays
 				cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
 				cyclicArrayHits = CyclicArrayHits{}
 				usersGuessOrOptionDirective = "null"
-				do_betweenMainMenuSelectionsTTE(selectedExorcise)
-				mainMenuPromptScanSelectAndBeginSelectedExorcise()
+				do_betweenMainMenuSelectionsTTE(selectedExercise)
+				mainMenuPromptScanSelectAndBeginSelectedExercise()
 		*/
 		// Flush the old stats and hits arrays
 		cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
 		cyclicArrayHits = CyclicArrayHits{}
 		do_betweenMainMenuSelectionsTTE("drillLines")
-		mainMenuPromptScanSelectAndBeginSelectedExorcise()
+		mainMenuPromptScanSelectAndBeginSelectedExercise()
 	}
 }

@@ -1,9 +1,9 @@
 package main
 
 // There are three files (or decks) of cards in this file: constantsAndSuch.go
-// Firstly, we have fileOfCardsS which is used in exorcises 8 and 9, the sequentials (aCardS)
-// Then, there is fileOfCardsMostDifficult which is used in exorcise 7 (aCardD)
-// Lastly, comes fileOfCards which is used in all other exorcises (aCard)
+// Firstly, we have fileOfCardsS which is used in exercises 8 and 9, the sequentials (aCardS)
+// Then, there is fileOfCardsMostDifficult which is used in exercise 7 (aCardD)
+// Lastly, comes fileOfCards which is used in all other exercises (aCard)
 //
 // The last two decks will be read randomly
 // The first of the three decks will be read sequentially
