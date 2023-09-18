@@ -143,7 +143,8 @@ func mainMenuPromptScanSelectAndBeginSelectedExercise() { // (unique)     - -
 			body_of_Romaji_plus_Kata_instructions()
 			TouchTypingExercises12346(selectedExercise)
 		} else if mainMenuSelection == "3" {
-			selectedExercise := "Respond_w_Hira_or_Romaji" // User will face only Katakana prompts
+			// selectedExercise := "Respond_w_Hira_or_Romaji_to_kataPrompt_3" // User will face only Katakana prompts
+			selectedExercise := "Respond_w_Hira_or_Romaji_to_kataPrompt_3" // User will face only Katakana prompts
 				log_to_JapLog_file_inception_time(selectedExercise)
 			body_of_KataExerciseInstructions()
 			TouchTypingExercises12346(selectedExercise)
@@ -181,7 +182,7 @@ func mainMenuPromptScanSelectAndBeginSelectedExercise() { // (unique)     - -
 		//goland:noinspection ALL
 func body_of_Romaji_instructions() { //                                                       - -
 	fmt.Println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-	fmt.Println("E xercise 1")
+	fmt.Println("Exercise 1")
 	fmt.Println("Practicing touch-typing (TT) Hiragana in response to Romaji prompts:\n")
 	fmt.Println("Using Hiragana-input-mode on your sys, Type the Hiragana corresponding to the Romaji prompt\n")
 		display_Listing_of_Directives_allExercisesHave_inCommon() 
@@ -191,7 +192,7 @@ func body_of_Romaji_instructions() { //                                         
 		//goland:noinspection ALL
 func body_of_Romaji_plus_Kata_instructions() { //                                             - -
 	fmt.Println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-	fmt.Println("E xercise 2")
+	fmt.Println("Exercise 2")
 	fmt.Println("Practicing touch-typing (TT) Hiragana in response to Romaji-Katakana prompts:\n")
 	fmt.Println("Using Hiragana-input-mode on your sys, Type a Hiragana corresponding to the Romaji-Kata prompt\n")
 		display_Listing_of_Directives_allExercisesHave_inCommon() // The func is located at the end of this file
@@ -201,7 +202,7 @@ func body_of_Romaji_plus_Kata_instructions() { //                               
 		//goland:noinspection ALL
 func body_of_KataExerciseInstructions() { //                                                  - -
 	fmt.Println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-	fmt.Println("E xercise 3")
+	fmt.Println("Exercise 3")
 	fmt.Println("Practicing recognizing Katakana chars: Using Hiragana-input-mode on your system ...")
 	fmt.Println("... enter the Hiragana chars that correspond to the Katakana.\n")
 	fmt.Println("Or, alternatively, type the Romaji that corresponds to the Katakana\n")
@@ -252,7 +253,7 @@ func body_of_instructions_for_Romaji_responces_only() {
 		"To reset the hit log, type \"reset\".\n\n" +
 		"To exit the app, type \"exit\" or \"quit\".")
 	//
-	fmt.Println("E xercises 6, 8, and 9")
+	fmt.Println("Exercises 6, 8, and 9")
 	fmt.Println("Practicing touch-typing (TT) Romaji in response to mixed prompts:\n")
 	fmt.Println("Type the Romaji corresponding to the prompt\n")
 		display_Listing_of_Directives_allExercisesHave_inCommon() 
@@ -262,7 +263,7 @@ func body_of_instructions_for_Romaji_responces_only() {
 		//goland:noinspection ALL
 func body_of_Difficult_instructions() { //                                                        - -
 	fmt.Println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-	fmt.Println("E xercise 7")
+	fmt.Println("Exercise 7")
 	fmt.Println("Practicing recognizing Katakana chars: Using Hiragana-input-mode on your system ...")
 	fmt.Println("... enter the Hiragana chars that correspond to the Katakana.\n")
 	fmt.Println("Or, alternatively, type the Romaji that corresponds to the Katakana\n")
@@ -292,7 +293,7 @@ func do_betweenMainMenuSelectionsTTE(selectedExercise string) {
 		check(err2)
 		_ = fileHandleBig.Close()
 		//
-	} else if selectedExercise == "Respond_w_Hira_or_Romaji" { // 3, 4
+	} else if selectedExercise == "Respond_w_Hira_or_Romaji_to_kataPrompt_3" { // 3, 4
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) 
 		check(err)   
 		_, err2 := fmt.Fprintf(fileHandleBig,

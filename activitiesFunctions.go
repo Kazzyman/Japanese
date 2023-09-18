@@ -454,7 +454,7 @@ func branchOnUserSelectedDirectiveIfGiven(in, selectedExercise string) { //     
 					*/
 				fmt.Printf("\n%s\n%s\n%s\n\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
 			//
-			case "Respond_w_Hira_or_Romaji": // 3 & '4'
+			case "Respond_w_Hira_or_Romaji_to_kataPrompt_3": // 3 & '4'
 				// fmt.Printf("\n\n%s\n", aCard.HintSansR)
 				fmt.Printf("\n%s\n%s\n%s\n\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
 					/*
@@ -510,18 +510,25 @@ func branchOnUserSelectedDirectiveIfGiven(in, selectedExercise string) { //     
 			switch selectedExercise {
 				case "Romaji_Prompt": // 1
 					body_of_Romaji_instructions()
+					fmt.Println("You are doing Exercise 1")
 				case "Romaji_w_Kata_Prompt": // 2
 					body_of_Romaji_plus_Kata_instructions()
-				case "Respond_w_Hira_or_Romaji": // 3 & '4'
+					fmt.Println("You are doing Exercise 2")
+				case "Respond_w_Hira_or_Romaji_to_kataPrompt_3": // 3 & '4'
 					body_of_KataExerciseInstructions()
+					fmt.Println("You are doing Exercise 3")
 				case "Most_Difficult": // 7
 					body_of_Difficult_instructions()
+					fmt.Println("You are doing Exercise 7")
 				case "Mixed_prompts": // 6
 					body_of_instructions_for_Romaji_responces_only()
+					fmt.Println("You are doing Exercise 6")
 				case "Sequential_Kata": // 8
 					body_of_KataExerciseInstructions()
+					fmt.Println("You are doing Exercise 8")
 				case "Sequential_Hira": // 9
 					body_of_instructions_for_Romaji_responces_only()
+					fmt.Println("You are doing Exercise 9")
 			}
 		case "rm":
 			read_map_of_fineOn()

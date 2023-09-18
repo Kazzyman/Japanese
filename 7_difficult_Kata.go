@@ -75,8 +75,7 @@ func meatOfKataExerciseD(in string, skipFlag bool) {
 			fmt.Printf(colorReset)
 			// Re-prompt, and will send that second guess to the secondTry_meatOfKataExercise func
 			in = Prompt_Scan_4_Romaji_or_HiraResponse(aCardD.KeyK) // Obtain second guess, and pass it as 'in'
-				branchOnUserSelectedDirectiveIfGiven(in,
-					"Respond_w_Hira_or_Romaji") // Perform the Directive
+				branchOnUserSelectedDirectiveIfGiven(in, "Most_Difficult") // Perform the Directive
 			secondTry_meatOfKataExerciseD(in)   // This instance of 'in' is the user's second guess.
 		}
 		// If user guesses incorrectly on his third-and-final try, then, and only then, execute the rest of this func
@@ -123,8 +122,7 @@ func meatOfKataExerciseD(in string, skipFlag bool) {
 			fmt.Println("Try again") // This only prints on first pass
 			// Re-prompt, and send that second guess to the secondTry_meatOfKataExercise func
 			in = Prompt_Scan_4_Romaji_or_HiraResponse(aCardD.KeyK)
-				branchOnUserSelectedDirectiveIfGiven(in,
-					"Respond_w_Hira_or_Romaji") // <-- Perform the Directive
+				branchOnUserSelectedDirectiveIfGiven(in,"Most_Difficult") // <-- Perform the Directive
 			secondTry_meatOfKataExerciseD(in)
 		}
 		// If user guesses incorrectly on his third-and-final try, then, and only then, execute the rest of this func
@@ -182,7 +180,7 @@ func secondTry_meatOfKataExerciseD(in string) { // <-- This second-instance of '
 		fmt.Printf("%s", colorReset)
 		// Re-prompt, will be sending that final guess back to: meatOfKataExercise(in, false)
 		in = Prompt_Scan_4_Romaji_or_HiraResponse(aCardD.KeyK) // <-- Obtain the final guess, will pass it as 'in'
-			branchOnUserSelectedDirectiveIfGiven(in, "Respond_w_Hira_or_Romaji") // <-- Do dir
+			branchOnUserSelectedDirectiveIfGiven(in, "Most_Difficult") // <-- Do dir
 		fmt.Printf("%s", colorRed)
 		fmt.Printf("      　^^Oops! ")
 		//
@@ -209,7 +207,7 @@ func secondTry_meatOfKataExerciseD(in string) { // <-- This second-instance of '
 		fmt.Printf("%s", colorReset)
 		// Re-prompt, will that third guess back to: meatOfKataExercise(in, false)
 		in = Prompt_Scan_4_Romaji_or_HiraResponse(aCardD.KeyK)                   // Obtain the second guess, will pass it as 'in'
-			branchOnUserSelectedDirectiveIfGiven(in, "Respond_w_Hira_or_Romaji") // <-- Do dir
+			branchOnUserSelectedDirectiveIfGiven(in, "Most_Difficult") // <-- Do dir
 		meatOfKataExerciseD(in, false)                                           // Process the third and final try
 	}
 }

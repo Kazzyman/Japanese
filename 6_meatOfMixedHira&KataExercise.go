@@ -224,7 +224,7 @@ func secondTry_meatOf_mixed_HiraKataExercise(in string) { // NOTE: we have alrea
 			// Obtain the second guess, and pass it as 'in'
 			// Re-prompt, and send that third and final guess to the secondTry_meatOfRomajiExercise func
 			in = prompt_and_Scan_4_RomajiResponse_to_Any_Prompt(Mixed_prompts_KeyX)
-				branchOnUserSelectedDirectiveIfGiven(in, "Romaji_Prompt") // <-- handle the directive
+				branchOnUserSelectedDirectiveIfGiven(in, "Mixed_prompts") // <-- handle the directive
 			fmt.Printf("%s", colorRed)
 			fmt.Printf("      　^^Oops! ")
 
@@ -274,7 +274,7 @@ func secondTry_meatOf_mixed_HiraKataExercise(in string) { // NOTE: we have alrea
 			// Obtain the last guess, and pass it as 'in'
 			// Re-prompt, and send that third and last guess back to: meatOfRomajiExercise(in, false)
 			in = prompt_and_Scan_4_RomajiResponse_to_Any_Prompt(Mixed_prompts_KeyX)
-				branchOnUserSelectedDirectiveIfGiven(in, "Romaji_Prompt") // <-- handle the directive
+				branchOnUserSelectedDirectiveIfGiven(in, "Mixed_prompts") // <-- handle the directive
 			// User failed third and final attempt, so do a "recursion", but with a skipFlag false
 			meatOf_Mixed_HiraKataExercise(in, false) // <-- Process the third try
 		}

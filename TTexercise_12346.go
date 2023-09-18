@@ -10,13 +10,13 @@ import (
 
 // The content of "prompt" (i.e., aCard.KeyR | aCard.KeyRK | aCard.KeyK) is set by the calling activity
 //
-// Convenience globals used exclusively for e xercise 6
+// Convenience globals used exclusively for exercise 6
 var Mixed_prompts_KeyH string
 var Mixed_prompts_KeyK string
 var Mixed_prompts_KeyX string
 var Mixed_prompt_is string
 
-// Entry point for numbers 1, 2, 3, and 6 E xercises
+// Entry point for numbers 1, 2, 3, and 6 Exercises
 func TouchTypingExercises12346(selectedExercise string) { //       - -
 	//
 	rand.Seed(time.Now().UnixNano())
@@ -51,7 +51,7 @@ func TouchTypingExercises12346(selectedExercise string) { //       - -
 			_ = fileHandleBig.Close() // Close the file, and discard any resulting errors that may be returned by that func
 			
 			isThis_a_cardWeNeedMoreWorkOn = 0    // ... for a while now, then let's go get a card we've missed before, instead of that random one
-			check_it_for_needing_more_practice() // **do-this** this func probably needs some work to function with e xercise 6
+			check_it_for_needing_more_practice() // **do-this** this func probably needs some work to function with exercise 6
 		}
 		// In any case:
 		if selectedExercise == "Mixed_prompts" {
@@ -64,24 +64,24 @@ func TouchTypingExercises12346(selectedExercise string) { //       - -
 		// Prompt with the appropriate field from the latest-read card and accept user's guess or Option Directive:
 		switch selectedExercise {
 		//
-		// case of e xercise 1
+		// case of exercise 1
 		case "Romaji_Prompt":
 			// Semi-universal prompt, passing R
 			usersGuessOrOptionDirective = semi_Universal_Prompt_Scan_4_HiraResponse_to_RomajiPrompt(aCard.KeyR)
 		// ... if executed after a Directive is handled, will be prompting from the same card -- it's all good
 		//
-		// case of e xercise 2
+		// case of exercise 2
 		case "Romaji_w_Kata_Prompt":
 			// Semi-universal prompt, passing RK
 			usersGuessOrOptionDirective = semi_Universal_Prompt_Scan_4_HiraResponse_to_RomajiPrompt(aCard.KeyRK)
 		// ... if executed after a Directive is handled, will be prompting from the same card -- it's all good
 		//
-		// case of e xercise 3 and 4
-		case "Respond_w_Hira_or_Romaji":
+		// case of exercise 3 and 4
+		case "Respond_w_Hira_or_Romaji_to_kataPrompt_3":
 			usersGuessOrOptionDirective = Prompt_Scan_4_Romaji_or_HiraResponse(aCard.KeyK) // Kata prompt, passing K
 			// ... if executed after a Directive is handled, will be prompting from the same card -- it's all good
 		//
-		// case of e xercise 6
+		// case of exercise 6
 		case "Mixed_prompts":
 			Mixed_prompts_KeyH = aCard.KeyH
 			Mixed_prompts_KeyK = aCard.KeyK
@@ -121,7 +121,7 @@ func TouchTypingExercises12346(selectedExercise string) { //       - -
 				case "Romaji_w_Kata_Prompt": // 2
 					usersGuessOrOptionDirective = semi_Universal_Prompt_Scan_4_HiraResponse_to_RomajiPrompt(aCard.KeyRK)
 					// ... , as before -- it is all good
-				case "Respond_w_Hira_or_Romaji": // 3 or 4
+				case "Respond_w_Hira_or_Romaji_to_kataPrompt_3": // 3 or 4
 					usersGuessOrOptionDirective = Prompt_Scan_4_Romaji_or_HiraResponse(aCard.KeyK)
 					// ... , as before -- it is all good
 				case "Mixed_prompts": // 6
@@ -157,13 +157,13 @@ func TouchTypingExercises12346(selectedExercise string) { //       - -
 					usersGuessOrOptionDirective != "dir" {
 			//  v ^ v ^ At this point we know that the usersGuessOrOptionDirective is not a Dir and should be considered to ba a guess,
 					// ... AND we will, therefore, need to leave the loop after processing the user's guess
-					// Based on the Selected E xercise, process the user's guess (determine if it is correct, etc.)
+					// Based on the Selected Exercise, process the user's guess (determine if it is correct, etc.)
 					switch selectedExercise {
 					case "Romaji_Prompt": // 1
 						meatOfRomajiExercise(usersGuessOrOptionDirective, true)
 					case "Romaji_w_Kata_Prompt": // 2
 						meatOfRomajiKataExercise(usersGuessOrOptionDirective, true)
-					case "Respond_w_Hira_or_Romaji": // 3 and 4
+					case "Respond_w_Hira_or_Romaji_to_kataPrompt_3": // 3 and 4
 						meatOfKataExercise(usersGuessOrOptionDirective, true)
 					case "Mixed_prompts": // 6
 						meatOf_Mixed_HiraKataExercise(usersGuessOrOptionDirective, true)
@@ -178,7 +178,7 @@ func TouchTypingExercises12346(selectedExercise string) { //       - -
 					meatOfRomajiExercise(usersGuessOrOptionDirective, true)
 				case "Romaji_w_Kata_Prompt": // 2
 					meatOfRomajiKataExercise(usersGuessOrOptionDirective, true)
-				case "Respond_w_Hira_or_Romaji": // 3, 4
+				case "Respond_w_Hira_or_Romaji_to_kataPrompt_3": // 3, 4
 					meatOfKataExercise(usersGuessOrOptionDirective, true)
 				case "Mixed_prompts": // 6
 					meatOf_Mixed_HiraKataExercise(usersGuessOrOptionDirective, true)

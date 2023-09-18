@@ -40,7 +40,7 @@ func meatOfSequentialHira(in string, skipFlag bool) {
 			// Re-prompt
 			in = prompt_and_Scan_4_RomajiResponse_to_Any_Prompt(aCardS.KeyH) // Obtain second guess, and pass it as 'in'
 				branchOnUserSelectedDirectiveIfGiven(in,
-					"Respond_w_Hira_or_Romaji") // <-- Perform the Directive
+					"Sequential_Hira") // <-- Perform the Directive
 			secondTry_meatOfSequentialHira(in) // This instance of 'in' is the user's second guess.
 		}
 		// If user guesses incorrectly on his third-and-final try, then, and only then, execute the rest of this func
@@ -80,7 +80,7 @@ func secondTry_meatOfSequentialHira(in string) { // <-- This second-instance of 
 		fmt.Printf("%s", colorReset)
 		// Re-prompt, will be sending that final guess back to: meatOfKataExercise(in, false)
 		in = prompt_and_Scan_4_RomajiResponse_to_Any_Prompt(aCardS.KeyH)         // <-- Obtain the final guess, will pass it as 'in'
-			branchOnUserSelectedDirectiveIfGiven(in, "Respond_w_Hira_or_Romaji") // Perform the Directive
+			branchOnUserSelectedDirectiveIfGiven(in, "Sequential_Hira") // Perform the Directive
 		fmt.Printf("%s", colorRed)
 		fmt.Printf("      　^^Oops! ")
 		//
