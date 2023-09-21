@@ -4,11 +4,31 @@ package main
 import (
 	"fmt"
 	"os"
+	"regexp"
 	"strings"
 	"time"
 )
-
+func if_it_is_a_Directive(in string) (isAlphanumeric bool){
+	findAlphasIn := regexp.MustCompile(`[a-zA-Z]`)
+	switch true {
+	case findAlphasIn.MatchString(in): // <-- 'in'
+		isAlphanumeric = true
+	default:
+		isAlphanumeric = false
+	}
+	return isAlphanumeric
+}
 // LOGGERS:
+func log_right(prompt_it_was string){
+	logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(prompt_it_was)
+	logHits_in_cyclicArrayHits("Right", prompt_it_was)
+}
+func log_oops(prompt_it_was, field_it_was, guess string){
+	logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(prompt_it_was)
+	logHits_in_cyclicArrayHits("Oops", prompt_it_was)
+	logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(prompt_it_was +
+		":it was:" + field_it_was + ":but you had guessed:" + guess)
+}
 //
 // 'Reinforce-or-Skip' loggers|Inserters:
 func logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(promptToSkip string) {
@@ -19,7 +39,7 @@ func logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(promptToWorkMoreOn 
 }
 
 // Universal hits logger|Inserter:
-// Used in exercises 1, 2, 3, 4, 6, 7
+// Used in exercises 1, 2, 3, '4', 6, 7
 func logHits_in_cyclicArrayHits(RightOrOops, JChar string) {
 	cyclicArrayHits.InsertRightOrOops(RightOrOops)
 	cyclicArrayHits.InsertChar(JChar)
@@ -28,7 +48,7 @@ func logHits_in_cyclicArrayHits(RightOrOops, JChar string) {
 //
 // A special Universal logger|Inserter: so we can drill the user more on chars he has missed
 //
-// Used in exercises 1, 2, 3, 4, 6, 7
+// Used in exercises 1, 2, 3, '4', 6, 7
 func logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(Jchar string) {
 	cyclicArrayOfTheJcharsGottenWrong.InsertCharsWrong(Jchar)
 }
@@ -145,7 +165,7 @@ func log_to_JapLog_file_inception_time(selectedExercise string) {
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
 		_ = fileHandleBig.Close()
-	} else if selectedExercise == "Respond_w_Hira_or_Romaji_to_kataPrompt_3" { // 3, 4
+	} else if selectedExercise == "Respond_w_Hira_or_Romaji_to_kataPrompt_3" { // 3, '4'
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
 		check(err)                                                                                 // ... gets a file handle to JapLog.txt
 		_, err2 := fmt.Fprintf(fileHandleBig, "\nInception of e xercise 3 or 4 'Kata_Prompt-Respond-w-Hira|Romaji' occured at: %s \n",

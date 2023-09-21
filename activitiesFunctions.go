@@ -6,13 +6,14 @@ import (
 	"math/rand"
 	"os"
 	"regexp"
+	"time"
 )
 
 // The content of "prompt" (i.e., aCard.KeyR | aCard.KeyRK | aCard.KeyK) is set by the calling activity
-//	                                     ^ 1           ^ 2         ^ 3,4
+//	                                     ^ 1           ^ 2         ^ 3, '4'
 
-// Ask the user for a Hiragana response (universal for both of the Romaji-containing prompts):
-// Used in exercises 1 and 2 (see GoLand's usages at right)
+// Ask the user for a Hiragana response (used for all the Romaji-containing prompts):
+// Used in exercises 1, 2 and 10 (see GoLand's usages at right)
 func semi_Universal_Prompt_Scan_4_HiraResponse_to_RomajiPrompt(prompt string) (in string) { //         - -
 	usersGuessOrOptionDirective := in
 		// The return signature (above) creates a local var 'in'', used below in the Scan():
@@ -39,7 +40,7 @@ func prompt_and_Scan_4_RomajiResponse_to_Any_Prompt(prompt string) (in string) {
 	return usersGuessOrOptionDirective
 }
 
-// Ask the user for a Romaji|Hira response to the (naked, sans romaji) Katakana or Hiragana prompt:
+// Ask the user for a Romaji or Hira response to a naked, sans Romaji, prompt:
 func Prompt_Scan_4_Romaji_or_HiraResponse(prompt string) (usersGuessOrOptionDirective string) { //      - -
 	fmt.Printf("%s", prompt)    // Prompt the user, in a pretty blue color: Options: '?' | '??'
 	fmt.Printf("%s", colorCyan) //
@@ -52,11 +53,11 @@ func Prompt_Scan_4_Romaji_or_HiraResponse(prompt string) (usersGuessOrOptionDire
 }
 
 // Exercises 8 and 9 don't use one of these two, and, instead, they pick their own aCardS 
-func pick_Difficult_RandomCard_Assign_aCard() { //           - -
+func pick_Difficult_RandomCard_Assign_aCard() { // Used for 7 and 10   - - - - -
 	randIndex := rand.Intn(len(fileOfCardsMostDifficult))
 	aCardD = fileOfCardsMostDifficult[randIndex] // randomly pick a 'card' from the 'deck' and store it in a global var
 }
-func pick_RandomCard_Assign_aCard() { //                     - -
+func pick_RandomCard_Assign_aCard() { // Used everywhere except for 7 and 10 - -
 	randIndex := rand.Intn(len(fileOfCards))
 	aCard = fileOfCards[randIndex] // randomly pick a 'card' from the 'deck' and store it in a global var
 }
@@ -74,7 +75,7 @@ func handle_doubleQuestMark_directive() { //                 - -
 	locateCardAndDisplayHelpFieldsContainedInIt(hiraganaCharOrRomajiAssociatedWithStructElementToDisplayHelpFieldsFrom)
 	fmt.Println("")
 }
-// Handles the set Directive 'set'
+// Handles the Directive 'set'
 func reSet_aCard_andThereBy_reSet_thePromptString() { //     - -
 	var theHiraganaOfCardToSilentlyLocate string
 	var isAlphanumeric bool
@@ -114,16 +115,75 @@ func reSet_aCard_andThereBy_reSet_thePromptString() { //     - -
 		fmt.Println("")
 	}
 }
+func reSet_aCard_andThereBy_reSet_thePromptStringD() {
+	var theHiraganaOfCardToSilentlyLocate string
+	var isAlphanumeric bool
 
+	fmt.Printf("\nEnter a Hiragana to")
+	fmt.Printf("%s", colorCyan) //
+	fmt.Printf(" reSet the prompt & \"aCard\\.fields\" :> ")
+	fmt.Printf("%s", colorReset) //
+	_, _ = fmt.Scan(&theHiraganaOfCardToSilentlyLocate)
+
+	// Determine if the user has entered a valid Hiragana char (instead of, accidentally, an alpha char or string)
+	findAlphasIn := regexp.MustCompile(`[a-zA-Z]`)
+	switch true {
+	case findAlphasIn.MatchString(theHiraganaOfCardToSilentlyLocate):
+		isAlphanumeric = true
+	default:
+		isAlphanumeric = false
+	}
+	// Tentatively, prepare to Scan for user's input and attempt locating a matching 'aCard'
+	if isAlphanumeric == true {
+		fmt.Println("Are you in alphanumeric input mode?")
+		fmt.Printf("... if so, change it to Hiragana (or I mignt die)\n")
+		fmt.Printf("%s", colorRed) //
+		fmt.Printf(" cautiously ")
+		fmt.Printf("%s", colorCyan)
+		fmt.Printf("re-enter your selection, in Hiragana mode :> ")
+		fmt.Printf("%s", colorReset)
+		_, _ = fmt.Scan(&theHiraganaOfCardToSilentlyLocate)
+		// May yet send an Alpha string to the next func, which will itself deal with it elegantly
+		silentlyLocateCard(theHiraganaOfCardToSilentlyLocate) // Set the Convenience-global: foundElement
+		aCardD = *foundElement                                 // Set the global var-object 'aCard'
+		fmt.Println("")
+	} else {
+		// Confidently, go-looking for user's input: locate matching 'aCard'
+		silentlyLocateCard(theHiraganaOfCardToSilentlyLocate) // Set the Convenience-global: foundElement
+		aCardD = *foundElement                                 // Set the global var-object 'aCard'
+		fmt.Println("")
+	}
+}
+
+//
 func read_map_of_fineOn() { //     - -
 	if len(frequencyMapOf_IsFineOnChars) == 0 {
 		fmt.Printf(colorRed)
 		fmt.Printf("\nThe map is empty\n")
 		fmt.Printf(colorReset)
 	}
-	//
 	for s, f := range frequencyMapOf_IsFineOnChars {
 		fmt.Printf(" --- From MapOf_IsFineOn: string is:")
+		fmt.Printf(colorCyan)
+		fmt.Printf("%s", s)
+		fmt.Printf(colorReset)
+		fmt.Printf(", freq is:")
+		fmt.Printf(colorRed)
+		fmt.Printf("%d", f)
+		fmt.Printf(colorReset)
+		fmt.Printf(" ---\n")
+	}
+	fmt.Println("")
+}
+//
+func read_map_of_needWorkOn() { //     - -
+	if len(frequencyMapOf_need_workOn) == 0 {
+		fmt.Printf(colorRed)
+		fmt.Printf("\nThe map is empty\n")
+		fmt.Printf(colorReset)
+	}
+	for s, f := range frequencyMapOf_need_workOn {
+		fmt.Printf(" --- From frequencyMapOf_need_workOn: string is:")
 		fmt.Printf(colorCyan)
 		fmt.Printf("%s", s)
 		fmt.Printf(colorReset)
@@ -159,6 +219,7 @@ func check_it_for_fine_on() { //          - -
 		if s == aCard.KeyR { // if it is in the map we need to check the freq
 			if f >= 2 { // if the freq is 3+ we need another card
 				// read_map_of_fineOn() // we show the map
+				// read_map_of_needWorkOn() // We show the map
 				// fmt.Printf("\n You were correct on: %s twice or more ... \n", aCard.KeyR)
 				// Log to a file that this action was taken **do-this**
 				fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
@@ -183,7 +244,8 @@ func check_it_for_fine_on6() { //       - -
 	for s, f := range frequencyMapOf_IsFineOnChars {
 		if s == aCard.KeyH || s == aCard.KeyK { // if it is in the map we need to check the freq
 			if f >= 2 { // if the freq is 3+ we need another card
-					// read_map_of_fineOn() // we show the map
+				// read_map_of_fineOn() // we show the map
+				// read_map_of_needWorkOn() // We show the map
 					// fmt.Printf("\n You were correct on: %s twice or more ... \n", aCard.KeyR)
 				// Log to a file that this action was taken **do-this**
 				if s == aCard.KeyH {
@@ -252,7 +314,8 @@ func check_it_for_needing_more_practice() { //       - -
 	for s, f := range frequencyMapOf_need_workOn {
 		if s == aCard.KeyR { // Check if the latest random card is in the need_workOn map, and check the freq ...
 			if f >= 1 { // ... if the freq is 1+ we definitely need more work on this particular card, so we keep it
-					// read_map_of_fineOn() // we show the map
+				// read_map_of_fineOn() // we show the map
+				read_map_of_needWorkOn() // We show the map
 				fmt.Printf("\n The Random card: %s was missed once or more \n", aCard.KeyH)
 				fmt.Println("... so we will keep it and quiz you on it ... ")
 				// Log to a file that this action was taken **do-this**
@@ -275,7 +338,8 @@ func check_it_for_needing_more_practice() { //       - -
 			if s == aCard.KeyR { // Check if the latest random is in the map, and check the freq ...
 				if f >= 1 { // ... if the freq is 1+ we definitely need more work on this particular card, so we set it as aCard
 					// read_map_of_fineOn() // we show the map
-					fmt.Println("\n This Random card was missed 1 or more times ")
+					read_map_of_needWorkOn() // We show the map
+					fmt.Printf("\n This Random card: %s was missed 1 or more times \n", aCard.KeyR)
 					fmt.Println("... so we will test you on it, since it has been a while")
 					// Log to a file that this action was taken **do-this**
 					fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
@@ -294,47 +358,64 @@ func check_it_for_needing_more_practice() { //       - -
 	}
 }
 func check_it_for_needing_more_practiceD_7() { //      - -
+	currentTime := time.Now()
 	var skip_this_step bool
 	skip_this_step = false
 	for s, f := range frequencyMapOf_need_workOn {
-		if s == aCard.KeyR { // Check if the latest random card is in the need_workOn map, and check the freq ...
+		if s == aCardD.KeyR { // Check if the latest random card is in the need_workOn map, and check the freq ...
 			if f >= 1 { // ... if the freq is 1+ we definitely need more work on this particular card, so we keep it
-					// read_map_of_fineOn() // we show the map
-				fmt.Printf("\n The Random card: %s was missed once or more \n", aCard.KeyH)
+				// read_map_of_fineOn() // we show the map
+				read_map_of_needWorkOn() // We show the map
+				fmt.Printf("\n The Random card: %s was missed once or more \n", aCardD.KeyH)
 				fmt.Println("... so we will keep it and quiz you on it ... ")
 				// Log to a file that this action was taken **do-this**
-				fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
-				check(err)                                                                                 // ... gets a file handle to JapLog.txt
-				_, err2 := fmt.Fprintf(fileHandleBig, "\nPart1of2 found:%s in frequencyMapOf_need_workOn, freq:%d \n",
-					s, f)
-				check(err2)
+				fileHandleBig, err := os.OpenFile("check_it_for_needing_more_practiceD_7.txt",
+					os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+				check(err) // 'err :=' declares a var whose scope is the block in which it was declared (this loop)
+				// v v v therefore, it can be used successively below with the '=' operator, simplifying naming err
+				_, err = fmt.Fprintf(fileHandleBig,
+					"\noccured at: %s ", currentTime.Format("15:04:05 on Monday 01-02-2006"))
+				check(err)
+				_, err = fmt.Fprintf(fileHandleBig, "\nfunc: check_it_for_needing_more_practiceD_7 ")
+				check(err)
+				_, err = fmt.Fprintf(fileHandleBig,
+					"\nPart1of2 found:%s in frequencyMapOf_need_workOn, freq:%d \n", s, f)
+				check(err)
 				skip_this_step = true
 				_ = fileHandleBig.Close()
-				break //  ... we exit the loop and the func -- we will keep and use this random card, and skip the next loop
+				break //  ... exit the loop and the func -- keep and use this random card, & skip the next loop
 			} else { // else the card had a freq less than 2, so ...
-				continue // keep looking through the map for another instance that may in there, with a significant freq
+				continue // Keep looking through the map for another instance that exists with a significant freq
 			}
 		}
 	}
 	if skip_this_step == false {
 		// The latest random was not in the map, but it is time to serve-up something difficult ... so:
 		for s, f := range frequencyMapOf_need_workOn {
-			if s == aCard.KeyR { // Check if the latest random is in the map, and check the freq ...
-				if f >= 1 { // ... if the freq is 1+ we definitely need more work on this particular card, so we set it as aCard
-						// read_map_of_fineOn() // we show the map
-					fmt.Println("\n This Random card was missed 1 or more times ")
+			if s == aCardD.KeyR { // Check if the latest random is in the map, and check the freq ...
+				if f >= 1 { // ... if the freq is 1+ we definitely need more work on this particular card *** v v v 
+					// read_map_of_fineOn() // we show the map
+					read_map_of_needWorkOn() // We show the map
+					fmt.Printf("\n This Random card: %s was missed 1 or more times\n ", aCardD.KeyR)
 					fmt.Println("... so we will test you on it, since it has been a while")
 					// Log to a file that this action was taken **do-this**
-					fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
-					check(err)                                                                                 // ... gets a file handle to JapLog.txt
-					_, err2 := fmt.Fprintf(fileHandleBig, "\nPart2of2 found:%s in frequencyMapOf_need_workOn, freq:%d \n",
-						s, f)
-					check(err2)
+					fileHandleBig, err := os.OpenFile("check_it_for_needing_more_practiceD_7.txt",
+						os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) // append to file
+					check(err) // 'err :=' declares a var whose scope is the block in which it was declared (this loop)
+					// v v v therefore, it can be used successively below with the '=' operator, simplifying naming err
+					_, err = fmt.Fprintf(fileHandleBig,
+						"\noccured at: %s ", currentTime.Format("15:04:05 on Monday 01-02-2006"))
+					check(err)
+					_, err = fmt.Fprintf(fileHandleBig, "\nfunc: check_it_for_needing_more_practiceD_7 ")
+					check(err)
+					_, err = fmt.Fprintf(fileHandleBig,
+						"\nPart2of2 found:%s in frequencyMapOf_need_workOn, freq:%d \n", s, f)
+					check(err)
 					_ = fileHandleBig.Close()
-					practice_this_cardD(aCard.KeyR) // locate and assign aCard // set it as new aCard
-					break                           //  ... we exit the loop and the func -- we will keep and use this random card
+					practice_this_cardD(aCardD.KeyR) // locate and assign aCardD // set it as new aCardD *** ^ ^ ^ 
+					break                           //  ... exit the loop & the func -- keep and use this random card
 				} else { // else the card had a freq less than 2, so ...
-					continue // keep looking through the map for another instance that may in there, with a significant freq
+					continue // Keep looking through the map for another instance that exists with a significant freq
 				}
 			}
 		}
@@ -488,10 +569,22 @@ func branchOnUserSelectedDirectiveIfGiven(in, selectedExercise string) { //     
 					// 9 prompts w hira only : and, ACTUALLY, only ACCEPTS romaji :
 					// hint should be sans romaji -- hira EX-clusion being entirely-pointless
 			//
+			case "Romaji_PromptD": // 10 
+				/*
+					hint should be sans hira, but may include all else,
+					though romaji-EX-clusion would be entirely-pointless
+				*/
+				fmt.Printf("\n%s\n%s\n%s\n\n", aCardD.Hint1h, aCardD.Hint2k, aCardD.Hint3TT)
+				//
 			} // End of switch within a switch 
 
 		case "set":
-			reSet_aCard_andThereBy_reSet_thePromptString()
+			switch selectedExercise {
+				case "Romaji_PromptD": // 10
+					reSet_aCard_andThereBy_reSet_thePromptStringD()
+			default:
+				reSet_aCard_andThereBy_reSet_thePromptString()
+			}
 		case "stat":
 			hits()
 		case "stats":
@@ -529,6 +622,9 @@ func branchOnUserSelectedDirectiveIfGiven(in, selectedExercise string) { //     
 				case "Sequential_Hira": // 9
 					body_of_instructions_for_Romaji_responces_only()
 					fmt.Println("You are doing Exercise 9")
+				case "Romaji_PromptD": // 10
+					body_of_Romaji_instructions()
+					fmt.Println("You are doing Exercise 10")
 			}
 		case "rm":
 			read_map_of_fineOn()

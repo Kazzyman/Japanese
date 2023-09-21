@@ -1,7 +1,6 @@
+Thoroughly test 10 before moving on to rewrite the other exercises 
    
 There may yet still be issues with the card picks some-where-s in 7 (fine on & need work on) 
-
-Check and re-document all of the code files, especially the second and third try routines
 
 Add Japanese translations (with Kanji) to the menus etc. Then ...
 ... Create a struct, a file-of-cards, with a mixture of japanese chars, comprising both words and phrases, to implement
@@ -26,7 +25,7 @@ So, I think that all this has been done already (though 3 has the sans Romaji fo
 However, in the case of '?' Directive handling, the following guidelines would be optimal 
 and, the same would be true of the '??' Directive handling: the following guidelines would be optimal
 
-(in the first case we would need to switch on the selected e xercise, but, for the second case, 
+(in the first case we would need to switch on the selected exercise, but, for the second case, 
 we will know what the user knows since he has already 'given' either a hira or a romaji as the seed)
 
 Switch in in place, but not yet fleshed-out 
