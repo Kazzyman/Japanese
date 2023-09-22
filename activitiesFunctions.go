@@ -14,8 +14,7 @@ import (
 
 // Ask the user for a Hiragana response (used for all the Romaji-containing prompts):
 // Used in exercises 1, 2 and 10 (see GoLand's usages at right)
-func semi_Universal_Prompt_Scan_4_HiraResponse_to_RomajiPrompt(prompt string) (in string) { //         - -
-	usersGuessOrOptionDirective := in
+func semi_Universal_Prompt_Scan_4_HiraResponse_to_RomajiPrompt(prompt, selectedExercise string) (in string) { //         - -
 		// The return signature (above) creates a local var 'in'', used below in the Scan():
 	fmt.Printf("%s", prompt)    // Prompt the user, in a pretty blue color: Options: '?' | '??'
 	fmt.Printf("%s", colorCyan) //
@@ -23,8 +22,15 @@ func semi_Universal_Prompt_Scan_4_HiraResponse_to_RomajiPrompt(prompt string) (i
 	fmt.Printf(" or, type '??' for help with something else ... \n")
 	fmt.Printf(" Here:> ")
 	fmt.Printf("%s", colorReset)
-		_, _ = fmt.Scan(&usersGuessOrOptionDirective)
-	return usersGuessOrOptionDirective
+		_, _ = fmt.Scan(&in)
+	// If "in" was a Directive, i.e., a string containing an Alpha char
+	isDir := if_it_is_a_Directive(in)
+	if isDir {
+		branchOnUserSelectedDirectiveIfGiven(in, selectedExercise)
+		// Re-prompt, via a recursion 
+		in = semi_Universal_Prompt_Scan_4_HiraResponse_to_RomajiPrompt(prompt, selectedExercise)
+	}
+	return in
 }
 // Used in exercises 6 and 9 (see GoLand's usages at right)
 func prompt_and_Scan_4_RomajiResponse_to_Any_Prompt(prompt string) (in string) { //                     - -
@@ -159,7 +165,7 @@ func reSet_aCard_andThereBy_reSet_thePromptStringD() {
 func read_map_of_fineOn() { //     - -
 	if len(frequencyMapOf_IsFineOnChars) == 0 {
 		fmt.Printf(colorRed)
-		fmt.Printf("\nThe map is empty\n")
+		fmt.Printf("\nThe FineOn Map is empty\n")
 		fmt.Printf(colorReset)
 	}
 	for s, f := range frequencyMapOf_IsFineOnChars {
@@ -179,7 +185,7 @@ func read_map_of_fineOn() { //     - -
 func read_map_of_needWorkOn() { //     - -
 	if len(frequencyMapOf_need_workOn) == 0 {
 		fmt.Printf(colorRed)
-		fmt.Printf("\nThe map is empty\n")
+		fmt.Printf("\nThe need_workOn map is empty\n")
 		fmt.Printf(colorReset)
 	}
 	for s, f := range frequencyMapOf_need_workOn {
@@ -493,16 +499,26 @@ func branchOnUserSelectedDirectiveIfGiven(in, selectedExercise string) { //     
 			cyclicArrayHits = CyclicArrayHits{}
 			// usersGuessOrOptionDirective = "null"
 			nonRandomCard = 0
-			// Also, flush the map
+			// Also, flush the maps
 			frequencyMapOf_IsFineOnChars = make(map[string]int)
+			frequencyMapOf_need_workOn = make(map[string]int)
 			do_betweenMainMenuSelectionsTTE(selectedExercise) // This only writes transition entries to the log file
 			mainMenuPromptScanSelectAndBeginSelectedExercise()
 		case "reset":
 			// Flush (clear) the old stats and hits arrays
 			cyclicArrayOfTheJcharsGottenWrong = CyclicArrayOfTheJcharsGottenWrong{}
 			cyclicArrayHits = CyclicArrayHits{}
-			// Also, flush (clear) the map
+			// Also, flush (clear) the maps
 			frequencyMapOf_IsFineOnChars = make(map[string]int)
+			frequencyMapOf_need_workOn = make(map[string]int)
+			//
+			//goland:noinspection ALL
+			fmt.Println("\nArrays and maps flushed:\n")
+			fmt.Println("cyclicArrayOfTheJcharsGottenWrong")
+			fmt.Println("cyclicArrayHits")
+			fmt.Println("frequencyMapOf_IsFineOnChars")
+			//goland:noinspection ALL
+			fmt.Println("frequencyMapOf_need_workOn\n")
 		case "quit":
 			os.Exit(1)
 		case "exit":
@@ -623,15 +639,21 @@ func branchOnUserSelectedDirectiveIfGiven(in, selectedExercise string) { //     
 					body_of_instructions_for_Romaji_responces_only()
 					fmt.Println("You are doing Exercise 9")
 				case "Romaji_PromptD": // 10
+					mm_list()
 					body_of_Romaji_instructions()
 					fmt.Println("You are doing Exercise 10")
 			}
 		case "rm":
 			read_map_of_fineOn()
+			read_map_of_needWorkOn()
 		case "stack":
 			// Load six occurrences of 'shi' to the map_of_fineOn 
 			stack_the_map()
+		default:
+			fmt.Println("Directive not found") // Does not work because only existent cases are passed to the switch 
 		}
+	} else {
+		fmt.Println("Directive not found") // This is how to do it
 	}
 }
 

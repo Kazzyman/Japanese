@@ -19,7 +19,7 @@ func meatOf_Mixed_HiraKataExercise(in string, skipFlag bool) { // NOTE: we have 
 	// ..^ ^ ^ called as|with: (usersGuessOrOptionDirective, (bool)'skipFlag')
 	// so, 'in' == the-users-guess, which is ...
 	// obtained prior to this func being called ...
-	// ^^^^^^^^ either by TouchTypingExercises12346, ...
+	// ^^^^^^^^ either by TouchTypingExercises12346_10, ...
 	// or by: secondTry_ (secondTry_ actually solicits and obtains the THIRD guess)
 	//
 	var thisCaseOfAnInHasAlreadyBeenProcessedAbove bool
@@ -62,12 +62,12 @@ func meatOf_Mixed_HiraKataExercise(in string, skipFlag bool) { // NOTE: we have 
 			fmt.Printf("     ^^Oops! ")
 			// log the miss:
 			if Mixed_prompt_is == "hira" {
-				logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyH)
+				// logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyH) // Because, it was prob a typo
 				logHits_in_cyclicArrayHits("Oops", aCard.KeyH)
 				logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyH +
 					":it was:" + aCard.KeyR + ":but you had guessed:" + in)
 			} else if Mixed_prompt_is == "kata" {
-				logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyK)
+				// logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyK) // Because, it was prob a typo
 				logHits_in_cyclicArrayHits("Oops", aCard.KeyK)
 				logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyK +
 					":it was:" + aCard.KeyR + ":but you had guessed:" + in)
@@ -95,7 +95,7 @@ func meatOf_Mixed_HiraKataExercise(in string, skipFlag bool) { // NOTE: we have 
 				fmt.Printf("\n\n%s\n%s\n%s\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
 				fmt.Println("")
 			}
-		} // If the user was ^^Right!, then we return to TouchTypingExercises12346(SE) (directly from this line)
+		} // If the user was ^^Right!, then we return to TouchTypingExercises12346_10(SE) (directly from this line)
 	}
 
 	// The next two conditions are for all remaining normal (not special) prompt(key)/value events or conditions
@@ -122,12 +122,12 @@ func meatOf_Mixed_HiraKataExercise(in string, skipFlag bool) { // NOTE: we have 
 			fmt.Printf("      　^^Oops! ")
 			// log the miss:
 			if Mixed_prompt_is == "hira" {
-				logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyH)
+				// logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyH) // Because, it was prob a typo
 				logHits_in_cyclicArrayHits("Oops", aCard.KeyH)
 				logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyH +
 					":it was:" + aCard.KeyR + ":but you had guessed:" + in)
 			} else if Mixed_prompt_is == "kata" {
-				logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyK)
+				// logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyK) // Because, it was prob a typo
 				logHits_in_cyclicArrayHits("Oops", aCard.KeyK)
 				logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyK +
 					":it was:" + aCard.KeyR + ":but you had guessed:" + in)
@@ -154,6 +154,19 @@ func meatOf_Mixed_HiraKataExercise(in string, skipFlag bool) { // NOTE: we have 
 				// Display hints in white
 				fmt.Printf("\n\n%s\n%s\n%s\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
 				fmt.Println()
+
+// These probably belong here ?????????????????????????????????????????????, rather than below 
+				if Mixed_prompt_is == "hira" {
+					logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyH)
+					logHits_in_cyclicArrayHits("Oops", aCard.KeyH)
+					logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyH +
+						":it was:" + aCard.KeyR + ":but you had guessed:" + in)
+				} else if Mixed_prompt_is == "kata" {
+					logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyK)
+					logHits_in_cyclicArrayHits("Oops", aCard.KeyK)
+					logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyK +
+						":it was:" + aCard.KeyR + ":but you had guessed:" + in)
+				}
 			}
 		}
 	}
@@ -188,7 +201,7 @@ func secondTry_meatOf_mixed_HiraKataExercise(in string) { // NOTE: we have alrea
 				logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyK)
 				logHits_in_cyclicArrayHits("Right", aCard.KeyK)
 			}
-		} else if in == "zu" {
+		} else if in == "zu" { // this duplicate does not seem to make sense ?????????????????????????????????????????????
 			fmt.Printf("%s", colorGreen)
 			fmt.Printf("      ^^Right! ")
 			fmt.Printf("%s", colorReset)
@@ -201,7 +214,7 @@ func secondTry_meatOf_mixed_HiraKataExercise(in string) { // NOTE: we have alrea
 				logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyK)
 				logHits_in_cyclicArrayHits("Right", aCard.KeyK)
 			}
-		} else {
+		} else { // if aCard.KeyR == "zu" and in != "zu" // but it is a strange and confusing construct !!!!!!!!!!!!!!!!!!
 			//
 			fmt.Printf("%s", colorRed)
 			fmt.Printf("     ^^Oops! ")
@@ -225,6 +238,9 @@ func secondTry_meatOf_mixed_HiraKataExercise(in string) { // NOTE: we have alrea
 			// Re-prompt, and send that third and final guess to the secondTry_meatOfRomajiExercise func
 			in = prompt_and_Scan_4_RomajiResponse_to_Any_Prompt(Mixed_prompts_KeyX)
 				branchOnUserSelectedDirectiveIfGiven(in, "Mixed_prompts") // <-- handle the directive
+				
+				// ???????????????????????????????????????????????????
+				// like 1, 10, and 2 -- 6 works rightly (because this silly oops is only in the zu if)
 			fmt.Printf("%s", colorRed)
 			fmt.Printf("      　^^Oops! ")
 
@@ -242,9 +258,11 @@ func secondTry_meatOf_mixed_HiraKataExercise(in string) { // NOTE: we have alrea
 
 			//
 			// User failed third and final attempt, so do a "recursion", but with a skipFlag false
+				
+				 
 			meatOf_Mixed_HiraKataExercise(in, false)
 		}
-	}
+	} // end of the if that only handles cases of zu 
 
 	// The next two conditions are for all remaining normal (not special) prompt(key)/value events or conditions
 	// ...

@@ -96,6 +96,7 @@ func mainMenuPromptScanSelectAndBeginSelectedExercise() { // (unique)     - -
 			"  Enter '7' to practice the Most-Difficult kata, type either Hiragana or Romaji\n" +
 			"  Enter '8' to practice Sequential Kata, type either Hiragana or Romaji\n" +
 			"  Enter '9' to practice Sequential Hira, type either Hiragana or Romaji\n" +
+			"  Enter '10' to practice recognizing Difficult Romaji: and typing Difficult Hiragana\n" +
 			"  Enter 'exit' to quit\n\n\n")
 		// Pause to accept (Scan) a string var, e.g., "1-9" or "exit", from the command line, from the user
 		_, _ = fmt.Scan(&mainMenuSelection) // Create address for, and auto-dereference, var mainMenuSelection
@@ -130,24 +131,24 @@ func mainMenuPromptScanSelectAndBeginSelectedExercise() { // (unique)     - -
 			}
 			///
 		*/
-
+		
 		// Assign a descriptive string to the numerically selected exercise
 		if mainMenuSelection == "1" {
 			selectedExercise := "Romaji_Prompt" // unique string identifier for 1
 				log_to_JapLog_file_inception_time(selectedExercise)
 			body_of_Romaji_instructions()
-			TouchTypingExercises12346(selectedExercise)
+			TouchTypingExercises12346_10(selectedExercise)
 		} else if mainMenuSelection == "2" {
 			selectedExercise := "Romaji_w_Kata_Prompt" // 
 				log_to_JapLog_file_inception_time(selectedExercise)
 			body_of_Romaji_plus_Kata_instructions()
-			TouchTypingExercises12346(selectedExercise)
+			TouchTypingExercises12346_10(selectedExercise)
 		} else if mainMenuSelection == "3" {
 			// selectedExercise := "Respond_w_Hira_or_Romaji_to_kataPrompt_3" // User will face only Katakana prompts
 			selectedExercise := "Respond_w_Hira_or_Romaji_to_kataPrompt_3" // User will face only Katakana prompts
 				log_to_JapLog_file_inception_time(selectedExercise)
 			body_of_KataExerciseInstructions()
-			TouchTypingExercises12346(selectedExercise)
+			TouchTypingExercises12346_10(selectedExercise)
 		} else if mainMenuSelection == "5" {
 			selectedExercise := "drillLines"
 				log_to_JapLog_file_inception_time(selectedExercise)
@@ -156,7 +157,7 @@ func mainMenuPromptScanSelectAndBeginSelectedExercise() { // (unique)     - -
 			selectedExercise := "Mixed_prompts" // Mixed, meaning Hira & Kata prompts (user may respond only with Romaji)
 				log_to_JapLog_file_inception_time(selectedExercise)
 			body_of_instructions_for_Romaji_responces_only()
-			TouchTypingExercises12346(selectedExercise)
+			TouchTypingExercises12346_10(selectedExercise)
 		} else if mainMenuSelection == "7" {
 			selectedExercise := "Most_Difficult" // unique string identifier for 7
 				log_to_JapLog_file_inception_time(selectedExercise)
@@ -169,20 +170,38 @@ func mainMenuPromptScanSelectAndBeginSelectedExercise() { // (unique)     - -
 			TouchTypingExerciseSequential(selectedExercise)
 		} else if mainMenuSelection == "9" {
 			selectedExercise := "Sequential_Hira" // unique string identifier for 9
-				log_to_JapLog_file_inception_time(selectedExercise)
+			log_to_JapLog_file_inception_time(selectedExercise)
 			body_of_instructions_for_Romaji_responces_only() // Mix works here only because the instructions ask only for romaji 
 			TouchTypingExerciseSequential(selectedExercise)
-			
+		} else if mainMenuSelection == "10" {
+			selectedExercise := "Romaji_PromptD" // unique string identifier for 1
+			log_to_JapLog_file_inception_time(selectedExercise)
+			body_of_Romaji_instructions()
+			TouchTypingExercises12346_10(selectedExercise)
+			//
 		} else if mainMenuSelection == "exit" || mainMenuSelection == "quit" {
 			os.Exit(1)
 		}
 	}
 }
 
+func mm_list(){
+	fmt.Printf("  Main Menu: \n\n" +
+		"  Enter '1' to practice recognizing Romaji: and typing Hiragana (simple, quite useful)\n" +
+		"  Enter '2' for recognizing Romaji-Katakana pairs: typing Hiragana (somewhat easy, useful)\n" +
+		"  Enter '3' to practice recognizing Katakana, type either Hiragana or Romaji (very versatile)\n" +
+		"  Enter '5' to practice typing drill lines\n" +
+		"  Enter '6' mixed Hira and Kata prompts: answer with Romaji\n" +
+		"  Enter '7' to practice the Most-Difficult kata, type either Hiragana or Romaji\n" +
+		"  Enter '8' to practice Sequential Kata, type either Hiragana or Romaji\n" +
+		"  Enter '9' to practice Sequential Hira, type either Hiragana or Romaji\n" +
+		"  Enter '10' to practice recognizing Difficult Romaji: and typing Difficult Hiragana\n" +
+		"  Enter 'exit' to quit\n\n\n")
+}
+
 		//goland:noinspection ALL
 func body_of_Romaji_instructions() { //                                                       - -
-	fmt.Println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-	fmt.Println("Exercise 1")
+	fmt.Println("\n\n\n")
 	fmt.Println("Practicing touch-typing (TT) Hiragana in response to Romaji prompts:\n")
 	fmt.Println("Using Hiragana-input-mode on your sys, Type the Hiragana corresponding to the Romaji prompt\n")
 		display_Listing_of_Directives_allExercisesHave_inCommon() 
@@ -202,7 +221,6 @@ func body_of_Romaji_plus_Kata_instructions() { //                               
 		//goland:noinspection ALL
 func body_of_KataExerciseInstructions() { //                                                  - -
 	fmt.Println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-	fmt.Println("Exercise 3")
 	fmt.Println("Practicing recognizing Katakana chars: Using Hiragana-input-mode on your system ...")
 	fmt.Println("... enter the Hiragana chars that correspond to the Katakana.\n")
 	fmt.Println("Or, alternatively, type the Romaji that corresponds to the Katakana\n")
@@ -293,7 +311,7 @@ func do_betweenMainMenuSelectionsTTE(selectedExercise string) {
 		check(err2)
 		_ = fileHandleBig.Close()
 		//
-	} else if selectedExercise == "Respond_w_Hira_or_Romaji_to_kataPrompt_3" { // 3, 4
+	} else if selectedExercise == "Respond_w_Hira_or_Romaji_to_kataPrompt_3" { // 3, '4'
 		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600) 
 		check(err)   
 		_, err2 := fmt.Fprintf(fileHandleBig,
@@ -343,6 +361,14 @@ func do_betweenMainMenuSelectionsTTE(selectedExercise string) {
 		check(err)
 		_, err2 := fmt.Fprintf(fileHandleBig,
 			"\nTransition from exercise 9 'Sequential_Hira' occured at: %s \n",
+			currentTime.Format("15:04:05 on Monday 01-02-2006"))
+		check(err2)
+		_ = fileHandleBig.Close()
+	} else 	if selectedExercise == "Romaji_PromptD" { // 10
+		fileHandleBig, err := os.OpenFile("JapLog.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
+		check(err)
+		_, err2 := fmt.Fprintf(fileHandleBig,
+			"\nTransition from exercise 10 'Romaji_PromptD' occured at: %s \n",
 			currentTime.Format("15:04:05 on Monday 01-02-2006"))
 		check(err2)
 		_ = fileHandleBig.Close()

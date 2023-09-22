@@ -6,11 +6,14 @@ import (
 /*
 The first of these two functions is passed the user's first guess, and, potentially, it obtains a second guess
 .. the second func is passed that second guess, and, potentially, it obtains the third and final guess
-Finally, the first func is re-called by the second,: the first func is, then, passed the third and final guess
+Finally, the first func is re-called by the second: the first func is, then, passed the third and final guess ... 
+... with skipFlag false signifying that the offer to try again is to be replaced with a messages containing the correct 
+answer, and also a set of hints relating to how one could have known the correct answer. 
 
-Since this Exercise (10) expects only Hira guesses, we test for embedded Directives with a simple Alpha test
+Since this Exercise (10) expects only Hira guesses, we test for and handle Directives with a simple Alpha test in 
+... semi_Universal_Prompt_Scan_4_HiraResponse_to_RomajiPrompt()
 */
-func meatOfRomajiExerciseD(in string, skipFlag bool) { //  - -
+func meatOfRomajiExerciseD(in, selectedExercise string, skipFlag bool) { //  - -
 	if aCardD.KeyR == "zu" {
 		if in == "づ" || in == "ず" {
 			log_right(aCardD.KeyR)
@@ -27,16 +30,9 @@ func meatOfRomajiExerciseD(in string, skipFlag bool) { //  - -
 				fmt.Println("Try again") // ... in other words, this only prints on first pass
 				fmt.Printf(colorReset)
 				// Re-prompt, second guess
-				in = semi_Universal_Prompt_Scan_4_HiraResponse_to_RomajiPrompt(aCardD.KeyR)
-				// If "in" was a Directive, i.e., a string containing an Alpha char
-				isDir := if_it_is_a_Directive(in)
-				if isDir {
-					branchOnUserSelectedDirectiveIfGiven(in, "Romaji_PromptD")
-					// Re-prompt, second guess 
-					in = semi_Universal_Prompt_Scan_4_HiraResponse_to_RomajiPrompt(aCardD.KeyR)
-				} // else:
-				secondTry_meatOfRomajiExerciseD(in)
-			}
+				in = semi_Universal_Prompt_Scan_4_HiraResponse_to_RomajiPrompt(aCardD.KeyR, selectedExercise)
+				secondTry_meatOfRomajiExerciseD(in, selectedExercise)
+			} else
 			if skipFlag == false { // skipFlag is true on first entry, & false when recalled after third failed attempt
 				// If the user guesses incorrectly on third-and-final try, then, and only then, execute the following
 				fmt.Printf("%s", colorReset)
@@ -58,7 +54,7 @@ func meatOfRomajiExerciseD(in string, skipFlag bool) { //  - -
 			fmt.Printf("%s", colorGreen)
 			fmt.Printf("        ^^Right! \n")
 			fmt.Printf("%s", colorReset)
-			// fmt.Printf("It could have been either ず or づ as they are the same sound: zu\n")
+			// commented-out line
 		} else {
 			log_oops(aCardD.KeyR, aCardD.KeyH, in)
 			fmt.Printf("%s", colorRed)
@@ -68,16 +64,9 @@ func meatOfRomajiExerciseD(in string, skipFlag bool) { //  - -
 				fmt.Println("Try again") // ... in other words, this only prints on first pass
 				fmt.Printf(colorReset)
 				// Re-prompt, second guess
-				in = semi_Universal_Prompt_Scan_4_HiraResponse_to_RomajiPrompt(aCardD.KeyR)
-				// If "in" was a Directive, i.e., a string containing an Alpha char
-				isDir := if_it_is_a_Directive(in)
-				if isDir {
-					branchOnUserSelectedDirectiveIfGiven(in, "Romaji_PromptD")
-					// Re-prompt, second guess 
-					in = semi_Universal_Prompt_Scan_4_HiraResponse_to_RomajiPrompt(aCardD.KeyR)
-				} // else:
-				secondTry_meatOfRomajiExerciseD(in)
-			}
+				in = semi_Universal_Prompt_Scan_4_HiraResponse_to_RomajiPrompt(aCardD.KeyR, selectedExercise)
+				secondTry_meatOfRomajiExerciseD(in, selectedExercise)
+			} else 
 			if skipFlag == false { // skipFlag is true on first entry, & false when recalled after third failed attempt
 				// If the user guesses incorrectly on third-and-final try, then, and only then, execute the following
 				fmt.Printf("%s", colorReset)
@@ -95,7 +84,7 @@ func meatOfRomajiExerciseD(in string, skipFlag bool) { //  - -
 .
 */
 // Second-Try version of the above func (tests the second guess, and then obtains the third and final one)
-func secondTry_meatOfRomajiExerciseD(in string) { // NOTE: we have already been prompted with KeyR  - -
+func secondTry_meatOfRomajiExerciseD(in, selectedExercise string) { //  - -
 	if aCardD.KeyR == "zu" {
 		if in == "づ" || in == "ず" {
 			log_right(aCardD.KeyR)
@@ -109,15 +98,8 @@ func secondTry_meatOfRomajiExerciseD(in string) { // NOTE: we have already been 
 			fmt.Printf("        ^^Oops! Try again\n")
 			fmt.Printf(colorReset)
 			// Re-prompt, final guess
-			in = semi_Universal_Prompt_Scan_4_HiraResponse_to_RomajiPrompt(aCardD.KeyR)
-			// If "in" was a Directive, i.e., a string containing an Alpha char
-			isDir := if_it_is_a_Directive(in)
-			if isDir {
-				branchOnUserSelectedDirectiveIfGiven(in, "Romaji_PromptD")
-				// Re-prompt, final guess 
-				in = semi_Universal_Prompt_Scan_4_HiraResponse_to_RomajiPrompt(aCardD.KeyR)
-			} // else:
-			meatOfRomajiExerciseD(in, false)// Process the third and final guess
+			in = semi_Universal_Prompt_Scan_4_HiraResponse_to_RomajiPrompt(aCardD.KeyR, selectedExercise)
+			meatOfRomajiExerciseD(in, selectedExercise, false)// Process the third and final guess
 		}
 	} else
 	// Not "zu" [except for two lines, i.e.: if in == "づ" || in == "ず" {  ~~>  if in == aCardD.KeyH {
@@ -127,21 +109,14 @@ func secondTry_meatOfRomajiExerciseD(in string) { // NOTE: we have already been 
 			fmt.Printf("%s", colorGreen)
 			fmt.Printf("        ^^Right! \n")
 			fmt.Printf("%s", colorReset)
-			// fmt.Printf("It could have been either ず or づ as they are the same sound: zu\n")
+			// commented-out line
 		} else {
 			log_oops(aCardD.KeyR, aCardD.KeyH, in)
 			fmt.Printf("%s", colorRed)
 			fmt.Printf("        ^^Oops! Try again\n")
 			fmt.Printf(colorReset)
 			// Re-prompt, final guess
-			in = semi_Universal_Prompt_Scan_4_HiraResponse_to_RomajiPrompt(aCardD.KeyR)
-			// If "in" was a Directive, i.e., a string containing an Alpha char
-			isDir := if_it_is_a_Directive(in)
-			if isDir {
-				branchOnUserSelectedDirectiveIfGiven(in, "Romaji_PromptD")
-				// Re-prompt, final guess 
-				in = semi_Universal_Prompt_Scan_4_HiraResponse_to_RomajiPrompt(aCardD.KeyR)
-			} // else:
-			meatOfRomajiExerciseD(in, false)// Process the third and final guess
+			in = semi_Universal_Prompt_Scan_4_HiraResponse_to_RomajiPrompt(aCardD.KeyR, selectedExercise)
+			meatOfRomajiExerciseD(in, selectedExercise,false)// Process the third and final guess
 		}
 }

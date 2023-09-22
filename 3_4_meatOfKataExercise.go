@@ -18,7 +18,7 @@ Finally, the first func is re-called by the second,: the first func is, then, pa
 */
 func meatOfKataExercise(in string, skipFlag bool) {
 	// Used for processing either a Romaji OR a Hiragana guess which was obtained prior to this func being called
-	// ... either by TouchTypingExercises12346, or by: secondTry_ (secondTry_ actually solicits and obtains the THIRD guess)
+	// ... either by TouchTypingExercises12346_10, or by: secondTry_ (secondTry_ actually solicits and obtains the THIRD guess)
 	// If 'in' (the user's guess) is alpha v v v v v      (a first-instance of 'in' is the user's first guess)
 	var isAlphanumeric bool
 	findAlphasIn := regexp.MustCompile(`[a-zA-Z]`)
@@ -45,7 +45,7 @@ func meatOfKataExercise(in string, skipFlag bool) {
 		logHits_in_cyclicArrayHits("Right", aCard.KeyK)
 		logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyR)
 		//
-		fmt.Println() // This line will be the last-executed before returning to the caller: TouchTypingExercises12346
+		fmt.Println() // This line will be the last-executed before returning to the caller: TouchTypingExercises12346_10
 		//
 		// The following 'else' will be executed, potentially only twice: 1: for the first, and 2: for the final guess
 	} else if isAlphanumeric == true && in != aCard.KeyR { // If user typed an alpha, but not the correct Romaji,
@@ -55,7 +55,7 @@ func meatOfKataExercise(in string, skipFlag bool) {
 		logHits_in_cyclicArrayHits("Oops", aCard.KeyK)
 		logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyK +
 			":it was:" + aCard.KeyR + ":but you had guessed:" + in)
-		logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyR)
+		// logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyK) // Because, it was probably just a typo
 		// When this func is re-called by the second, with skipFlag set false, we skip this, and do the next
 		if skipFlag == true {
 			// Solicit the second guess ... and pass it to: secondTry_meatOfKataExercise(in)
@@ -80,7 +80,7 @@ func meatOfKataExercise(in string, skipFlag bool) {
 			fmt.Printf("\n\n%s\n%s\n%s\n", aCard.Hint1h, aCard.Hint2k, aCard.Hint3TT)
 			fmt.Println("")
 		}
-	} // If user was ^^Right!, then we return to TouchTypingExercises12346(selectedExercise) (directly from this very line)
+	} // If user was ^^Right!, then we return to TouchTypingExercises12346_10(selectedExercise) (directly from this very line)
 	/*
 	   .
 	   .
@@ -94,7 +94,7 @@ func meatOfKataExercise(in string, skipFlag bool) {
 		logHits_in_cyclicArrayHits("Right", aCard.KeyK)
 		logSkipThisPrompt_inThe_frequencyMapOf_IsFineOnChars(aCard.KeyR)
 		//
-		fmt.Println() // This line is the last-executed of this func, returns to TouchTypingExercises12346(SE)
+		fmt.Println() // This line is the last-executed of this func, returns to TouchTypingExercises12346_10(SE)
 		//
 		//
 	} else if isAlphanumeric == false && in != aCard.KeyH { // <-- The user has typed the INCORRECT Hiragana ...
@@ -103,7 +103,7 @@ func meatOfKataExercise(in string, skipFlag bool) {
 		logHits_in_cyclicArrayHits("Oops", aCard.KeyK)
 		logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyK +
 			":it was:" + aCard.KeyH + ":but you had guessed:" + in)
-		logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyR)
+		// logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyK) // Because, it was probably just a typo
 		//
 		// When this func is re-called, with flag set false, we skip this, and do the next
 		if skipFlag == true {
@@ -130,7 +130,7 @@ func meatOfKataExercise(in string, skipFlag bool) {
 			// ... though, NOT in the FIRST case: of having typed a Romaji (then only the last line will be shown)
 			// .
 		} // Due to the fact that the next } below is paired with an '} else if' ...
-	} // ... if ^^Right!, then we return to TouchTypingExercises12346(selectedExercise) (directly from this line)
+	} // ... if ^^Right!, then we return to TouchTypingExercises12346_10(selectedExercise) (directly from this line)
 }
 
 /*
@@ -172,12 +172,6 @@ func secondTry_meatOfKataExercise(in string) { // <-- This second-instance of 'i
 		// Re-prompt, will be sending that final guess back to: meatOfKataExercise(in, false)
 		in = Prompt_Scan_4_Romaji_or_HiraResponse(aCard.KeyK) // <-- Obtain the final guess, will pass it as 'in'
 			branchOnUserSelectedDirectiveIfGiven(in, "Respond_w_Hira_or_Romaji_to_kataPrompt_3") // <-- Do dir
-		fmt.Printf("%s", colorRed)
-		fmt.Printf("      　^^Oops! ")
-		logHits_in_cyclicArrayHits("Oops", aCard.KeyK)
-		logJcharsGottenWrong_in_cyclicArrayOfTheJcharsGottenWrong(aCard.KeyK +
-			":it was:" + aCard.KeyR + ":but you had guessed:" + in)
-		logReinforceThisPrompt_inThe_frequencyMapOf_need_workOn(aCard.KeyR)
 		meatOfKataExercise(in, false) // Process the third try
 		//
 	} else if isAlphanumeric == false && in == aCard.KeyH { // If the user HAS typed the CORRECT Hiragana ...
