@@ -255,7 +255,7 @@ var fileOfCardsS = []charSetStruct{
 	{"イ", "い", "i", "iイ", "い",
 		" i:イ:い  the Kata イ looks more like a hiragana te:て, but still two mostly-vertical lines: イ",
 		" i:い:イ  for the Kata ... maybe shift the two lines of the hiragana い to forms an 'I'  i:イ",
-		" TT: left-middle< to the 'E' char  い:イ ",
+		" TT: left-middle< to the 'E' char  い:イ  Longer on the left is i, Compare: ri:リ:り",
 		" い:イ at least it is still two mostly-vertical lines   TT: L-middle< to the 'E' char"},
 
 	{"ス", "す", "su", "suス", "す",
@@ -362,7 +362,7 @@ var fileOfCardsS = []charSetStruct{
 
 	{"リ", "り", "ri", "riリ", "り",
 		" ri:リ:り  actually, very very similar, actually!",
-		" ri",
+		" ri:リ:り Longer on the Right is Ri",
 		" TT: left-ring-finger on it's 'L' char",
 		" リ:り very similar   TT: left-ring-finger on it's 'L' char"},
 
@@ -444,12 +444,44 @@ var fileOfCardsS = []charSetStruct{
 .
 .
 .
-.
-.
+. 
+. 7 Most difficult Kata:  type Romaji or Hira
+. 10 Most difficult: Romaji: type Hira:  /nu, /ne, /na, /me, /ri, /ra, /a, /u, /o
 */
 var aCardD = charSetStruct{}
 
 var fileOfCardsMostDifficult = []charSetStruct{
+	{"ヌ", "ぬ", "nu", "nuヌ", "ぬ",
+		" nu:ぬ:ヌ   Compare:  me:メ  &  na:ナ ",
+		" nu flew ヌ -- till it hit a ceiling ",
+		" TT: R-ring<--- to the '1' char, at least two lines cross, nu flew ヌ -- hit a ceiling ",
+		" ?:ぬ:ヌ   ?-flew ヌ -- till it hit a ceiling  TT: R-ring<--- to the '1' char"},
+	{"ネ", "ね", "ne", "neネ", "ね",
+		" ne:ね:ネ  Kata looks like a hoe that got nailed ネ ",
+		" something got nailed-down by that spike at the left ",
+		" TT: R-ring<v to the ',<' chars  ...  Yea, to me it is a hoe:ほ that got nailed ネ ",
+		" ?:ね:ネ  Kata looks like a hoe that got nailed ネ  TT: R-ring<v to the ',<' chars"},
+	{"メ", "め", "me", "meメ", "め",
+		" me:メ:め   Compare: nu:ヌ",
+		" me",
+		" TT: right-pinky-slide down to the '?' char",
+		" メ:め messy-lesser ver of nuddle:ぬ　 TT: R-pinky-slide down to the '?' char"},
+	{"リ", "り", "ri", "riリ", "り",
+		" ri:リ:り  actually, very very similar, actually!",
+		" ri:リ:り Longer on the Right is Ri",
+		" TT: left-ring-finger on it's 'L' char",
+		" リ:り very similar   TT: left-ring-finger on it's 'L' char"},
+	{"イ", "い", "i", "iイ", "い",
+		" i:イ:い  the Kata イ looks more like a hiragana te:て, but still two mostly-vertical lines: イ",
+		" i:い:イ  for the Kata ... maybe shift the two lines of the hiragana い to forms an 'I'  i:イ",
+		" TT: left-middle< to the 'E' char  い:イ  Longer on the left is i, Compare: ri:リ:り",
+		" い:イ at least it is still two mostly-vertical lines   TT: L-middle< to the 'E' char"},
+	{"ア", "あ", "a", "aア", "あ",
+		" a:あ:ア  ahh-'no-got-stabbed',  Compare: me:め  a:あ  nu:ぬ  ne:ね    あア-Fuck-mae-te:て!",
+		" The Kata a:ア looks nothing-like the hiragana あ, but like hira te:て   あア-Fuck-mae-te:て! ",
+		" TT: left-middle<- to the '3' char for あ:ア  ?is maybe a grotesque A:ア ?? ",
+		" Compare:  me:め  あ  nu:ぬ  ne:ね   あ-Fuck mae-te!  TT: L-middle<- to the '3' char"},
+	/*
 	{"ワ", "わ", "wa", "waワ", "わ",
 		" wa:ワ:わ  Water-fall, pissing in the wind (making わしこ) ",
 		" wa",
@@ -460,6 +492,8 @@ var fileOfCardsMostDifficult = []charSetStruct{
 		" wo:ヲ, at least it looks something like wa:ワ, though shifted",
 		" TT: right-ring up to the '0' char (shifted)",
 		" ヲ:を   Compare: wa:ワ   TT: right-ring up to the '0' char (shifted)"},
+	
+	 */
 	{"ラ", "ら", "ra", "raラ", "ら",
 		" ra:ら:ラ    Compare:  hu:フ u:ウ  ラ:ら:ra:la",
 		" ra is usually pronounced as la",
@@ -470,7 +504,7 @@ var fileOfCardsMostDifficult = []charSetStruct{
 		" ra is usually pronounced as la",
 		" TT: right-ring up to the 'O' char",
 		" Compare:  fu:フ, u:ウ:う,  & our:ラ:ら:?  TT: right-ring up to the 'O' char"},
-	{"モ", "も", "mo", "moモ", "も",
+/*	{"モ", "も", "mo", "moモ", "も",
 		" mo:モ:も ",
 		" mo",
 		" TT: right-middle<v to the 'M' char",
@@ -480,17 +514,20 @@ var fileOfCardsMostDifficult = []charSetStruct{
 		" fu: think Mt Fuji 'fu'ji,  fu or, alternatively, hu ",
 		" TT: left-ring to the '2' char",
 		" ふ:フ  TT: left-ring to the '2' char,  it is the big mountain in Japan "},
+*/
 	{"フ", "ふ", "fu", "fuフ", "ふ",
 		" fu:ふ:フ  ふじ　Mount Fuji 富士山  富:Fu: wealth, abundant  士:Ji: gentleman, samurai, warrior",
 		" fu: think Mt Fuji 'fu'ji,  fu or, alternatively, hu ",
 		" TT: left-ring to the '2' char",
 		" ふ:フ  TT: left-ring to the '2' char,  it is the big mountain in Japan "},
+
+ 
 	{"ナ", "な", "na", "naナ", "な",
 		" na:な:ナ  Kata ナ is just like the left side of the Hira な -- な:ナ ",
 		" na:な:ナ , Compare:  na:ナ  me:メ  nu:ヌ  ( め ぬ )",
 		" TT: index< to the 'U' char,  ナ is very simple ... na-t complex at-all :: な ",
 		" な:ナ  TT: index< to the 'U' char, Hiragana t-ies a knot, see the two chars thar "},
-	{"ツ", "つ", "tsu", "tsuツ", "つ",
+/*	{"ツ", "つ", "tsu", "tsuツ", "つ",
 		" tsu:つ:ツ  see water crashing on the she shore",
 		" tsu",
 		" TT: left-pinky on 'Z' char",
@@ -525,13 +562,15 @@ var fileOfCardsMostDifficult = []charSetStruct{
 		" shi:し:シ  し looks like a sheep hook,  Compare: ツシ  tsu-shi ",
 		" TT: on the 'D' char, シ 'she' is sleeping/snoring,  (no angles here, less curve though)",
 		" し:シ  TT: on the 'D' char   Compare: tsu:ツ  & so:ソ　to the more-laid-back シ:し"},
+
+ */
 	{"オ", "お", "o", "oオ", "お",
 		" o:お:オ , and オ does have a vague resemblance, albeit with less curves: お オ",
 		" o:お , for the Kata オ ... think: someone is 'on-the-go' ... see the fl'o'w ",
 		" TT: index--> to the '6' char     o:お:オ ",
 		" お:オ, on-the-go', cloak trailing behind   TT: index--> to the '6' char"},
 	//
-	{"ン", "ん", "n", "nン", "ん",
+/*	{"ン", "ん", "n", "nン", "ん",
 		" n:ン:ん  looks like a cursive n, and sounds like it too",
 		" n",
 		" TT: index to the 'Y' char",
@@ -541,16 +580,14 @@ var fileOfCardsMostDifficult = []charSetStruct{
 		" n",
 		" TT: index to the 'Y' char",
 		" ン:ん   TT: index to the 'Y' char, sounds the way it looks"},
+
 	{"ア", "あ", "a", "aア", "あ",
 		" a:あ:ア  ahh-'no-got-stabbed',  Compare: me:め  a:あ  nu:ぬ  ne:ね    あア-Fuck-mae-te:て!",
 		" The Kata a:ア looks nothing-like the hiragana あ, but like hira te:て   あア-Fuck-mae-te:て! ",
 		" TT: left-middle<- to the '3' char for あ:ア  ?is maybe a grotesque A:ア ?? ",
 		" Compare:  me:め  あ  nu:ぬ  ne:ね   あ-Fuck mae-te!  TT: L-middle<- to the '3' char"},
-	{"ア", "あ", "a", "aア", "あ",
-		" a:あ:ア  ahh-'no-got-stabbed',  Compare: me:め  a:あ  nu:ぬ  ne:ね    あア-Fuck-mae-te:て!",
-		" The Kata a:ア looks nothing-like the hiragana あ, but like hira te:て   あア-Fuck-mae-te:て! ",
-		" TT: left-middle<- to the '3' char for あ:ア  ?is maybe a grotesque A:ア ?? ",
-		" Compare:  me:め  あ  nu:ぬ  ne:ね   あ-Fuck mae-te!  TT: L-middle<- to the '3' char"},
+
+ */
 	{"ウ", "う", "u", "uウ", "う",
 		" u:う:ウ , they just added angles for the Kata -- looks like the wa:ワ albeit with a mohawk ' ",
 		" u:ooh:lays-atop tsu:つ  u:ウ is more-angular with a tick for its top line ",
@@ -600,12 +637,12 @@ var fileOfCards = []charSetStruct{
 	{"イ", "い", "i", "iイ", "い",
 		" i:イ:い  the Kata イ looks more like a hiragana te:て, but still two mostly-vertical lines: イ",
 		" i:い:イ  for the Kata ... maybe shift the two lines of the hiragana い to forms an 'I'  i:イ",
-		" TT: left-middle< to the 'E' char  い:イ ",
+		" TT: left-middle< to the 'E' char  い:イ  Longer on the left is i, Compare: ri:リ:り",
 		" い:イ at least it is still two mostly-vertical lines   TT: L-middle< to the 'E' char"},
 	{"イ", "い", "i", "iイ", "い",
 		" i:イ:い  the Kata イ looks more like a hiragana te:て, but still two mostly-vertical lines: イ",
 		" i:い:イ  for the Kata ... maybe shift the two lines of the hiragana い to forms an 'I'  i:イ",
-		" TT: left-middle< to the 'E' char  い:イ ",
+		" TT: left-middle< to the 'E' char  い:イ  Longer on the left is i, Compare: ri:リ:り",
 		" い:イ at least it is still two mostly-vertical lines   TT: L-middle< to the 'E' char"},
 	//
 	// 2 of u:う:ウ  2 times for u:う:ウ
@@ -1496,12 +1533,12 @@ var fileOfCards = []charSetStruct{
 	// 2 ri
 	{"リ", "り", "ri", "riリ", "り",
 		" ri:リ:り  actually, very very similar, actually!",
-		" ri",
+		" ri:リ:り Longer on the Right is Ri",
 		" TT: left-ring-finger on it's 'L' char",
 		" リ:り very similar   TT: left-ring-finger on it's 'L' char"},
 	{"リ", "り", "ri", "riリ", "り",
 		" ri:リ:り  actually, very very similar, actually!",
-		" ri",
+		" ri:リ:り Longer on the Right is Ri",
 		" TT: left-ring-finger on it's 'L' char",
 		" リ:り very similar   TT: left-ring-finger on it's 'L' char"},
 	// 4 ru
@@ -1618,8 +1655,8 @@ type charSetStruct struct {
 	KeyR  string
 	KeyRK string
 
-	// was: Value string
-	Keyh string // New name for the old name (above)
+	// Was: Value string
+	Keyh string // New name, for the old name ^ ^ 
 
 	Hint1h    string
 	Hint2k    string
